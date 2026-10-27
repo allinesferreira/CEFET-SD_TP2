@@ -1,0 +1,15 @@
+Servidor ouvindo porta 25001
+META recebida de 127.0.0.1:25000 (10 blocos)
+LEECH arquivo.bin blocos=10 porta=25001
+RECEBIDO bloco=0 origem=127.0.0.1:25000 progresso=1/10
+RECEBIDO bloco=1 origem=127.0.0.1:25000 progresso=2/10
+RECEBIDO bloco=2 origem=127.0.0.1:25000 progresso=3/10
+RECEBIDO bloco=3 origem=127.0.0.1:25000 progresso=4/10
+RECEBIDO bloco=4 origem=127.0.0.1:25000 progresso=5/10
+RECEBIDO bloco=5 origem=127.0.0.1:25000 progresso=6/10
+RECEBIDO bloco=6 origem=127.0.0.1:25000 progresso=7/10
+RECEBIDO bloco=7 origem=127.0.0.1:25000 progresso=8/10
+RECEBIDO bloco=8 origem=127.0.0.1:25000 progresso=9/10
+RECEBIDO bloco=9 origem=127.0.0.1:25000 progresso=10/10
+SUCESSO SHA256=633ea1e63818a04c5391c40fa90a734bba283df5a75622c6dd7f721389c0bbc5 bytes=10240 tempo_ms=173
+Compartilhando por mais 30 segundos
