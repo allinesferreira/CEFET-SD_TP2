@@ -11,7 +11,7 @@ base=Path(__file__).resolve().parents[1]
 pdfmetrics.registerFont(TTFont('DejaVu','/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'))
 pdfmetrics.registerFont(TTFont('DejaVuBold','/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'))
 S=getSampleStyleSheet();S.add(ParagraphStyle(name='T',fontName='DejaVuBold',fontSize=14,leading=19,alignment=TA_CENTER,spaceAfter=15));S.add(ParagraphStyle(name='H',fontName='DejaVuBold',fontSize=11,leading=16,spaceBefore=12,spaceAfter=7));S.add(ParagraphStyle(name='B',fontName='DejaVu',fontSize=9.2,leading=15,alignment=TA_JUSTIFY,spaceAfter=8));S.add(ParagraphStyle(name='Smallx',fontName='DejaVu',fontSize=8,leading=12,spaceAfter=5));S.add(ParagraphStyle(name='Captionx',fontName='DejaVu',fontSize=8,leading=12,alignment=TA_CENTER,spaceAfter=7))
-doc=SimpleDocTemplate(str(base/'docs'/'Relatorio_P2P.pdf'),pagesize=(21*cm,29.7*cm),leftMargin=2.2*cm,rightMargin=2.2*cm,topMargin=2.1*cm,bottomMargin=2.1*cm)
+doc=SimpleDocTemplate(str(base/'docs'/'relatorio.pdf'),pagesize=(21*cm,29.7*cm),leftMargin=2.2*cm,rightMargin=2.2*cm,topMargin=2.1*cm,bottomMargin=2.1*cm)
 story=[]
 def p(x,style='B'):story.append(Paragraph(x,S[style]))
 def h(x):p(x,'H')
@@ -68,7 +68,7 @@ p('Para reproduzir: instalar g++, make e libssl-dev; executar make; em seguida p
 page()
 p('6. Resultados iniciais e conclusão','T')
 h('6.1. Resultados de integração')
-rows=list(csv.DictReader(open(base/'resultados.csv')))
+rows=list(csv.DictReader(open(base/'resultados'/'resultados.csv')))
 table=[['Peers','Bloco (B)','Arquivo (bytes)','Tempo (s)','SHA-256']]
 for r in rows:table.append([r['peers'],r['bloco_bytes'],r['arquivo_bytes'],r['tempo_s'],'OK' if r['integridade']=='True' else 'FALHA'])
 tab(table,[2*cm,2.8*cm,4.4*cm,3.0*cm,4.3*cm])
@@ -84,4 +84,4 @@ p('OpenSSL Project. Documentação da biblioteca criptográfica e da função SH
 p('<b>URL do repositório:</b> [PREENCHER ANTES DA ENTREGA].','Smallx')
 def footer(c,d):c.setFont('DejaVu',8);c.setFillColor(colors.grey);c.drawCentredString(10.5*cm,1.25*cm,f'CEFET-MG | Sistemas Distribuídos | Página {d.page} de 5')
 doc.build(story,onFirstPage=footer,onLaterPages=footer)
-print('gerado',base/'docs'/'Relatorio_P2P.pdf')
+print('gerado',base/'docs'/'relatorio.pdf')
