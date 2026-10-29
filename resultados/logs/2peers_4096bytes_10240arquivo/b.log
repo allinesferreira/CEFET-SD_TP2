@@ -1,0 +1,12 @@
+[   0.000] Servidor ouvindo 127.0.0.1:25001
+[   0.000] META recebida de 127.0.0.1:25000 (3 blocos)
+[   0.001] LEECH arquivo.bin blocos=3 endereco=127.0.0.1:25001
+[   0.001] STATUS blocos=0/3 (0%)
+[   0.003] RECEBIDO bloco=2 origem=127.0.0.1:25000 progresso=1/3
+[   0.003] RECEBIDO bloco=1 origem=127.0.0.1:25000 progresso=2/3
+[   0.003] RECEBIDO bloco=0 origem=127.0.0.1:25000 progresso=3/3
+[   0.101] STATUS blocos=3/3 (100%)
+[   0.106] SUCESSO SHA256=a11ab580380ec812356b1c5cbb83704e3629db1d1e59fafd903cce9e03a5b986 bytes=10240 tempo_ms=2
+[   0.106] Compartilhando por mais 30 segundos
+[   0.206] RESUMO origem=127.0.0.1:25000 blocos=3
+[   0.206] RESUMO recebidos=3 enviados=0

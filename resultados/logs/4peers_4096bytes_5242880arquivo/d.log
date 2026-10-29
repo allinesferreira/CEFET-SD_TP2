@@ -1,1285 +1,1290 @@
-Servidor ouvindo porta 25003
-META recebida de 127.0.0.1:25001 (1280 blocos)
-LEECH arquivo.bin blocos=1280 porta=25003
-RECEBIDO bloco=1 origem=127.0.0.1:25001 progresso=1/1280
-RECEBIDO bloco=0 origem=127.0.0.1:25002 progresso=2/1280
-RECEBIDO bloco=2 origem=127.0.0.1:25001 progresso=3/1280
-RECEBIDO bloco=3 origem=127.0.0.1:25002 progresso=4/1280
-RECEBIDO bloco=5 origem=127.0.0.1:25002 progresso=5/1280
-RECEBIDO bloco=4 origem=127.0.0.1:25001 progresso=6/1280
-RECEBIDO bloco=7 origem=127.0.0.1:25001 progresso=7/1280
-RECEBIDO bloco=6 origem=127.0.0.1:25002 progresso=8/1280
-RECEBIDO bloco=9 origem=127.0.0.1:25002 progresso=9/1280
-RECEBIDO bloco=8 origem=127.0.0.1:25001 progresso=10/1280
-RECEBIDO bloco=10 origem=127.0.0.1:25002 progresso=11/1280
-RECEBIDO bloco=11 origem=127.0.0.1:25001 progresso=12/1280
-RECEBIDO bloco=12 origem=127.0.0.1:25002 progresso=13/1280
-RECEBIDO bloco=13 origem=127.0.0.1:25001 progresso=14/1280
-RECEBIDO bloco=14 origem=127.0.0.1:25002 progresso=15/1280
-RECEBIDO bloco=15 origem=127.0.0.1:25001 progresso=16/1280
-RECEBIDO bloco=16 origem=127.0.0.1:25002 progresso=17/1280
-RECEBIDO bloco=17 origem=127.0.0.1:25001 progresso=18/1280
-RECEBIDO bloco=18 origem=127.0.0.1:25002 progresso=19/1280
-RECEBIDO bloco=19 origem=127.0.0.1:25001 progresso=20/1280
-RECEBIDO bloco=20 origem=127.0.0.1:25002 progresso=21/1280
-RECEBIDO bloco=21 origem=127.0.0.1:25001 progresso=22/1280
-RECEBIDO bloco=22 origem=127.0.0.1:25002 progresso=23/1280
-RECEBIDO bloco=23 origem=127.0.0.1:25001 progresso=24/1280
-RECEBIDO bloco=24 origem=127.0.0.1:25002 progresso=25/1280
-RECEBIDO bloco=25 origem=127.0.0.1:25001 progresso=26/1280
-RECEBIDO bloco=27 origem=127.0.0.1:25001 progresso=27/1280
-RECEBIDO bloco=26 origem=127.0.0.1:25002 progresso=28/1280
-RECEBIDO bloco=28 origem=127.0.0.1:25001 progresso=29/1280
-RECEBIDO bloco=29 origem=127.0.0.1:25002 progresso=30/1280
-RECEBIDO bloco=30 origem=127.0.0.1:25001 progresso=31/1280
-RECEBIDO bloco=31 origem=127.0.0.1:25002 progresso=32/1280
-RECEBIDO bloco=32 origem=127.0.0.1:25001 progresso=33/1280
-RECEBIDO bloco=33 origem=127.0.0.1:25002 progresso=34/1280
-RECEBIDO bloco=34 origem=127.0.0.1:25001 progresso=35/1280
-RECEBIDO bloco=35 origem=127.0.0.1:25002 progresso=36/1280
-RECEBIDO bloco=36 origem=127.0.0.1:25001 progresso=37/1280
-RECEBIDO bloco=38 origem=127.0.0.1:25001 progresso=38/1280
-RECEBIDO bloco=37 origem=127.0.0.1:25002 progresso=39/1280
-RECEBIDO bloco=39 origem=127.0.0.1:25001 progresso=40/1280
-RECEBIDO bloco=40 origem=127.0.0.1:25002 progresso=41/1280
-RECEBIDO bloco=41 origem=127.0.0.1:25001 progresso=42/1280
-RECEBIDO bloco=42 origem=127.0.0.1:25002 progresso=43/1280
-RECEBIDO bloco=43 origem=127.0.0.1:25001 progresso=44/1280
-RECEBIDO bloco=44 origem=127.0.0.1:25002 progresso=45/1280
-RECEBIDO bloco=45 origem=127.0.0.1:25001 progresso=46/1280
-RECEBIDO bloco=46 origem=127.0.0.1:25002 progresso=47/1280
-RECEBIDO bloco=47 origem=127.0.0.1:25001 progresso=48/1280
-RECEBIDO bloco=48 origem=127.0.0.1:25002 progresso=49/1280
-RECEBIDO bloco=49 origem=127.0.0.1:25001 progresso=50/1280
-RECEBIDO bloco=50 origem=127.0.0.1:25002 progresso=51/1280
-RECEBIDO bloco=51 origem=127.0.0.1:25001 progresso=52/1280
-RECEBIDO bloco=52 origem=127.0.0.1:25002 progresso=53/1280
-RECEBIDO bloco=53 origem=127.0.0.1:25001 progresso=54/1280
-RECEBIDO bloco=54 origem=127.0.0.1:25002 progresso=55/1280
-RECEBIDO bloco=55 origem=127.0.0.1:25001 progresso=56/1280
-RECEBIDO bloco=56 origem=127.0.0.1:25002 progresso=57/1280
-RECEBIDO bloco=58 origem=127.0.0.1:25002 progresso=58/1280
-RECEBIDO bloco=57 origem=127.0.0.1:25001 progresso=59/1280
-RECEBIDO bloco=59 origem=127.0.0.1:25002 progresso=60/1280
-RECEBIDO bloco=60 origem=127.0.0.1:25001 progresso=61/1280
-RECEBIDO bloco=62 origem=127.0.0.1:25001 progresso=62/1280
-RECEBIDO bloco=61 origem=127.0.0.1:25002 progresso=63/1280
-RECEBIDO bloco=64 origem=127.0.0.1:25002 progresso=64/1280
-RECEBIDO bloco=63 origem=127.0.0.1:25001 progresso=65/1280
-RECEBIDO bloco=65 origem=127.0.0.1:25002 progresso=66/1280
-RECEBIDO bloco=66 origem=127.0.0.1:25001 progresso=67/1280
-RECEBIDO bloco=67 origem=127.0.0.1:25002 progresso=68/1280
-RECEBIDO bloco=69 origem=127.0.0.1:25002 progresso=69/1280
-RECEBIDO bloco=68 origem=127.0.0.1:25001 progresso=70/1280
-RECEBIDO bloco=70 origem=127.0.0.1:25002 progresso=71/1280
-RECEBIDO bloco=72 origem=127.0.0.1:25002 progresso=72/1280
-RECEBIDO bloco=71 origem=127.0.0.1:25001 progresso=73/1280
-RECEBIDO bloco=74 origem=127.0.0.1:25001 progresso=74/1280
-RECEBIDO bloco=73 origem=127.0.0.1:25002 progresso=75/1280
-RECEBIDO bloco=76 origem=127.0.0.1:25002 progresso=76/1280
-RECEBIDO bloco=75 origem=127.0.0.1:25001 progresso=77/1280
-RECEBIDO bloco=78 origem=127.0.0.1:25001 progresso=78/1280
-RECEBIDO bloco=77 origem=127.0.0.1:25002 progresso=79/1280
-RECEBIDO bloco=79 origem=127.0.0.1:25001 progresso=80/1280
-RECEBIDO bloco=80 origem=127.0.0.1:25002 progresso=81/1280
-RECEBIDO bloco=81 origem=127.0.0.1:25001 progresso=82/1280
-RECEBIDO bloco=82 origem=127.0.0.1:25002 progresso=83/1280
-RECEBIDO bloco=83 origem=127.0.0.1:25001 progresso=84/1280
-RECEBIDO bloco=84 origem=127.0.0.1:25002 progresso=85/1280
-RECEBIDO bloco=86 origem=127.0.0.1:25002 progresso=86/1280
-RECEBIDO bloco=85 origem=127.0.0.1:25001 progresso=87/1280
-RECEBIDO bloco=87 origem=127.0.0.1:25002 progresso=88/1280
-RECEBIDO bloco=88 origem=127.0.0.1:25001 progresso=89/1280
-RECEBIDO bloco=89 origem=127.0.0.1:25002 progresso=90/1280
-RECEBIDO bloco=91 origem=127.0.0.1:25002 progresso=91/1280
-RECEBIDO bloco=90 origem=127.0.0.1:25001 progresso=92/1280
-RECEBIDO bloco=93 origem=127.0.0.1:25001 progresso=93/1280
-RECEBIDO bloco=92 origem=127.0.0.1:25002 progresso=94/1280
-RECEBIDO bloco=95 origem=127.0.0.1:25002 progresso=95/1280
-RECEBIDO bloco=94 origem=127.0.0.1:25001 progresso=96/1280
-RECEBIDO bloco=96 origem=127.0.0.1:25002 progresso=97/1280
-RECEBIDO bloco=97 origem=127.0.0.1:25001 progresso=98/1280
-RECEBIDO bloco=98 origem=127.0.0.1:25002 progresso=99/1280
-RECEBIDO bloco=99 origem=127.0.0.1:25001 progresso=100/1280
-RECEBIDO bloco=101 origem=127.0.0.1:25001 progresso=101/1280
-RECEBIDO bloco=100 origem=127.0.0.1:25002 progresso=102/1280
-RECEBIDO bloco=102 origem=127.0.0.1:25001 progresso=103/1280
-RECEBIDO bloco=103 origem=127.0.0.1:25002 progresso=104/1280
-RECEBIDO bloco=105 origem=127.0.0.1:25002 progresso=105/1280
-RECEBIDO bloco=104 origem=127.0.0.1:25001 progresso=106/1280
-RECEBIDO bloco=106 origem=127.0.0.1:25002 progresso=107/1280
-RECEBIDO bloco=107 origem=127.0.0.1:25001 progresso=108/1280
-RECEBIDO bloco=108 origem=127.0.0.1:25002 progresso=109/1280
-RECEBIDO bloco=109 origem=127.0.0.1:25001 progresso=110/1280
-RECEBIDO bloco=110 origem=127.0.0.1:25002 progresso=111/1280
-RECEBIDO bloco=111 origem=127.0.0.1:25001 progresso=112/1280
-RECEBIDO bloco=112 origem=127.0.0.1:25002 progresso=113/1280
-RECEBIDO bloco=113 origem=127.0.0.1:25001 progresso=114/1280
-RECEBIDO bloco=114 origem=127.0.0.1:25002 progresso=115/1280
-RECEBIDO bloco=116 origem=127.0.0.1:25002 progresso=116/1280
-RECEBIDO bloco=115 origem=127.0.0.1:25001 progresso=117/1280
-RECEBIDO bloco=117 origem=127.0.0.1:25002 progresso=118/1280
-RECEBIDO bloco=118 origem=127.0.0.1:25001 progresso=119/1280
-RECEBIDO bloco=119 origem=127.0.0.1:25002 progresso=120/1280
-RECEBIDO bloco=120 origem=127.0.0.1:25001 progresso=121/1280
-RECEBIDO bloco=121 origem=127.0.0.1:25002 progresso=122/1280
-RECEBIDO bloco=122 origem=127.0.0.1:25001 progresso=123/1280
-RECEBIDO bloco=123 origem=127.0.0.1:25002 progresso=124/1280
-RECEBIDO bloco=125 origem=127.0.0.1:25002 progresso=125/1280
-RECEBIDO bloco=124 origem=127.0.0.1:25001 progresso=126/1280
-RECEBIDO bloco=127 origem=127.0.0.1:25001 progresso=127/1280
-RECEBIDO bloco=126 origem=127.0.0.1:25002 progresso=128/1280
-RECEBIDO bloco=128 origem=127.0.0.1:25001 progresso=129/1280
-RECEBIDO bloco=129 origem=127.0.0.1:25002 progresso=130/1280
-RECEBIDO bloco=130 origem=127.0.0.1:25001 progresso=131/1280
-RECEBIDO bloco=131 origem=127.0.0.1:25002 progresso=132/1280
-RECEBIDO bloco=132 origem=127.0.0.1:25001 progresso=133/1280
-RECEBIDO bloco=133 origem=127.0.0.1:25002 progresso=134/1280
-RECEBIDO bloco=135 origem=127.0.0.1:25002 progresso=135/1280
-RECEBIDO bloco=134 origem=127.0.0.1:25001 progresso=136/1280
-RECEBIDO bloco=137 origem=127.0.0.1:25001 progresso=137/1280
-RECEBIDO bloco=136 origem=127.0.0.1:25002 progresso=138/1280
-RECEBIDO bloco=138 origem=127.0.0.1:25001 progresso=139/1280
-RECEBIDO bloco=139 origem=127.0.0.1:25002 progresso=140/1280
-RECEBIDO bloco=140 origem=127.0.0.1:25001 progresso=141/1280
-RECEBIDO bloco=141 origem=127.0.0.1:25002 progresso=142/1280
-RECEBIDO bloco=142 origem=127.0.0.1:25001 progresso=143/1280
-RECEBIDO bloco=143 origem=127.0.0.1:25002 progresso=144/1280
-RECEBIDO bloco=144 origem=127.0.0.1:25001 progresso=145/1280
-RECEBIDO bloco=145 origem=127.0.0.1:25002 progresso=146/1280
-RECEBIDO bloco=146 origem=127.0.0.1:25001 progresso=147/1280
-RECEBIDO bloco=147 origem=127.0.0.1:25002 progresso=148/1280
-RECEBIDO bloco=148 origem=127.0.0.1:25001 progresso=149/1280
-RECEBIDO bloco=149 origem=127.0.0.1:25002 progresso=150/1280
-RECEBIDO bloco=150 origem=127.0.0.1:25001 progresso=151/1280
-RECEBIDO bloco=151 origem=127.0.0.1:25002 progresso=152/1280
-RECEBIDO bloco=152 origem=127.0.0.1:25001 progresso=153/1280
-RECEBIDO bloco=153 origem=127.0.0.1:25002 progresso=154/1280
-RECEBIDO bloco=155 origem=127.0.0.1:25002 progresso=155/1280
-RECEBIDO bloco=154 origem=127.0.0.1:25001 progresso=156/1280
-RECEBIDO bloco=156 origem=127.0.0.1:25002 progresso=157/1280
-RECEBIDO bloco=157 origem=127.0.0.1:25001 progresso=158/1280
-RECEBIDO bloco=158 origem=127.0.0.1:25002 progresso=159/1280
-RECEBIDO bloco=159 origem=127.0.0.1:25001 progresso=160/1280
-RECEBIDO bloco=161 origem=127.0.0.1:25001 progresso=161/1280
-RECEBIDO bloco=160 origem=127.0.0.1:25002 progresso=162/1280
-RECEBIDO bloco=163 origem=127.0.0.1:25002 progresso=163/1280
-RECEBIDO bloco=162 origem=127.0.0.1:25001 progresso=164/1280
-RECEBIDO bloco=164 origem=127.0.0.1:25002 progresso=165/1280
-RECEBIDO bloco=165 origem=127.0.0.1:25001 progresso=166/1280
-RECEBIDO bloco=166 origem=127.0.0.1:25002 progresso=167/1280
-RECEBIDO bloco=167 origem=127.0.0.1:25001 progresso=168/1280
-RECEBIDO bloco=168 origem=127.0.0.1:25002 progresso=169/1280
-RECEBIDO bloco=169 origem=127.0.0.1:25001 progresso=170/1280
-RECEBIDO bloco=170 origem=127.0.0.1:25002 progresso=171/1280
-RECEBIDO bloco=171 origem=127.0.0.1:25001 progresso=172/1280
-RECEBIDO bloco=172 origem=127.0.0.1:25002 progresso=173/1280
-RECEBIDO bloco=173 origem=127.0.0.1:25001 progresso=174/1280
-RECEBIDO bloco=174 origem=127.0.0.1:25002 progresso=175/1280
-RECEBIDO bloco=176 origem=127.0.0.1:25002 progresso=176/1280
-RECEBIDO bloco=175 origem=127.0.0.1:25001 progresso=177/1280
-RECEBIDO bloco=178 origem=127.0.0.1:25001 progresso=178/1280
-RECEBIDO bloco=177 origem=127.0.0.1:25002 progresso=179/1280
-RECEBIDO bloco=179 origem=127.0.0.1:25001 progresso=180/1280
-RECEBIDO bloco=180 origem=127.0.0.1:25002 progresso=181/1280
-RECEBIDO bloco=181 origem=127.0.0.1:25001 progresso=182/1280
-RECEBIDO bloco=182 origem=127.0.0.1:25002 progresso=183/1280
-RECEBIDO bloco=183 origem=127.0.0.1:25001 progresso=184/1280
-RECEBIDO bloco=184 origem=127.0.0.1:25002 progresso=185/1280
-RECEBIDO bloco=186 origem=127.0.0.1:25002 progresso=186/1280
-RECEBIDO bloco=185 origem=127.0.0.1:25001 progresso=187/1280
-RECEBIDO bloco=187 origem=127.0.0.1:25002 progresso=188/1280
-RECEBIDO bloco=188 origem=127.0.0.1:25001 progresso=189/1280
-RECEBIDO bloco=189 origem=127.0.0.1:25002 progresso=190/1280
-RECEBIDO bloco=190 origem=127.0.0.1:25001 progresso=191/1280
-RECEBIDO bloco=191 origem=127.0.0.1:25002 progresso=192/1280
-RECEBIDO bloco=193 origem=127.0.0.1:25002 progresso=193/1280
-RECEBIDO bloco=192 origem=127.0.0.1:25001 progresso=194/1280
-RECEBIDO bloco=194 origem=127.0.0.1:25002 progresso=195/1280
-RECEBIDO bloco=195 origem=127.0.0.1:25001 progresso=196/1280
-RECEBIDO bloco=196 origem=127.0.0.1:25002 progresso=197/1280
-RECEBIDO bloco=197 origem=127.0.0.1:25001 progresso=198/1280
-RECEBIDO bloco=198 origem=127.0.0.1:25002 progresso=199/1280
-RECEBIDO bloco=199 origem=127.0.0.1:25001 progresso=200/1280
-RECEBIDO bloco=200 origem=127.0.0.1:25002 progresso=201/1280
-RECEBIDO bloco=201 origem=127.0.0.1:25001 progresso=202/1280
-RECEBIDO bloco=202 origem=127.0.0.1:25002 progresso=203/1280
-RECEBIDO bloco=203 origem=127.0.0.1:25001 progresso=204/1280
-RECEBIDO bloco=204 origem=127.0.0.1:25002 progresso=205/1280
-RECEBIDO bloco=205 origem=127.0.0.1:25001 progresso=206/1280
-RECEBIDO bloco=206 origem=127.0.0.1:25002 progresso=207/1280
-RECEBIDO bloco=208 origem=127.0.0.1:25002 progresso=208/1280
-RECEBIDO bloco=209 origem=127.0.0.1:25002 progresso=209/1280
-RECEBIDO bloco=207 origem=127.0.0.1:25001 progresso=210/1280
-RECEBIDO bloco=210 origem=127.0.0.1:25002 progresso=211/1280
-RECEBIDO bloco=211 origem=127.0.0.1:25001 progresso=212/1280
-RECEBIDO bloco=212 origem=127.0.0.1:25002 progresso=213/1280
-RECEBIDO bloco=213 origem=127.0.0.1:25001 progresso=214/1280
-RECEBIDO bloco=214 origem=127.0.0.1:25002 progresso=215/1280
-RECEBIDO bloco=215 origem=127.0.0.1:25001 progresso=216/1280
-RECEBIDO bloco=216 origem=127.0.0.1:25002 progresso=217/1280
-RECEBIDO bloco=217 origem=127.0.0.1:25001 progresso=218/1280
-RECEBIDO bloco=219 origem=127.0.0.1:25001 progresso=219/1280
-RECEBIDO bloco=218 origem=127.0.0.1:25002 progresso=220/1280
-RECEBIDO bloco=221 origem=127.0.0.1:25002 progresso=221/1280
-RECEBIDO bloco=220 origem=127.0.0.1:25001 progresso=222/1280
-RECEBIDO bloco=223 origem=127.0.0.1:25001 progresso=223/1280
-RECEBIDO bloco=222 origem=127.0.0.1:25002 progresso=224/1280
-RECEBIDO bloco=224 origem=127.0.0.1:25001 progresso=225/1280
-RECEBIDO bloco=225 origem=127.0.0.1:25002 progresso=226/1280
-RECEBIDO bloco=227 origem=127.0.0.1:25002 progresso=227/1280
-RECEBIDO bloco=226 origem=127.0.0.1:25001 progresso=228/1280
-RECEBIDO bloco=228 origem=127.0.0.1:25002 progresso=229/1280
-RECEBIDO bloco=229 origem=127.0.0.1:25001 progresso=230/1280
-RECEBIDO bloco=230 origem=127.0.0.1:25002 progresso=231/1280
-RECEBIDO bloco=231 origem=127.0.0.1:25001 progresso=232/1280
-RECEBIDO bloco=232 origem=127.0.0.1:25002 progresso=233/1280
-RECEBIDO bloco=233 origem=127.0.0.1:25001 progresso=234/1280
-RECEBIDO bloco=234 origem=127.0.0.1:25002 progresso=235/1280
-RECEBIDO bloco=236 origem=127.0.0.1:25002 progresso=236/1280
-RECEBIDO bloco=235 origem=127.0.0.1:25001 progresso=237/1280
-RECEBIDO bloco=237 origem=127.0.0.1:25002 progresso=238/1280
-RECEBIDO bloco=238 origem=127.0.0.1:25001 progresso=239/1280
-RECEBIDO bloco=239 origem=127.0.0.1:25002 progresso=240/1280
-RECEBIDO bloco=240 origem=127.0.0.1:25001 progresso=241/1280
-RECEBIDO bloco=241 origem=127.0.0.1:25002 progresso=242/1280
-RECEBIDO bloco=242 origem=127.0.0.1:25001 progresso=243/1280
-RECEBIDO bloco=243 origem=127.0.0.1:25002 progresso=244/1280
-RECEBIDO bloco=244 origem=127.0.0.1:25001 progresso=245/1280
-RECEBIDO bloco=245 origem=127.0.0.1:25002 progresso=246/1280
-RECEBIDO bloco=246 origem=127.0.0.1:25001 progresso=247/1280
-RECEBIDO bloco=247 origem=127.0.0.1:25002 progresso=248/1280
-RECEBIDO bloco=249 origem=127.0.0.1:25002 progresso=249/1280
-RECEBIDO bloco=248 origem=127.0.0.1:25001 progresso=250/1280
-RECEBIDO bloco=250 origem=127.0.0.1:25002 progresso=251/1280
-RECEBIDO bloco=251 origem=127.0.0.1:25001 progresso=252/1280
-RECEBIDO bloco=252 origem=127.0.0.1:25002 progresso=253/1280
-RECEBIDO bloco=253 origem=127.0.0.1:25001 progresso=254/1280
-RECEBIDO bloco=254 origem=127.0.0.1:25002 progresso=255/1280
-RECEBIDO bloco=256 origem=127.0.0.1:25002 progresso=256/1280
-RECEBIDO bloco=255 origem=127.0.0.1:25001 progresso=257/1280
-RECEBIDO bloco=257 origem=127.0.0.1:25002 progresso=258/1280
-RECEBIDO bloco=258 origem=127.0.0.1:25001 progresso=259/1280
-RECEBIDO bloco=259 origem=127.0.0.1:25002 progresso=260/1280
-RECEBIDO bloco=260 origem=127.0.0.1:25001 progresso=261/1280
-RECEBIDO bloco=262 origem=127.0.0.1:25001 progresso=262/1280
-RECEBIDO bloco=261 origem=127.0.0.1:25002 progresso=263/1280
-RECEBIDO bloco=263 origem=127.0.0.1:25001 progresso=264/1280
-RECEBIDO bloco=265 origem=127.0.0.1:25001 progresso=265/1280
-RECEBIDO bloco=264 origem=127.0.0.1:25002 progresso=266/1280
-RECEBIDO bloco=267 origem=127.0.0.1:25002 progresso=267/1280
-RECEBIDO bloco=266 origem=127.0.0.1:25001 progresso=268/1280
-RECEBIDO bloco=268 origem=127.0.0.1:25002 progresso=269/1280
-RECEBIDO bloco=269 origem=127.0.0.1:25001 progresso=270/1280
-RECEBIDO bloco=270 origem=127.0.0.1:25002 progresso=271/1280
-RECEBIDO bloco=271 origem=127.0.0.1:25002 progresso=272/1280
-RECEBIDO bloco=272 origem=127.0.0.1:25001 progresso=273/1280
-RECEBIDO bloco=273 origem=127.0.0.1:25002 progresso=274/1280
-RECEBIDO bloco=274 origem=127.0.0.1:25001 progresso=275/1280
-RECEBIDO bloco=275 origem=127.0.0.1:25002 progresso=276/1280
-RECEBIDO bloco=276 origem=127.0.0.1:25001 progresso=277/1280
-RECEBIDO bloco=277 origem=127.0.0.1:25002 progresso=278/1280
-RECEBIDO bloco=278 origem=127.0.0.1:25001 progresso=279/1280
-RECEBIDO bloco=279 origem=127.0.0.1:25002 progresso=280/1280
-RECEBIDO bloco=280 origem=127.0.0.1:25001 progresso=281/1280
-RECEBIDO bloco=282 origem=127.0.0.1:25001 progresso=282/1280
-RECEBIDO bloco=281 origem=127.0.0.1:25002 progresso=283/1280
-RECEBIDO bloco=284 origem=127.0.0.1:25002 progresso=284/1280
-RECEBIDO bloco=283 origem=127.0.0.1:25001 progresso=285/1280
-RECEBIDO bloco=286 origem=127.0.0.1:25001 progresso=286/1280
-RECEBIDO bloco=285 origem=127.0.0.1:25002 progresso=287/1280
-RECEBIDO bloco=287 origem=127.0.0.1:25001 progresso=288/1280
-RECEBIDO bloco=288 origem=127.0.0.1:25002 progresso=289/1280
-RECEBIDO bloco=289 origem=127.0.0.1:25001 progresso=290/1280
-RECEBIDO bloco=290 origem=127.0.0.1:25002 progresso=291/1280
-RECEBIDO bloco=291 origem=127.0.0.1:25001 progresso=292/1280
-RECEBIDO bloco=292 origem=127.0.0.1:25002 progresso=293/1280
-RECEBIDO bloco=294 origem=127.0.0.1:25002 progresso=294/1280
-RECEBIDO bloco=293 origem=127.0.0.1:25001 progresso=295/1280
-RECEBIDO bloco=296 origem=127.0.0.1:25001 progresso=296/1280
-RECEBIDO bloco=295 origem=127.0.0.1:25002 progresso=297/1280
-RECEBIDO bloco=298 origem=127.0.0.1:25002 progresso=298/1280
-RECEBIDO bloco=297 origem=127.0.0.1:25001 progresso=299/1280
-RECEBIDO bloco=300 origem=127.0.0.1:25001 progresso=300/1280
-RECEBIDO bloco=299 origem=127.0.0.1:25002 progresso=301/1280
-RECEBIDO bloco=302 origem=127.0.0.1:25002 progresso=302/1280
-RECEBIDO bloco=301 origem=127.0.0.1:25001 progresso=303/1280
-RECEBIDO bloco=303 origem=127.0.0.1:25002 progresso=304/1280
-RECEBIDO bloco=304 origem=127.0.0.1:25001 progresso=305/1280
-RECEBIDO bloco=305 origem=127.0.0.1:25002 progresso=306/1280
-RECEBIDO bloco=306 origem=127.0.0.1:25001 progresso=307/1280
-RECEBIDO bloco=307 origem=127.0.0.1:25002 progresso=308/1280
-RECEBIDO bloco=308 origem=127.0.0.1:25001 progresso=309/1280
-RECEBIDO bloco=309 origem=127.0.0.1:25002 progresso=310/1280
-RECEBIDO bloco=310 origem=127.0.0.1:25001 progresso=311/1280
-RECEBIDO bloco=311 origem=127.0.0.1:25002 progresso=312/1280
-RECEBIDO bloco=312 origem=127.0.0.1:25001 progresso=313/1280
-RECEBIDO bloco=313 origem=127.0.0.1:25002 progresso=314/1280
-RECEBIDO bloco=314 origem=127.0.0.1:25001 progresso=315/1280
-RECEBIDO bloco=315 origem=127.0.0.1:25002 progresso=316/1280
-RECEBIDO bloco=316 origem=127.0.0.1:25001 progresso=317/1280
-RECEBIDO bloco=317 origem=127.0.0.1:25002 progresso=318/1280
-RECEBIDO bloco=318 origem=127.0.0.1:25001 progresso=319/1280
-RECEBIDO bloco=319 origem=127.0.0.1:25002 progresso=320/1280
-RECEBIDO bloco=320 origem=127.0.0.1:25001 progresso=321/1280
-RECEBIDO bloco=321 origem=127.0.0.1:25002 progresso=322/1280
-RECEBIDO bloco=322 origem=127.0.0.1:25001 progresso=323/1280
-RECEBIDO bloco=323 origem=127.0.0.1:25002 progresso=324/1280
-RECEBIDO bloco=324 origem=127.0.0.1:25001 progresso=325/1280
-RECEBIDO bloco=325 origem=127.0.0.1:25002 progresso=326/1280
-RECEBIDO bloco=326 origem=127.0.0.1:25001 progresso=327/1280
-RECEBIDO bloco=327 origem=127.0.0.1:25002 progresso=328/1280
-RECEBIDO bloco=328 origem=127.0.0.1:25001 progresso=329/1280
-RECEBIDO bloco=329 origem=127.0.0.1:25002 progresso=330/1280
-RECEBIDO bloco=330 origem=127.0.0.1:25001 progresso=331/1280
-RECEBIDO bloco=331 origem=127.0.0.1:25002 progresso=332/1280
-RECEBIDO bloco=332 origem=127.0.0.1:25001 progresso=333/1280
-RECEBIDO bloco=333 origem=127.0.0.1:25002 progresso=334/1280
-RECEBIDO bloco=335 origem=127.0.0.1:25002 progresso=335/1280
-RECEBIDO bloco=334 origem=127.0.0.1:25001 progresso=336/1280
-RECEBIDO bloco=336 origem=127.0.0.1:25002 progresso=337/1280
-RECEBIDO bloco=337 origem=127.0.0.1:25001 progresso=338/1280
-RECEBIDO bloco=338 origem=127.0.0.1:25002 progresso=339/1280
-RECEBIDO bloco=339 origem=127.0.0.1:25001 progresso=340/1280
-RECEBIDO bloco=340 origem=127.0.0.1:25002 progresso=341/1280
-RECEBIDO bloco=341 origem=127.0.0.1:25001 progresso=342/1280
-RECEBIDO bloco=342 origem=127.0.0.1:25002 progresso=343/1280
-RECEBIDO bloco=343 origem=127.0.0.1:25001 progresso=344/1280
-RECEBIDO bloco=344 origem=127.0.0.1:25002 progresso=345/1280
-RECEBIDO bloco=345 origem=127.0.0.1:25001 progresso=346/1280
-RECEBIDO bloco=346 origem=127.0.0.1:25002 progresso=347/1280
-RECEBIDO bloco=348 origem=127.0.0.1:25002 progresso=348/1280
-RECEBIDO bloco=347 origem=127.0.0.1:25001 progresso=349/1280
-RECEBIDO bloco=350 origem=127.0.0.1:25001 progresso=350/1280
-RECEBIDO bloco=349 origem=127.0.0.1:25002 progresso=351/1280
-RECEBIDO bloco=351 origem=127.0.0.1:25001 progresso=352/1280
-RECEBIDO bloco=352 origem=127.0.0.1:25002 progresso=353/1280
-RECEBIDO bloco=354 origem=127.0.0.1:25002 progresso=354/1280
-RECEBIDO bloco=353 origem=127.0.0.1:25001 progresso=355/1280
-RECEBIDO bloco=355 origem=127.0.0.1:25002 progresso=356/1280
-RECEBIDO bloco=356 origem=127.0.0.1:25001 progresso=357/1280
-RECEBIDO bloco=357 origem=127.0.0.1:25002 progresso=358/1280
-RECEBIDO bloco=358 origem=127.0.0.1:25001 progresso=359/1280
-RECEBIDO bloco=359 origem=127.0.0.1:25002 progresso=360/1280
-RECEBIDO bloco=360 origem=127.0.0.1:25001 progresso=361/1280
-RECEBIDO bloco=362 origem=127.0.0.1:25001 progresso=362/1280
-RECEBIDO bloco=361 origem=127.0.0.1:25002 progresso=363/1280
-RECEBIDO bloco=363 origem=127.0.0.1:25001 progresso=364/1280
-RECEBIDO bloco=364 origem=127.0.0.1:25002 progresso=365/1280
-RECEBIDO bloco=365 origem=127.0.0.1:25001 progresso=366/1280
-RECEBIDO bloco=366 origem=127.0.0.1:25002 progresso=367/1280
-RECEBIDO bloco=367 origem=127.0.0.1:25001 progresso=368/1280
-RECEBIDO bloco=368 origem=127.0.0.1:25002 progresso=369/1280
-RECEBIDO bloco=369 origem=127.0.0.1:25001 progresso=370/1280
-RECEBIDO bloco=371 origem=127.0.0.1:25001 progresso=371/1280
-RECEBIDO bloco=370 origem=127.0.0.1:25002 progresso=372/1280
-RECEBIDO bloco=373 origem=127.0.0.1:25002 progresso=373/1280
-RECEBIDO bloco=372 origem=127.0.0.1:25001 progresso=374/1280
-RECEBIDO bloco=375 origem=127.0.0.1:25001 progresso=375/1280
-RECEBIDO bloco=374 origem=127.0.0.1:25002 progresso=376/1280
-RECEBIDO bloco=376 origem=127.0.0.1:25001 progresso=377/1280
-RECEBIDO bloco=377 origem=127.0.0.1:25002 progresso=378/1280
-RECEBIDO bloco=378 origem=127.0.0.1:25001 progresso=379/1280
-RECEBIDO bloco=379 origem=127.0.0.1:25002 progresso=380/1280
-RECEBIDO bloco=380 origem=127.0.0.1:25001 progresso=381/1280
-RECEBIDO bloco=381 origem=127.0.0.1:25002 progresso=382/1280
-RECEBIDO bloco=382 origem=127.0.0.1:25001 progresso=383/1280
-RECEBIDO bloco=383 origem=127.0.0.1:25002 progresso=384/1280
-RECEBIDO bloco=384 origem=127.0.0.1:25001 progresso=385/1280
-RECEBIDO bloco=385 origem=127.0.0.1:25002 progresso=386/1280
-RECEBIDO bloco=386 origem=127.0.0.1:25001 progresso=387/1280
-RECEBIDO bloco=387 origem=127.0.0.1:25002 progresso=388/1280
-RECEBIDO bloco=388 origem=127.0.0.1:25001 progresso=389/1280
-RECEBIDO bloco=389 origem=127.0.0.1:25002 progresso=390/1280
-RECEBIDO bloco=390 origem=127.0.0.1:25001 progresso=391/1280
-RECEBIDO bloco=391 origem=127.0.0.1:25002 progresso=392/1280
-RECEBIDO bloco=392 origem=127.0.0.1:25002 progresso=393/1280
-RECEBIDO bloco=393 origem=127.0.0.1:25001 progresso=394/1280
-RECEBIDO bloco=394 origem=127.0.0.1:25002 progresso=395/1280
-RECEBIDO bloco=395 origem=127.0.0.1:25001 progresso=396/1280
-RECEBIDO bloco=396 origem=127.0.0.1:25002 progresso=397/1280
-RECEBIDO bloco=397 origem=127.0.0.1:25001 progresso=398/1280
-RECEBIDO bloco=398 origem=127.0.0.1:25002 progresso=399/1280
-RECEBIDO bloco=400 origem=127.0.0.1:25002 progresso=400/1280
-RECEBIDO bloco=399 origem=127.0.0.1:25001 progresso=401/1280
-RECEBIDO bloco=401 origem=127.0.0.1:25002 progresso=402/1280
-RECEBIDO bloco=403 origem=127.0.0.1:25002 progresso=403/1280
-RECEBIDO bloco=402 origem=127.0.0.1:25001 progresso=404/1280
-RECEBIDO bloco=404 origem=127.0.0.1:25002 progresso=405/1280
-RECEBIDO bloco=405 origem=127.0.0.1:25001 progresso=406/1280
-RECEBIDO bloco=406 origem=127.0.0.1:25002 progresso=407/1280
-RECEBIDO bloco=407 origem=127.0.0.1:25001 progresso=408/1280
-RECEBIDO bloco=408 origem=127.0.0.1:25002 progresso=409/1280
-RECEBIDO bloco=409 origem=127.0.0.1:25001 progresso=410/1280
-RECEBIDO bloco=410 origem=127.0.0.1:25002 progresso=411/1280
-RECEBIDO bloco=411 origem=127.0.0.1:25001 progresso=412/1280
-RECEBIDO bloco=412 origem=127.0.0.1:25002 progresso=413/1280
-RECEBIDO bloco=413 origem=127.0.0.1:25001 progresso=414/1280
-RECEBIDO bloco=414 origem=127.0.0.1:25002 progresso=415/1280
-RECEBIDO bloco=415 origem=127.0.0.1:25001 progresso=416/1280
-RECEBIDO bloco=416 origem=127.0.0.1:25002 progresso=417/1280
-RECEBIDO bloco=417 origem=127.0.0.1:25001 progresso=418/1280
-RECEBIDO bloco=418 origem=127.0.0.1:25002 progresso=419/1280
-RECEBIDO bloco=419 origem=127.0.0.1:25001 progresso=420/1280
-RECEBIDO bloco=420 origem=127.0.0.1:25002 progresso=421/1280
-RECEBIDO bloco=421 origem=127.0.0.1:25001 progresso=422/1280
-RECEBIDO bloco=422 origem=127.0.0.1:25002 progresso=423/1280
-RECEBIDO bloco=423 origem=127.0.0.1:25001 progresso=424/1280
-RECEBIDO bloco=424 origem=127.0.0.1:25002 progresso=425/1280
-RECEBIDO bloco=426 origem=127.0.0.1:25002 progresso=426/1280
-RECEBIDO bloco=425 origem=127.0.0.1:25001 progresso=427/1280
-RECEBIDO bloco=427 origem=127.0.0.1:25002 progresso=428/1280
-RECEBIDO bloco=428 origem=127.0.0.1:25001 progresso=429/1280
-RECEBIDO bloco=429 origem=127.0.0.1:25002 progresso=430/1280
-RECEBIDO bloco=430 origem=127.0.0.1:25001 progresso=431/1280
-RECEBIDO bloco=431 origem=127.0.0.1:25002 progresso=432/1280
-RECEBIDO bloco=432 origem=127.0.0.1:25001 progresso=433/1280
-RECEBIDO bloco=433 origem=127.0.0.1:25002 progresso=434/1280
-RECEBIDO bloco=434 origem=127.0.0.1:25001 progresso=435/1280
-RECEBIDO bloco=435 origem=127.0.0.1:25002 progresso=436/1280
-RECEBIDO bloco=436 origem=127.0.0.1:25001 progresso=437/1280
-RECEBIDO bloco=437 origem=127.0.0.1:25002 progresso=438/1280
-RECEBIDO bloco=438 origem=127.0.0.1:25001 progresso=439/1280
-RECEBIDO bloco=440 origem=127.0.0.1:25001 progresso=440/1280
-RECEBIDO bloco=439 origem=127.0.0.1:25002 progresso=441/1280
-RECEBIDO bloco=441 origem=127.0.0.1:25001 progresso=442/1280
-RECEBIDO bloco=442 origem=127.0.0.1:25002 progresso=443/1280
-RECEBIDO bloco=443 origem=127.0.0.1:25001 progresso=444/1280
-RECEBIDO bloco=444 origem=127.0.0.1:25002 progresso=445/1280
-RECEBIDO bloco=445 origem=127.0.0.1:25001 progresso=446/1280
-RECEBIDO bloco=446 origem=127.0.0.1:25002 progresso=447/1280
-RECEBIDO bloco=447 origem=127.0.0.1:25001 progresso=448/1280
-RECEBIDO bloco=448 origem=127.0.0.1:25002 progresso=449/1280
-RECEBIDO bloco=449 origem=127.0.0.1:25001 progresso=450/1280
-RECEBIDO bloco=450 origem=127.0.0.1:25002 progresso=451/1280
-RECEBIDO bloco=452 origem=127.0.0.1:25002 progresso=452/1280
-RECEBIDO bloco=451 origem=127.0.0.1:25001 progresso=453/1280
-RECEBIDO bloco=453 origem=127.0.0.1:25002 progresso=454/1280
-RECEBIDO bloco=454 origem=127.0.0.1:25001 progresso=455/1280
-RECEBIDO bloco=455 origem=127.0.0.1:25002 progresso=456/1280
-RECEBIDO bloco=456 origem=127.0.0.1:25001 progresso=457/1280
-RECEBIDO bloco=457 origem=127.0.0.1:25002 progresso=458/1280
-RECEBIDO bloco=458 origem=127.0.0.1:25001 progresso=459/1280
-RECEBIDO bloco=459 origem=127.0.0.1:25002 progresso=460/1280
-RECEBIDO bloco=460 origem=127.0.0.1:25001 progresso=461/1280
-RECEBIDO bloco=461 origem=127.0.0.1:25002 progresso=462/1280
-RECEBIDO bloco=462 origem=127.0.0.1:25001 progresso=463/1280
-RECEBIDO bloco=463 origem=127.0.0.1:25002 progresso=464/1280
-RECEBIDO bloco=464 origem=127.0.0.1:25001 progresso=465/1280
-RECEBIDO bloco=465 origem=127.0.0.1:25002 progresso=466/1280
-RECEBIDO bloco=466 origem=127.0.0.1:25001 progresso=467/1280
-RECEBIDO bloco=467 origem=127.0.0.1:25002 progresso=468/1280
-RECEBIDO bloco=468 origem=127.0.0.1:25001 progresso=469/1280
-RECEBIDO bloco=469 origem=127.0.0.1:25002 progresso=470/1280
-RECEBIDO bloco=470 origem=127.0.0.1:25001 progresso=471/1280
-RECEBIDO bloco=471 origem=127.0.0.1:25002 progresso=472/1280
-RECEBIDO bloco=472 origem=127.0.0.1:25001 progresso=473/1280
-RECEBIDO bloco=474 origem=127.0.0.1:25001 progresso=474/1280
-RECEBIDO bloco=473 origem=127.0.0.1:25002 progresso=475/1280
-RECEBIDO bloco=475 origem=127.0.0.1:25001 progresso=476/1280
-RECEBIDO bloco=476 origem=127.0.0.1:25002 progresso=477/1280
-RECEBIDO bloco=478 origem=127.0.0.1:25002 progresso=478/1280
-RECEBIDO bloco=477 origem=127.0.0.1:25001 progresso=479/1280
-RECEBIDO bloco=480 origem=127.0.0.1:25001 progresso=480/1280
-RECEBIDO bloco=479 origem=127.0.0.1:25002 progresso=481/1280
-RECEBIDO bloco=481 origem=127.0.0.1:25001 progresso=482/1280
-RECEBIDO bloco=482 origem=127.0.0.1:25002 progresso=483/1280
-RECEBIDO bloco=483 origem=127.0.0.1:25001 progresso=484/1280
-RECEBIDO bloco=484 origem=127.0.0.1:25002 progresso=485/1280
-RECEBIDO bloco=485 origem=127.0.0.1:25001 progresso=486/1280
-RECEBIDO bloco=487 origem=127.0.0.1:25001 progresso=487/1280
-RECEBIDO bloco=486 origem=127.0.0.1:25002 progresso=488/1280
-RECEBIDO bloco=488 origem=127.0.0.1:25001 progresso=489/1280
-RECEBIDO bloco=489 origem=127.0.0.1:25002 progresso=490/1280
-RECEBIDO bloco=491 origem=127.0.0.1:25002 progresso=491/1280
-RECEBIDO bloco=490 origem=127.0.0.1:25001 progresso=492/1280
-RECEBIDO bloco=493 origem=127.0.0.1:25001 progresso=493/1280
-RECEBIDO bloco=492 origem=127.0.0.1:25002 progresso=494/1280
-RECEBIDO bloco=495 origem=127.0.0.1:25002 progresso=495/1280
-RECEBIDO bloco=494 origem=127.0.0.1:25001 progresso=496/1280
-RECEBIDO bloco=497 origem=127.0.0.1:25001 progresso=497/1280
-RECEBIDO bloco=496 origem=127.0.0.1:25002 progresso=498/1280
-RECEBIDO bloco=498 origem=127.0.0.1:25001 progresso=499/1280
-RECEBIDO bloco=499 origem=127.0.0.1:25002 progresso=500/1280
-RECEBIDO bloco=500 origem=127.0.0.1:25001 progresso=501/1280
-RECEBIDO bloco=501 origem=127.0.0.1:25002 progresso=502/1280
-RECEBIDO bloco=503 origem=127.0.0.1:25002 progresso=503/1280
-RECEBIDO bloco=502 origem=127.0.0.1:25001 progresso=504/1280
-RECEBIDO bloco=505 origem=127.0.0.1:25001 progresso=505/1280
-RECEBIDO bloco=504 origem=127.0.0.1:25002 progresso=506/1280
-RECEBIDO bloco=507 origem=127.0.0.1:25002 progresso=507/1280
-RECEBIDO bloco=506 origem=127.0.0.1:25001 progresso=508/1280
-RECEBIDO bloco=509 origem=127.0.0.1:25001 progresso=509/1280
-RECEBIDO bloco=508 origem=127.0.0.1:25002 progresso=510/1280
-RECEBIDO bloco=511 origem=127.0.0.1:25002 progresso=511/1280
-RECEBIDO bloco=510 origem=127.0.0.1:25001 progresso=512/1280
-RECEBIDO bloco=512 origem=127.0.0.1:25002 progresso=513/1280
-RECEBIDO bloco=513 origem=127.0.0.1:25001 progresso=514/1280
-RECEBIDO bloco=514 origem=127.0.0.1:25002 progresso=515/1280
-RECEBIDO bloco=515 origem=127.0.0.1:25001 progresso=516/1280
-RECEBIDO bloco=517 origem=127.0.0.1:25001 progresso=517/1280
-RECEBIDO bloco=516 origem=127.0.0.1:25002 progresso=518/1280
-RECEBIDO bloco=518 origem=127.0.0.1:25001 progresso=519/1280
-RECEBIDO bloco=519 origem=127.0.0.1:25002 progresso=520/1280
-RECEBIDO bloco=521 origem=127.0.0.1:25002 progresso=521/1280
-RECEBIDO bloco=520 origem=127.0.0.1:25001 progresso=522/1280
-RECEBIDO bloco=522 origem=127.0.0.1:25002 progresso=523/1280
-RECEBIDO bloco=523 origem=127.0.0.1:25001 progresso=524/1280
-RECEBIDO bloco=524 origem=127.0.0.1:25002 progresso=525/1280
-RECEBIDO bloco=525 origem=127.0.0.1:25001 progresso=526/1280
-RECEBIDO bloco=526 origem=127.0.0.1:25002 progresso=527/1280
-RECEBIDO bloco=527 origem=127.0.0.1:25001 progresso=528/1280
-RECEBIDO bloco=529 origem=127.0.0.1:25001 progresso=529/1280
-RECEBIDO bloco=528 origem=127.0.0.1:25002 progresso=530/1280
-RECEBIDO bloco=530 origem=127.0.0.1:25001 progresso=531/1280
-RECEBIDO bloco=531 origem=127.0.0.1:25002 progresso=532/1280
-RECEBIDO bloco=532 origem=127.0.0.1:25001 progresso=533/1280
-RECEBIDO bloco=534 origem=127.0.0.1:25001 progresso=534/1280
-RECEBIDO bloco=533 origem=127.0.0.1:25002 progresso=535/1280
-RECEBIDO bloco=535 origem=127.0.0.1:25001 progresso=536/1280
-RECEBIDO bloco=537 origem=127.0.0.1:25001 progresso=537/1280
-RECEBIDO bloco=536 origem=127.0.0.1:25002 progresso=538/1280
-RECEBIDO bloco=538 origem=127.0.0.1:25001 progresso=539/1280
-RECEBIDO bloco=539 origem=127.0.0.1:25002 progresso=540/1280
-RECEBIDO bloco=540 origem=127.0.0.1:25001 progresso=541/1280
-RECEBIDO bloco=541 origem=127.0.0.1:25002 progresso=542/1280
-RECEBIDO bloco=543 origem=127.0.0.1:25002 progresso=543/1280
-RECEBIDO bloco=542 origem=127.0.0.1:25001 progresso=544/1280
-RECEBIDO bloco=544 origem=127.0.0.1:25002 progresso=545/1280
-RECEBIDO bloco=545 origem=127.0.0.1:25001 progresso=546/1280
-RECEBIDO bloco=546 origem=127.0.0.1:25002 progresso=547/1280
-RECEBIDO bloco=547 origem=127.0.0.1:25001 progresso=548/1280
-RECEBIDO bloco=548 origem=127.0.0.1:25002 progresso=549/1280
-RECEBIDO bloco=549 origem=127.0.0.1:25001 progresso=550/1280
-RECEBIDO bloco=550 origem=127.0.0.1:25002 progresso=551/1280
-RECEBIDO bloco=551 origem=127.0.0.1:25001 progresso=552/1280
-RECEBIDO bloco=552 origem=127.0.0.1:25002 progresso=553/1280
-RECEBIDO bloco=553 origem=127.0.0.1:25001 progresso=554/1280
-RECEBIDO bloco=554 origem=127.0.0.1:25002 progresso=555/1280
-RECEBIDO bloco=555 origem=127.0.0.1:25001 progresso=556/1280
-RECEBIDO bloco=556 origem=127.0.0.1:25002 progresso=557/1280
-RECEBIDO bloco=557 origem=127.0.0.1:25001 progresso=558/1280
-RECEBIDO bloco=558 origem=127.0.0.1:25002 progresso=559/1280
-RECEBIDO bloco=559 origem=127.0.0.1:25001 progresso=560/1280
-RECEBIDO bloco=560 origem=127.0.0.1:25002 progresso=561/1280
-RECEBIDO bloco=562 origem=127.0.0.1:25002 progresso=562/1280
-RECEBIDO bloco=561 origem=127.0.0.1:25001 progresso=563/1280
-RECEBIDO bloco=564 origem=127.0.0.1:25001 progresso=564/1280
-RECEBIDO bloco=563 origem=127.0.0.1:25002 progresso=565/1280
-RECEBIDO bloco=565 origem=127.0.0.1:25001 progresso=566/1280
-RECEBIDO bloco=566 origem=127.0.0.1:25002 progresso=567/1280
-RECEBIDO bloco=567 origem=127.0.0.1:25001 progresso=568/1280
-RECEBIDO bloco=569 origem=127.0.0.1:25001 progresso=569/1280
-RECEBIDO bloco=568 origem=127.0.0.1:25002 progresso=570/1280
-RECEBIDO bloco=570 origem=127.0.0.1:25001 progresso=571/1280
-RECEBIDO bloco=571 origem=127.0.0.1:25002 progresso=572/1280
-RECEBIDO bloco=572 origem=127.0.0.1:25001 progresso=573/1280
-RECEBIDO bloco=574 origem=127.0.0.1:25001 progresso=574/1280
-RECEBIDO bloco=573 origem=127.0.0.1:25002 progresso=575/1280
-RECEBIDO bloco=576 origem=127.0.0.1:25002 progresso=576/1280
-RECEBIDO bloco=575 origem=127.0.0.1:25001 progresso=577/1280
-RECEBIDO bloco=577 origem=127.0.0.1:25002 progresso=578/1280
-RECEBIDO bloco=578 origem=127.0.0.1:25001 progresso=579/1280
-RECEBIDO bloco=579 origem=127.0.0.1:25002 progresso=580/1280
-RECEBIDO bloco=580 origem=127.0.0.1:25001 progresso=581/1280
-RECEBIDO bloco=582 origem=127.0.0.1:25001 progresso=582/1280
-RECEBIDO bloco=581 origem=127.0.0.1:25002 progresso=583/1280
-RECEBIDO bloco=584 origem=127.0.0.1:25002 progresso=584/1280
-RECEBIDO bloco=583 origem=127.0.0.1:25001 progresso=585/1280
-RECEBIDO bloco=585 origem=127.0.0.1:25002 progresso=586/1280
-RECEBIDO bloco=586 origem=127.0.0.1:25001 progresso=587/1280
-RECEBIDO bloco=587 origem=127.0.0.1:25002 progresso=588/1280
-RECEBIDO bloco=588 origem=127.0.0.1:25001 progresso=589/1280
-RECEBIDO bloco=589 origem=127.0.0.1:25002 progresso=590/1280
-RECEBIDO bloco=590 origem=127.0.0.1:25001 progresso=591/1280
-RECEBIDO bloco=591 origem=127.0.0.1:25002 progresso=592/1280
-RECEBIDO bloco=593 origem=127.0.0.1:25002 progresso=593/1280
-RECEBIDO bloco=592 origem=127.0.0.1:25001 progresso=594/1280
-RECEBIDO bloco=594 origem=127.0.0.1:25002 progresso=595/1280
-RECEBIDO bloco=595 origem=127.0.0.1:25001 progresso=596/1280
-RECEBIDO bloco=597 origem=127.0.0.1:25001 progresso=597/1280
-RECEBIDO bloco=596 origem=127.0.0.1:25002 progresso=598/1280
-RECEBIDO bloco=598 origem=127.0.0.1:25001 progresso=599/1280
-RECEBIDO bloco=599 origem=127.0.0.1:25001 progresso=600/1280
-RECEBIDO bloco=600 origem=127.0.0.1:25002 progresso=601/1280
-RECEBIDO bloco=601 origem=127.0.0.1:25001 progresso=602/1280
-RECEBIDO bloco=603 origem=127.0.0.1:25001 progresso=603/1280
-RECEBIDO bloco=602 origem=127.0.0.1:25002 progresso=604/1280
-RECEBIDO bloco=604 origem=127.0.0.1:25001 progresso=605/1280
-RECEBIDO bloco=605 origem=127.0.0.1:25002 progresso=606/1280
-RECEBIDO bloco=606 origem=127.0.0.1:25001 progresso=607/1280
-RECEBIDO bloco=607 origem=127.0.0.1:25002 progresso=608/1280
-RECEBIDO bloco=609 origem=127.0.0.1:25002 progresso=609/1280
-RECEBIDO bloco=608 origem=127.0.0.1:25001 progresso=610/1280
-RECEBIDO bloco=610 origem=127.0.0.1:25002 progresso=611/1280
-RECEBIDO bloco=611 origem=127.0.0.1:25001 progresso=612/1280
-RECEBIDO bloco=612 origem=127.0.0.1:25002 progresso=613/1280
-RECEBIDO bloco=613 origem=127.0.0.1:25001 progresso=614/1280
-RECEBIDO bloco=615 origem=127.0.0.1:25001 progresso=615/1280
-RECEBIDO bloco=614 origem=127.0.0.1:25002 progresso=616/1280
-RECEBIDO bloco=617 origem=127.0.0.1:25001 progresso=617/1280
-RECEBIDO bloco=616 origem=127.0.0.1:25002 progresso=618/1280
-RECEBIDO bloco=618 origem=127.0.0.1:25001 progresso=619/1280
-RECEBIDO bloco=620 origem=127.0.0.1:25001 progresso=620/1280
-RECEBIDO bloco=619 origem=127.0.0.1:25002 progresso=621/1280
-RECEBIDO bloco=621 origem=127.0.0.1:25001 progresso=622/1280
-RECEBIDO bloco=622 origem=127.0.0.1:25002 progresso=623/1280
-RECEBIDO bloco=623 origem=127.0.0.1:25001 progresso=624/1280
-RECEBIDO bloco=624 origem=127.0.0.1:25002 progresso=625/1280
-RECEBIDO bloco=625 origem=127.0.0.1:25001 progresso=626/1280
-RECEBIDO bloco=626 origem=127.0.0.1:25002 progresso=627/1280
-RECEBIDO bloco=627 origem=127.0.0.1:25001 progresso=628/1280
-RECEBIDO bloco=628 origem=127.0.0.1:25002 progresso=629/1280
-RECEBIDO bloco=629 origem=127.0.0.1:25001 progresso=630/1280
-RECEBIDO bloco=630 origem=127.0.0.1:25002 progresso=631/1280
-RECEBIDO bloco=631 origem=127.0.0.1:25001 progresso=632/1280
-RECEBIDO bloco=632 origem=127.0.0.1:25002 progresso=633/1280
-RECEBIDO bloco=634 origem=127.0.0.1:25002 progresso=634/1280
-RECEBIDO bloco=633 origem=127.0.0.1:25001 progresso=635/1280
-RECEBIDO bloco=635 origem=127.0.0.1:25002 progresso=636/1280
-RECEBIDO bloco=637 origem=127.0.0.1:25002 progresso=637/1280
-RECEBIDO bloco=636 origem=127.0.0.1:25001 progresso=638/1280
-RECEBIDO bloco=639 origem=127.0.0.1:25001 progresso=639/1280
-RECEBIDO bloco=638 origem=127.0.0.1:25002 progresso=640/1280
-RECEBIDO bloco=640 origem=127.0.0.1:25001 progresso=641/1280
-RECEBIDO bloco=641 origem=127.0.0.1:25002 progresso=642/1280
-RECEBIDO bloco=642 origem=127.0.0.1:25001 progresso=643/1280
-RECEBIDO bloco=643 origem=127.0.0.1:25002 progresso=644/1280
-RECEBIDO bloco=645 origem=127.0.0.1:25002 progresso=645/1280
-RECEBIDO bloco=644 origem=127.0.0.1:25001 progresso=646/1280
-RECEBIDO bloco=646 origem=127.0.0.1:25002 progresso=647/1280
-RECEBIDO bloco=647 origem=127.0.0.1:25001 progresso=648/1280
-RECEBIDO bloco=648 origem=127.0.0.1:25002 progresso=649/1280
-RECEBIDO bloco=649 origem=127.0.0.1:25001 progresso=650/1280
-RECEBIDO bloco=651 origem=127.0.0.1:25001 progresso=651/1280
-RECEBIDO bloco=650 origem=127.0.0.1:25002 progresso=652/1280
-RECEBIDO bloco=653 origem=127.0.0.1:25002 progresso=653/1280
-RECEBIDO bloco=652 origem=127.0.0.1:25001 progresso=654/1280
-RECEBIDO bloco=654 origem=127.0.0.1:25002 progresso=655/1280
-RECEBIDO bloco=655 origem=127.0.0.1:25001 progresso=656/1280
-RECEBIDO bloco=656 origem=127.0.0.1:25002 progresso=657/1280
-RECEBIDO bloco=657 origem=127.0.0.1:25001 progresso=658/1280
-RECEBIDO bloco=658 origem=127.0.0.1:25002 progresso=659/1280
-RECEBIDO bloco=659 origem=127.0.0.1:25001 progresso=660/1280
-RECEBIDO bloco=660 origem=127.0.0.1:25002 progresso=661/1280
-RECEBIDO bloco=662 origem=127.0.0.1:25002 progresso=662/1280
-RECEBIDO bloco=661 origem=127.0.0.1:25001 progresso=663/1280
-RECEBIDO bloco=663 origem=127.0.0.1:25002 progresso=664/1280
-RECEBIDO bloco=664 origem=127.0.0.1:25001 progresso=665/1280
-RECEBIDO bloco=665 origem=127.0.0.1:25002 progresso=666/1280
-RECEBIDO bloco=666 origem=127.0.0.1:25001 progresso=667/1280
-RECEBIDO bloco=668 origem=127.0.0.1:25001 progresso=668/1280
-RECEBIDO bloco=667 origem=127.0.0.1:25002 progresso=669/1280
-RECEBIDO bloco=669 origem=127.0.0.1:25001 progresso=670/1280
-RECEBIDO bloco=670 origem=127.0.0.1:25002 progresso=671/1280
-RECEBIDO bloco=671 origem=127.0.0.1:25001 progresso=672/1280
-RECEBIDO bloco=673 origem=127.0.0.1:25001 progresso=673/1280
-RECEBIDO bloco=672 origem=127.0.0.1:25002 progresso=674/1280
-RECEBIDO bloco=675 origem=127.0.0.1:25002 progresso=675/1280
-RECEBIDO bloco=674 origem=127.0.0.1:25001 progresso=676/1280
-RECEBIDO bloco=676 origem=127.0.0.1:25002 progresso=677/1280
-RECEBIDO bloco=677 origem=127.0.0.1:25001 progresso=678/1280
-RECEBIDO bloco=678 origem=127.0.0.1:25002 progresso=679/1280
-RECEBIDO bloco=679 origem=127.0.0.1:25001 progresso=680/1280
-RECEBIDO bloco=681 origem=127.0.0.1:25001 progresso=681/1280
-RECEBIDO bloco=680 origem=127.0.0.1:25002 progresso=682/1280
-RECEBIDO bloco=683 origem=127.0.0.1:25002 progresso=683/1280
-RECEBIDO bloco=682 origem=127.0.0.1:25001 progresso=684/1280
-RECEBIDO bloco=685 origem=127.0.0.1:25001 progresso=685/1280
-RECEBIDO bloco=684 origem=127.0.0.1:25002 progresso=686/1280
-RECEBIDO bloco=686 origem=127.0.0.1:25001 progresso=687/1280
-RECEBIDO bloco=687 origem=127.0.0.1:25002 progresso=688/1280
-RECEBIDO bloco=688 origem=127.0.0.1:25001 progresso=689/1280
-RECEBIDO bloco=689 origem=127.0.0.1:25002 progresso=690/1280
-RECEBIDO bloco=690 origem=127.0.0.1:25001 progresso=691/1280
-RECEBIDO bloco=691 origem=127.0.0.1:25002 progresso=692/1280
-RECEBIDO bloco=692 origem=127.0.0.1:25001 progresso=693/1280
-RECEBIDO bloco=694 origem=127.0.0.1:25001 progresso=694/1280
-RECEBIDO bloco=693 origem=127.0.0.1:25002 progresso=695/1280
-RECEBIDO bloco=695 origem=127.0.0.1:25001 progresso=696/1280
-RECEBIDO bloco=696 origem=127.0.0.1:25002 progresso=697/1280
-RECEBIDO bloco=697 origem=127.0.0.1:25001 progresso=698/1280
-RECEBIDO bloco=699 origem=127.0.0.1:25001 progresso=699/1280
-RECEBIDO bloco=698 origem=127.0.0.1:25002 progresso=700/1280
-RECEBIDO bloco=700 origem=127.0.0.1:25001 progresso=701/1280
-RECEBIDO bloco=701 origem=127.0.0.1:25002 progresso=702/1280
-RECEBIDO bloco=702 origem=127.0.0.1:25001 progresso=703/1280
-RECEBIDO bloco=703 origem=127.0.0.1:25002 progresso=704/1280
-RECEBIDO bloco=704 origem=127.0.0.1:25001 progresso=705/1280
-RECEBIDO bloco=705 origem=127.0.0.1:25002 progresso=706/1280
-RECEBIDO bloco=706 origem=127.0.0.1:25001 progresso=707/1280
-RECEBIDO bloco=707 origem=127.0.0.1:25002 progresso=708/1280
-RECEBIDO bloco=708 origem=127.0.0.1:25001 progresso=709/1280
-RECEBIDO bloco=710 origem=127.0.0.1:25001 progresso=710/1280
-RECEBIDO bloco=709 origem=127.0.0.1:25002 progresso=711/1280
-RECEBIDO bloco=712 origem=127.0.0.1:25002 progresso=712/1280
-RECEBIDO bloco=711 origem=127.0.0.1:25001 progresso=713/1280
-RECEBIDO bloco=713 origem=127.0.0.1:25002 progresso=714/1280
-RECEBIDO bloco=714 origem=127.0.0.1:25001 progresso=715/1280
-RECEBIDO bloco=715 origem=127.0.0.1:25002 progresso=716/1280
-RECEBIDO bloco=716 origem=127.0.0.1:25001 progresso=717/1280
-RECEBIDO bloco=717 origem=127.0.0.1:25002 progresso=718/1280
-RECEBIDO bloco=718 origem=127.0.0.1:25001 progresso=719/1280
-RECEBIDO bloco=719 origem=127.0.0.1:25002 progresso=720/1280
-RECEBIDO bloco=720 origem=127.0.0.1:25001 progresso=721/1280
-RECEBIDO bloco=721 origem=127.0.0.1:25002 progresso=722/1280
-RECEBIDO bloco=722 origem=127.0.0.1:25001 progresso=723/1280
-RECEBIDO bloco=723 origem=127.0.0.1:25002 progresso=724/1280
-RECEBIDO bloco=724 origem=127.0.0.1:25001 progresso=725/1280
-RECEBIDO bloco=725 origem=127.0.0.1:25002 progresso=726/1280
-RECEBIDO bloco=726 origem=127.0.0.1:25001 progresso=727/1280
-RECEBIDO bloco=728 origem=127.0.0.1:25001 progresso=728/1280
-RECEBIDO bloco=727 origem=127.0.0.1:25002 progresso=729/1280
-RECEBIDO bloco=729 origem=127.0.0.1:25001 progresso=730/1280
-RECEBIDO bloco=730 origem=127.0.0.1:25002 progresso=731/1280
-RECEBIDO bloco=731 origem=127.0.0.1:25001 progresso=732/1280
-RECEBIDO bloco=733 origem=127.0.0.1:25001 progresso=733/1280
-RECEBIDO bloco=732 origem=127.0.0.1:25002 progresso=734/1280
-RECEBIDO bloco=734 origem=127.0.0.1:25001 progresso=735/1280
-RECEBIDO bloco=736 origem=127.0.0.1:25001 progresso=736/1280
-RECEBIDO bloco=735 origem=127.0.0.1:25002 progresso=737/1280
-RECEBIDO bloco=738 origem=127.0.0.1:25002 progresso=738/1280
-RECEBIDO bloco=737 origem=127.0.0.1:25001 progresso=739/1280
-RECEBIDO bloco=739 origem=127.0.0.1:25002 progresso=740/1280
-RECEBIDO bloco=740 origem=127.0.0.1:25001 progresso=741/1280
-RECEBIDO bloco=742 origem=127.0.0.1:25001 progresso=742/1280
-RECEBIDO bloco=741 origem=127.0.0.1:25002 progresso=743/1280
-RECEBIDO bloco=744 origem=127.0.0.1:25002 progresso=744/1280
-RECEBIDO bloco=743 origem=127.0.0.1:25001 progresso=745/1280
-RECEBIDO bloco=745 origem=127.0.0.1:25002 progresso=746/1280
-RECEBIDO bloco=746 origem=127.0.0.1:25001 progresso=747/1280
-RECEBIDO bloco=747 origem=127.0.0.1:25002 progresso=748/1280
-RECEBIDO bloco=748 origem=127.0.0.1:25001 progresso=749/1280
-RECEBIDO bloco=749 origem=127.0.0.1:25002 progresso=750/1280
-RECEBIDO bloco=750 origem=127.0.0.1:25001 progresso=751/1280
-RECEBIDO bloco=751 origem=127.0.0.1:25002 progresso=752/1280
-RECEBIDO bloco=753 origem=127.0.0.1:25002 progresso=753/1280
-RECEBIDO bloco=752 origem=127.0.0.1:25001 progresso=754/1280
-RECEBIDO bloco=755 origem=127.0.0.1:25001 progresso=755/1280
-RECEBIDO bloco=754 origem=127.0.0.1:25002 progresso=756/1280
-RECEBIDO bloco=756 origem=127.0.0.1:25001 progresso=757/1280
-RECEBIDO bloco=757 origem=127.0.0.1:25002 progresso=758/1280
-RECEBIDO bloco=758 origem=127.0.0.1:25001 progresso=759/1280
-RECEBIDO bloco=759 origem=127.0.0.1:25002 progresso=760/1280
-RECEBIDO bloco=760 origem=127.0.0.1:25001 progresso=761/1280
-RECEBIDO bloco=761 origem=127.0.0.1:25002 progresso=762/1280
-RECEBIDO bloco=762 origem=127.0.0.1:25001 progresso=763/1280
-RECEBIDO bloco=763 origem=127.0.0.1:25002 progresso=764/1280
-RECEBIDO bloco=765 origem=127.0.0.1:25002 progresso=765/1280
-RECEBIDO bloco=764 origem=127.0.0.1:25001 progresso=766/1280
-RECEBIDO bloco=767 origem=127.0.0.1:25001 progresso=767/1280
-RECEBIDO bloco=766 origem=127.0.0.1:25002 progresso=768/1280
-RECEBIDO bloco=769 origem=127.0.0.1:25002 progresso=769/1280
-RECEBIDO bloco=768 origem=127.0.0.1:25001 progresso=770/1280
-RECEBIDO bloco=770 origem=127.0.0.1:25002 progresso=771/1280
-RECEBIDO bloco=771 origem=127.0.0.1:25001 progresso=772/1280
-RECEBIDO bloco=772 origem=127.0.0.1:25002 progresso=773/1280
-RECEBIDO bloco=773 origem=127.0.0.1:25001 progresso=774/1280
-RECEBIDO bloco=775 origem=127.0.0.1:25001 progresso=775/1280
-RECEBIDO bloco=774 origem=127.0.0.1:25002 progresso=776/1280
-RECEBIDO bloco=776 origem=127.0.0.1:25001 progresso=777/1280
-RECEBIDO bloco=777 origem=127.0.0.1:25002 progresso=778/1280
-RECEBIDO bloco=778 origem=127.0.0.1:25001 progresso=779/1280
-RECEBIDO bloco=779 origem=127.0.0.1:25002 progresso=780/1280
-RECEBIDO bloco=780 origem=127.0.0.1:25001 progresso=781/1280
-RECEBIDO bloco=781 origem=127.0.0.1:25002 progresso=782/1280
-RECEBIDO bloco=783 origem=127.0.0.1:25002 progresso=783/1280
-RECEBIDO bloco=782 origem=127.0.0.1:25001 progresso=784/1280
-RECEBIDO bloco=784 origem=127.0.0.1:25002 progresso=785/1280
-RECEBIDO bloco=785 origem=127.0.0.1:25001 progresso=786/1280
-RECEBIDO bloco=786 origem=127.0.0.1:25002 progresso=787/1280
-RECEBIDO bloco=787 origem=127.0.0.1:25001 progresso=788/1280
-RECEBIDO bloco=788 origem=127.0.0.1:25002 progresso=789/1280
-RECEBIDO bloco=789 origem=127.0.0.1:25001 progresso=790/1280
-RECEBIDO bloco=790 origem=127.0.0.1:25002 progresso=791/1280
-RECEBIDO bloco=791 origem=127.0.0.1:25001 progresso=792/1280
-RECEBIDO bloco=792 origem=127.0.0.1:25002 progresso=793/1280
-RECEBIDO bloco=793 origem=127.0.0.1:25001 progresso=794/1280
-RECEBIDO bloco=794 origem=127.0.0.1:25002 progresso=795/1280
-RECEBIDO bloco=795 origem=127.0.0.1:25001 progresso=796/1280
-RECEBIDO bloco=796 origem=127.0.0.1:25002 progresso=797/1280
-RECEBIDO bloco=797 origem=127.0.0.1:25001 progresso=798/1280
-RECEBIDO bloco=798 origem=127.0.0.1:25002 progresso=799/1280
-RECEBIDO bloco=799 origem=127.0.0.1:25001 progresso=800/1280
-RECEBIDO bloco=800 origem=127.0.0.1:25002 progresso=801/1280
-RECEBIDO bloco=801 origem=127.0.0.1:25001 progresso=802/1280
-RECEBIDO bloco=802 origem=127.0.0.1:25002 progresso=803/1280
-RECEBIDO bloco=803 origem=127.0.0.1:25001 progresso=804/1280
-RECEBIDO bloco=804 origem=127.0.0.1:25002 progresso=805/1280
-RECEBIDO bloco=805 origem=127.0.0.1:25001 progresso=806/1280
-RECEBIDO bloco=806 origem=127.0.0.1:25002 progresso=807/1280
-RECEBIDO bloco=807 origem=127.0.0.1:25001 progresso=808/1280
-RECEBIDO bloco=808 origem=127.0.0.1:25002 progresso=809/1280
-RECEBIDO bloco=809 origem=127.0.0.1:25001 progresso=810/1280
-RECEBIDO bloco=811 origem=127.0.0.1:25001 progresso=811/1280
-RECEBIDO bloco=810 origem=127.0.0.1:25002 progresso=812/1280
-RECEBIDO bloco=812 origem=127.0.0.1:25001 progresso=813/1280
-RECEBIDO bloco=813 origem=127.0.0.1:25002 progresso=814/1280
-RECEBIDO bloco=814 origem=127.0.0.1:25001 progresso=815/1280
-RECEBIDO bloco=815 origem=127.0.0.1:25002 progresso=816/1280
-RECEBIDO bloco=816 origem=127.0.0.1:25001 progresso=817/1280
-RECEBIDO bloco=817 origem=127.0.0.1:25002 progresso=818/1280
-RECEBIDO bloco=819 origem=127.0.0.1:25002 progresso=819/1280
-RECEBIDO bloco=818 origem=127.0.0.1:25001 progresso=820/1280
-RECEBIDO bloco=820 origem=127.0.0.1:25002 progresso=821/1280
-RECEBIDO bloco=821 origem=127.0.0.1:25001 progresso=822/1280
-RECEBIDO bloco=823 origem=127.0.0.1:25001 progresso=823/1280
-RECEBIDO bloco=822 origem=127.0.0.1:25002 progresso=824/1280
-RECEBIDO bloco=824 origem=127.0.0.1:25001 progresso=825/1280
-RECEBIDO bloco=825 origem=127.0.0.1:25002 progresso=826/1280
-RECEBIDO bloco=826 origem=127.0.0.1:25001 progresso=827/1280
-RECEBIDO bloco=828 origem=127.0.0.1:25001 progresso=828/1280
-RECEBIDO bloco=827 origem=127.0.0.1:25002 progresso=829/1280
-RECEBIDO bloco=830 origem=127.0.0.1:25002 progresso=830/1280
-RECEBIDO bloco=829 origem=127.0.0.1:25001 progresso=831/1280
-RECEBIDO bloco=832 origem=127.0.0.1:25001 progresso=832/1280
-RECEBIDO bloco=831 origem=127.0.0.1:25002 progresso=833/1280
-RECEBIDO bloco=833 origem=127.0.0.1:25001 progresso=834/1280
-RECEBIDO bloco=834 origem=127.0.0.1:25002 progresso=835/1280
-RECEBIDO bloco=835 origem=127.0.0.1:25001 progresso=836/1280
-RECEBIDO bloco=837 origem=127.0.0.1:25001 progresso=837/1280
-RECEBIDO bloco=836 origem=127.0.0.1:25002 progresso=838/1280
-RECEBIDO bloco=838 origem=127.0.0.1:25001 progresso=839/1280
-RECEBIDO bloco=839 origem=127.0.0.1:25002 progresso=840/1280
-RECEBIDO bloco=841 origem=127.0.0.1:25002 progresso=841/1280
-RECEBIDO bloco=840 origem=127.0.0.1:25001 progresso=842/1280
-RECEBIDO bloco=842 origem=127.0.0.1:25002 progresso=843/1280
-RECEBIDO bloco=843 origem=127.0.0.1:25001 progresso=844/1280
-RECEBIDO bloco=844 origem=127.0.0.1:25002 progresso=845/1280
-RECEBIDO bloco=845 origem=127.0.0.1:25001 progresso=846/1280
-RECEBIDO bloco=846 origem=127.0.0.1:25002 progresso=847/1280
-RECEBIDO bloco=847 origem=127.0.0.1:25001 progresso=848/1280
-RECEBIDO bloco=848 origem=127.0.0.1:25002 progresso=849/1280
-RECEBIDO bloco=849 origem=127.0.0.1:25001 progresso=850/1280
-RECEBIDO bloco=850 origem=127.0.0.1:25002 progresso=851/1280
-RECEBIDO bloco=852 origem=127.0.0.1:25002 progresso=852/1280
-RECEBIDO bloco=851 origem=127.0.0.1:25001 progresso=853/1280
-RECEBIDO bloco=853 origem=127.0.0.1:25002 progresso=854/1280
-RECEBIDO bloco=854 origem=127.0.0.1:25001 progresso=855/1280
-RECEBIDO bloco=856 origem=127.0.0.1:25001 progresso=856/1280
-RECEBIDO bloco=855 origem=127.0.0.1:25002 progresso=857/1280
-RECEBIDO bloco=858 origem=127.0.0.1:25002 progresso=858/1280
-RECEBIDO bloco=857 origem=127.0.0.1:25001 progresso=859/1280
-RECEBIDO bloco=859 origem=127.0.0.1:25002 progresso=860/1280
-RECEBIDO bloco=860 origem=127.0.0.1:25001 progresso=861/1280
-RECEBIDO bloco=861 origem=127.0.0.1:25002 progresso=862/1280
-RECEBIDO bloco=862 origem=127.0.0.1:25001 progresso=863/1280
-RECEBIDO bloco=863 origem=127.0.0.1:25002 progresso=864/1280
-RECEBIDO bloco=864 origem=127.0.0.1:25001 progresso=865/1280
-RECEBIDO bloco=865 origem=127.0.0.1:25002 progresso=866/1280
-RECEBIDO bloco=866 origem=127.0.0.1:25001 progresso=867/1280
-RECEBIDO bloco=868 origem=127.0.0.1:25001 progresso=868/1280
-RECEBIDO bloco=867 origem=127.0.0.1:25002 progresso=869/1280
-RECEBIDO bloco=870 origem=127.0.0.1:25001 progresso=870/1280
-RECEBIDO bloco=869 origem=127.0.0.1:25002 progresso=871/1280
-RECEBIDO bloco=872 origem=127.0.0.1:25002 progresso=872/1280
-RECEBIDO bloco=871 origem=127.0.0.1:25001 progresso=873/1280
-RECEBIDO bloco=874 origem=127.0.0.1:25001 progresso=874/1280
-RECEBIDO bloco=873 origem=127.0.0.1:25002 progresso=875/1280
-RECEBIDO bloco=875 origem=127.0.0.1:25001 progresso=876/1280
-RECEBIDO bloco=877 origem=127.0.0.1:25001 progresso=877/1280
-RECEBIDO bloco=876 origem=127.0.0.1:25002 progresso=878/1280
-RECEBIDO bloco=879 origem=127.0.0.1:25002 progresso=879/1280
-RECEBIDO bloco=878 origem=127.0.0.1:25001 progresso=880/1280
-RECEBIDO bloco=881 origem=127.0.0.1:25001 progresso=881/1280
-RECEBIDO bloco=880 origem=127.0.0.1:25002 progresso=882/1280
-RECEBIDO bloco=882 origem=127.0.0.1:25001 progresso=883/1280
-RECEBIDO bloco=883 origem=127.0.0.1:25002 progresso=884/1280
-RECEBIDO bloco=884 origem=127.0.0.1:25001 progresso=885/1280
-RECEBIDO bloco=885 origem=127.0.0.1:25002 progresso=886/1280
-RECEBIDO bloco=886 origem=127.0.0.1:25001 progresso=887/1280
-RECEBIDO bloco=887 origem=127.0.0.1:25002 progresso=888/1280
-RECEBIDO bloco=888 origem=127.0.0.1:25001 progresso=889/1280
-RECEBIDO bloco=889 origem=127.0.0.1:25002 progresso=890/1280
-RECEBIDO bloco=890 origem=127.0.0.1:25001 progresso=891/1280
-RECEBIDO bloco=891 origem=127.0.0.1:25002 progresso=892/1280
-RECEBIDO bloco=892 origem=127.0.0.1:25001 progresso=893/1280
-RECEBIDO bloco=893 origem=127.0.0.1:25002 progresso=894/1280
-RECEBIDO bloco=895 origem=127.0.0.1:25002 progresso=895/1280
-RECEBIDO bloco=894 origem=127.0.0.1:25001 progresso=896/1280
-RECEBIDO bloco=896 origem=127.0.0.1:25002 progresso=897/1280
-RECEBIDO bloco=897 origem=127.0.0.1:25001 progresso=898/1280
-RECEBIDO bloco=898 origem=127.0.0.1:25002 progresso=899/1280
-RECEBIDO bloco=899 origem=127.0.0.1:25001 progresso=900/1280
-RECEBIDO bloco=900 origem=127.0.0.1:25002 progresso=901/1280
-RECEBIDO bloco=901 origem=127.0.0.1:25001 progresso=902/1280
-RECEBIDO bloco=903 origem=127.0.0.1:25001 progresso=903/1280
-RECEBIDO bloco=902 origem=127.0.0.1:25002 progresso=904/1280
-RECEBIDO bloco=905 origem=127.0.0.1:25002 progresso=905/1280
-RECEBIDO bloco=904 origem=127.0.0.1:25001 progresso=906/1280
-RECEBIDO bloco=906 origem=127.0.0.1:25002 progresso=907/1280
-RECEBIDO bloco=907 origem=127.0.0.1:25001 progresso=908/1280
-RECEBIDO bloco=908 origem=127.0.0.1:25002 progresso=909/1280
-RECEBIDO bloco=909 origem=127.0.0.1:25001 progresso=910/1280
-RECEBIDO bloco=910 origem=127.0.0.1:25002 progresso=911/1280
-RECEBIDO bloco=911 origem=127.0.0.1:25001 progresso=912/1280
-RECEBIDO bloco=912 origem=127.0.0.1:25002 progresso=913/1280
-RECEBIDO bloco=914 origem=127.0.0.1:25002 progresso=914/1280
-RECEBIDO bloco=913 origem=127.0.0.1:25001 progresso=915/1280
-RECEBIDO bloco=915 origem=127.0.0.1:25002 progresso=916/1280
-RECEBIDO bloco=916 origem=127.0.0.1:25001 progresso=917/1280
-RECEBIDO bloco=918 origem=127.0.0.1:25001 progresso=918/1280
-RECEBIDO bloco=917 origem=127.0.0.1:25002 progresso=919/1280
-RECEBIDO bloco=920 origem=127.0.0.1:25002 progresso=920/1280
-RECEBIDO bloco=919 origem=127.0.0.1:25001 progresso=921/1280
-RECEBIDO bloco=921 origem=127.0.0.1:25002 progresso=922/1280
-RECEBIDO bloco=922 origem=127.0.0.1:25001 progresso=923/1280
-RECEBIDO bloco=923 origem=127.0.0.1:25001 progresso=924/1280
-RECEBIDO bloco=924 origem=127.0.0.1:25002 progresso=925/1280
-RECEBIDO bloco=925 origem=127.0.0.1:25001 progresso=926/1280
-RECEBIDO bloco=926 origem=127.0.0.1:25002 progresso=927/1280
-RECEBIDO bloco=928 origem=127.0.0.1:25002 progresso=928/1280
-RECEBIDO bloco=927 origem=127.0.0.1:25001 progresso=929/1280
-RECEBIDO bloco=929 origem=127.0.0.1:25002 progresso=930/1280
-RECEBIDO bloco=930 origem=127.0.0.1:25001 progresso=931/1280
-RECEBIDO bloco=932 origem=127.0.0.1:25001 progresso=932/1280
-RECEBIDO bloco=931 origem=127.0.0.1:25002 progresso=933/1280
-RECEBIDO bloco=933 origem=127.0.0.1:25001 progresso=934/1280
-RECEBIDO bloco=934 origem=127.0.0.1:25002 progresso=935/1280
-RECEBIDO bloco=936 origem=127.0.0.1:25002 progresso=936/1280
-RECEBIDO bloco=935 origem=127.0.0.1:25001 progresso=937/1280
-RECEBIDO bloco=937 origem=127.0.0.1:25002 progresso=938/1280
-RECEBIDO bloco=939 origem=127.0.0.1:25001 progresso=939/1280
-RECEBIDO bloco=938 origem=127.0.0.1:25002 progresso=940/1280
-RECEBIDO bloco=940 origem=127.0.0.1:25001 progresso=941/1280
-RECEBIDO bloco=942 origem=127.0.0.1:25001 progresso=942/1280
-RECEBIDO bloco=941 origem=127.0.0.1:25002 progresso=943/1280
-RECEBIDO bloco=943 origem=127.0.0.1:25001 progresso=944/1280
-RECEBIDO bloco=944 origem=127.0.0.1:25002 progresso=945/1280
-RECEBIDO bloco=945 origem=127.0.0.1:25001 progresso=946/1280
-RECEBIDO bloco=946 origem=127.0.0.1:25002 progresso=947/1280
-RECEBIDO bloco=947 origem=127.0.0.1:25001 progresso=948/1280
-RECEBIDO bloco=948 origem=127.0.0.1:25002 progresso=949/1280
-RECEBIDO bloco=949 origem=127.0.0.1:25001 progresso=950/1280
-RECEBIDO bloco=950 origem=127.0.0.1:25002 progresso=951/1280
-RECEBIDO bloco=951 origem=127.0.0.1:25001 progresso=952/1280
-RECEBIDO bloco=952 origem=127.0.0.1:25002 progresso=953/1280
-RECEBIDO bloco=953 origem=127.0.0.1:25001 progresso=954/1280
-RECEBIDO bloco=954 origem=127.0.0.1:25002 progresso=955/1280
-RECEBIDO bloco=955 origem=127.0.0.1:25001 progresso=956/1280
-RECEBIDO bloco=957 origem=127.0.0.1:25001 progresso=957/1280
-RECEBIDO bloco=956 origem=127.0.0.1:25002 progresso=958/1280
-RECEBIDO bloco=958 origem=127.0.0.1:25001 progresso=959/1280
-RECEBIDO bloco=959 origem=127.0.0.1:25002 progresso=960/1280
-RECEBIDO bloco=960 origem=127.0.0.1:25001 progresso=961/1280
-RECEBIDO bloco=961 origem=127.0.0.1:25002 progresso=962/1280
-RECEBIDO bloco=962 origem=127.0.0.1:25001 progresso=963/1280
-RECEBIDO bloco=963 origem=127.0.0.1:25002 progresso=964/1280
-RECEBIDO bloco=964 origem=127.0.0.1:25001 progresso=965/1280
-RECEBIDO bloco=965 origem=127.0.0.1:25002 progresso=966/1280
-RECEBIDO bloco=966 origem=127.0.0.1:25001 progresso=967/1280
-RECEBIDO bloco=967 origem=127.0.0.1:25002 progresso=968/1280
-RECEBIDO bloco=968 origem=127.0.0.1:25001 progresso=969/1280
-RECEBIDO bloco=969 origem=127.0.0.1:25002 progresso=970/1280
-RECEBIDO bloco=970 origem=127.0.0.1:25001 progresso=971/1280
-RECEBIDO bloco=971 origem=127.0.0.1:25002 progresso=972/1280
-RECEBIDO bloco=973 origem=127.0.0.1:25002 progresso=973/1280
-RECEBIDO bloco=972 origem=127.0.0.1:25001 progresso=974/1280
-RECEBIDO bloco=975 origem=127.0.0.1:25001 progresso=975/1280
-RECEBIDO bloco=974 origem=127.0.0.1:25002 progresso=976/1280
-RECEBIDO bloco=976 origem=127.0.0.1:25001 progresso=977/1280
-RECEBIDO bloco=977 origem=127.0.0.1:25002 progresso=978/1280
-RECEBIDO bloco=978 origem=127.0.0.1:25001 progresso=979/1280
-RECEBIDO bloco=979 origem=127.0.0.1:25002 progresso=980/1280
-RECEBIDO bloco=980 origem=127.0.0.1:25001 progresso=981/1280
-RECEBIDO bloco=981 origem=127.0.0.1:25002 progresso=982/1280
-RECEBIDO bloco=982 origem=127.0.0.1:25001 progresso=983/1280
-RECEBIDO bloco=983 origem=127.0.0.1:25002 progresso=984/1280
-RECEBIDO bloco=984 origem=127.0.0.1:25001 progresso=985/1280
-RECEBIDO bloco=986 origem=127.0.0.1:25001 progresso=986/1280
-RECEBIDO bloco=985 origem=127.0.0.1:25002 progresso=987/1280
-RECEBIDO bloco=988 origem=127.0.0.1:25002 progresso=988/1280
-RECEBIDO bloco=987 origem=127.0.0.1:25001 progresso=989/1280
-RECEBIDO bloco=989 origem=127.0.0.1:25002 progresso=990/1280
-RECEBIDO bloco=990 origem=127.0.0.1:25001 progresso=991/1280
-RECEBIDO bloco=991 origem=127.0.0.1:25002 progresso=992/1280
-RECEBIDO bloco=992 origem=127.0.0.1:25001 progresso=993/1280
-RECEBIDO bloco=993 origem=127.0.0.1:25002 progresso=994/1280
-RECEBIDO bloco=995 origem=127.0.0.1:25002 progresso=995/1280
-RECEBIDO bloco=994 origem=127.0.0.1:25001 progresso=996/1280
-RECEBIDO bloco=996 origem=127.0.0.1:25002 progresso=997/1280
-RECEBIDO bloco=997 origem=127.0.0.1:25001 progresso=998/1280
-RECEBIDO bloco=998 origem=127.0.0.1:25002 progresso=999/1280
-RECEBIDO bloco=1000 origem=127.0.0.1:25002 progresso=1000/1280
-RECEBIDO bloco=999 origem=127.0.0.1:25001 progresso=1001/1280
-RECEBIDO bloco=1001 origem=127.0.0.1:25002 progresso=1002/1280
-RECEBIDO bloco=1002 origem=127.0.0.1:25001 progresso=1003/1280
-RECEBIDO bloco=1003 origem=127.0.0.1:25002 progresso=1004/1280
-RECEBIDO bloco=1004 origem=127.0.0.1:25001 progresso=1005/1280
-RECEBIDO bloco=1005 origem=127.0.0.1:25002 progresso=1006/1280
-RECEBIDO bloco=1006 origem=127.0.0.1:25001 progresso=1007/1280
-RECEBIDO bloco=1007 origem=127.0.0.1:25002 progresso=1008/1280
-RECEBIDO bloco=1008 origem=127.0.0.1:25001 progresso=1009/1280
-RECEBIDO bloco=1009 origem=127.0.0.1:25002 progresso=1010/1280
-RECEBIDO bloco=1010 origem=127.0.0.1:25001 progresso=1011/1280
-RECEBIDO bloco=1012 origem=127.0.0.1:25001 progresso=1012/1280
-RECEBIDO bloco=1011 origem=127.0.0.1:25002 progresso=1013/1280
-RECEBIDO bloco=1013 origem=127.0.0.1:25001 progresso=1014/1280
-RECEBIDO bloco=1014 origem=127.0.0.1:25002 progresso=1015/1280
-RECEBIDO bloco=1016 origem=127.0.0.1:25002 progresso=1016/1280
-RECEBIDO bloco=1015 origem=127.0.0.1:25001 progresso=1017/1280
-RECEBIDO bloco=1018 origem=127.0.0.1:25001 progresso=1018/1280
-RECEBIDO bloco=1017 origem=127.0.0.1:25002 progresso=1019/1280
-RECEBIDO bloco=1020 origem=127.0.0.1:25002 progresso=1020/1280
-RECEBIDO bloco=1019 origem=127.0.0.1:25001 progresso=1021/1280
-RECEBIDO bloco=1021 origem=127.0.0.1:25002 progresso=1022/1280
-RECEBIDO bloco=1022 origem=127.0.0.1:25001 progresso=1023/1280
-RECEBIDO bloco=1023 origem=127.0.0.1:25002 progresso=1024/1280
-RECEBIDO bloco=1024 origem=127.0.0.1:25001 progresso=1025/1280
-RECEBIDO bloco=1025 origem=127.0.0.1:25002 progresso=1026/1280
-RECEBIDO bloco=1026 origem=127.0.0.1:25001 progresso=1027/1280
-RECEBIDO bloco=1027 origem=127.0.0.1:25002 progresso=1028/1280
-RECEBIDO bloco=1029 origem=127.0.0.1:25002 progresso=1029/1280
-RECEBIDO bloco=1028 origem=127.0.0.1:25001 progresso=1030/1280
-RECEBIDO bloco=1031 origem=127.0.0.1:25001 progresso=1031/1280
-RECEBIDO bloco=1030 origem=127.0.0.1:25002 progresso=1032/1280
-RECEBIDO bloco=1032 origem=127.0.0.1:25001 progresso=1033/1280
-RECEBIDO bloco=1033 origem=127.0.0.1:25002 progresso=1034/1280
-RECEBIDO bloco=1034 origem=127.0.0.1:25001 progresso=1035/1280
-RECEBIDO bloco=1036 origem=127.0.0.1:25001 progresso=1036/1280
-RECEBIDO bloco=1035 origem=127.0.0.1:25002 progresso=1037/1280
-RECEBIDO bloco=1038 origem=127.0.0.1:25002 progresso=1038/1280
-RECEBIDO bloco=1037 origem=127.0.0.1:25001 progresso=1039/1280
-RECEBIDO bloco=1039 origem=127.0.0.1:25002 progresso=1040/1280
-RECEBIDO bloco=1040 origem=127.0.0.1:25001 progresso=1041/1280
-RECEBIDO bloco=1041 origem=127.0.0.1:25002 progresso=1042/1280
-RECEBIDO bloco=1042 origem=127.0.0.1:25001 progresso=1043/1280
-RECEBIDO bloco=1043 origem=127.0.0.1:25002 progresso=1044/1280
-RECEBIDO bloco=1044 origem=127.0.0.1:25001 progresso=1045/1280
-RECEBIDO bloco=1046 origem=127.0.0.1:25001 progresso=1046/1280
-RECEBIDO bloco=1045 origem=127.0.0.1:25002 progresso=1047/1280
-RECEBIDO bloco=1047 origem=127.0.0.1:25001 progresso=1048/1280
-RECEBIDO bloco=1048 origem=127.0.0.1:25002 progresso=1049/1280
-RECEBIDO bloco=1049 origem=127.0.0.1:25001 progresso=1050/1280
-RECEBIDO bloco=1050 origem=127.0.0.1:25002 progresso=1051/1280
-RECEBIDO bloco=1051 origem=127.0.0.1:25001 progresso=1052/1280
-RECEBIDO bloco=1052 origem=127.0.0.1:25002 progresso=1053/1280
-RECEBIDO bloco=1053 origem=127.0.0.1:25001 progresso=1054/1280
-RECEBIDO bloco=1054 origem=127.0.0.1:25002 progresso=1055/1280
-RECEBIDO bloco=1055 origem=127.0.0.1:25001 progresso=1056/1280
-RECEBIDO bloco=1056 origem=127.0.0.1:25002 progresso=1057/1280
-RECEBIDO bloco=1057 origem=127.0.0.1:25001 progresso=1058/1280
-RECEBIDO bloco=1058 origem=127.0.0.1:25002 progresso=1059/1280
-RECEBIDO bloco=1059 origem=127.0.0.1:25001 progresso=1060/1280
-RECEBIDO bloco=1060 origem=127.0.0.1:25002 progresso=1061/1280
-RECEBIDO bloco=1061 origem=127.0.0.1:25001 progresso=1062/1280
-RECEBIDO bloco=1062 origem=127.0.0.1:25002 progresso=1063/1280
-RECEBIDO bloco=1063 origem=127.0.0.1:25001 progresso=1064/1280
-RECEBIDO bloco=1064 origem=127.0.0.1:25002 progresso=1065/1280
-RECEBIDO bloco=1065 origem=127.0.0.1:25001 progresso=1066/1280
-RECEBIDO bloco=1067 origem=127.0.0.1:25001 progresso=1067/1280
-RECEBIDO bloco=1066 origem=127.0.0.1:25002 progresso=1068/1280
-RECEBIDO bloco=1069 origem=127.0.0.1:25002 progresso=1069/1280
-RECEBIDO bloco=1068 origem=127.0.0.1:25001 progresso=1070/1280
-RECEBIDO bloco=1070 origem=127.0.0.1:25002 progresso=1071/1280
-RECEBIDO bloco=1071 origem=127.0.0.1:25001 progresso=1072/1280
-RECEBIDO bloco=1073 origem=127.0.0.1:25001 progresso=1073/1280
-RECEBIDO bloco=1072 origem=127.0.0.1:25002 progresso=1074/1280
-RECEBIDO bloco=1074 origem=127.0.0.1:25001 progresso=1075/1280
-RECEBIDO bloco=1075 origem=127.0.0.1:25002 progresso=1076/1280
-RECEBIDO bloco=1076 origem=127.0.0.1:25001 progresso=1077/1280
-RECEBIDO bloco=1077 origem=127.0.0.1:25002 progresso=1078/1280
-RECEBIDO bloco=1078 origem=127.0.0.1:25001 progresso=1079/1280
-RECEBIDO bloco=1079 origem=127.0.0.1:25002 progresso=1080/1280
-RECEBIDO bloco=1080 origem=127.0.0.1:25001 progresso=1081/1280
-RECEBIDO bloco=1081 origem=127.0.0.1:25002 progresso=1082/1280
-RECEBIDO bloco=1082 origem=127.0.0.1:25001 progresso=1083/1280
-RECEBIDO bloco=1083 origem=127.0.0.1:25002 progresso=1084/1280
-RECEBIDO bloco=1084 origem=127.0.0.1:25001 progresso=1085/1280
-RECEBIDO bloco=1085 origem=127.0.0.1:25002 progresso=1086/1280
-RECEBIDO bloco=1086 origem=127.0.0.1:25001 progresso=1087/1280
-RECEBIDO bloco=1087 origem=127.0.0.1:25002 progresso=1088/1280
-RECEBIDO bloco=1088 origem=127.0.0.1:25001 progresso=1089/1280
-RECEBIDO bloco=1089 origem=127.0.0.1:25002 progresso=1090/1280
-RECEBIDO bloco=1090 origem=127.0.0.1:25001 progresso=1091/1280
-RECEBIDO bloco=1091 origem=127.0.0.1:25002 progresso=1092/1280
-RECEBIDO bloco=1092 origem=127.0.0.1:25002 progresso=1093/1280
-RECEBIDO bloco=1093 origem=127.0.0.1:25001 progresso=1094/1280
-RECEBIDO bloco=1094 origem=127.0.0.1:25002 progresso=1095/1280
-RECEBIDO bloco=1095 origem=127.0.0.1:25001 progresso=1096/1280
-RECEBIDO bloco=1096 origem=127.0.0.1:25002 progresso=1097/1280
-RECEBIDO bloco=1097 origem=127.0.0.1:25001 progresso=1098/1280
-RECEBIDO bloco=1099 origem=127.0.0.1:25002 progresso=1099/1280
-RECEBIDO bloco=1098 origem=127.0.0.1:25001 progresso=1100/1280
-RECEBIDO bloco=1100 origem=127.0.0.1:25002 progresso=1101/1280
-RECEBIDO bloco=1101 origem=127.0.0.1:25001 progresso=1102/1280
-RECEBIDO bloco=1103 origem=127.0.0.1:25001 progresso=1103/1280
-RECEBIDO bloco=1102 origem=127.0.0.1:25002 progresso=1104/1280
-RECEBIDO bloco=1104 origem=127.0.0.1:25002 progresso=1105/1280
-RECEBIDO bloco=1106 origem=127.0.0.1:25001 progresso=1106/1280
-RECEBIDO bloco=1105 origem=127.0.0.1:25002 progresso=1107/1280
-RECEBIDO bloco=1107 origem=127.0.0.1:25001 progresso=1108/1280
-RECEBIDO bloco=1108 origem=127.0.0.1:25002 progresso=1109/1280
-RECEBIDO bloco=1109 origem=127.0.0.1:25001 progresso=1110/1280
-RECEBIDO bloco=1110 origem=127.0.0.1:25002 progresso=1111/1280
-RECEBIDO bloco=1111 origem=127.0.0.1:25001 progresso=1112/1280
-RECEBIDO bloco=1112 origem=127.0.0.1:25002 progresso=1113/1280
-RECEBIDO bloco=1113 origem=127.0.0.1:25001 progresso=1114/1280
-RECEBIDO bloco=1114 origem=127.0.0.1:25002 progresso=1115/1280
-RECEBIDO bloco=1115 origem=127.0.0.1:25001 progresso=1116/1280
-RECEBIDO bloco=1116 origem=127.0.0.1:25002 progresso=1117/1280
-RECEBIDO bloco=1117 origem=127.0.0.1:25001 progresso=1118/1280
-RECEBIDO bloco=1119 origem=127.0.0.1:25001 progresso=1119/1280
-RECEBIDO bloco=1118 origem=127.0.0.1:25002 progresso=1120/1280
-RECEBIDO bloco=1120 origem=127.0.0.1:25001 progresso=1121/1280
-RECEBIDO bloco=1121 origem=127.0.0.1:25002 progresso=1122/1280
-RECEBIDO bloco=1122 origem=127.0.0.1:25001 progresso=1123/1280
-RECEBIDO bloco=1124 origem=127.0.0.1:25001 progresso=1124/1280
-RECEBIDO bloco=1123 origem=127.0.0.1:25002 progresso=1125/1280
-RECEBIDO bloco=1126 origem=127.0.0.1:25002 progresso=1126/1280
-RECEBIDO bloco=1125 origem=127.0.0.1:25001 progresso=1127/1280
-RECEBIDO bloco=1127 origem=127.0.0.1:25002 progresso=1128/1280
-RECEBIDO bloco=1128 origem=127.0.0.1:25001 progresso=1129/1280
-RECEBIDO bloco=1129 origem=127.0.0.1:25002 progresso=1130/1280
-RECEBIDO bloco=1130 origem=127.0.0.1:25001 progresso=1131/1280
-RECEBIDO bloco=1131 origem=127.0.0.1:25002 progresso=1132/1280
-RECEBIDO bloco=1132 origem=127.0.0.1:25001 progresso=1133/1280
-RECEBIDO bloco=1133 origem=127.0.0.1:25002 progresso=1134/1280
-RECEBIDO bloco=1135 origem=127.0.0.1:25002 progresso=1135/1280
-RECEBIDO bloco=1134 origem=127.0.0.1:25001 progresso=1136/1280
-RECEBIDO bloco=1137 origem=127.0.0.1:25001 progresso=1137/1280
-RECEBIDO bloco=1136 origem=127.0.0.1:25002 progresso=1138/1280
-RECEBIDO bloco=1138 origem=127.0.0.1:25001 progresso=1139/1280
-RECEBIDO bloco=1139 origem=127.0.0.1:25002 progresso=1140/1280
-RECEBIDO bloco=1140 origem=127.0.0.1:25001 progresso=1141/1280
-RECEBIDO bloco=1141 origem=127.0.0.1:25002 progresso=1142/1280
-RECEBIDO bloco=1143 origem=127.0.0.1:25002 progresso=1143/1280
-RECEBIDO bloco=1142 origem=127.0.0.1:25001 progresso=1144/1280
-RECEBIDO bloco=1144 origem=127.0.0.1:25002 progresso=1145/1280
-RECEBIDO bloco=1146 origem=127.0.0.1:25002 progresso=1146/1280
-RECEBIDO bloco=1145 origem=127.0.0.1:25001 progresso=1147/1280
-RECEBIDO bloco=1148 origem=127.0.0.1:25001 progresso=1148/1280
-RECEBIDO bloco=1147 origem=127.0.0.1:25002 progresso=1149/1280
-RECEBIDO bloco=1150 origem=127.0.0.1:25002 progresso=1150/1280
-RECEBIDO bloco=1149 origem=127.0.0.1:25001 progresso=1151/1280
-RECEBIDO bloco=1151 origem=127.0.0.1:25002 progresso=1152/1280
-RECEBIDO bloco=1152 origem=127.0.0.1:25001 progresso=1153/1280
-RECEBIDO bloco=1154 origem=127.0.0.1:25001 progresso=1154/1280
-RECEBIDO bloco=1153 origem=127.0.0.1:25002 progresso=1155/1280
-RECEBIDO bloco=1156 origem=127.0.0.1:25002 progresso=1156/1280
-RECEBIDO bloco=1155 origem=127.0.0.1:25001 progresso=1157/1280
-RECEBIDO bloco=1157 origem=127.0.0.1:25002 progresso=1158/1280
-RECEBIDO bloco=1158 origem=127.0.0.1:25001 progresso=1159/1280
-RECEBIDO bloco=1159 origem=127.0.0.1:25002 progresso=1160/1280
-RECEBIDO bloco=1160 origem=127.0.0.1:25001 progresso=1161/1280
-RECEBIDO bloco=1161 origem=127.0.0.1:25002 progresso=1162/1280
-RECEBIDO bloco=1162 origem=127.0.0.1:25001 progresso=1163/1280
-RECEBIDO bloco=1163 origem=127.0.0.1:25002 progresso=1164/1280
-RECEBIDO bloco=1164 origem=127.0.0.1:25001 progresso=1165/1280
-RECEBIDO bloco=1166 origem=127.0.0.1:25001 progresso=1166/1280
-RECEBIDO bloco=1165 origem=127.0.0.1:25002 progresso=1167/1280
-RECEBIDO bloco=1168 origem=127.0.0.1:25002 progresso=1168/1280
-RECEBIDO bloco=1167 origem=127.0.0.1:25001 progresso=1169/1280
-RECEBIDO bloco=1170 origem=127.0.0.1:25001 progresso=1170/1280
-RECEBIDO bloco=1169 origem=127.0.0.1:25002 progresso=1171/1280
-RECEBIDO bloco=1171 origem=127.0.0.1:25001 progresso=1172/1280
-RECEBIDO bloco=1172 origem=127.0.0.1:25002 progresso=1173/1280
-RECEBIDO bloco=1173 origem=127.0.0.1:25001 progresso=1174/1280
-RECEBIDO bloco=1174 origem=127.0.0.1:25002 progresso=1175/1280
-RECEBIDO bloco=1175 origem=127.0.0.1:25001 progresso=1176/1280
-RECEBIDO bloco=1176 origem=127.0.0.1:25002 progresso=1177/1280
-RECEBIDO bloco=1178 origem=127.0.0.1:25002 progresso=1178/1280
-RECEBIDO bloco=1177 origem=127.0.0.1:25001 progresso=1179/1280
-RECEBIDO bloco=1179 origem=127.0.0.1:25002 progresso=1180/1280
-RECEBIDO bloco=1180 origem=127.0.0.1:25001 progresso=1181/1280
-RECEBIDO bloco=1181 origem=127.0.0.1:25002 progresso=1182/1280
-RECEBIDO bloco=1183 origem=127.0.0.1:25002 progresso=1183/1280
-RECEBIDO bloco=1182 origem=127.0.0.1:25001 progresso=1184/1280
-RECEBIDO bloco=1184 origem=127.0.0.1:25002 progresso=1185/1280
-RECEBIDO bloco=1185 origem=127.0.0.1:25001 progresso=1186/1280
-RECEBIDO bloco=1187 origem=127.0.0.1:25001 progresso=1187/1280
-RECEBIDO bloco=1186 origem=127.0.0.1:25002 progresso=1188/1280
-RECEBIDO bloco=1189 origem=127.0.0.1:25002 progresso=1189/1280
-RECEBIDO bloco=1188 origem=127.0.0.1:25001 progresso=1190/1280
-RECEBIDO bloco=1190 origem=127.0.0.1:25001 progresso=1191/1280
-RECEBIDO bloco=1191 origem=127.0.0.1:25002 progresso=1192/1280
-RECEBIDO bloco=1192 origem=127.0.0.1:25002 progresso=1193/1280
-RECEBIDO bloco=1193 origem=127.0.0.1:25002 progresso=1194/1280
-RECEBIDO bloco=1194 origem=127.0.0.1:25001 progresso=1195/1280
-RECEBIDO bloco=1196 origem=127.0.0.1:25001 progresso=1196/1280
-RECEBIDO bloco=1195 origem=127.0.0.1:25002 progresso=1197/1280
-RECEBIDO bloco=1198 origem=127.0.0.1:25002 progresso=1198/1280
-RECEBIDO bloco=1197 origem=127.0.0.1:25001 progresso=1199/1280
-RECEBIDO bloco=1199 origem=127.0.0.1:25002 progresso=1200/1280
-RECEBIDO bloco=1200 origem=127.0.0.1:25001 progresso=1201/1280
-RECEBIDO bloco=1201 origem=127.0.0.1:25002 progresso=1202/1280
-RECEBIDO bloco=1203 origem=127.0.0.1:25002 progresso=1203/1280
-RECEBIDO bloco=1202 origem=127.0.0.1:25001 progresso=1204/1280
-RECEBIDO bloco=1205 origem=127.0.0.1:25001 progresso=1205/1280
-RECEBIDO bloco=1204 origem=127.0.0.1:25002 progresso=1206/1280
-RECEBIDO bloco=1206 origem=127.0.0.1:25001 progresso=1207/1280
-RECEBIDO bloco=1207 origem=127.0.0.1:25002 progresso=1208/1280
-RECEBIDO bloco=1208 origem=127.0.0.1:25001 progresso=1209/1280
-RECEBIDO bloco=1209 origem=127.0.0.1:25002 progresso=1210/1280
-RECEBIDO bloco=1211 origem=127.0.0.1:25002 progresso=1211/1280
-RECEBIDO bloco=1210 origem=127.0.0.1:25001 progresso=1212/1280
-RECEBIDO bloco=1213 origem=127.0.0.1:25001 progresso=1213/1280
-RECEBIDO bloco=1212 origem=127.0.0.1:25002 progresso=1214/1280
-RECEBIDO bloco=1215 origem=127.0.0.1:25001 progresso=1215/1280
-RECEBIDO bloco=1214 origem=127.0.0.1:25002 progresso=1216/1280
-RECEBIDO bloco=1216 origem=127.0.0.1:25001 progresso=1217/1280
-RECEBIDO bloco=1217 origem=127.0.0.1:25002 progresso=1218/1280
-RECEBIDO bloco=1218 origem=127.0.0.1:25001 progresso=1219/1280
-RECEBIDO bloco=1220 origem=127.0.0.1:25001 progresso=1220/1280
-RECEBIDO bloco=1219 origem=127.0.0.1:25002 progresso=1221/1280
-RECEBIDO bloco=1222 origem=127.0.0.1:25002 progresso=1222/1280
-RECEBIDO bloco=1221 origem=127.0.0.1:25001 progresso=1223/1280
-RECEBIDO bloco=1223 origem=127.0.0.1:25002 progresso=1224/1280
-RECEBIDO bloco=1224 origem=127.0.0.1:25001 progresso=1225/1280
-RECEBIDO bloco=1225 origem=127.0.0.1:25002 progresso=1226/1280
-RECEBIDO bloco=1227 origem=127.0.0.1:25002 progresso=1227/1280
-RECEBIDO bloco=1226 origem=127.0.0.1:25001 progresso=1228/1280
-RECEBIDO bloco=1228 origem=127.0.0.1:25002 progresso=1229/1280
-RECEBIDO bloco=1229 origem=127.0.0.1:25001 progresso=1230/1280
-RECEBIDO bloco=1230 origem=127.0.0.1:25002 progresso=1231/1280
-RECEBIDO bloco=1231 origem=127.0.0.1:25001 progresso=1232/1280
-RECEBIDO bloco=1232 origem=127.0.0.1:25002 progresso=1233/1280
-RECEBIDO bloco=1233 origem=127.0.0.1:25001 progresso=1234/1280
-RECEBIDO bloco=1234 origem=127.0.0.1:25001 progresso=1235/1280
-RECEBIDO bloco=1235 origem=127.0.0.1:25002 progresso=1236/1280
-RECEBIDO bloco=1236 origem=127.0.0.1:25002 progresso=1237/1280
-RECEBIDO bloco=1237 origem=127.0.0.1:25002 progresso=1238/1280
-RECEBIDO bloco=1239 origem=127.0.0.1:25002 progresso=1239/1280
-RECEBIDO bloco=1238 origem=127.0.0.1:25001 progresso=1240/1280
-RECEBIDO bloco=1241 origem=127.0.0.1:25001 progresso=1241/1280
-RECEBIDO bloco=1240 origem=127.0.0.1:25002 progresso=1242/1280
-RECEBIDO bloco=1243 origem=127.0.0.1:25002 progresso=1243/1280
-RECEBIDO bloco=1242 origem=127.0.0.1:25001 progresso=1244/1280
-RECEBIDO bloco=1245 origem=127.0.0.1:25001 progresso=1245/1280
-RECEBIDO bloco=1244 origem=127.0.0.1:25002 progresso=1246/1280
-RECEBIDO bloco=1246 origem=127.0.0.1:25001 progresso=1247/1280
-RECEBIDO bloco=1247 origem=127.0.0.1:25002 progresso=1248/1280
-RECEBIDO bloco=1249 origem=127.0.0.1:25002 progresso=1249/1280
-RECEBIDO bloco=1250 origem=127.0.0.1:25002 progresso=1250/1280
-RECEBIDO bloco=1248 origem=127.0.0.1:25001 progresso=1251/1280
-RECEBIDO bloco=1252 origem=127.0.0.1:25001 progresso=1252/1280
-RECEBIDO bloco=1251 origem=127.0.0.1:25002 progresso=1253/1280
-RECEBIDO bloco=1253 origem=127.0.0.1:25001 progresso=1254/1280
-RECEBIDO bloco=1254 origem=127.0.0.1:25002 progresso=1255/1280
-RECEBIDO bloco=1255 origem=127.0.0.1:25001 progresso=1256/1280
-RECEBIDO bloco=1257 origem=127.0.0.1:25001 progresso=1257/1280
-RECEBIDO bloco=1256 origem=127.0.0.1:25002 progresso=1258/1280
-RECEBIDO bloco=1259 origem=127.0.0.1:25002 progresso=1259/1280
-RECEBIDO bloco=1258 origem=127.0.0.1:25001 progresso=1260/1280
-RECEBIDO bloco=1261 origem=127.0.0.1:25001 progresso=1261/1280
-RECEBIDO bloco=1260 origem=127.0.0.1:25002 progresso=1262/1280
-RECEBIDO bloco=1262 origem=127.0.0.1:25001 progresso=1263/1280
-RECEBIDO bloco=1263 origem=127.0.0.1:25002 progresso=1264/1280
-RECEBIDO bloco=1264 origem=127.0.0.1:25001 progresso=1265/1280
-RECEBIDO bloco=1265 origem=127.0.0.1:25002 progresso=1266/1280
-RECEBIDO bloco=1267 origem=127.0.0.1:25002 progresso=1267/1280
-RECEBIDO bloco=1266 origem=127.0.0.1:25001 progresso=1268/1280
-RECEBIDO bloco=1268 origem=127.0.0.1:25002 progresso=1269/1280
-RECEBIDO bloco=1269 origem=127.0.0.1:25001 progresso=1270/1280
-RECEBIDO bloco=1270 origem=127.0.0.1:25002 progresso=1271/1280
-RECEBIDO bloco=1271 origem=127.0.0.1:25001 progresso=1272/1280
-RECEBIDO bloco=1272 origem=127.0.0.1:25002 progresso=1273/1280
-RECEBIDO bloco=1273 origem=127.0.0.1:25001 progresso=1274/1280
-RECEBIDO bloco=1274 origem=127.0.0.1:25002 progresso=1275/1280
-RECEBIDO bloco=1275 origem=127.0.0.1:25002 progresso=1276/1280
-RECEBIDO bloco=1276 origem=127.0.0.1:25001 progresso=1277/1280
-RECEBIDO bloco=1277 origem=127.0.0.1:25002 progresso=1278/1280
-RECEBIDO bloco=1278 origem=127.0.0.1:25001 progresso=1279/1280
-RECEBIDO bloco=1279 origem=127.0.0.1:25001 progresso=1280/1280
-SUCESSO SHA256=b0cbfb142b5851504d2c7c1e863a64df4f69d140cb71cf504a8ac8ecfff0a0f4 bytes=5242880 tempo_ms=1192
-Compartilhando por mais 30 segundos
+[   0.000] Servidor ouvindo 127.0.0.1:25003
+[   0.003] META recebida de 127.0.0.1:25001 (1280 blocos)
+[   0.003] LEECH arquivo.bin blocos=1280 endereco=127.0.0.1:25003
+[   0.003] STATUS blocos=0/1280 (0%)
+[   0.005] RECEBIDO bloco=424 origem=127.0.0.1:25001 progresso=1/1280
+[   0.005] RECEBIDO bloco=693 origem=127.0.0.1:25002 progresso=2/1280
+[   0.005] RECEBIDO bloco=891 origem=127.0.0.1:25002 progresso=3/1280
+[   0.005] RECEBIDO bloco=94 origem=127.0.0.1:25001 progresso=4/1280
+[   0.005] RECEBIDO bloco=1231 origem=127.0.0.1:25002 progresso=5/1280
+[   0.005] RECEBIDO bloco=197 origem=127.0.0.1:25001 progresso=6/1280
+[   0.006] RECEBIDO bloco=243 origem=127.0.0.1:25002 progresso=7/1280
+[   0.006] RECEBIDO bloco=1214 origem=127.0.0.1:25002 progresso=8/1280
+[   0.006] RECEBIDO bloco=211 origem=127.0.0.1:25001 progresso=9/1280
+[   0.006] RECEBIDO bloco=37 origem=127.0.0.1:25002 progresso=10/1280
+[   0.006] RECEBIDO bloco=1019 origem=127.0.0.1:25001 progresso=11/1280
+[   0.006] RECEBIDO bloco=0 origem=127.0.0.1:25002 progresso=12/1280
+[   0.006] RECEBIDO bloco=846 origem=127.0.0.1:25002 progresso=13/1280
+[   0.006] RECEBIDO bloco=57 origem=127.0.0.1:25001 progresso=14/1280
+[   0.006] RECEBIDO bloco=1199 origem=127.0.0.1:25002 progresso=15/1280
+[   0.006] RECEBIDO bloco=361 origem=127.0.0.1:25001 progresso=16/1280
+[   0.006] RECEBIDO bloco=100 origem=127.0.0.1:25002 progresso=17/1280
+[   0.006] RECEBIDO bloco=630 origem=127.0.0.1:25001 progresso=18/1280
+[   0.006] RECEBIDO bloco=1127 origem=127.0.0.1:25002 progresso=19/1280
+[   0.006] RECEBIDO bloco=1208 origem=127.0.0.1:25001 progresso=20/1280
+[   0.006] RECEBIDO bloco=306 origem=127.0.0.1:25002 progresso=21/1280
+[   0.006] RECEBIDO bloco=761 origem=127.0.0.1:25001 progresso=22/1280
+[   0.007] RECEBIDO bloco=53 origem=127.0.0.1:25002 progresso=23/1280
+[   0.007] RECEBIDO bloco=240 origem=127.0.0.1:25001 progresso=24/1280
+[   0.007] RECEBIDO bloco=446 origem=127.0.0.1:25002 progresso=25/1280
+[   0.007] RECEBIDO bloco=923 origem=127.0.0.1:25001 progresso=26/1280
+[   0.007] RECEBIDO bloco=1271 origem=127.0.0.1:25002 progresso=27/1280
+[   0.007] RECEBIDO bloco=398 origem=127.0.0.1:25001 progresso=28/1280
+[   0.007] RECEBIDO bloco=648 origem=127.0.0.1:25002 progresso=29/1280
+[   0.007] RECEBIDO bloco=195 origem=127.0.0.1:25001 progresso=30/1280
+[   0.007] RECEBIDO bloco=1116 origem=127.0.0.1:25002 progresso=31/1280
+[   0.007] RECEBIDO bloco=589 origem=127.0.0.1:25001 progresso=32/1280
+[   0.007] RECEBIDO bloco=135 origem=127.0.0.1:25002 progresso=33/1280
+[   0.007] RECEBIDO bloco=1145 origem=127.0.0.1:25001 progresso=34/1280
+[   0.007] RECEBIDO bloco=826 origem=127.0.0.1:25002 progresso=35/1280
+[   0.007] RECEBIDO bloco=270 origem=127.0.0.1:25001 progresso=36/1280
+[   0.007] RECEBIDO bloco=617 origem=127.0.0.1:25002 progresso=37/1280
+[   0.007] RECEBIDO bloco=101 origem=127.0.0.1:25001 progresso=38/1280
+[   0.008] RECEBIDO bloco=1111 origem=127.0.0.1:25001 progresso=39/1280
+[   0.008] RECEBIDO bloco=719 origem=127.0.0.1:25002 progresso=40/1280
+[   0.008] RECEBIDO bloco=455 origem=127.0.0.1:25002 progresso=41/1280
+[   0.008] RECEBIDO bloco=302 origem=127.0.0.1:25001 progresso=42/1280
+[   0.008] RECEBIDO bloco=770 origem=127.0.0.1:25002 progresso=43/1280
+[   0.008] RECEBIDO bloco=407 origem=127.0.0.1:25001 progresso=44/1280
+[   0.008] RECEBIDO bloco=833 origem=127.0.0.1:25002 progresso=45/1280
+[   0.008] RECEBIDO bloco=1011 origem=127.0.0.1:25001 progresso=46/1280
+[   0.008] RECEBIDO bloco=1045 origem=127.0.0.1:25002 progresso=47/1280
+[   0.008] RECEBIDO bloco=201 origem=127.0.0.1:25001 progresso=48/1280
+[   0.008] RECEBIDO bloco=223 origem=127.0.0.1:25002 progresso=49/1280
+[   0.008] RECEBIDO bloco=908 origem=127.0.0.1:25001 progresso=50/1280
+[   0.008] RECEBIDO bloco=669 origem=127.0.0.1:25002 progresso=51/1280
+[   0.008] RECEBIDO bloco=584 origem=127.0.0.1:25001 progresso=52/1280
+[   0.008] RECEBIDO bloco=66 origem=127.0.0.1:25002 progresso=53/1280
+[   0.009] RECEBIDO bloco=1069 origem=127.0.0.1:25002 progresso=54/1280
+[   0.009] RECEBIDO bloco=942 origem=127.0.0.1:25001 progresso=55/1280
+[   0.009] RECEBIDO bloco=644 origem=127.0.0.1:25001 progresso=56/1280
+[   0.009] RECEBIDO bloco=238 origem=127.0.0.1:25002 progresso=57/1280
+[   0.009] RECEBIDO bloco=934 origem=127.0.0.1:25001 progresso=58/1280
+[   0.009] RECEBIDO bloco=643 origem=127.0.0.1:25002 progresso=59/1280
+[   0.009] RECEBIDO bloco=999 origem=127.0.0.1:25002 progresso=60/1280
+[   0.009] RECEBIDO bloco=807 origem=127.0.0.1:25001 progresso=61/1280
+[   0.009] RECEBIDO bloco=885 origem=127.0.0.1:25002 progresso=62/1280
+[   0.009] RECEBIDO bloco=558 origem=127.0.0.1:25001 progresso=63/1280
+[   0.009] RECEBIDO bloco=971 origem=127.0.0.1:25002 progresso=64/1280
+[   0.009] RECEBIDO bloco=495 origem=127.0.0.1:25001 progresso=65/1280
+[   0.009] RECEBIDO bloco=716 origem=127.0.0.1:25002 progresso=66/1280
+[   0.009] RECEBIDO bloco=600 origem=127.0.0.1:25001 progresso=67/1280
+[   0.010] RECEBIDO bloco=124 origem=127.0.0.1:25002 progresso=68/1280
+[   0.010] RECEBIDO bloco=671 origem=127.0.0.1:25001 progresso=69/1280
+[   0.010] RECEBIDO bloco=612 origem=127.0.0.1:25002 progresso=70/1280
+[   0.010] RECEBIDO bloco=876 origem=127.0.0.1:25001 progresso=71/1280
+[   0.010] RECEBIDO bloco=1101 origem=127.0.0.1:25002 progresso=72/1280
+[   0.010] RECEBIDO bloco=525 origem=127.0.0.1:25001 progresso=73/1280
+[   0.010] RECEBIDO bloco=776 origem=127.0.0.1:25002 progresso=74/1280
+[   0.010] RECEBIDO bloco=348 origem=127.0.0.1:25001 progresso=75/1280
+[   0.010] RECEBIDO bloco=975 origem=127.0.0.1:25002 progresso=76/1280
+[   0.010] RECEBIDO bloco=505 origem=127.0.0.1:25001 progresso=77/1280
+[   0.010] RECEBIDO bloco=1058 origem=127.0.0.1:25002 progresso=78/1280
+[   0.010] RECEBIDO bloco=151 origem=127.0.0.1:25001 progresso=79/1280
+[   0.010] RECEBIDO bloco=641 origem=127.0.0.1:25002 progresso=80/1280
+[   0.010] RECEBIDO bloco=841 origem=127.0.0.1:25001 progresso=81/1280
+[   0.010] RECEBIDO bloco=1149 origem=127.0.0.1:25002 progresso=82/1280
+[   0.011] RECEBIDO bloco=1094 origem=127.0.0.1:25001 progresso=83/1280
+[   0.011] RECEBIDO bloco=847 origem=127.0.0.1:25002 progresso=84/1280
+[   0.011] RECEBIDO bloco=752 origem=127.0.0.1:25001 progresso=85/1280
+[   0.011] RECEBIDO bloco=237 origem=127.0.0.1:25002 progresso=86/1280
+[   0.011] RECEBIDO bloco=795 origem=127.0.0.1:25001 progresso=87/1280
+[   0.011] RECEBIDO bloco=952 origem=127.0.0.1:25002 progresso=88/1280
+[   0.011] RECEBIDO bloco=433 origem=127.0.0.1:25001 progresso=89/1280
+[   0.011] RECEBIDO bloco=987 origem=127.0.0.1:25002 progresso=90/1280
+[   0.011] RECEBIDO bloco=24 origem=127.0.0.1:25001 progresso=91/1280
+[   0.011] RECEBIDO bloco=574 origem=127.0.0.1:25002 progresso=92/1280
+[   0.011] RECEBIDO bloco=845 origem=127.0.0.1:25001 progresso=93/1280
+[   0.011] RECEBIDO bloco=924 origem=127.0.0.1:25002 progresso=94/1280
+[   0.011] RECEBIDO bloco=1057 origem=127.0.0.1:25001 progresso=95/1280
+[   0.011] RECEBIDO bloco=384 origem=127.0.0.1:25002 progresso=96/1280
+[   0.012] RECEBIDO bloco=651 origem=127.0.0.1:25001 progresso=97/1280
+[   0.012] RECEBIDO bloco=681 origem=127.0.0.1:25002 progresso=98/1280
+[   0.012] RECEBIDO bloco=40 origem=127.0.0.1:25001 progresso=99/1280
+[   0.012] RECEBIDO bloco=392 origem=127.0.0.1:25002 progresso=100/1280
+[   0.012] RECEBIDO bloco=524 origem=127.0.0.1:25001 progresso=101/1280
+[   0.012] RECEBIDO bloco=1000 origem=127.0.0.1:25002 progresso=102/1280
+[   0.012] RECEBIDO bloco=1117 origem=127.0.0.1:25001 progresso=103/1280
+[   0.012] RECEBIDO bloco=661 origem=127.0.0.1:25002 progresso=104/1280
+[   0.012] RECEBIDO bloco=763 origem=127.0.0.1:25001 progresso=105/1280
+[   0.012] RECEBIDO bloco=621 origem=127.0.0.1:25002 progresso=106/1280
+[   0.012] RECEBIDO bloco=1268 origem=127.0.0.1:25001 progresso=107/1280
+[   0.012] RECEBIDO bloco=454 origem=127.0.0.1:25002 progresso=108/1280
+[   0.012] RECEBIDO bloco=486 origem=127.0.0.1:25001 progresso=109/1280
+[   0.012] RECEBIDO bloco=609 origem=127.0.0.1:25002 progresso=110/1280
+[   0.013] RECEBIDO bloco=1021 origem=127.0.0.1:25001 progresso=111/1280
+[   0.013] RECEBIDO bloco=271 origem=127.0.0.1:25002 progresso=112/1280
+[   0.013] RECEBIDO bloco=416 origem=127.0.0.1:25001 progresso=113/1280
+[   0.013] RECEBIDO bloco=1010 origem=127.0.0.1:25002 progresso=114/1280
+[   0.013] RECEBIDO bloco=707 origem=127.0.0.1:25002 progresso=115/1280
+[   0.013] RECEBIDO bloco=320 origem=127.0.0.1:25001 progresso=116/1280
+[   0.013] RECEBIDO bloco=862 origem=127.0.0.1:25001 progresso=117/1280
+[   0.013] RECEBIDO bloco=902 origem=127.0.0.1:25002 progresso=118/1280
+[   0.013] RECEBIDO bloco=691 origem=127.0.0.1:25001 progresso=119/1280
+[   0.013] RECEBIDO bloco=185 origem=127.0.0.1:25002 progresso=120/1280
+[   0.013] RECEBIDO bloco=604 origem=127.0.0.1:25002 progresso=121/1280
+[   0.013] RECEBIDO bloco=278 origem=127.0.0.1:25001 progresso=122/1280
+[   0.014] RECEBIDO bloco=1005 origem=127.0.0.1:25001 progresso=123/1280
+[   0.014] RECEBIDO bloco=1143 origem=127.0.0.1:25002 progresso=124/1280
+[   0.014] RECEBIDO bloco=897 origem=127.0.0.1:25002 progresso=125/1280
+[   0.014] RECEBIDO bloco=449 origem=127.0.0.1:25001 progresso=126/1280
+[   0.014] RECEBIDO bloco=747 origem=127.0.0.1:25002 progresso=127/1280
+[   0.014] RECEBIDO bloco=52 origem=127.0.0.1:25001 progresso=128/1280
+[   0.014] RECEBIDO bloco=1022 origem=127.0.0.1:25002 progresso=129/1280
+[   0.014] RECEBIDO bloco=478 origem=127.0.0.1:25002 progresso=130/1280
+[   0.014] RECEBIDO bloco=226 origem=127.0.0.1:25001 progresso=131/1280
+[   0.014] RECEBIDO bloco=314 origem=127.0.0.1:25002 progresso=132/1280
+[   0.014] RECEBIDO bloco=549 origem=127.0.0.1:25001 progresso=133/1280
+[   0.014] RECEBIDO bloco=92 origem=127.0.0.1:25002 progresso=134/1280
+[   0.014] RECEBIDO bloco=557 origem=127.0.0.1:25001 progresso=135/1280
+[   0.014] RECEBIDO bloco=1263 origem=127.0.0.1:25002 progresso=136/1280
+[   0.014] RECEBIDO bloco=619 origem=127.0.0.1:25001 progresso=137/1280
+[   0.015] RECEBIDO bloco=378 origem=127.0.0.1:25002 progresso=138/1280
+[   0.015] RECEBIDO bloco=732 origem=127.0.0.1:25001 progresso=139/1280
+[   0.015] RECEBIDO bloco=542 origem=127.0.0.1:25002 progresso=140/1280
+[   0.015] RECEBIDO bloco=324 origem=127.0.0.1:25002 progresso=141/1280
+[   0.015] RECEBIDO bloco=65 origem=127.0.0.1:25001 progresso=142/1280
+[   0.015] RECEBIDO bloco=257 origem=127.0.0.1:25002 progresso=143/1280
+[   0.015] RECEBIDO bloco=670 origem=127.0.0.1:25001 progresso=144/1280
+[   0.015] RECEBIDO bloco=122 origem=127.0.0.1:25002 progresso=145/1280
+[   0.015] RECEBIDO bloco=926 origem=127.0.0.1:25001 progresso=146/1280
+[   0.015] RECEBIDO bloco=555 origem=127.0.0.1:25002 progresso=147/1280
+[   0.015] RECEBIDO bloco=1038 origem=127.0.0.1:25001 progresso=148/1280
+[   0.015] RECEBIDO bloco=710 origem=127.0.0.1:25002 progresso=149/1280
+[   0.015] RECEBIDO bloco=636 origem=127.0.0.1:25001 progresso=150/1280
+[   0.015] RECEBIDO bloco=216 origem=127.0.0.1:25002 progresso=151/1280
+[   0.015] RECEBIDO bloco=779 origem=127.0.0.1:25001 progresso=152/1280
+[   0.015] RECEBIDO bloco=1165 origem=127.0.0.1:25002 progresso=153/1280
+[   0.016] RECEBIDO bloco=1232 origem=127.0.0.1:25001 progresso=154/1280
+[   0.016] RECEBIDO bloco=1028 origem=127.0.0.1:25002 progresso=155/1280
+[   0.016] RECEBIDO bloco=218 origem=127.0.0.1:25001 progresso=156/1280
+[   0.016] RECEBIDO bloco=511 origem=127.0.0.1:25002 progresso=157/1280
+[   0.016] RECEBIDO bloco=263 origem=127.0.0.1:25001 progresso=158/1280
+[   0.016] RECEBIDO bloco=748 origem=127.0.0.1:25002 progresso=159/1280
+[   0.016] RECEBIDO bloco=1118 origem=127.0.0.1:25001 progresso=160/1280
+[   0.016] RECEBIDO bloco=592 origem=127.0.0.1:25002 progresso=161/1280
+[   0.016] RECEBIDO bloco=628 origem=127.0.0.1:25001 progresso=162/1280
+[   0.016] RECEBIDO bloco=70 origem=127.0.0.1:25002 progresso=163/1280
+[   0.016] RECEBIDO bloco=674 origem=127.0.0.1:25001 progresso=164/1280
+[   0.016] RECEBIDO bloco=294 origem=127.0.0.1:25002 progresso=165/1280
+[   0.016] RECEBIDO bloco=886 origem=127.0.0.1:25001 progresso=166/1280
+[   0.016] RECEBIDO bloco=675 origem=127.0.0.1:25002 progresso=167/1280
+[   0.016] RECEBIDO bloco=994 origem=127.0.0.1:25001 progresso=168/1280
+[   0.017] RECEBIDO bloco=308 origem=127.0.0.1:25002 progresso=169/1280
+[   0.017] RECEBIDO bloco=596 origem=127.0.0.1:25001 progresso=170/1280
+[   0.017] RECEBIDO bloco=246 origem=127.0.0.1:25002 progresso=171/1280
+[   0.017] RECEBIDO bloco=142 origem=127.0.0.1:25001 progresso=172/1280
+[   0.017] RECEBIDO bloco=467 origem=127.0.0.1:25002 progresso=173/1280
+[   0.017] RECEBIDO bloco=194 origem=127.0.0.1:25001 progresso=174/1280
+[   0.017] RECEBIDO bloco=1063 origem=127.0.0.1:25002 progresso=175/1280
+[   0.017] RECEBIDO bloco=745 origem=127.0.0.1:25001 progresso=176/1280
+[   0.017] RECEBIDO bloco=316 origem=127.0.0.1:25002 progresso=177/1280
+[   0.017] RECEBIDO bloco=366 origem=127.0.0.1:25001 progresso=178/1280
+[   0.017] RECEBIDO bloco=156 origem=127.0.0.1:25001 progresso=179/1280
+[   0.017] RECEBIDO bloco=714 origem=127.0.0.1:25002 progresso=180/1280
+[   0.017] RECEBIDO bloco=957 origem=127.0.0.1:25001 progresso=181/1280
+[   0.017] RECEBIDO bloco=814 origem=127.0.0.1:25002 progresso=182/1280
+[   0.018] RECEBIDO bloco=1220 origem=127.0.0.1:25001 progresso=183/1280
+[   0.018] RECEBIDO bloco=699 origem=127.0.0.1:25002 progresso=184/1280
+[   0.018] RECEBIDO bloco=463 origem=127.0.0.1:25002 progresso=185/1280
+[   0.018] RECEBIDO bloco=1204 origem=127.0.0.1:25001 progresso=186/1280
+[   0.018] RECEBIDO bloco=941 origem=127.0.0.1:25002 progresso=187/1280
+[   0.018] RECEBIDO bloco=610 origem=127.0.0.1:25001 progresso=188/1280
+[   0.018] RECEBIDO bloco=78 origem=127.0.0.1:25001 progresso=189/1280
+[   0.018] RECEBIDO bloco=637 origem=127.0.0.1:25002 progresso=190/1280
+[   0.018] RECEBIDO bloco=856 origem=127.0.0.1:25001 progresso=191/1280
+[   0.018] RECEBIDO bloco=293 origem=127.0.0.1:25002 progresso=192/1280
+[   0.018] RECEBIDO bloco=855 origem=127.0.0.1:25001 progresso=193/1280
+[   0.018] RECEBIDO bloco=339 origem=127.0.0.1:25002 progresso=194/1280
+[   0.018] RECEBIDO bloco=840 origem=127.0.0.1:25002 progresso=195/1280
+[   0.018] RECEBIDO bloco=110 origem=127.0.0.1:25001 progresso=196/1280
+[   0.019] RECEBIDO bloco=74 origem=127.0.0.1:25002 progresso=197/1280
+[   0.019] RECEBIDO bloco=929 origem=127.0.0.1:25001 progresso=198/1280
+[   0.019] RECEBIDO bloco=1187 origem=127.0.0.1:25002 progresso=199/1280
+[   0.019] RECEBIDO bloco=1188 origem=127.0.0.1:25001 progresso=200/1280
+[   0.019] RECEBIDO bloco=1264 origem=127.0.0.1:25002 progresso=201/1280
+[   0.019] RECEBIDO bloco=99 origem=127.0.0.1:25001 progresso=202/1280
+[   0.019] RECEBIDO bloco=937 origem=127.0.0.1:25002 progresso=203/1280
+[   0.019] RECEBIDO bloco=292 origem=127.0.0.1:25001 progresso=204/1280
+[   0.019] RECEBIDO bloco=1007 origem=127.0.0.1:25002 progresso=205/1280
+[   0.019] RECEBIDO bloco=529 origem=127.0.0.1:25001 progresso=206/1280
+[   0.019] RECEBIDO bloco=175 origem=127.0.0.1:25002 progresso=207/1280
+[   0.019] RECEBIDO bloco=593 origem=127.0.0.1:25001 progresso=208/1280
+[   0.020] RECEBIDO bloco=1046 origem=127.0.0.1:25001 progresso=209/1280
+[   0.020] RECEBIDO bloco=229 origem=127.0.0.1:25002 progresso=210/1280
+[   0.020] RECEBIDO bloco=774 origem=127.0.0.1:25001 progresso=211/1280
+[   0.020] RECEBIDO bloco=404 origem=127.0.0.1:25002 progresso=212/1280
+[   0.020] RECEBIDO bloco=613 origem=127.0.0.1:25001 progresso=213/1280
+[   0.020] RECEBIDO bloco=420 origem=127.0.0.1:25001 progresso=214/1280
+[   0.020] RECEBIDO bloco=569 origem=127.0.0.1:25002 progresso=215/1280
+[   0.020] RECEBIDO bloco=976 origem=127.0.0.1:25001 progresso=216/1280
+[   0.020] RECEBIDO bloco=1157 origem=127.0.0.1:25001 progresso=217/1280
+[   0.020] RECEBIDO bloco=493 origem=127.0.0.1:25002 progresso=218/1280
+[   0.020] RECEBIDO bloco=1074 origem=127.0.0.1:25001 progresso=219/1280
+[   0.020] RECEBIDO bloco=615 origem=127.0.0.1:25002 progresso=220/1280
+[   0.020] RECEBIDO bloco=1265 origem=127.0.0.1:25001 progresso=221/1280
+[   0.021] RECEBIDO bloco=36 origem=127.0.0.1:25002 progresso=222/1280
+[   0.021] RECEBIDO bloco=1248 origem=127.0.0.1:25001 progresso=223/1280
+[   0.021] RECEBIDO bloco=1276 origem=127.0.0.1:25001 progresso=224/1280
+[   0.021] RECEBIDO bloco=434 origem=127.0.0.1:25002 progresso=225/1280
+[   0.021] RECEBIDO bloco=746 origem=127.0.0.1:25001 progresso=226/1280
+[   0.021] RECEBIDO bloco=545 origem=127.0.0.1:25002 progresso=227/1280
+[   0.021] RECEBIDO bloco=953 origem=127.0.0.1:25001 progresso=228/1280
+[   0.021] RECEBIDO bloco=1103 origem=127.0.0.1:25002 progresso=229/1280
+[   0.021] RECEBIDO bloco=997 origem=127.0.0.1:25001 progresso=230/1280
+[   0.021] RECEBIDO bloco=852 origem=127.0.0.1:25002 progresso=231/1280
+[   0.021] RECEBIDO bloco=138 origem=127.0.0.1:25001 progresso=232/1280
+[   0.021] RECEBIDO bloco=755 origem=127.0.0.1:25002 progresso=233/1280
+[   0.021] RECEBIDO bloco=863 origem=127.0.0.1:25001 progresso=234/1280
+[   0.021] RECEBIDO bloco=451 origem=127.0.0.1:25002 progresso=235/1280
+[   0.021] RECEBIDO bloco=974 origem=127.0.0.1:25001 progresso=236/1280
+[   0.022] RECEBIDO bloco=236 origem=127.0.0.1:25002 progresso=237/1280
+[   0.022] RECEBIDO bloco=464 origem=127.0.0.1:25001 progresso=238/1280
+[   0.022] RECEBIDO bloco=95 origem=127.0.0.1:25002 progresso=239/1280
+[   0.022] RECEBIDO bloco=1236 origem=127.0.0.1:25001 progresso=240/1280
+[   0.022] RECEBIDO bloco=299 origem=127.0.0.1:25002 progresso=241/1280
+[   0.022] RECEBIDO bloco=46 origem=127.0.0.1:25001 progresso=242/1280
+[   0.022] RECEBIDO bloco=158 origem=127.0.0.1:25001 progresso=243/1280
+[   0.022] RECEBIDO bloco=1122 origem=127.0.0.1:25002 progresso=244/1280
+[   0.022] RECEBIDO bloco=1174 origem=127.0.0.1:25001 progresso=245/1280
+[   0.022] RECEBIDO bloco=616 origem=127.0.0.1:25002 progresso=246/1280
+[   0.022] RECEBIDO bloco=1025 origem=127.0.0.1:25001 progresso=247/1280
+[   0.022] RECEBIDO bloco=1042 origem=127.0.0.1:25002 progresso=248/1280
+[   0.022] RECEBIDO bloco=1184 origem=127.0.0.1:25001 progresso=249/1280
+[   0.022] RECEBIDO bloco=706 origem=127.0.0.1:25002 progresso=250/1280
+[   0.022] RECEBIDO bloco=808 origem=127.0.0.1:25001 progresso=251/1280
+[   0.022] RECEBIDO bloco=656 origem=127.0.0.1:25002 progresso=252/1280
+[   0.023] RECEBIDO bloco=1209 origem=127.0.0.1:25001 progresso=253/1280
+[   0.023] RECEBIDO bloco=1167 origem=127.0.0.1:25002 progresso=254/1280
+[   0.023] RECEBIDO bloco=313 origem=127.0.0.1:25001 progresso=255/1280
+[   0.023] RECEBIDO bloco=1119 origem=127.0.0.1:25002 progresso=256/1280
+[   0.023] RECEBIDO bloco=825 origem=127.0.0.1:25001 progresso=257/1280
+[   0.023] RECEBIDO bloco=1049 origem=127.0.0.1:25002 progresso=258/1280
+[   0.023] RECEBIDO bloco=986 origem=127.0.0.1:25001 progresso=259/1280
+[   0.023] RECEBIDO bloco=944 origem=127.0.0.1:25002 progresso=260/1280
+[   0.023] RECEBIDO bloco=563 origem=127.0.0.1:25001 progresso=261/1280
+[   0.023] RECEBIDO bloco=336 origem=127.0.0.1:25002 progresso=262/1280
+[   0.023] RECEBIDO bloco=370 origem=127.0.0.1:25001 progresso=263/1280
+[   0.023] RECEBIDO bloco=509 origem=127.0.0.1:25002 progresso=264/1280
+[   0.023] RECEBIDO bloco=285 origem=127.0.0.1:25001 progresso=265/1280
+[   0.023] RECEBIDO bloco=995 origem=127.0.0.1:25002 progresso=266/1280
+[   0.023] RECEBIDO bloco=55 origem=127.0.0.1:25002 progresso=267/1280
+[   0.024] RECEBIDO bloco=439 origem=127.0.0.1:25001 progresso=268/1280
+[   0.024] RECEBIDO bloco=35 origem=127.0.0.1:25002 progresso=269/1280
+[   0.024] RECEBIDO bloco=899 origem=127.0.0.1:25001 progresso=270/1280
+[   0.024] RECEBIDO bloco=318 origem=127.0.0.1:25002 progresso=271/1280
+[   0.024] RECEBIDO bloco=165 origem=127.0.0.1:25001 progresso=272/1280
+[   0.024] RECEBIDO bloco=759 origem=127.0.0.1:25002 progresso=273/1280
+[   0.024] RECEBIDO bloco=1084 origem=127.0.0.1:25001 progresso=274/1280
+[   0.024] RECEBIDO bloco=471 origem=127.0.0.1:25002 progresso=275/1280
+[   0.024] RECEBIDO bloco=470 origem=127.0.0.1:25001 progresso=276/1280
+[   0.024] RECEBIDO bloco=526 origem=127.0.0.1:25002 progresso=277/1280
+[   0.024] RECEBIDO bloco=413 origem=127.0.0.1:25001 progresso=278/1280
+[   0.024] RECEBIDO bloco=149 origem=127.0.0.1:25002 progresso=279/1280
+[   0.024] RECEBIDO bloco=1267 origem=127.0.0.1:25001 progresso=280/1280
+[   0.024] RECEBIDO bloco=1090 origem=127.0.0.1:25002 progresso=281/1280
+[   0.024] RECEBIDO bloco=980 origem=127.0.0.1:25001 progresso=282/1280
+[   0.025] RECEBIDO bloco=1072 origem=127.0.0.1:25002 progresso=283/1280
+[   0.025] RECEBIDO bloco=578 origem=127.0.0.1:25001 progresso=284/1280
+[   0.025] RECEBIDO bloco=834 origem=127.0.0.1:25002 progresso=285/1280
+[   0.025] RECEBIDO bloco=780 origem=127.0.0.1:25001 progresso=286/1280
+[   0.025] RECEBIDO bloco=1279 origem=127.0.0.1:25002 progresso=287/1280
+[   0.025] RECEBIDO bloco=861 origem=127.0.0.1:25001 progresso=288/1280
+[   0.025] RECEBIDO bloco=1202 origem=127.0.0.1:25002 progresso=289/1280
+[   0.025] RECEBIDO bloco=264 origem=127.0.0.1:25001 progresso=290/1280
+[   0.025] RECEBIDO bloco=570 origem=127.0.0.1:25002 progresso=291/1280
+[   0.025] RECEBIDO bloco=605 origem=127.0.0.1:25001 progresso=292/1280
+[   0.025] RECEBIDO bloco=335 origem=127.0.0.1:25002 progresso=293/1280
+[   0.025] RECEBIDO bloco=379 origem=127.0.0.1:25001 progresso=294/1280
+[   0.025] RECEBIDO bloco=1044 origem=127.0.0.1:25001 progresso=295/1280
+[   0.025] RECEBIDO bloco=29 origem=127.0.0.1:25002 progresso=296/1280
+[   0.025] RECEBIDO bloco=1076 origem=127.0.0.1:25001 progresso=297/1280
+[   0.025] RECEBIDO bloco=250 origem=127.0.0.1:25002 progresso=298/1280
+[   0.026] RECEBIDO bloco=1154 origem=127.0.0.1:25001 progresso=299/1280
+[   0.026] RECEBIDO bloco=239 origem=127.0.0.1:25002 progresso=300/1280
+[   0.026] RECEBIDO bloco=389 origem=127.0.0.1:25001 progresso=301/1280
+[   0.026] RECEBIDO bloco=364 origem=127.0.0.1:25002 progresso=302/1280
+[   0.026] RECEBIDO bloco=838 origem=127.0.0.1:25001 progresso=303/1280
+[   0.026] RECEBIDO bloco=1255 origem=127.0.0.1:25002 progresso=304/1280
+[   0.026] RECEBIDO bloco=1035 origem=127.0.0.1:25001 progresso=305/1280
+[   0.026] RECEBIDO bloco=1160 origem=127.0.0.1:25002 progresso=306/1280
+[   0.026] RECEBIDO bloco=762 origem=127.0.0.1:25001 progresso=307/1280
+[   0.026] RECEBIDO bloco=765 origem=127.0.0.1:25002 progresso=308/1280
+[   0.026] RECEBIDO bloco=777 origem=127.0.0.1:25001 progresso=309/1280
+[   0.026] RECEBIDO bloco=802 origem=127.0.0.1:25002 progresso=310/1280
+[   0.026] RECEBIDO bloco=141 origem=127.0.0.1:25001 progresso=311/1280
+[   0.026] RECEBIDO bloco=1247 origem=127.0.0.1:25002 progresso=312/1280
+[   0.026] RECEBIDO bloco=629 origem=127.0.0.1:25001 progresso=313/1280
+[   0.026] RECEBIDO bloco=62 origem=127.0.0.1:25002 progresso=314/1280
+[   0.027] RECEBIDO bloco=668 origem=127.0.0.1:25001 progresso=315/1280
+[   0.027] RECEBIDO bloco=255 origem=127.0.0.1:25002 progresso=316/1280
+[   0.027] RECEBIDO bloco=1075 origem=127.0.0.1:25001 progresso=317/1280
+[   0.027] RECEBIDO bloco=1256 origem=127.0.0.1:25001 progresso=318/1280
+[   0.027] RECEBIDO bloco=969 origem=127.0.0.1:25002 progresso=319/1280
+[   0.027] RECEBIDO bloco=662 origem=127.0.0.1:25001 progresso=320/1280
+[   0.027] RECEBIDO bloco=298 origem=127.0.0.1:25002 progresso=321/1280
+[   0.027] RECEBIDO bloco=469 origem=127.0.0.1:25001 progresso=322/1280
+[   0.027] RECEBIDO bloco=632 origem=127.0.0.1:25002 progresso=323/1280
+[   0.027] RECEBIDO bloco=1009 origem=127.0.0.1:25001 progresso=324/1280
+[   0.027] RECEBIDO bloco=332 origem=127.0.0.1:25002 progresso=325/1280
+[   0.027] RECEBIDO bloco=279 origem=127.0.0.1:25001 progresso=326/1280
+[   0.027] RECEBIDO bloco=740 origem=127.0.0.1:25002 progresso=327/1280
+[   0.027] RECEBIDO bloco=729 origem=127.0.0.1:25001 progresso=328/1280
+[   0.027] RECEBIDO bloco=408 origem=127.0.0.1:25002 progresso=329/1280
+[   0.027] RECEBIDO bloco=964 origem=127.0.0.1:25001 progresso=330/1280
+[   0.027] RECEBIDO bloco=798 origem=127.0.0.1:25002 progresso=331/1280
+[   0.028] RECEBIDO bloco=154 origem=127.0.0.1:25001 progresso=332/1280
+[   0.028] RECEBIDO bloco=1242 origem=127.0.0.1:25002 progresso=333/1280
+[   0.028] RECEBIDO bloco=329 origem=127.0.0.1:25001 progresso=334/1280
+[   0.028] RECEBIDO bloco=789 origem=127.0.0.1:25002 progresso=335/1280
+[   0.028] RECEBIDO bloco=44 origem=127.0.0.1:25001 progresso=336/1280
+[   0.028] RECEBIDO bloco=960 origem=127.0.0.1:25002 progresso=337/1280
+[   0.028] RECEBIDO bloco=253 origem=127.0.0.1:25001 progresso=338/1280
+[   0.028] RECEBIDO bloco=114 origem=127.0.0.1:25002 progresso=339/1280
+[   0.028] RECEBIDO bloco=1192 origem=127.0.0.1:25001 progresso=340/1280
+[   0.028] RECEBIDO bloco=89 origem=127.0.0.1:25002 progresso=341/1280
+[   0.028] RECEBIDO bloco=224 origem=127.0.0.1:25001 progresso=342/1280
+[   0.028] RECEBIDO bloco=1105 origem=127.0.0.1:25002 progresso=343/1280
+[   0.028] RECEBIDO bloco=1137 origem=127.0.0.1:25001 progresso=344/1280
+[   0.028] RECEBIDO bloco=1078 origem=127.0.0.1:25002 progresso=345/1280
+[   0.028] RECEBIDO bloco=497 origem=127.0.0.1:25001 progresso=346/1280
+[   0.028] RECEBIDO bloco=925 origem=127.0.0.1:25002 progresso=347/1280
+[   0.029] RECEBIDO bloco=230 origem=127.0.0.1:25001 progresso=348/1280
+[   0.029] RECEBIDO bloco=872 origem=127.0.0.1:25002 progresso=349/1280
+[   0.029] RECEBIDO bloco=1155 origem=127.0.0.1:25001 progresso=350/1280
+[   0.029] RECEBIDO bloco=936 origem=127.0.0.1:25002 progresso=351/1280
+[   0.029] RECEBIDO bloco=120 origem=127.0.0.1:25001 progresso=352/1280
+[   0.029] RECEBIDO bloco=864 origem=127.0.0.1:25002 progresso=353/1280
+[   0.029] RECEBIDO bloco=842 origem=127.0.0.1:25001 progresso=354/1280
+[   0.029] RECEBIDO bloco=265 origem=127.0.0.1:25002 progresso=355/1280
+[   0.029] RECEBIDO bloco=219 origem=127.0.0.1:25001 progresso=356/1280
+[   0.029] RECEBIDO bloco=252 origem=127.0.0.1:25002 progresso=357/1280
+[   0.029] RECEBIDO bloco=75 origem=127.0.0.1:25001 progresso=358/1280
+[   0.029] RECEBIDO bloco=816 origem=127.0.0.1:25002 progresso=359/1280
+[   0.029] RECEBIDO bloco=182 origem=127.0.0.1:25001 progresso=360/1280
+[   0.029] RECEBIDO bloco=791 origem=127.0.0.1:25002 progresso=361/1280
+[   0.029] RECEBIDO bloco=782 origem=127.0.0.1:25001 progresso=362/1280
+[   0.030] RECEBIDO bloco=231 origem=127.0.0.1:25002 progresso=363/1280
+[   0.030] RECEBIDO bloco=554 origem=127.0.0.1:25001 progresso=364/1280
+[   0.030] RECEBIDO bloco=275 origem=127.0.0.1:25002 progresso=365/1280
+[   0.030] RECEBIDO bloco=1108 origem=127.0.0.1:25001 progresso=366/1280
+[   0.030] RECEBIDO bloco=383 origem=127.0.0.1:25002 progresso=367/1280
+[   0.030] RECEBIDO bloco=622 origem=127.0.0.1:25001 progresso=368/1280
+[   0.030] RECEBIDO bloco=697 origem=127.0.0.1:25002 progresso=369/1280
+[   0.030] RECEBIDO bloco=601 origem=127.0.0.1:25001 progresso=370/1280
+[   0.030] RECEBIDO bloco=726 origem=127.0.0.1:25002 progresso=371/1280
+[   0.030] RECEBIDO bloco=200 origem=127.0.0.1:25001 progresso=372/1280
+[   0.030] RECEBIDO bloco=881 origem=127.0.0.1:25002 progresso=373/1280
+[   0.030] RECEBIDO bloco=1123 origem=127.0.0.1:25001 progresso=374/1280
+[   0.030] RECEBIDO bloco=753 origem=127.0.0.1:25002 progresso=375/1280
+[   0.030] RECEBIDO bloco=809 origem=127.0.0.1:25001 progresso=376/1280
+[   0.031] RECEBIDO bloco=829 origem=127.0.0.1:25002 progresso=377/1280
+[   0.031] RECEBIDO bloco=103 origem=127.0.0.1:25001 progresso=378/1280
+[   0.031] RECEBIDO bloco=889 origem=127.0.0.1:25002 progresso=379/1280
+[   0.031] RECEBIDO bloco=844 origem=127.0.0.1:25001 progresso=380/1280
+[   0.031] RECEBIDO bloco=412 origem=127.0.0.1:25002 progresso=381/1280
+[   0.031] RECEBIDO bloco=835 origem=127.0.0.1:25001 progresso=382/1280
+[   0.031] RECEBIDO bloco=337 origem=127.0.0.1:25002 progresso=383/1280
+[   0.031] RECEBIDO bloco=414 origem=127.0.0.1:25001 progresso=384/1280
+[   0.031] RECEBIDO bloco=551 origem=127.0.0.1:25002 progresso=385/1280
+[   0.031] RECEBIDO bloco=993 origem=127.0.0.1:25001 progresso=386/1280
+[   0.031] RECEBIDO bloco=60 origem=127.0.0.1:25002 progresso=387/1280
+[   0.031] RECEBIDO bloco=658 origem=127.0.0.1:25001 progresso=388/1280
+[   0.031] RECEBIDO bloco=484 origem=127.0.0.1:25002 progresso=389/1280
+[   0.031] RECEBIDO bloco=1 origem=127.0.0.1:25002 progresso=390/1280
+[   0.031] RECEBIDO bloco=2 origem=127.0.0.1:25001 progresso=391/1280
+[   0.032] RECEBIDO bloco=450 origem=127.0.0.1:25002 progresso=392/1280
+[   0.032] RECEBIDO bloco=666 origem=127.0.0.1:25001 progresso=393/1280
+[   0.032] RECEBIDO bloco=623 origem=127.0.0.1:25002 progresso=394/1280
+[   0.032] RECEBIDO bloco=712 origem=127.0.0.1:25001 progresso=395/1280
+[   0.032] RECEBIDO bloco=474 origem=127.0.0.1:25002 progresso=396/1280
+[   0.032] RECEBIDO bloco=634 origem=127.0.0.1:25001 progresso=397/1280
+[   0.032] RECEBIDO bloco=164 origem=127.0.0.1:25002 progresso=398/1280
+[   0.032] RECEBIDO bloco=54 origem=127.0.0.1:25002 progresso=399/1280
+[   0.032] RECEBIDO bloco=354 origem=127.0.0.1:25001 progresso=400/1280
+[   0.032] RECEBIDO bloco=137 origem=127.0.0.1:25002 progresso=401/1280
+[   0.032] RECEBIDO bloco=646 origem=127.0.0.1:25001 progresso=402/1280
+[   0.032] RECEBIDO bloco=47 origem=127.0.0.1:25002 progresso=403/1280
+[   0.032] RECEBIDO bloco=222 origem=127.0.0.1:25001 progresso=404/1280
+[   0.032] RECEBIDO bloco=660 origem=127.0.0.1:25002 progresso=405/1280
+[   0.032] RECEBIDO bloco=701 origem=127.0.0.1:25001 progresso=406/1280
+[   0.032] RECEBIDO bloco=468 origem=127.0.0.1:25002 progresso=407/1280
+[   0.033] RECEBIDO bloco=73 origem=127.0.0.1:25002 progresso=408/1280
+[   0.033] RECEBIDO bloco=806 origem=127.0.0.1:25001 progresso=409/1280
+[   0.033] RECEBIDO bloco=871 origem=127.0.0.1:25002 progresso=410/1280
+[   0.033] RECEBIDO bloco=152 origem=127.0.0.1:25001 progresso=411/1280
+[   0.033] RECEBIDO bloco=104 origem=127.0.0.1:25002 progresso=412/1280
+[   0.033] RECEBIDO bloco=1169 origem=127.0.0.1:25001 progresso=413/1280
+[   0.033] RECEBIDO bloco=1259 origem=127.0.0.1:25002 progresso=414/1280
+[   0.033] RECEBIDO bloco=805 origem=127.0.0.1:25001 progresso=415/1280
+[   0.033] RECEBIDO bloco=1266 origem=127.0.0.1:25002 progresso=416/1280
+[   0.033] RECEBIDO bloco=244 origem=127.0.0.1:25001 progresso=417/1280
+[   0.033] RECEBIDO bloco=576 origem=127.0.0.1:25002 progresso=418/1280
+[   0.033] RECEBIDO bloco=323 origem=127.0.0.1:25001 progresso=419/1280
+[   0.033] RECEBIDO bloco=41 origem=127.0.0.1:25002 progresso=420/1280
+[   0.033] RECEBIDO bloco=441 origem=127.0.0.1:25002 progresso=421/1280
+[   0.033] RECEBIDO bloco=819 origem=127.0.0.1:25001 progresso=422/1280
+[   0.033] RECEBIDO bloco=586 origem=127.0.0.1:25002 progresso=423/1280
+[   0.033] RECEBIDO bloco=435 origem=127.0.0.1:25001 progresso=424/1280
+[   0.033] RECEBIDO bloco=866 origem=127.0.0.1:25002 progresso=425/1280
+[   0.034] RECEBIDO bloco=1048 origem=127.0.0.1:25002 progresso=426/1280
+[   0.034] RECEBIDO bloco=1206 origem=127.0.0.1:25001 progresso=427/1280
+[   0.034] RECEBIDO bloco=1106 origem=127.0.0.1:25002 progresso=428/1280
+[   0.034] RECEBIDO bloco=198 origem=127.0.0.1:25001 progresso=429/1280
+[   0.034] RECEBIDO bloco=128 origem=127.0.0.1:25002 progresso=430/1280
+[   0.034] RECEBIDO bloco=45 origem=127.0.0.1:25002 progresso=431/1280
+[   0.034] RECEBIDO bloco=1104 origem=127.0.0.1:25001 progresso=432/1280
+[   0.034] RECEBIDO bloco=728 origem=127.0.0.1:25002 progresso=433/1280
+[   0.034] RECEBIDO bloco=481 origem=127.0.0.1:25001 progresso=434/1280
+[   0.034] RECEBIDO bloco=585 origem=127.0.0.1:25002 progresso=435/1280
+[   0.034] RECEBIDO bloco=387 origem=127.0.0.1:25001 progresso=436/1280
+[   0.034] RECEBIDO bloco=1162 origem=127.0.0.1:25002 progresso=437/1280
+[   0.034] RECEBIDO bloco=1182 origem=127.0.0.1:25001 progresso=438/1280
+[   0.034] RECEBIDO bloco=418 origem=127.0.0.1:25002 progresso=439/1280
+[   0.034] RECEBIDO bloco=1146 origem=127.0.0.1:25001 progresso=440/1280
+[   0.034] RECEBIDO bloco=4 origem=127.0.0.1:25002 progresso=441/1280
+[   0.034] RECEBIDO bloco=427 origem=127.0.0.1:25001 progresso=442/1280
+[   0.034] RECEBIDO bloco=248 origem=127.0.0.1:25002 progresso=443/1280
+[   0.035] RECEBIDO bloco=909 origem=127.0.0.1:25002 progresso=444/1280
+[   0.035] RECEBIDO bloco=490 origem=127.0.0.1:25001 progresso=445/1280
+[   0.035] RECEBIDO bloco=583 origem=127.0.0.1:25002 progresso=446/1280
+[   0.035] RECEBIDO bloco=982 origem=127.0.0.1:25001 progresso=447/1280
+[   0.035] RECEBIDO bloco=766 origem=127.0.0.1:25002 progresso=448/1280
+[   0.035] RECEBIDO bloco=71 origem=127.0.0.1:25001 progresso=449/1280
+[   0.035] RECEBIDO bloco=883 origem=127.0.0.1:25002 progresso=450/1280
+[   0.035] RECEBIDO bloco=116 origem=127.0.0.1:25001 progresso=451/1280
+[   0.035] RECEBIDO bloco=262 origem=127.0.0.1:25002 progresso=452/1280
+[   0.035] RECEBIDO bloco=235 origem=127.0.0.1:25001 progresso=453/1280
+[   0.035] RECEBIDO bloco=1113 origem=127.0.0.1:25002 progresso=454/1280
+[   0.035] RECEBIDO bloco=905 origem=127.0.0.1:25001 progresso=455/1280
+[   0.035] RECEBIDO bloco=1269 origem=127.0.0.1:25002 progresso=456/1280
+[   0.035] RECEBIDO bloco=548 origem=127.0.0.1:25001 progresso=457/1280
+[   0.035] RECEBIDO bloco=1234 origem=127.0.0.1:25002 progresso=458/1280
+[   0.035] RECEBIDO bloco=210 origem=127.0.0.1:25001 progresso=459/1280
+[   0.035] RECEBIDO bloco=1012 origem=127.0.0.1:25002 progresso=460/1280
+[   0.036] RECEBIDO bloco=510 origem=127.0.0.1:25001 progresso=461/1280
+[   0.036] RECEBIDO bloco=647 origem=127.0.0.1:25002 progresso=462/1280
+[   0.036] RECEBIDO bloco=491 origem=127.0.0.1:25001 progresso=463/1280
+[   0.036] RECEBIDO bloco=1151 origem=127.0.0.1:25002 progresso=464/1280
+[   0.036] RECEBIDO bloco=1142 origem=127.0.0.1:25002 progresso=465/1280
+[   0.036] RECEBIDO bloco=655 origem=127.0.0.1:25001 progresso=466/1280
+[   0.036] RECEBIDO bloco=832 origem=127.0.0.1:25001 progresso=467/1280
+[   0.036] RECEBIDO bloco=188 origem=127.0.0.1:25002 progresso=468/1280
+[   0.036] RECEBIDO bloco=627 origem=127.0.0.1:25002 progresso=469/1280
+[   0.036] RECEBIDO bloco=1133 origem=127.0.0.1:25001 progresso=470/1280
+[   0.036] RECEBIDO bloco=769 origem=127.0.0.1:25002 progresso=471/1280
+[   0.036] RECEBIDO bloco=19 origem=127.0.0.1:25001 progresso=472/1280
+[   0.036] RECEBIDO bloco=23 origem=127.0.0.1:25002 progresso=473/1280
+[   0.036] RECEBIDO bloco=614 origem=127.0.0.1:25001 progresso=474/1280
+[   0.036] RECEBIDO bloco=277 origem=127.0.0.1:25002 progresso=475/1280
+[   0.036] RECEBIDO bloco=190 origem=127.0.0.1:25001 progresso=476/1280
+[   0.036] RECEBIDO bloco=1051 origem=127.0.0.1:25002 progresso=477/1280
+[   0.036] RECEBIDO bloco=3 origem=127.0.0.1:25001 progresso=478/1280
+[   0.036] RECEBIDO bloco=967 origem=127.0.0.1:25002 progresso=479/1280
+[   0.037] RECEBIDO bloco=327 origem=127.0.0.1:25002 progresso=480/1280
+[   0.037] RECEBIDO bloco=626 origem=127.0.0.1:25001 progresso=481/1280
+[   0.037] RECEBIDO bloco=680 origem=127.0.0.1:25002 progresso=482/1280
+[   0.037] RECEBIDO bloco=430 origem=127.0.0.1:25001 progresso=483/1280
+[   0.037] RECEBIDO bloco=575 origem=127.0.0.1:25002 progresso=484/1280
+[   0.037] RECEBIDO bloco=850 origem=127.0.0.1:25001 progresso=485/1280
+[   0.037] RECEBIDO bloco=1098 origem=127.0.0.1:25002 progresso=486/1280
+[   0.037] RECEBIDO bloco=362 origem=127.0.0.1:25001 progresso=487/1280
+[   0.037] RECEBIDO bloco=456 origem=127.0.0.1:25002 progresso=488/1280
+[   0.037] RECEBIDO bloco=87 origem=127.0.0.1:25001 progresso=489/1280
+[   0.037] RECEBIDO bloco=724 origem=127.0.0.1:25001 progresso=490/1280
+[   0.037] RECEBIDO bloco=1254 origem=127.0.0.1:25002 progresso=491/1280
+[   0.037] RECEBIDO bloco=1040 origem=127.0.0.1:25002 progresso=492/1280
+[   0.037] RECEBIDO bloco=1065 origem=127.0.0.1:25001 progresso=493/1280
+[   0.037] RECEBIDO bloco=1107 origem=127.0.0.1:25002 progresso=494/1280
+[   0.037] RECEBIDO bloco=382 origem=127.0.0.1:25001 progresso=495/1280
+[   0.037] RECEBIDO bloco=281 origem=127.0.0.1:25002 progresso=496/1280
+[   0.038] RECEBIDO bloco=1235 origem=127.0.0.1:25001 progresso=497/1280
+[   0.038] RECEBIDO bloco=538 origem=127.0.0.1:25002 progresso=498/1280
+[   0.038] RECEBIDO bloco=537 origem=127.0.0.1:25001 progresso=499/1280
+[   0.038] RECEBIDO bloco=170 origem=127.0.0.1:25002 progresso=500/1280
+[   0.038] RECEBIDO bloco=289 origem=127.0.0.1:25002 progresso=501/1280
+[   0.038] RECEBIDO bloco=492 origem=127.0.0.1:25001 progresso=502/1280
+[   0.038] RECEBIDO bloco=139 origem=127.0.0.1:25002 progresso=503/1280
+[   0.038] RECEBIDO bloco=988 origem=127.0.0.1:25001 progresso=504/1280
+[   0.038] RECEBIDO bloco=1091 origem=127.0.0.1:25002 progresso=505/1280
+[   0.038] RECEBIDO bloco=31 origem=127.0.0.1:25002 progresso=506/1280
+[   0.038] RECEBIDO bloco=1138 origem=127.0.0.1:25001 progresso=507/1280
+[   0.038] RECEBIDO bloco=232 origem=127.0.0.1:25001 progresso=508/1280
+[   0.038] RECEBIDO bloco=131 origem=127.0.0.1:25002 progresso=509/1280
+[   0.038] RECEBIDO bloco=213 origem=127.0.0.1:25002 progresso=510/1280
+[   0.038] RECEBIDO bloco=168 origem=127.0.0.1:25001 progresso=511/1280
+[   0.038] RECEBIDO bloco=1223 origem=127.0.0.1:25002 progresso=512/1280
+[   0.038] RECEBIDO bloco=896 origem=127.0.0.1:25001 progresso=513/1280
+[   0.039] RECEBIDO bloco=234 origem=127.0.0.1:25002 progresso=514/1280
+[   0.039] RECEBIDO bloco=540 origem=127.0.0.1:25002 progresso=515/1280
+[   0.039] RECEBIDO bloco=82 origem=127.0.0.1:25001 progresso=516/1280
+[   0.039] RECEBIDO bloco=1195 origem=127.0.0.1:25002 progresso=517/1280
+[   0.039] RECEBIDO bloco=1014 origem=127.0.0.1:25001 progresso=518/1280
+[   0.039] RECEBIDO bloco=1008 origem=127.0.0.1:25002 progresso=519/1280
+[   0.039] RECEBIDO bloco=30 origem=127.0.0.1:25001 progresso=520/1280
+[   0.039] RECEBIDO bloco=1251 origem=127.0.0.1:25002 progresso=521/1280
+[   0.039] RECEBIDO bloco=823 origem=127.0.0.1:25001 progresso=522/1280
+[   0.039] RECEBIDO bloco=326 origem=127.0.0.1:25002 progresso=523/1280
+[   0.039] RECEBIDO bloco=429 origem=127.0.0.1:25001 progresso=524/1280
+[   0.039] RECEBIDO bloco=109 origem=127.0.0.1:25002 progresso=525/1280
+[   0.039] RECEBIDO bloco=266 origem=127.0.0.1:25001 progresso=526/1280
+[   0.039] RECEBIDO bloco=166 origem=127.0.0.1:25002 progresso=527/1280
+[   0.039] RECEBIDO bloco=694 origem=127.0.0.1:25002 progresso=528/1280
+[   0.039] RECEBIDO bloco=607 origem=127.0.0.1:25001 progresso=529/1280
+[   0.039] RECEBIDO bloco=1061 origem=127.0.0.1:25002 progresso=530/1280
+[   0.039] RECEBIDO bloco=159 origem=127.0.0.1:25001 progresso=531/1280
+[   0.040] RECEBIDO bloco=803 origem=127.0.0.1:25002 progresso=532/1280
+[   0.040] RECEBIDO bloco=1136 origem=127.0.0.1:25001 progresso=533/1280
+[   0.040] RECEBIDO bloco=319 origem=127.0.0.1:25002 progresso=534/1280
+[   0.040] RECEBIDO bloco=1152 origem=127.0.0.1:25002 progresso=535/1280
+[   0.040] RECEBIDO bloco=1124 origem=127.0.0.1:25001 progresso=536/1280
+[   0.040] RECEBIDO bloco=989 origem=127.0.0.1:25002 progresso=537/1280
+[   0.040] RECEBIDO bloco=849 origem=127.0.0.1:25001 progresso=538/1280
+[   0.040] RECEBIDO bloco=954 origem=127.0.0.1:25002 progresso=539/1280
+[   0.040] RECEBIDO bloco=38 origem=127.0.0.1:25001 progresso=540/1280
+[   0.040] RECEBIDO bloco=947 origem=127.0.0.1:25002 progresso=541/1280
+[   0.040] RECEBIDO bloco=962 origem=127.0.0.1:25001 progresso=542/1280
+[   0.040] RECEBIDO bloco=678 origem=127.0.0.1:25002 progresso=543/1280
+[   0.040] RECEBIDO bloco=401 origem=127.0.0.1:25001 progresso=544/1280
+[   0.040] RECEBIDO bloco=1068 origem=127.0.0.1:25002 progresso=545/1280
+[   0.040] RECEBIDO bloco=1274 origem=127.0.0.1:25001 progresso=546/1280
+[   0.040] RECEBIDO bloco=919 origem=127.0.0.1:25002 progresso=547/1280
+[   0.040] RECEBIDO bloco=113 origem=127.0.0.1:25002 progresso=548/1280
+[   0.040] RECEBIDO bloco=1161 origem=127.0.0.1:25001 progresso=549/1280
+[   0.041] RECEBIDO bloco=657 origem=127.0.0.1:25002 progresso=550/1280
+[   0.041] RECEBIDO bloco=18 origem=127.0.0.1:25001 progresso=551/1280
+[   0.041] RECEBIDO bloco=888 origem=127.0.0.1:25002 progresso=552/1280
+[   0.041] RECEBIDO bloco=251 origem=127.0.0.1:25001 progresso=553/1280
+[   0.041] RECEBIDO bloco=1230 origem=127.0.0.1:25002 progresso=554/1280
+[   0.041] RECEBIDO bloco=913 origem=127.0.0.1:25001 progresso=555/1280
+[   0.041] RECEBIDO bloco=514 origem=127.0.0.1:25002 progresso=556/1280
+[   0.041] RECEBIDO bloco=274 origem=127.0.0.1:25002 progresso=557/1280
+[   0.041] RECEBIDO bloco=917 origem=127.0.0.1:25001 progresso=558/1280
+[   0.041] RECEBIDO bloco=1031 origem=127.0.0.1:25002 progresso=559/1280
+[   0.041] RECEBIDO bloco=735 origem=127.0.0.1:25001 progresso=560/1280
+[   0.041] RECEBIDO bloco=679 origem=127.0.0.1:25002 progresso=561/1280
+[   0.041] RECEBIDO bloco=374 origem=127.0.0.1:25002 progresso=562/1280
+[   0.041] RECEBIDO bloco=685 origem=127.0.0.1:25001 progresso=563/1280
+[   0.041] RECEBIDO bloco=276 origem=127.0.0.1:25002 progresso=564/1280
+[   0.041] RECEBIDO bloco=860 origem=127.0.0.1:25001 progresso=565/1280
+[   0.041] RECEBIDO bloco=1221 origem=127.0.0.1:25002 progresso=566/1280
+[   0.042] RECEBIDO bloco=242 origem=127.0.0.1:25002 progresso=567/1280
+[   0.042] RECEBIDO bloco=539 origem=127.0.0.1:25001 progresso=568/1280
+[   0.042] RECEBIDO bloco=405 origem=127.0.0.1:25002 progresso=569/1280
+[   0.042] RECEBIDO bloco=768 origem=127.0.0.1:25001 progresso=570/1280
+[   0.042] RECEBIDO bloco=367 origem=127.0.0.1:25002 progresso=571/1280
+[   0.042] RECEBIDO bloco=396 origem=127.0.0.1:25001 progresso=572/1280
+[   0.042] RECEBIDO bloco=687 origem=127.0.0.1:25002 progresso=573/1280
+[   0.042] RECEBIDO bloco=300 origem=127.0.0.1:25002 progresso=574/1280
+[   0.042] RECEBIDO bloco=1047 origem=127.0.0.1:25001 progresso=575/1280
+[   0.042] RECEBIDO bloco=310 origem=127.0.0.1:25002 progresso=576/1280
+[   0.042] RECEBIDO bloco=72 origem=127.0.0.1:25001 progresso=577/1280
+[   0.042] RECEBIDO bloco=117 origem=127.0.0.1:25002 progresso=578/1280
+[   0.042] RECEBIDO bloco=688 origem=127.0.0.1:25002 progresso=579/1280
+[   0.042] RECEBIDO bloco=1201 origem=127.0.0.1:25001 progresso=580/1280
+[   0.043] RECEBIDO bloco=996 origem=127.0.0.1:25002 progresso=581/1280
+[   0.043] RECEBIDO bloco=1180 origem=127.0.0.1:25001 progresso=582/1280
+[   0.043] RECEBIDO bloco=700 origem=127.0.0.1:25002 progresso=583/1280
+[   0.043] RECEBIDO bloco=61 origem=127.0.0.1:25002 progresso=584/1280
+[   0.043] RECEBIDO bloco=63 origem=127.0.0.1:25001 progresso=585/1280
+[   0.043] RECEBIDO bloco=249 origem=127.0.0.1:25002 progresso=586/1280
+[   0.043] RECEBIDO bloco=256 origem=127.0.0.1:25001 progresso=587/1280
+[   0.043] RECEBIDO bloco=1275 origem=127.0.0.1:25002 progresso=588/1280
+[   0.043] RECEBIDO bloco=1158 origem=127.0.0.1:25001 progresso=589/1280
+[   0.043] RECEBIDO bloco=778 origem=127.0.0.1:25002 progresso=590/1280
+[   0.043] RECEBIDO bloco=483 origem=127.0.0.1:25002 progresso=591/1280
+[   0.043] RECEBIDO bloco=1088 origem=127.0.0.1:25001 progresso=592/1280
+[   0.043] RECEBIDO bloco=543 origem=127.0.0.1:25002 progresso=593/1280
+[   0.043] RECEBIDO bloco=34 origem=127.0.0.1:25001 progresso=594/1280
+[   0.043] RECEBIDO bloco=943 origem=127.0.0.1:25002 progresso=595/1280
+[   0.043] RECEBIDO bloco=192 origem=127.0.0.1:25001 progresso=596/1280
+[   0.043] RECEBIDO bloco=736 origem=127.0.0.1:25002 progresso=597/1280
+[   0.044] RECEBIDO bloco=415 origem=127.0.0.1:25002 progresso=598/1280
+[   0.044] RECEBIDO bloco=84 origem=127.0.0.1:25001 progresso=599/1280
+[   0.044] RECEBIDO bloco=1193 origem=127.0.0.1:25002 progresso=600/1280
+[   0.044] RECEBIDO bloco=411 origem=127.0.0.1:25001 progresso=601/1280
+[   0.044] RECEBIDO bloco=1017 origem=127.0.0.1:25002 progresso=602/1280
+[   0.044] RECEBIDO bloco=799 origem=127.0.0.1:25002 progresso=603/1280
+[   0.044] RECEBIDO bloco=1097 origem=127.0.0.1:25001 progresso=604/1280
+[   0.044] RECEBIDO bloco=9 origem=127.0.0.1:25002 progresso=605/1280
+[   0.044] RECEBIDO bloco=698 origem=127.0.0.1:25001 progresso=606/1280
+[   0.044] RECEBIDO bloco=1153 origem=127.0.0.1:25002 progresso=607/1280
+[   0.044] RECEBIDO bloco=338 origem=127.0.0.1:25002 progresso=608/1280
+[   0.044] RECEBIDO bloco=1140 origem=127.0.0.1:25001 progresso=609/1280
+[   0.044] RECEBIDO bloco=157 origem=127.0.0.1:25002 progresso=610/1280
+[   0.044] RECEBIDO bloco=167 origem=127.0.0.1:25001 progresso=611/1280
+[   0.044] RECEBIDO bloco=1148 origem=127.0.0.1:25002 progresso=612/1280
+[   0.044] RECEBIDO bloco=445 origem=127.0.0.1:25001 progresso=613/1280
+[   0.044] RECEBIDO bloco=1173 origem=127.0.0.1:25002 progresso=614/1280
+[   0.045] RECEBIDO bloco=1121 origem=127.0.0.1:25002 progresso=615/1280
+[   0.045] RECEBIDO bloco=1166 origem=127.0.0.1:25001 progresso=616/1280
+[   0.045] RECEBIDO bloco=1194 origem=127.0.0.1:25002 progresso=617/1280
+[   0.045] RECEBIDO bloco=730 origem=127.0.0.1:25001 progresso=618/1280
+[   0.045] RECEBIDO bloco=350 origem=127.0.0.1:25002 progresso=619/1280
+[   0.045] RECEBIDO bloco=533 origem=127.0.0.1:25002 progresso=620/1280
+[   0.045] RECEBIDO bloco=561 origem=127.0.0.1:25001 progresso=621/1280
+[   0.045] RECEBIDO bloco=459 origem=127.0.0.1:25002 progresso=622/1280
+[   0.045] RECEBIDO bloco=970 origem=127.0.0.1:25001 progresso=623/1280
+[   0.045] RECEBIDO bloco=425 origem=127.0.0.1:25002 progresso=624/1280
+[   0.045] RECEBIDO bloco=528 origem=127.0.0.1:25002 progresso=625/1280
+[   0.045] RECEBIDO bloco=1004 origem=127.0.0.1:25001 progresso=626/1280
+[   0.045] RECEBIDO bloco=447 origem=127.0.0.1:25002 progresso=627/1280
+[   0.045] RECEBIDO bloco=1129 origem=127.0.0.1:25001 progresso=628/1280
+[   0.045] RECEBIDO bloco=804 origem=127.0.0.1:25002 progresso=629/1280
+[   0.045] RECEBIDO bloco=520 origem=127.0.0.1:25001 progresso=630/1280
+[   0.045] RECEBIDO bloco=788 origem=127.0.0.1:25002 progresso=631/1280
+[   0.046] RECEBIDO bloco=169 origem=127.0.0.1:25002 progresso=632/1280
+[   0.046] RECEBIDO bloco=711 origem=127.0.0.1:25001 progresso=633/1280
+[   0.046] RECEBIDO bloco=1001 origem=127.0.0.1:25002 progresso=634/1280
+[   0.046] RECEBIDO bloco=206 origem=127.0.0.1:25002 progresso=635/1280
+[   0.046] RECEBIDO bloco=633 origem=127.0.0.1:25001 progresso=636/1280
+[   0.046] RECEBIDO bloco=1080 origem=127.0.0.1:25002 progresso=637/1280
+[   0.046] RECEBIDO bloco=485 origem=127.0.0.1:25001 progresso=638/1280
+[   0.046] RECEBIDO bloco=875 origem=127.0.0.1:25002 progresso=639/1280
+[   0.046] RECEBIDO bloco=93 origem=127.0.0.1:25002 progresso=640/1280
+[   0.046] RECEBIDO bloco=786 origem=127.0.0.1:25001 progresso=641/1280
+[   0.046] RECEBIDO bloco=828 origem=127.0.0.1:25002 progresso=642/1280
+[   0.046] RECEBIDO bloco=895 origem=127.0.0.1:25001 progresso=643/1280
+[   0.046] RECEBIDO bloco=910 origem=127.0.0.1:25002 progresso=644/1280
+[   0.046] RECEBIDO bloco=1277 origem=127.0.0.1:25002 progresso=645/1280
+[   0.046] RECEBIDO bloco=500 origem=127.0.0.1:25001 progresso=646/1280
+[   0.046] RECEBIDO bloco=1110 origem=127.0.0.1:25002 progresso=647/1280
+[   0.047] RECEBIDO bloco=1026 origem=127.0.0.1:25001 progresso=648/1280
+[   0.047] RECEBIDO bloco=725 origem=127.0.0.1:25002 progresso=649/1280
+[   0.047] RECEBIDO bloco=397 origem=127.0.0.1:25002 progresso=650/1280
+[   0.047] RECEBIDO bloco=207 origem=127.0.0.1:25001 progresso=651/1280
+[   0.047] RECEBIDO bloco=930 origem=127.0.0.1:25002 progresso=652/1280
+[   0.047] RECEBIDO bloco=282 origem=127.0.0.1:25001 progresso=653/1280
+[   0.047] RECEBIDO bloco=39 origem=127.0.0.1:25002 progresso=654/1280
+[   0.047] RECEBIDO bloco=233 origem=127.0.0.1:25001 progresso=655/1280
+[   0.047] RECEBIDO bloco=1135 origem=127.0.0.1:25002 progresso=656/1280
+[   0.047] RECEBIDO bloco=932 origem=127.0.0.1:25001 progresso=657/1280
+[   0.047] RECEBIDO bloco=873 origem=127.0.0.1:25002 progresso=658/1280
+[   0.047] RECEBIDO bloco=388 origem=127.0.0.1:25001 progresso=659/1280
+[   0.047] RECEBIDO bloco=482 origem=127.0.0.1:25001 progresso=660/1280
+[   0.047] RECEBIDO bloco=631 origem=127.0.0.1:25002 progresso=661/1280
+[   0.047] RECEBIDO bloco=501 origem=127.0.0.1:25001 progresso=662/1280
+[   0.047] RECEBIDO bloco=1176 origem=127.0.0.1:25002 progresso=663/1280
+[   0.048] RECEBIDO bloco=718 origem=127.0.0.1:25001 progresso=664/1280
+[   0.048] RECEBIDO bloco=475 origem=127.0.0.1:25002 progresso=665/1280
+[   0.048] RECEBIDO bloco=321 origem=127.0.0.1:25001 progresso=666/1280
+[   0.048] RECEBIDO bloco=956 origem=127.0.0.1:25002 progresso=667/1280
+[   0.048] RECEBIDO bloco=1239 origem=127.0.0.1:25001 progresso=668/1280
+[   0.048] RECEBIDO bloco=96 origem=127.0.0.1:25001 progresso=669/1280
+[   0.048] RECEBIDO bloco=283 origem=127.0.0.1:25002 progresso=670/1280
+[   0.048] RECEBIDO bloco=783 origem=127.0.0.1:25001 progresso=671/1280
+[   0.048] RECEBIDO bloco=26 origem=127.0.0.1:25002 progresso=672/1280
+[   0.048] RECEBIDO bloco=857 origem=127.0.0.1:25001 progresso=673/1280
+[   0.048] RECEBIDO bloco=639 origem=127.0.0.1:25002 progresso=674/1280
+[   0.048] RECEBIDO bloco=64 origem=127.0.0.1:25001 progresso=675/1280
+[   0.048] RECEBIDO bloco=848 origem=127.0.0.1:25002 progresso=676/1280
+[   0.048] RECEBIDO bloco=705 origem=127.0.0.1:25001 progresso=677/1280
+[   0.048] RECEBIDO bloco=359 origem=127.0.0.1:25002 progresso=678/1280
+[   0.048] RECEBIDO bloco=356 origem=127.0.0.1:25001 progresso=679/1280
+[   0.049] RECEBIDO bloco=284 origem=127.0.0.1:25002 progresso=680/1280
+[   0.049] RECEBIDO bloco=32 origem=127.0.0.1:25001 progresso=681/1280
+[   0.049] RECEBIDO bloco=1073 origem=127.0.0.1:25002 progresso=682/1280
+[   0.049] RECEBIDO bloco=567 origem=127.0.0.1:25001 progresso=683/1280
+[   0.049] RECEBIDO bloco=1006 origem=127.0.0.1:25002 progresso=684/1280
+[   0.049] RECEBIDO bloco=1224 origem=127.0.0.1:25001 progresso=685/1280
+[   0.049] RECEBIDO bloco=580 origem=127.0.0.1:25002 progresso=686/1280
+[   0.049] RECEBIDO bloco=1253 origem=127.0.0.1:25001 progresso=687/1280
+[   0.049] RECEBIDO bloco=181 origem=127.0.0.1:25001 progresso=688/1280
+[   0.049] RECEBIDO bloco=1179 origem=127.0.0.1:25002 progresso=689/1280
+[   0.049] RECEBIDO bloco=146 origem=127.0.0.1:25001 progresso=690/1280
+[   0.049] RECEBIDO bloco=973 origem=127.0.0.1:25002 progresso=691/1280
+[   0.049] RECEBIDO bloco=1190 origem=127.0.0.1:25001 progresso=692/1280
+[   0.049] RECEBIDO bloco=787 origem=127.0.0.1:25002 progresso=693/1280
+[   0.049] RECEBIDO bloco=11 origem=127.0.0.1:25001 progresso=694/1280
+[   0.049] RECEBIDO bloco=990 origem=127.0.0.1:25002 progresso=695/1280
+[   0.049] RECEBIDO bloco=665 origem=127.0.0.1:25001 progresso=696/1280
+[   0.050] RECEBIDO bloco=105 origem=127.0.0.1:25002 progresso=697/1280
+[   0.050] RECEBIDO bloco=951 origem=127.0.0.1:25001 progresso=698/1280
+[   0.050] RECEBIDO bloco=315 origem=127.0.0.1:25001 progresso=699/1280
+[   0.050] RECEBIDO bloco=28 origem=127.0.0.1:25002 progresso=700/1280
+[   0.050] RECEBIDO bloco=704 origem=127.0.0.1:25001 progresso=701/1280
+[   0.050] RECEBIDO bloco=1217 origem=127.0.0.1:25002 progresso=702/1280
+[   0.050] RECEBIDO bloco=723 origem=127.0.0.1:25001 progresso=703/1280
+[   0.050] RECEBIDO bloco=349 origem=127.0.0.1:25002 progresso=704/1280
+[   0.050] RECEBIDO bloco=143 origem=127.0.0.1:25001 progresso=705/1280
+[   0.050] RECEBIDO bloco=477 origem=127.0.0.1:25002 progresso=706/1280
+[   0.050] RECEBIDO bloco=544 origem=127.0.0.1:25001 progresso=707/1280
+[   0.050] RECEBIDO bloco=1260 origem=127.0.0.1:25001 progresso=708/1280
+[   0.050] RECEBIDO bloco=611 origem=127.0.0.1:25002 progresso=709/1280
+[   0.050] RECEBIDO bloco=1207 origem=127.0.0.1:25001 progresso=710/1280
+[   0.050] RECEBIDO bloco=566 origem=127.0.0.1:25002 progresso=711/1280
+[   0.050] RECEBIDO bloco=385 origem=127.0.0.1:25001 progresso=712/1280
+[   0.051] RECEBIDO bloco=347 origem=127.0.0.1:25002 progresso=713/1280
+[   0.051] RECEBIDO bloco=85 origem=127.0.0.1:25001 progresso=714/1280
+[   0.051] RECEBIDO bloco=1066 origem=127.0.0.1:25002 progresso=715/1280
+[   0.051] RECEBIDO bloco=322 origem=127.0.0.1:25001 progresso=716/1280
+[   0.051] RECEBIDO bloco=1071 origem=127.0.0.1:25002 progresso=717/1280
+[   0.051] RECEBIDO bloco=590 origem=127.0.0.1:25001 progresso=718/1280
+[   0.051] RECEBIDO bloco=1134 origem=127.0.0.1:25002 progresso=719/1280
+[   0.051] RECEBIDO bloco=121 origem=127.0.0.1:25001 progresso=720/1280
+[   0.051] RECEBIDO bloco=496 origem=127.0.0.1:25001 progresso=721/1280
+[   0.051] RECEBIDO bloco=1238 origem=127.0.0.1:25002 progresso=722/1280
+[   0.051] RECEBIDO bloco=365 origem=127.0.0.1:25001 progresso=723/1280
+[   0.051] RECEBIDO bloco=1126 origem=127.0.0.1:25002 progresso=724/1280
+[   0.051] RECEBIDO bloco=946 origem=127.0.0.1:25001 progresso=725/1280
+[   0.051] RECEBIDO bloco=1050 origem=127.0.0.1:25002 progresso=726/1280
+[   0.051] RECEBIDO bloco=163 origem=127.0.0.1:25001 progresso=727/1280
+[   0.051] RECEBIDO bloco=738 origem=127.0.0.1:25001 progresso=728/1280
+[   0.051] RECEBIDO bloco=209 origem=127.0.0.1:25002 progresso=729/1280
+[   0.052] RECEBIDO bloco=981 origem=127.0.0.1:25001 progresso=730/1280
+[   0.052] RECEBIDO bloco=1099 origem=127.0.0.1:25002 progresso=731/1280
+[   0.052] RECEBIDO bloco=822 origem=127.0.0.1:25001 progresso=732/1280
+[   0.052] RECEBIDO bloco=690 origem=127.0.0.1:25002 progresso=733/1280
+[   0.052] RECEBIDO bloco=756 origem=127.0.0.1:25001 progresso=734/1280
+[   0.052] RECEBIDO bloco=1211 origem=127.0.0.1:25002 progresso=735/1280
+[   0.052] RECEBIDO bloco=1112 origem=127.0.0.1:25001 progresso=736/1280
+[   0.052] RECEBIDO bloco=204 origem=127.0.0.1:25001 progresso=737/1280
+[   0.052] RECEBIDO bloco=564 origem=127.0.0.1:25002 progresso=738/1280
+[   0.052] RECEBIDO bloco=1164 origem=127.0.0.1:25001 progresso=739/1280
+[   0.052] RECEBIDO bloco=1228 origem=127.0.0.1:25002 progresso=740/1280
+[   0.052] RECEBIDO bloco=184 origem=127.0.0.1:25001 progresso=741/1280
+[   0.052] RECEBIDO bloco=189 origem=127.0.0.1:25002 progresso=742/1280
+[   0.052] RECEBIDO bloco=191 origem=127.0.0.1:25001 progresso=743/1280
+[   0.052] RECEBIDO bloco=577 origem=127.0.0.1:25001 progresso=744/1280
+[   0.052] RECEBIDO bloco=228 origem=127.0.0.1:25002 progresso=745/1280
+[   0.053] RECEBIDO bloco=1053 origem=127.0.0.1:25002 progresso=746/1280
+[   0.053] RECEBIDO bloco=1020 origem=127.0.0.1:25001 progresso=747/1280
+[   0.053] RECEBIDO bloco=304 origem=127.0.0.1:25002 progresso=748/1280
+[   0.053] RECEBIDO bloco=827 origem=127.0.0.1:25001 progresso=749/1280
+[   0.053] RECEBIDO bloco=448 origem=127.0.0.1:25001 progresso=750/1280
+[   0.053] RECEBIDO bloco=108 origem=127.0.0.1:25002 progresso=751/1280
+[   0.053] RECEBIDO bloco=1064 origem=127.0.0.1:25001 progresso=752/1280
+[   0.053] RECEBIDO bloco=311 origem=127.0.0.1:25002 progresso=753/1280
+[   0.053] RECEBIDO bloco=268 origem=127.0.0.1:25001 progresso=754/1280
+[   0.053] RECEBIDO bloco=879 origem=127.0.0.1:25002 progresso=755/1280
+[   0.053] RECEBIDO bloco=422 origem=127.0.0.1:25001 progresso=756/1280
+[   0.053] RECEBIDO bloco=737 origem=127.0.0.1:25001 progresso=757/1280
+[   0.053] RECEBIDO bloco=106 origem=127.0.0.1:25002 progresso=758/1280
+[   0.053] RECEBIDO bloco=1237 origem=127.0.0.1:25002 progresso=759/1280
+[   0.053] RECEBIDO bloco=1043 origem=127.0.0.1:25001 progresso=760/1280
+[   0.053] RECEBIDO bloco=91 origem=127.0.0.1:25002 progresso=761/1280
+[   0.053] RECEBIDO bloco=579 origem=127.0.0.1:25001 progresso=762/1280
+[   0.054] RECEBIDO bloco=225 origem=127.0.0.1:25002 progresso=763/1280
+[   0.054] RECEBIDO bloco=129 origem=127.0.0.1:25001 progresso=764/1280
+[   0.054] RECEBIDO bloco=1037 origem=127.0.0.1:25002 progresso=765/1280
+[   0.054] RECEBIDO bloco=1252 origem=127.0.0.1:25001 progresso=766/1280
+[   0.054] RECEBIDO bloco=813 origem=127.0.0.1:25002 progresso=767/1280
+[   0.054] RECEBIDO bloco=301 origem=127.0.0.1:25001 progresso=768/1280
+[   0.054] RECEBIDO bloco=1205 origem=127.0.0.1:25002 progresso=769/1280
+[   0.054] RECEBIDO bloco=421 origem=127.0.0.1:25002 progresso=770/1280
+[   0.054] RECEBIDO bloco=1147 origem=127.0.0.1:25001 progresso=771/1280
+[   0.054] RECEBIDO bloco=1172 origem=127.0.0.1:25002 progresso=772/1280
+[   0.054] RECEBIDO bloco=428 origem=127.0.0.1:25001 progresso=773/1280
+[   0.054] RECEBIDO bloco=507 origem=127.0.0.1:25002 progresso=774/1280
+[   0.054] RECEBIDO bloco=653 origem=127.0.0.1:25001 progresso=775/1280
+[   0.055] RECEBIDO bloco=620 origem=127.0.0.1:25001 progresso=776/1280
+[   0.055] RECEBIDO bloco=751 origem=127.0.0.1:25002 progresso=777/1280
+[   0.055] RECEBIDO bloco=757 origem=127.0.0.1:25001 progresso=778/1280
+[   0.055] RECEBIDO bloco=635 origem=127.0.0.1:25002 progresso=779/1280
+[   0.055] RECEBIDO bloco=1016 origem=127.0.0.1:25002 progresso=780/1280
+[   0.055] RECEBIDO bloco=67 origem=127.0.0.1:25002 progresso=781/1280
+[   0.055] RECEBIDO bloco=811 origem=127.0.0.1:25002 progresso=782/1280
+[   0.055] RECEBIDO bloco=196 origem=127.0.0.1:25002 progresso=783/1280
+[   0.055] RECEBIDO bloco=853 origem=127.0.0.1:25002 progresso=784/1280
+[   0.055] RECEBIDO bloco=959 origem=127.0.0.1:25002 progresso=785/1280
+[   0.056] RECEBIDO bloco=587 origem=127.0.0.1:25002 progresso=786/1280
+[   0.056] RECEBIDO bloco=50 origem=127.0.0.1:25002 progresso=787/1280
+[   0.056] RECEBIDO bloco=150 origem=127.0.0.1:25002 progresso=788/1280
+[   0.056] RECEBIDO bloco=1125 origem=127.0.0.1:25002 progresso=789/1280
+[   0.056] RECEBIDO bloco=734 origem=127.0.0.1:25002 progresso=790/1280
+[   0.056] RECEBIDO bloco=1181 origem=127.0.0.1:25002 progresso=791/1280
+[   0.056] RECEBIDO bloco=402 origem=127.0.0.1:25002 progresso=792/1280
+[   0.056] RECEBIDO bloco=227 origem=127.0.0.1:25002 progresso=793/1280
+[   0.057] RECEBIDO bloco=672 origem=127.0.0.1:25002 progresso=794/1280
+[   0.057] RECEBIDO bloco=640 origem=127.0.0.1:25002 progresso=795/1280
+[   0.057] RECEBIDO bloco=259 origem=127.0.0.1:25002 progresso=796/1280
+[   0.057] RECEBIDO bloco=870 origem=127.0.0.1:25002 progresso=797/1280
+[   0.057] RECEBIDO bloco=948 origem=127.0.0.1:25002 progresso=798/1280
+[   0.057] RECEBIDO bloco=517 origem=127.0.0.1:25002 progresso=799/1280
+[   0.057] RECEBIDO bloco=358 origem=127.0.0.1:25002 progresso=800/1280
+[   0.057] RECEBIDO bloco=16 origem=127.0.0.1:25002 progresso=801/1280
+[   0.058] RECEBIDO bloco=395 origem=127.0.0.1:25002 progresso=802/1280
+[   0.058] RECEBIDO bloco=1250 origem=127.0.0.1:25002 progresso=803/1280
+[   0.058] RECEBIDO bloco=1054 origem=127.0.0.1:25002 progresso=804/1280
+[   0.058] RECEBIDO bloco=458 origem=127.0.0.1:25002 progresso=805/1280
+[   0.058] RECEBIDO bloco=15 origem=127.0.0.1:25002 progresso=806/1280
+[   0.058] RECEBIDO bloco=280 origem=127.0.0.1:25002 progresso=807/1280
+[   0.058] RECEBIDO bloco=793 origem=127.0.0.1:25002 progresso=808/1280
+[   0.058] RECEBIDO bloco=355 origem=127.0.0.1:25002 progresso=809/1280
+[   0.058] RECEBIDO bloco=472 origem=127.0.0.1:25002 progresso=810/1280
+[   0.059] RECEBIDO bloco=940 origem=127.0.0.1:25002 progresso=811/1280
+[   0.059] RECEBIDO bloco=80 origem=127.0.0.1:25002 progresso=812/1280
+[   0.059] RECEBIDO bloco=438 origem=127.0.0.1:25002 progresso=813/1280
+[   0.059] RECEBIDO bloco=1059 origem=127.0.0.1:25002 progresso=814/1280
+[   0.059] RECEBIDO bloco=892 origem=127.0.0.1:25002 progresso=815/1280
+[   0.059] RECEBIDO bloco=535 origem=127.0.0.1:25002 progresso=816/1280
+[   0.059] RECEBIDO bloco=183 origem=127.0.0.1:25002 progresso=817/1280
+[   0.059] RECEBIDO bloco=599 origem=127.0.0.1:25002 progresso=818/1280
+[   0.060] RECEBIDO bloco=1233 origem=127.0.0.1:25002 progresso=819/1280
+[   0.060] RECEBIDO bloco=136 origem=127.0.0.1:25002 progresso=820/1280
+[   0.060] RECEBIDO bloco=650 origem=127.0.0.1:25002 progresso=821/1280
+[   0.060] RECEBIDO bloco=731 origem=127.0.0.1:25002 progresso=822/1280
+[   0.060] RECEBIDO bloco=394 origem=127.0.0.1:25002 progresso=823/1280
+[   0.060] RECEBIDO bloco=820 origem=127.0.0.1:25002 progresso=824/1280
+[   0.060] RECEBIDO bloco=81 origem=127.0.0.1:25002 progresso=825/1280
+[   0.060] RECEBIDO bloco=504 origem=127.0.0.1:25002 progresso=826/1280
+[   0.061] RECEBIDO bloco=102 origem=127.0.0.1:25002 progresso=827/1280
+[   0.061] RECEBIDO bloco=97 origem=127.0.0.1:25002 progresso=828/1280
+[   0.061] RECEBIDO bloco=473 origem=127.0.0.1:25002 progresso=829/1280
+[   0.061] RECEBIDO bloco=498 origem=127.0.0.1:25002 progresso=830/1280
+[   0.061] RECEBIDO bloco=721 origem=127.0.0.1:25002 progresso=831/1280
+[   0.061] RECEBIDO bloco=76 origem=127.0.0.1:25002 progresso=832/1280
+[   0.061] RECEBIDO bloco=1077 origem=127.0.0.1:25002 progresso=833/1280
+[   0.061] RECEBIDO bloco=595 origem=127.0.0.1:25002 progresso=834/1280
+[   0.062] RECEBIDO bloco=979 origem=127.0.0.1:25002 progresso=835/1280
+[   0.062] RECEBIDO bloco=357 origem=127.0.0.1:25002 progresso=836/1280
+[   0.062] RECEBIDO bloco=715 origem=127.0.0.1:25002 progresso=837/1280
+[   0.062] RECEBIDO bloco=1095 origem=127.0.0.1:25002 progresso=838/1280
+[   0.062] RECEBIDO bloco=521 origem=127.0.0.1:25002 progresso=839/1280
+[   0.062] RECEBIDO bloco=530 origem=127.0.0.1:25002 progresso=840/1280
+[   0.062] RECEBIDO bloco=171 origem=127.0.0.1:25002 progresso=841/1280
+[   0.062] RECEBIDO bloco=824 origem=127.0.0.1:25002 progresso=842/1280
+[   0.062] RECEBIDO bloco=884 origem=127.0.0.1:25002 progresso=843/1280
+[   0.063] RECEBIDO bloco=689 origem=127.0.0.1:25002 progresso=844/1280
+[   0.063] RECEBIDO bloco=1079 origem=127.0.0.1:25002 progresso=845/1280
+[   0.063] RECEBIDO bloco=272 origem=127.0.0.1:25002 progresso=846/1280
+[   0.063] RECEBIDO bloco=1130 origem=127.0.0.1:25002 progresso=847/1280
+[   0.063] RECEBIDO bloco=568 origem=127.0.0.1:25002 progresso=848/1280
+[   0.063] RECEBIDO bloco=869 origem=127.0.0.1:25002 progresso=849/1280
+[   0.063] RECEBIDO bloco=317 origem=127.0.0.1:25002 progresso=850/1280
+[   0.063] RECEBIDO bloco=928 origem=127.0.0.1:25002 progresso=851/1280
+[   0.064] RECEBIDO bloco=966 origem=127.0.0.1:25002 progresso=852/1280
+[   0.064] RECEBIDO bloco=1200 origem=127.0.0.1:25002 progresso=853/1280
+[   0.064] RECEBIDO bloco=1177 origem=127.0.0.1:25002 progresso=854/1280
+[   0.064] RECEBIDO bloco=865 origem=127.0.0.1:25002 progresso=855/1280
+[   0.065] RECEBIDO bloco=1246 origem=127.0.0.1:25002 progresso=856/1280
+[   0.065] RECEBIDO bloco=1229 origem=127.0.0.1:25002 progresso=857/1280
+[   0.065] RECEBIDO bloco=287 origem=127.0.0.1:25002 progresso=858/1280
+[   0.065] RECEBIDO bloco=743 origem=127.0.0.1:25002 progresso=859/1280
+[   0.065] RECEBIDO bloco=1218 origem=127.0.0.1:25002 progresso=860/1280
+[   0.065] RECEBIDO bloco=125 origem=127.0.0.1:25002 progresso=861/1280
+[   0.065] RECEBIDO bloco=652 origem=127.0.0.1:25002 progresso=862/1280
+[   0.066] RECEBIDO bloco=785 origem=127.0.0.1:25002 progresso=863/1280
+[   0.066] RECEBIDO bloco=460 origem=127.0.0.1:25002 progresso=864/1280
+[   0.066] RECEBIDO bloco=927 origem=127.0.0.1:25002 progresso=865/1280
+[   0.066] RECEBIDO bloco=330 origem=127.0.0.1:25002 progresso=866/1280
+[   0.066] RECEBIDO bloco=49 origem=127.0.0.1:25002 progresso=867/1280
+[   0.066] RECEBIDO bloco=602 origem=127.0.0.1:25002 progresso=868/1280
+[   0.066] RECEBIDO bloco=380 origem=127.0.0.1:25002 progresso=869/1280
+[   0.066] RECEBIDO bloco=112 origem=127.0.0.1:25002 progresso=870/1280
+[   0.066] RECEBIDO bloco=12 origem=127.0.0.1:25002 progresso=871/1280
+[   0.066] RECEBIDO bloco=887 origem=127.0.0.1:25002 progresso=872/1280
+[   0.067] RECEBIDO bloco=21 origem=127.0.0.1:25002 progresso=873/1280
+[   0.067] RECEBIDO bloco=133 origem=127.0.0.1:25002 progresso=874/1280
+[   0.067] RECEBIDO bloco=963 origem=127.0.0.1:25002 progresso=875/1280
+[   0.067] RECEBIDO bloco=442 origem=127.0.0.1:25002 progresso=876/1280
+[   0.067] RECEBIDO bloco=1033 origem=127.0.0.1:25002 progresso=877/1280
+[   0.067] RECEBIDO bloco=958 origem=127.0.0.1:25002 progresso=878/1280
+[   0.067] RECEBIDO bloco=1159 origem=127.0.0.1:25002 progresso=879/1280
+[   0.067] RECEBIDO bloco=20 origem=127.0.0.1:25002 progresso=880/1280
+[   0.067] RECEBIDO bloco=1216 origem=127.0.0.1:25002 progresso=881/1280
+[   0.067] RECEBIDO bloco=702 origem=127.0.0.1:25002 progresso=882/1280
+[   0.068] RECEBIDO bloco=444 origem=127.0.0.1:25002 progresso=883/1280
+[   0.068] RECEBIDO bloco=552 origem=127.0.0.1:25002 progresso=884/1280
+[   0.068] RECEBIDO bloco=815 origem=127.0.0.1:25002 progresso=885/1280
+[   0.068] RECEBIDO bloco=1056 origem=127.0.0.1:25002 progresso=886/1280
+[   0.068] RECEBIDO bloco=187 origem=127.0.0.1:25002 progresso=887/1280
+[   0.068] RECEBIDO bloco=1141 origem=127.0.0.1:25002 progresso=888/1280
+[   0.068] RECEBIDO bloco=1185 origem=127.0.0.1:25002 progresso=889/1280
+[   0.068] RECEBIDO bloco=750 origem=127.0.0.1:25002 progresso=890/1280
+[   0.068] RECEBIDO bloco=312 origem=127.0.0.1:25002 progresso=891/1280
+[   0.068] RECEBIDO bloco=375 origem=127.0.0.1:25002 progresso=892/1280
+[   0.068] RECEBIDO bloco=659 origem=127.0.0.1:25002 progresso=893/1280
+[   0.069] RECEBIDO bloco=1219 origem=127.0.0.1:25002 progresso=894/1280
+[   0.069] RECEBIDO bloco=907 origem=127.0.0.1:25002 progresso=895/1280
+[   0.069] RECEBIDO bloco=144 origem=127.0.0.1:25002 progresso=896/1280
+[   0.069] RECEBIDO bloco=1015 origem=127.0.0.1:25002 progresso=897/1280
+[   0.069] RECEBIDO bloco=90 origem=127.0.0.1:25002 progresso=898/1280
+[   0.069] RECEBIDO bloco=186 origem=127.0.0.1:25002 progresso=899/1280
+[   0.069] RECEBIDO bloco=894 origem=127.0.0.1:25002 progresso=900/1280
+[   0.069] RECEBIDO bloco=912 origem=127.0.0.1:25002 progresso=901/1280
+[   0.069] RECEBIDO bloco=376 origem=127.0.0.1:25002 progresso=902/1280
+[   0.069] RECEBIDO bloco=682 origem=127.0.0.1:25002 progresso=903/1280
+[   0.070] RECEBIDO bloco=1096 origem=127.0.0.1:25002 progresso=904/1280
+[   0.070] RECEBIDO bloco=1115 origem=127.0.0.1:25002 progresso=905/1280
+[   0.070] RECEBIDO bloco=465 origem=127.0.0.1:25002 progresso=906/1280
+[   0.070] RECEBIDO bloco=241 origem=127.0.0.1:25002 progresso=907/1280
+[   0.070] RECEBIDO bloco=1131 origem=127.0.0.1:25002 progresso=908/1280
+[   0.070] RECEBIDO bloco=1258 origem=127.0.0.1:25002 progresso=909/1280
+[   0.070] RECEBIDO bloco=1102 origem=127.0.0.1:25002 progresso=910/1280
+[   0.070] RECEBIDO bloco=1226 origem=127.0.0.1:25002 progresso=911/1280
+[   0.070] RECEBIDO bloco=880 origem=127.0.0.1:25002 progresso=912/1280
+[   0.070] RECEBIDO bloco=922 origem=127.0.0.1:25002 progresso=913/1280
+[   0.070] RECEBIDO bloco=1197 origem=127.0.0.1:25002 progresso=914/1280
+[   0.071] RECEBIDO bloco=920 origem=127.0.0.1:25002 progresso=915/1280
+[   0.071] RECEBIDO bloco=173 origem=127.0.0.1:25002 progresso=916/1280
+[   0.071] RECEBIDO bloco=1183 origem=127.0.0.1:25002 progresso=917/1280
+[   0.071] RECEBIDO bloco=340 origem=127.0.0.1:25002 progresso=918/1280
+[   0.071] RECEBIDO bloco=269 origem=127.0.0.1:25002 progresso=919/1280
+[   0.071] RECEBIDO bloco=722 origem=127.0.0.1:25002 progresso=920/1280
+[   0.071] RECEBIDO bloco=199 origem=127.0.0.1:25002 progresso=921/1280
+[   0.071] RECEBIDO bloco=749 origem=127.0.0.1:25002 progresso=922/1280
+[   0.071] RECEBIDO bloco=742 origem=127.0.0.1:25002 progresso=923/1280
+[   0.071] RECEBIDO bloco=911 origem=127.0.0.1:25002 progresso=924/1280
+[   0.072] RECEBIDO bloco=773 origem=127.0.0.1:25002 progresso=925/1280
+[   0.072] RECEBIDO bloco=717 origem=127.0.0.1:25002 progresso=926/1280
+[   0.072] RECEBIDO bloco=86 origem=127.0.0.1:25002 progresso=927/1280
+[   0.072] RECEBIDO bloco=877 origem=127.0.0.1:25002 progresso=928/1280
+[   0.072] RECEBIDO bloco=638 origem=127.0.0.1:25002 progresso=929/1280
+[   0.072] RECEBIDO bloco=801 origem=127.0.0.1:25002 progresso=930/1280
+[   0.072] RECEBIDO bloco=817 origem=127.0.0.1:25002 progresso=931/1280
+[   0.072] RECEBIDO bloco=202 origem=127.0.0.1:25002 progresso=932/1280
+[   0.072] RECEBIDO bloco=1186 origem=127.0.0.1:25002 progresso=933/1280
+[   0.072] RECEBIDO bloco=821 origem=127.0.0.1:25002 progresso=934/1280
+[   0.073] RECEBIDO bloco=296 origem=127.0.0.1:25002 progresso=935/1280
+[   0.073] RECEBIDO bloco=1029 origem=127.0.0.1:25002 progresso=936/1280
+[   0.073] RECEBIDO bloco=221 origem=127.0.0.1:25002 progresso=937/1280
+[   0.073] RECEBIDO bloco=1244 origem=127.0.0.1:25002 progresso=938/1280
+[   0.073] RECEBIDO bloco=343 origem=127.0.0.1:25002 progresso=939/1280
+[   0.073] RECEBIDO bloco=162 origem=127.0.0.1:25002 progresso=940/1280
+[   0.073] RECEBIDO bloco=161 origem=127.0.0.1:25002 progresso=941/1280
+[   0.073] RECEBIDO bloco=649 origem=127.0.0.1:25002 progresso=942/1280
+[   0.073] RECEBIDO bloco=591 origem=127.0.0.1:25002 progresso=943/1280
+[   0.073] RECEBIDO bloco=247 origem=127.0.0.1:25002 progresso=944/1280
+[   0.073] RECEBIDO bloco=462 origem=127.0.0.1:25002 progresso=945/1280
+[   0.074] RECEBIDO bloco=915 origem=127.0.0.1:25002 progresso=946/1280
+[   0.074] RECEBIDO bloco=443 origem=127.0.0.1:25002 progresso=947/1280
+[   0.074] RECEBIDO bloco=684 origem=127.0.0.1:25002 progresso=948/1280
+[   0.074] RECEBIDO bloco=174 origem=127.0.0.1:25002 progresso=949/1280
+[   0.074] RECEBIDO bloco=1144 origem=127.0.0.1:25002 progresso=950/1280
+[   0.074] RECEBIDO bloco=515 origem=127.0.0.1:25002 progresso=951/1280
+[   0.074] RECEBIDO bloco=25 origem=127.0.0.1:25002 progresso=952/1280
+[   0.074] RECEBIDO bloco=1240 origem=127.0.0.1:25002 progresso=953/1280
+[   0.074] RECEBIDO bloco=432 origem=127.0.0.1:25002 progresso=954/1280
+[   0.075] RECEBIDO bloco=1168 origem=127.0.0.1:25002 progresso=955/1280
+[   0.075] RECEBIDO bloco=939 origem=127.0.0.1:25002 progresso=956/1280
+[   0.075] RECEBIDO bloco=130 origem=127.0.0.1:25002 progresso=957/1280
+[   0.075] RECEBIDO bloco=645 origem=127.0.0.1:25002 progresso=958/1280
+[   0.075] RECEBIDO bloco=27 origem=127.0.0.1:25002 progresso=959/1280
+[   0.075] RECEBIDO bloco=1257 origem=127.0.0.1:25002 progresso=960/1280
+[   0.075] RECEBIDO bloco=488 origem=127.0.0.1:25002 progresso=961/1280
+[   0.075] RECEBIDO bloco=961 origem=127.0.0.1:25002 progresso=962/1280
+[   0.075] RECEBIDO bloco=868 origem=127.0.0.1:25002 progresso=963/1280
+[   0.075] RECEBIDO bloco=153 origem=127.0.0.1:25002 progresso=964/1280
+[   0.076] RECEBIDO bloco=261 origem=127.0.0.1:25002 progresso=965/1280
+[   0.076] RECEBIDO bloco=377 origem=127.0.0.1:25002 progresso=966/1280
+[   0.076] RECEBIDO bloco=437 origem=127.0.0.1:25002 progresso=967/1280
+[   0.076] RECEBIDO bloco=479 origem=127.0.0.1:25002 progresso=968/1280
+[   0.076] RECEBIDO bloco=764 origem=127.0.0.1:25002 progresso=969/1280
+[   0.076] RECEBIDO bloco=406 origem=127.0.0.1:25002 progresso=970/1280
+[   0.076] RECEBIDO bloco=598 origem=127.0.0.1:25002 progresso=971/1280
+[   0.076] RECEBIDO bloco=1039 origem=127.0.0.1:25002 progresso=972/1280
+[   0.076] RECEBIDO bloco=739 origem=127.0.0.1:25002 progresso=973/1280
+[   0.076] RECEBIDO bloco=642 origem=127.0.0.1:25002 progresso=974/1280
+[   0.077] RECEBIDO bloco=10 origem=127.0.0.1:25002 progresso=975/1280
+[   0.077] RECEBIDO bloco=373 origem=127.0.0.1:25002 progresso=976/1280
+[   0.077] RECEBIDO bloco=1092 origem=127.0.0.1:25002 progresso=977/1280
+[   0.077] RECEBIDO bloco=111 origem=127.0.0.1:25002 progresso=978/1280
+[   0.077] RECEBIDO bloco=399 origem=127.0.0.1:25002 progresso=979/1280
+[   0.077] RECEBIDO bloco=727 origem=127.0.0.1:25002 progresso=980/1280
+[   0.077] RECEBIDO bloco=594 origem=127.0.0.1:25002 progresso=981/1280
+[   0.077] RECEBIDO bloco=512 origem=127.0.0.1:25002 progresso=982/1280
+[   0.077] RECEBIDO bloco=345 origem=127.0.0.1:25002 progresso=983/1280
+[   0.077] RECEBIDO bloco=215 origem=127.0.0.1:25002 progresso=984/1280
+[   0.077] RECEBIDO bloco=1120 origem=127.0.0.1:25002 progresso=985/1280
+[   0.078] RECEBIDO bloco=985 origem=127.0.0.1:25002 progresso=986/1280
+[   0.078] RECEBIDO bloco=487 origem=127.0.0.1:25002 progresso=987/1280
+[   0.078] RECEBIDO bloco=123 origem=127.0.0.1:25002 progresso=988/1280
+[   0.078] RECEBIDO bloco=754 origem=127.0.0.1:25002 progresso=989/1280
+[   0.078] RECEBIDO bloco=519 origem=127.0.0.1:25002 progresso=990/1280
+[   0.078] RECEBIDO bloco=541 origem=127.0.0.1:25002 progresso=991/1280
+[   0.078] RECEBIDO bloco=368 origem=127.0.0.1:25002 progresso=992/1280
+[   0.078] RECEBIDO bloco=547 origem=127.0.0.1:25002 progresso=993/1280
+[   0.078] RECEBIDO bloco=1030 origem=127.0.0.1:25002 progresso=994/1280
+[   0.078] RECEBIDO bloco=208 origem=127.0.0.1:25002 progresso=995/1280
+[   0.079] RECEBIDO bloco=677 origem=127.0.0.1:25002 progresso=996/1280
+[   0.079] RECEBIDO bloco=916 origem=127.0.0.1:25002 progresso=997/1280
+[   0.079] RECEBIDO bloco=386 origem=127.0.0.1:25002 progresso=998/1280
+[   0.079] RECEBIDO bloco=1067 origem=127.0.0.1:25002 progresso=999/1280
+[   0.079] RECEBIDO bloco=193 origem=127.0.0.1:25002 progresso=1000/1280
+[   0.079] RECEBIDO bloco=1215 origem=127.0.0.1:25002 progresso=1001/1280
+[   0.079] RECEBIDO bloco=983 origem=127.0.0.1:25002 progresso=1002/1280
+[   0.079] RECEBIDO bloco=220 origem=127.0.0.1:25002 progresso=1003/1280
+[   0.079] RECEBIDO bloco=991 origem=127.0.0.1:25002 progresso=1004/1280
+[   0.079] RECEBIDO bloco=1055 origem=127.0.0.1:25002 progresso=1005/1280
+[   0.079] RECEBIDO bloco=741 origem=127.0.0.1:25002 progresso=1006/1280
+[   0.080] RECEBIDO bloco=1034 origem=127.0.0.1:25002 progresso=1007/1280
+[   0.080] RECEBIDO bloco=254 origem=127.0.0.1:25002 progresso=1008/1280
+[   0.080] RECEBIDO bloco=854 origem=127.0.0.1:25002 progresso=1009/1280
+[   0.080] RECEBIDO bloco=965 origem=127.0.0.1:25002 progresso=1010/1280
+[   0.080] RECEBIDO bloco=452 origem=127.0.0.1:25002 progresso=1011/1280
+[   0.080] RECEBIDO bloco=664 origem=127.0.0.1:25002 progresso=1012/1280
+[   0.080] RECEBIDO bloco=1163 origem=127.0.0.1:25002 progresso=1013/1280
+[   0.080] RECEBIDO bloco=608 origem=127.0.0.1:25002 progresso=1014/1280
+[   0.080] RECEBIDO bloco=333 origem=127.0.0.1:25002 progresso=1015/1280
+[   0.080] RECEBIDO bloco=140 origem=127.0.0.1:25002 progresso=1016/1280
+[   0.081] RECEBIDO bloco=48 origem=127.0.0.1:25002 progresso=1017/1280
+[   0.081] RECEBIDO bloco=1089 origem=127.0.0.1:25002 progresso=1018/1280
+[   0.081] RECEBIDO bloco=203 origem=127.0.0.1:25002 progresso=1019/1280
+[   0.081] RECEBIDO bloco=1241 origem=127.0.0.1:25002 progresso=1020/1280
+[   0.081] RECEBIDO bloco=904 origem=127.0.0.1:25002 progresso=1021/1280
+[   0.081] RECEBIDO bloco=13 origem=127.0.0.1:25002 progresso=1022/1280
+[   0.081] RECEBIDO bloco=1243 origem=127.0.0.1:25002 progresso=1023/1280
+[   0.081] RECEBIDO bloco=1225 origem=127.0.0.1:25002 progresso=1024/1280
+[   0.082] RECEBIDO bloco=267 origem=127.0.0.1:25002 progresso=1025/1280
+[   0.082] RECEBIDO bloco=933 origem=127.0.0.1:25002 progresso=1026/1280
+[   0.082] RECEBIDO bloco=58 origem=127.0.0.1:25002 progresso=1027/1280
+[   0.082] RECEBIDO bloco=155 origem=127.0.0.1:25002 progresso=1028/1280
+[   0.082] RECEBIDO bloco=172 origem=127.0.0.1:25002 progresso=1029/1280
+[   0.082] RECEBIDO bloco=1109 origem=127.0.0.1:25002 progresso=1030/1280
+[   0.082] RECEBIDO bloco=1273 origem=127.0.0.1:25002 progresso=1031/1280
+[   0.082] RECEBIDO bloco=867 origem=127.0.0.1:25002 progresso=1032/1280
+[   0.082] RECEBIDO bloco=703 origem=127.0.0.1:25002 progresso=1033/1280
+[   0.083] RECEBIDO bloco=290 origem=127.0.0.1:25002 progresso=1034/1280
+[   0.083] RECEBIDO bloco=1085 origem=127.0.0.1:25002 progresso=1035/1280
+[   0.083] RECEBIDO bloco=353 origem=127.0.0.1:25002 progresso=1036/1280
+[   0.083] RECEBIDO bloco=1203 origem=127.0.0.1:25002 progresso=1037/1280
+[   0.083] RECEBIDO bloco=1261 origem=127.0.0.1:25002 progresso=1038/1280
+[   0.083] RECEBIDO bloco=325 origem=127.0.0.1:25002 progresso=1039/1280
+[   0.083] RECEBIDO bloco=581 origem=127.0.0.1:25002 progresso=1040/1280
+[   0.083] RECEBIDO bloco=882 origem=127.0.0.1:25002 progresso=1041/1280
+[   0.083] RECEBIDO bloco=178 origem=127.0.0.1:25002 progresso=1042/1280
+[   0.083] RECEBIDO bloco=1027 origem=127.0.0.1:25002 progresso=1043/1280
+[   0.083] RECEBIDO bloco=1013 origem=127.0.0.1:25002 progresso=1044/1280
+[   0.084] RECEBIDO bloco=476 origem=127.0.0.1:25002 progresso=1045/1280
+[   0.084] RECEBIDO bloco=59 origem=127.0.0.1:25002 progresso=1046/1280
+[   0.084] RECEBIDO bloco=733 origem=127.0.0.1:25002 progresso=1047/1280
+[   0.084] RECEBIDO bloco=767 origem=127.0.0.1:25002 progresso=1048/1280
+[   0.084] RECEBIDO bloco=499 origem=127.0.0.1:25002 progresso=1049/1280
+[   0.084] RECEBIDO bloco=1139 origem=127.0.0.1:25002 progresso=1050/1280
+[   0.084] RECEBIDO bloco=513 origem=127.0.0.1:25002 progresso=1051/1280
+[   0.084] RECEBIDO bloco=532 origem=127.0.0.1:25002 progresso=1052/1280
+[   0.084] RECEBIDO bloco=1081 origem=127.0.0.1:25002 progresso=1053/1280
+[   0.084] RECEBIDO bloco=998 origem=127.0.0.1:25002 progresso=1054/1280
+[   0.085] RECEBIDO bloco=409 origem=127.0.0.1:25002 progresso=1055/1280
+[   0.085] RECEBIDO bloco=205 origem=127.0.0.1:25002 progresso=1056/1280
+[   0.085] RECEBIDO bloco=506 origem=127.0.0.1:25002 progresso=1057/1280
+[   0.085] RECEBIDO bloco=800 origem=127.0.0.1:25002 progresso=1058/1280
+[   0.085] RECEBIDO bloco=1262 origem=127.0.0.1:25002 progresso=1059/1280
+[   0.085] RECEBIDO bloco=351 origem=127.0.0.1:25002 progresso=1060/1280
+[   0.085] RECEBIDO bloco=1128 origem=127.0.0.1:25002 progresso=1061/1280
+[   0.085] RECEBIDO bloco=562 origem=127.0.0.1:25002 progresso=1062/1280
+[   0.085] RECEBIDO bloco=606 origem=127.0.0.1:25002 progresso=1063/1280
+[   0.085] RECEBIDO bloco=127 origem=127.0.0.1:25002 progresso=1064/1280
+[   0.086] RECEBIDO bloco=419 origem=127.0.0.1:25002 progresso=1065/1280
+[   0.086] RECEBIDO bloco=1210 origem=127.0.0.1:25002 progresso=1066/1280
+[   0.086] RECEBIDO bloco=921 origem=127.0.0.1:25002 progresso=1067/1280
+[   0.086] RECEBIDO bloco=17 origem=127.0.0.1:25002 progresso=1068/1280
+[   0.086] RECEBIDO bloco=1178 origem=127.0.0.1:25002 progresso=1069/1280
+[   0.086] RECEBIDO bloco=1036 origem=127.0.0.1:25002 progresso=1070/1280
+[   0.086] RECEBIDO bloco=369 origem=127.0.0.1:25002 progresso=1071/1280
+[   0.086] RECEBIDO bloco=534 origem=127.0.0.1:25002 progresso=1072/1280
+[   0.086] RECEBIDO bloco=77 origem=127.0.0.1:25002 progresso=1073/1280
+[   0.086] RECEBIDO bloco=344 origem=127.0.0.1:25002 progresso=1074/1280
+[   0.086] RECEBIDO bloco=346 origem=127.0.0.1:25002 progresso=1075/1280
+[   0.087] RECEBIDO bloco=550 origem=127.0.0.1:25002 progresso=1076/1280
+[   0.087] RECEBIDO bloco=1272 origem=127.0.0.1:25002 progresso=1077/1280
+[   0.087] RECEBIDO bloco=160 origem=127.0.0.1:25002 progresso=1078/1280
+[   0.087] RECEBIDO bloco=906 origem=127.0.0.1:25002 progresso=1079/1280
+[   0.087] RECEBIDO bloco=984 origem=127.0.0.1:25002 progresso=1080/1280
+[   0.087] RECEBIDO bloco=565 origem=127.0.0.1:25002 progresso=1081/1280
+[   0.087] RECEBIDO bloco=494 origem=127.0.0.1:25002 progresso=1082/1280
+[   0.087] RECEBIDO bloco=624 origem=127.0.0.1:25002 progresso=1083/1280
+[   0.087] RECEBIDO bloco=403 origem=127.0.0.1:25002 progresso=1084/1280
+[   0.087] RECEBIDO bloco=810 origem=127.0.0.1:25002 progresso=1085/1280
+[   0.088] RECEBIDO bloco=1002 origem=127.0.0.1:25002 progresso=1086/1280
+[   0.088] RECEBIDO bloco=342 origem=127.0.0.1:25002 progresso=1087/1280
+[   0.088] RECEBIDO bloco=79 origem=127.0.0.1:25002 progresso=1088/1280
+[   0.088] RECEBIDO bloco=466 origem=127.0.0.1:25002 progresso=1089/1280
+[   0.088] RECEBIDO bloco=560 origem=127.0.0.1:25002 progresso=1090/1280
+[   0.088] RECEBIDO bloco=107 origem=127.0.0.1:25002 progresso=1091/1280
+[   0.088] RECEBIDO bloco=968 origem=127.0.0.1:25002 progresso=1092/1280
+[   0.088] RECEBIDO bloco=260 origem=127.0.0.1:25002 progresso=1093/1280
+[   0.088] RECEBIDO bloco=1278 origem=127.0.0.1:25002 progresso=1094/1280
+[   0.089] RECEBIDO bloco=603 origem=127.0.0.1:25002 progresso=1095/1280
+[   0.089] RECEBIDO bloco=417 origem=127.0.0.1:25002 progresso=1096/1280
+[   0.089] RECEBIDO bloco=331 origem=127.0.0.1:25002 progresso=1097/1280
+[   0.089] RECEBIDO bloco=119 origem=127.0.0.1:25002 progresso=1098/1280
+[   0.089] RECEBIDO bloco=217 origem=127.0.0.1:25002 progresso=1099/1280
+[   0.089] RECEBIDO bloco=303 origem=127.0.0.1:25002 progresso=1100/1280
+[   0.089] RECEBIDO bloco=1249 origem=127.0.0.1:25002 progresso=1101/1280
+[   0.089] RECEBIDO bloco=177 origem=127.0.0.1:25002 progresso=1102/1280
+[   0.089] RECEBIDO bloco=126 origem=127.0.0.1:25002 progresso=1103/1280
+[   0.089] RECEBIDO bloco=508 origem=127.0.0.1:25002 progresso=1104/1280
+[   0.090] RECEBIDO bloco=309 origem=127.0.0.1:25002 progresso=1105/1280
+[   0.090] RECEBIDO bloco=582 origem=127.0.0.1:25002 progresso=1106/1280
+[   0.090] RECEBIDO bloco=1023 origem=127.0.0.1:25002 progresso=1107/1280
+[   0.090] RECEBIDO bloco=1070 origem=127.0.0.1:25002 progresso=1108/1280
+[   0.090] RECEBIDO bloco=708 origem=127.0.0.1:25002 progresso=1109/1280
+[   0.090] RECEBIDO bloco=523 origem=127.0.0.1:25002 progresso=1110/1280
+[   0.090] RECEBIDO bloco=360 origem=127.0.0.1:25002 progresso=1111/1280
+[   0.090] RECEBIDO bloco=1191 origem=127.0.0.1:25002 progresso=1112/1280
+[   0.090] RECEBIDO bloco=1213 origem=127.0.0.1:25002 progresso=1113/1280
+[   0.090] RECEBIDO bloco=1222 origem=127.0.0.1:25002 progresso=1114/1280
+[   0.091] RECEBIDO bloco=709 origem=127.0.0.1:25002 progresso=1115/1280
+[   0.091] RECEBIDO bloco=1083 origem=127.0.0.1:25002 progresso=1116/1280
+[   0.091] RECEBIDO bloco=878 origem=127.0.0.1:25002 progresso=1117/1280
+[   0.091] RECEBIDO bloco=760 origem=127.0.0.1:25002 progresso=1118/1280
+[   0.091] RECEBIDO bloco=371 origem=127.0.0.1:25002 progresso=1119/1280
+[   0.091] RECEBIDO bloco=618 origem=127.0.0.1:25002 progresso=1120/1280
+[   0.091] RECEBIDO bloco=683 origem=127.0.0.1:25002 progresso=1121/1280
+[   0.091] RECEBIDO bloco=1082 origem=127.0.0.1:25002 progresso=1122/1280
+[   0.091] RECEBIDO bloco=295 origem=127.0.0.1:25002 progresso=1123/1280
+[   0.091] RECEBIDO bloco=214 origem=127.0.0.1:25002 progresso=1124/1280
+[   0.091] RECEBIDO bloco=859 origem=127.0.0.1:25002 progresso=1125/1280
+[   0.092] RECEBIDO bloco=1150 origem=127.0.0.1:25002 progresso=1126/1280
+[   0.092] RECEBIDO bloco=352 origem=127.0.0.1:25002 progresso=1127/1280
+[   0.092] RECEBIDO bloco=858 origem=127.0.0.1:25002 progresso=1128/1280
+[   0.092] RECEBIDO bloco=148 origem=127.0.0.1:25002 progresso=1129/1280
+[   0.092] RECEBIDO bloco=553 origem=127.0.0.1:25002 progresso=1130/1280
+[   0.092] RECEBIDO bloco=935 origem=127.0.0.1:25002 progresso=1131/1280
+[   0.092] RECEBIDO bloco=696 origem=127.0.0.1:25002 progresso=1132/1280
+[   0.092] RECEBIDO bloco=431 origem=127.0.0.1:25002 progresso=1133/1280
+[   0.092] RECEBIDO bloco=625 origem=127.0.0.1:25002 progresso=1134/1280
+[   0.092] RECEBIDO bloco=1196 origem=127.0.0.1:25002 progresso=1135/1280
+[   0.092] RECEBIDO bloco=1175 origem=127.0.0.1:25002 progresso=1136/1280
+[   0.093] RECEBIDO bloco=363 origem=127.0.0.1:25002 progresso=1137/1280
+[   0.093] RECEBIDO bloco=1171 origem=127.0.0.1:25002 progresso=1138/1280
+[   0.093] RECEBIDO bloco=758 origem=127.0.0.1:25002 progresso=1139/1280
+[   0.093] RECEBIDO bloco=546 origem=127.0.0.1:25002 progresso=1140/1280
+[   0.093] RECEBIDO bloco=328 origem=127.0.0.1:25002 progresso=1141/1280
+[   0.093] RECEBIDO bloco=900 origem=127.0.0.1:25002 progresso=1142/1280
+[   0.093] RECEBIDO bloco=797 origem=127.0.0.1:25002 progresso=1143/1280
+[   0.093] RECEBIDO bloco=695 origem=127.0.0.1:25002 progresso=1144/1280
+[   0.093] RECEBIDO bloco=830 origem=127.0.0.1:25002 progresso=1145/1280
+[   0.093] RECEBIDO bloco=457 origem=127.0.0.1:25002 progresso=1146/1280
+[   0.094] RECEBIDO bloco=115 origem=127.0.0.1:25002 progresso=1147/1280
+[   0.094] RECEBIDO bloco=1170 origem=127.0.0.1:25002 progresso=1148/1280
+[   0.094] RECEBIDO bloco=440 origem=127.0.0.1:25002 progresso=1149/1280
+[   0.094] RECEBIDO bloco=480 origem=127.0.0.1:25002 progresso=1150/1280
+[   0.094] RECEBIDO bloco=831 origem=127.0.0.1:25002 progresso=1151/1280
+[   0.094] RECEBIDO bloco=597 origem=127.0.0.1:25002 progresso=1152/1280
+[   0.094] RECEBIDO bloco=918 origem=127.0.0.1:25002 progresso=1153/1280
+[   0.094] RECEBIDO bloco=772 origem=127.0.0.1:25002 progresso=1154/1280
+[   0.094] RECEBIDO bloco=794 origem=127.0.0.1:25002 progresso=1155/1280
+[   0.094] RECEBIDO bloco=901 origem=127.0.0.1:25002 progresso=1156/1280
+[   0.094] RECEBIDO bloco=1052 origem=127.0.0.1:25002 progresso=1157/1280
+[   0.095] RECEBIDO bloco=42 origem=127.0.0.1:25002 progresso=1158/1280
+[   0.095] RECEBIDO bloco=1227 origem=127.0.0.1:25002 progresso=1159/1280
+[   0.095] RECEBIDO bloco=890 origem=127.0.0.1:25002 progresso=1160/1280
+[   0.095] RECEBIDO bloco=559 origem=127.0.0.1:25002 progresso=1161/1280
+[   0.095] RECEBIDO bloco=288 origem=127.0.0.1:25002 progresso=1162/1280
+[   0.095] RECEBIDO bloco=33 origem=127.0.0.1:25002 progresso=1163/1280
+[   0.095] RECEBIDO bloco=945 origem=127.0.0.1:25002 progresso=1164/1280
+[   0.095] RECEBIDO bloco=176 origem=127.0.0.1:25002 progresso=1165/1280
+[   0.095] RECEBIDO bloco=6 origem=127.0.0.1:25002 progresso=1166/1280
+[   0.095] RECEBIDO bloco=51 origem=127.0.0.1:25002 progresso=1167/1280
+[   0.096] RECEBIDO bloco=423 origem=127.0.0.1:25002 progresso=1168/1280
+[   0.096] RECEBIDO bloco=1156 origem=127.0.0.1:25002 progresso=1169/1280
+[   0.096] RECEBIDO bloco=663 origem=127.0.0.1:25002 progresso=1170/1280
+[   0.096] RECEBIDO bloco=180 origem=127.0.0.1:25002 progresso=1171/1280
+[   0.096] RECEBIDO bloco=972 origem=127.0.0.1:25002 progresso=1172/1280
+[   0.096] RECEBIDO bloco=286 origem=127.0.0.1:25002 progresso=1173/1280
+[   0.096] RECEBIDO bloco=818 origem=127.0.0.1:25002 progresso=1174/1280
+[   0.096] RECEBIDO bloco=305 origem=127.0.0.1:25002 progresso=1175/1280
+[   0.096] RECEBIDO bloco=836 origem=127.0.0.1:25002 progresso=1176/1280
+[   0.096] RECEBIDO bloco=400 origem=127.0.0.1:25002 progresso=1177/1280
+[   0.096] RECEBIDO bloco=8 origem=127.0.0.1:25002 progresso=1178/1280
+[   0.097] RECEBIDO bloco=43 origem=127.0.0.1:25002 progresso=1179/1280
+[   0.097] RECEBIDO bloco=713 origem=127.0.0.1:25002 progresso=1180/1280
+[   0.097] RECEBIDO bloco=792 origem=127.0.0.1:25002 progresso=1181/1280
+[   0.097] RECEBIDO bloco=5 origem=127.0.0.1:25002 progresso=1182/1280
+[   0.097] RECEBIDO bloco=212 origem=127.0.0.1:25002 progresso=1183/1280
+[   0.097] RECEBIDO bloco=69 origem=127.0.0.1:25002 progresso=1184/1280
+[   0.097] RECEBIDO bloco=931 origem=127.0.0.1:25002 progresso=1185/1280
+[   0.097] RECEBIDO bloco=1132 origem=127.0.0.1:25002 progresso=1186/1280
+[   0.097] RECEBIDO bloco=531 origem=127.0.0.1:25002 progresso=1187/1280
+[   0.097] RECEBIDO bloco=843 origem=127.0.0.1:25002 progresso=1188/1280
+[   0.098] RECEBIDO bloco=955 origem=127.0.0.1:25002 progresso=1189/1280
+[   0.098] RECEBIDO bloco=720 origem=127.0.0.1:25002 progresso=1190/1280
+[   0.098] RECEBIDO bloco=914 origem=127.0.0.1:25002 progresso=1191/1280
+[   0.098] RECEBIDO bloco=503 origem=127.0.0.1:25002 progresso=1192/1280
+[   0.098] RECEBIDO bloco=341 origem=127.0.0.1:25002 progresso=1193/1280
+[   0.098] RECEBIDO bloco=898 origem=127.0.0.1:25002 progresso=1194/1280
+[   0.098] RECEBIDO bloco=1062 origem=127.0.0.1:25002 progresso=1195/1280
+[   0.098] RECEBIDO bloco=245 origem=127.0.0.1:25002 progresso=1196/1280
+[   0.098] RECEBIDO bloco=132 origem=127.0.0.1:25002 progresso=1197/1280
+[   0.098] RECEBIDO bloco=22 origem=127.0.0.1:25002 progresso=1198/1280
+[   0.098] RECEBIDO bloco=692 origem=127.0.0.1:25002 progresso=1199/1280
+[   0.099] RECEBIDO bloco=88 origem=127.0.0.1:25002 progresso=1200/1280
+[   0.099] RECEBIDO bloco=7 origem=127.0.0.1:25002 progresso=1201/1280
+[   0.099] RECEBIDO bloco=436 origem=127.0.0.1:25002 progresso=1202/1280
+[   0.099] RECEBIDO bloco=950 origem=127.0.0.1:25002 progresso=1203/1280
+[   0.099] RECEBIDO bloco=686 origem=127.0.0.1:25002 progresso=1204/1280
+[   0.099] RECEBIDO bloco=676 origem=127.0.0.1:25002 progresso=1205/1280
+[   0.099] RECEBIDO bloco=522 origem=127.0.0.1:25002 progresso=1206/1280
+[   0.099] RECEBIDO bloco=839 origem=127.0.0.1:25002 progresso=1207/1280
+[   0.099] RECEBIDO bloco=489 origem=127.0.0.1:25002 progresso=1208/1280
+[   0.099] RECEBIDO bloco=874 origem=127.0.0.1:25002 progresso=1209/1280
+[   0.100] RECEBIDO bloco=536 origem=127.0.0.1:25002 progresso=1210/1280
+[   0.100] RECEBIDO bloco=410 origem=127.0.0.1:25002 progresso=1211/1280
+[   0.100] RECEBIDO bloco=837 origem=127.0.0.1:25002 progresso=1212/1280
+[   0.100] RECEBIDO bloco=527 origem=127.0.0.1:25002 progresso=1213/1280
+[   0.100] RECEBIDO bloco=1060 origem=127.0.0.1:25002 progresso=1214/1280
+[   0.100] RECEBIDO bloco=14 origem=127.0.0.1:25002 progresso=1215/1280
+[   0.100] RECEBIDO bloco=1212 origem=127.0.0.1:25002 progresso=1216/1280
+[   0.100] RECEBIDO bloco=258 origem=127.0.0.1:25002 progresso=1217/1280
+[   0.100] RECEBIDO bloco=1087 origem=127.0.0.1:25002 progresso=1218/1280
+[   0.100] RECEBIDO bloco=654 origem=127.0.0.1:25002 progresso=1219/1280
+[   0.100] RECEBIDO bloco=812 origem=127.0.0.1:25002 progresso=1220/1280
+[   0.101] RECEBIDO bloco=372 origem=127.0.0.1:25002 progresso=1221/1280
+[   0.101] RECEBIDO bloco=134 origem=127.0.0.1:25002 progresso=1222/1280
+[   0.101] RECEBIDO bloco=1093 origem=127.0.0.1:25002 progresso=1223/1280
+[   0.101] RECEBIDO bloco=1024 origem=127.0.0.1:25002 progresso=1224/1280
+[   0.101] RECEBIDO bloco=118 origem=127.0.0.1:25002 progresso=1225/1280
+[   0.101] RECEBIDO bloco=297 origem=127.0.0.1:25002 progresso=1226/1280
+[   0.101] RECEBIDO bloco=1270 origem=127.0.0.1:25002 progresso=1227/1280
+[   0.101] RECEBIDO bloco=56 origem=127.0.0.1:25002 progresso=1228/1280
+[   0.101] RECEBIDO bloco=1018 origem=127.0.0.1:25002 progresso=1229/1280
+[   0.101] RECEBIDO bloco=179 origem=127.0.0.1:25002 progresso=1230/1280
+[   0.101] RECEBIDO bloco=673 origem=127.0.0.1:25002 progresso=1231/1280
+[   0.102] RECEBIDO bloco=771 origem=127.0.0.1:25002 progresso=1232/1280
+[   0.102] RECEBIDO bloco=453 origem=127.0.0.1:25002 progresso=1233/1280
+[   0.102] RECEBIDO bloco=98 origem=127.0.0.1:25002 progresso=1234/1280
+[   0.102] RECEBIDO bloco=571 origem=127.0.0.1:25002 progresso=1235/1280
+[   0.102] RECEBIDO bloco=572 origem=127.0.0.1:25002 progresso=1236/1280
+[   0.102] RECEBIDO bloco=977 origem=127.0.0.1:25002 progresso=1237/1280
+[   0.102] RECEBIDO bloco=273 origem=127.0.0.1:25002 progresso=1238/1280
+[   0.102] RECEBIDO bloco=1086 origem=127.0.0.1:25002 progresso=1239/1280
+[   0.102] RECEBIDO bloco=573 origem=127.0.0.1:25002 progresso=1240/1280
+[   0.102] RECEBIDO bloco=1100 origem=127.0.0.1:25002 progresso=1241/1280
+[   0.103] RECEBIDO bloco=145 origem=127.0.0.1:25002 progresso=1242/1280
+[   0.103] RECEBIDO bloco=391 origem=127.0.0.1:25002 progresso=1243/1280
+[   0.103] RECEBIDO bloco=1032 origem=127.0.0.1:25002 progresso=1244/1280
+[   0.103] RECEBIDO bloco=992 origem=127.0.0.1:25002 progresso=1245/1280
+[   0.103] RECEBIDO bloco=903 origem=127.0.0.1:25002 progresso=1246/1280
+[   0.103] RECEBIDO bloco=781 origem=127.0.0.1:25002 progresso=1247/1280
+[   0.103] RECEBIDO bloco=851 origem=127.0.0.1:25002 progresso=1248/1280
+[   0.103] RECEBIDO bloco=307 origem=127.0.0.1:25002 progresso=1249/1280
+[   0.103] RECEBIDO bloco=147 origem=127.0.0.1:25002 progresso=1250/1280
+[   0.103] RECEBIDO bloco=1114 origem=127.0.0.1:25002 progresso=1251/1280
+[   0.103] RECEBIDO bloco=68 origem=127.0.0.1:25002 progresso=1252/1280
+[   0.104] RECEBIDO bloco=518 origem=127.0.0.1:25002 progresso=1253/1280
+[   0.104] RECEBIDO bloco=790 origem=127.0.0.1:25002 progresso=1254/1280
+[   0.104] RECEBIDO bloco=1245 origem=127.0.0.1:25002 progresso=1255/1280
+[   0.104] RECEBIDO bloco=390 origem=127.0.0.1:25002 progresso=1256/1280
+[   0.104] RECEBIDO bloco=334 origem=127.0.0.1:25002 progresso=1257/1280
+[   0.104] RECEBIDO bloco=1041 origem=127.0.0.1:25002 progresso=1258/1280
+[   0.104] RECEBIDO bloco=1198 origem=127.0.0.1:25002 progresso=1259/1280
+[   0.104] RECEBIDO bloco=83 origem=127.0.0.1:25002 progresso=1260/1280
+[   0.104] RECEBIDO bloco=461 origem=127.0.0.1:25002 progresso=1261/1280
+[   0.104] RECEBIDO bloco=393 origem=127.0.0.1:25002 progresso=1262/1280
+[   0.104] RECEBIDO bloco=1003 origem=127.0.0.1:25002 progresso=1263/1280
+[   0.105] RECEBIDO bloco=784 origem=127.0.0.1:25002 progresso=1264/1280
+[   0.105] RECEBIDO bloco=744 origem=127.0.0.1:25002 progresso=1265/1280
+[   0.105] RECEBIDO bloco=556 origem=127.0.0.1:25002 progresso=1266/1280
+[   0.105] RECEBIDO bloco=796 origem=127.0.0.1:25002 progresso=1267/1280
+[   0.105] RECEBIDO bloco=978 origem=127.0.0.1:25002 progresso=1268/1280
+[   0.105] RECEBIDO bloco=775 origem=127.0.0.1:25002 progresso=1269/1280
+[   0.105] RECEBIDO bloco=381 origem=127.0.0.1:25002 progresso=1270/1280
+[   0.105] RECEBIDO bloco=502 origem=127.0.0.1:25002 progresso=1271/1280
+[   0.105] RECEBIDO bloco=938 origem=127.0.0.1:25002 progresso=1272/1280
+[   0.105] RECEBIDO bloco=667 origem=127.0.0.1:25002 progresso=1273/1280
+[   0.105] RECEBIDO bloco=1189 origem=127.0.0.1:25002 progresso=1274/1280
+[   0.106] RECEBIDO bloco=426 origem=127.0.0.1:25002 progresso=1275/1280
+[   0.106] RECEBIDO bloco=516 origem=127.0.0.1:25002 progresso=1276/1280
+[   0.106] RECEBIDO bloco=588 origem=127.0.0.1:25002 progresso=1277/1280
+[   0.106] RECEBIDO bloco=291 origem=127.0.0.1:25002 progresso=1278/1280
+[   0.106] RECEBIDO bloco=893 origem=127.0.0.1:25002 progresso=1279/1280
+[   0.106] RECEBIDO bloco=949 origem=127.0.0.1:25002 progresso=1280/1280
+[   0.204] STATUS blocos=1280/1280 (100%)
+[   0.216] SUCESSO SHA256=5a2bd7d484725944493da437230d13d89bad3e4e02a51be65efaedae5ec74365 bytes=5242880 tempo_ms=105
+[   0.216] Compartilhando por mais 30 segundos
+[   0.402] RESUMO origem=127.0.0.1:25001 blocos=377
+[   0.402] RESUMO origem=127.0.0.1:25002 blocos=903
+[   0.402] RESUMO recebidos=1280 enviados=0

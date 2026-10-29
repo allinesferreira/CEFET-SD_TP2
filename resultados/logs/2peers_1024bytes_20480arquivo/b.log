@@ -1,0 +1,29 @@
+[   0.001] META recebida de 127.0.0.1:25000 (20 blocos)
+[   0.001] LEECH arquivo.bin blocos=20 endereco=127.0.0.1:25001
+[   0.001] STATUS blocos=0/20 (0%)
+[   0.002] Servidor ouvindo 127.0.0.1:25001
+[   0.003] RECEBIDO bloco=16 origem=127.0.0.1:25000 progresso=1/20
+[   0.003] RECEBIDO bloco=4 origem=127.0.0.1:25000 progresso=2/20
+[   0.003] RECEBIDO bloco=17 origem=127.0.0.1:25000 progresso=3/20
+[   0.003] RECEBIDO bloco=3 origem=127.0.0.1:25000 progresso=4/20
+[   0.003] RECEBIDO bloco=18 origem=127.0.0.1:25000 progresso=5/20
+[   0.003] RECEBIDO bloco=2 origem=127.0.0.1:25000 progresso=6/20
+[   0.003] RECEBIDO bloco=13 origem=127.0.0.1:25000 progresso=7/20
+[   0.003] RECEBIDO bloco=7 origem=127.0.0.1:25000 progresso=8/20
+[   0.003] RECEBIDO bloco=6 origem=127.0.0.1:25000 progresso=9/20
+[   0.003] RECEBIDO bloco=8 origem=127.0.0.1:25000 progresso=10/20
+[   0.004] RECEBIDO bloco=10 origem=127.0.0.1:25000 progresso=11/20
+[   0.004] RECEBIDO bloco=15 origem=127.0.0.1:25000 progresso=12/20
+[   0.004] RECEBIDO bloco=0 origem=127.0.0.1:25000 progresso=13/20
+[   0.004] RECEBIDO bloco=5 origem=127.0.0.1:25000 progresso=14/20
+[   0.004] RECEBIDO bloco=19 origem=127.0.0.1:25000 progresso=15/20
+[   0.004] RECEBIDO bloco=14 origem=127.0.0.1:25000 progresso=16/20
+[   0.004] RECEBIDO bloco=1 origem=127.0.0.1:25000 progresso=17/20
+[   0.004] RECEBIDO bloco=11 origem=127.0.0.1:25000 progresso=18/20
+[   0.004] RECEBIDO bloco=9 origem=127.0.0.1:25000 progresso=19/20
+[   0.004] RECEBIDO bloco=12 origem=127.0.0.1:25000 progresso=20/20
+[   0.101] STATUS blocos=20/20 (100%)
+[   0.107] SUCESSO SHA256=74d233c1b8fa75aff723e7dfbc6103594064d7b8488b8330cb5e28123670f3ae bytes=20480 tempo_ms=4
+[   0.107] Compartilhando por mais 30 segundos
+[   0.207] RESUMO origem=127.0.0.1:25000 blocos=20
+[   0.207] RESUMO recebidos=20 enviados=0

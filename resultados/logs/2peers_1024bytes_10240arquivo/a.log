@@ -1,3 +1,18 @@
-Servidor ouvindo porta 25000
-SEED arquivo.bin blocos=10 porta=25000
-Seeder ativo. Ctrl+C para encerrar.
+[   0.001] SEED arquivo.bin blocos=10 endereco=127.0.0.1:25000
+[   0.001] STATUS blocos=10/10 (100%)
+[   0.001] Seeder ativo. Ctrl+C para encerrar.
+[   0.003] Servidor ouvindo 127.0.0.1:25000
+[   0.011] ENVIADO metadados destino=127.0.0.1:25001
+[   0.012] ENVIADO mapa destino=127.0.0.1:25001
+[   0.012] ENVIADO bloco=5 destino=127.0.0.1:25001
+[   0.013] ENVIADO bloco=3 destino=127.0.0.1:25001
+[   0.013] ENVIADO bloco=9 destino=127.0.0.1:25001
+[   0.013] ENVIADO bloco=1 destino=127.0.0.1:25001
+[   0.013] ENVIADO bloco=4 destino=127.0.0.1:25001
+[   0.013] ENVIADO bloco=8 destino=127.0.0.1:25001
+[   0.013] ENVIADO bloco=6 destino=127.0.0.1:25001
+[   0.014] ENVIADO bloco=7 destino=127.0.0.1:25001
+[   0.014] ENVIADO bloco=0 destino=127.0.0.1:25001
+[   0.014] ENVIADO bloco=2 destino=127.0.0.1:25001
+[   0.214] RESUMO destino=127.0.0.1:25001 blocos=10
+[   0.214] RESUMO recebidos=0 enviados=10

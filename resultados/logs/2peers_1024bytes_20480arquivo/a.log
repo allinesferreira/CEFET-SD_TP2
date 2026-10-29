@@ -1,0 +1,28 @@
+[   0.002] SEED arquivo.bin blocos=20 endereco=127.0.0.1:25000
+[   0.002] STATUS blocos=20/20 (100%)
+[   0.002] Seeder ativo. Ctrl+C para encerrar.
+[   0.003] Servidor ouvindo 127.0.0.1:25000
+[   0.012] ENVIADO metadados destino=127.0.0.1:25001
+[   0.012] ENVIADO mapa destino=127.0.0.1:25001
+[   0.012] ENVIADO bloco=16 destino=127.0.0.1:25001
+[   0.014] ENVIADO bloco=4 destino=127.0.0.1:25001
+[   0.014] ENVIADO bloco=17 destino=127.0.0.1:25001
+[   0.014] ENVIADO bloco=3 destino=127.0.0.1:25001
+[   0.014] ENVIADO bloco=18 destino=127.0.0.1:25001
+[   0.015] ENVIADO bloco=2 destino=127.0.0.1:25001
+[   0.015] ENVIADO bloco=13 destino=127.0.0.1:25001
+[   0.015] ENVIADO bloco=7 destino=127.0.0.1:25001
+[   0.015] ENVIADO bloco=6 destino=127.0.0.1:25001
+[   0.015] ENVIADO bloco=8 destino=127.0.0.1:25001
+[   0.015] ENVIADO bloco=10 destino=127.0.0.1:25001
+[   0.015] ENVIADO bloco=15 destino=127.0.0.1:25001
+[   0.015] ENVIADO bloco=0 destino=127.0.0.1:25001
+[   0.015] ENVIADO bloco=5 destino=127.0.0.1:25001
+[   0.015] ENVIADO bloco=19 destino=127.0.0.1:25001
+[   0.015] ENVIADO bloco=14 destino=127.0.0.1:25001
+[   0.016] ENVIADO bloco=1 destino=127.0.0.1:25001
+[   0.016] ENVIADO bloco=11 destino=127.0.0.1:25001
+[   0.016] ENVIADO bloco=9 destino=127.0.0.1:25001
+[   0.016] ENVIADO bloco=12 destino=127.0.0.1:25001
+[   0.216] RESUMO destino=127.0.0.1:25001 blocos=20
+[   0.216] RESUMO recebidos=0 enviados=20

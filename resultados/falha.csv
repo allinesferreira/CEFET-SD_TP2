@@ -1,0 +1,3 @@
+peer,tamanho_ok,sha_ok,origens_ok,tempo_ms,blocos_de_a,blocos_de_b,blocos_de_c,blocos_de_d_na_falha,falha_detectada_por_d
+c,True,True,True,1746,17768,2712,0,5232,True
+d,True,True,True,1906,0,2532,17948,5232,True
