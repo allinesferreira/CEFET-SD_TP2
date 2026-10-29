@@ -44,8 +44,10 @@ FONTE, NEGRITO, CODIGO = registrar_fontes()
 ESTILOS = {
     'titulo': ParagraphStyle('titulo', fontName=NEGRITO, fontSize=14, leading=19, alignment=TA_CENTER, spaceAfter=6),
     'subtitulo': ParagraphStyle('subtitulo', fontName=FONTE, fontSize=9.5, leading=13, alignment=TA_CENTER),
-    'secao': ParagraphStyle('secao', fontName=NEGRITO, fontSize=11.5, leading=15, spaceBefore=10, spaceAfter=4),
-    'subsecao': ParagraphStyle('subsecao', fontName=NEGRITO, fontSize=10, leading=14, spaceBefore=4, spaceAfter=2),
+    'secao': ParagraphStyle('secao', fontName=NEGRITO, fontSize=11.5, leading=15, spaceBefore=10, spaceAfter=4,
+                            keepWithNext=1),
+    'subsecao': ParagraphStyle('subsecao', fontName=NEGRITO, fontSize=10, leading=14, spaceBefore=4, spaceAfter=2,
+                               keepWithNext=1),
     'corpo': ParagraphStyle('corpo', fontName=FONTE, fontSize=9.8, leading=14, alignment=TA_JUSTIFY, spaceAfter=6),
     'tabela': ParagraphStyle('tabela', fontName=FONTE, fontSize=8.2, leading=10.4),
     'legenda': ParagraphStyle('legenda', fontName=FONTE, fontSize=8, leading=10.5, alignment=TA_CENTER,
@@ -171,7 +173,10 @@ class Relatorio:
                f'um vizinho, cria um arquivo {codigo(".part")} com o tamanho final e grava cada bloco direto na sua '
                f'posição com {codigo("pwrite")}. O hash de cada bloco recebido é conferido antes de ele ser aceito; '
                'um bloco corrompido é descartado e pedido de novo. Ao final, o SHA-256 do arquivo inteiro é comparado '
-               f'com o dos metadados, o {codigo(".part")} é renomeado e o leecher grava sua cópia dos metadados.')
+               f'com o dos metadados, o {codigo(".part")} é renomeado e o leecher grava sua cópia dos metadados. '
+               'Como os metadados vêm de outro peer, o nome não pode conter diretórios e os números precisam estar '
+               'dentro de limites fixos; metadados fora disso são recusados. Cada peer trava a própria pasta, e um '
+               'segundo processo que tente usar a mesma pasta se recusa a iniciar.')
         self.p('2.3. Protocolo e monitoramento', 'subsecao')
         self.p('Cada requisição usa uma conexão TCP e começa com um comando de 1 byte seguido do endereço de quem '
                'pede (IPv4 em 4 bytes e porta em 2), usado nos logs do servidor. Toda resposta é um inteiro de 32 '
@@ -198,20 +203,23 @@ class Relatorio:
                f'({len(self.execucoes)} execuções). Com 2 peers, A é o seeder e B o leecher. Com 4 peers, B conhece '
                'apenas A, C conhece A e B, e D conhece apenas B e C, de modo que todos os blocos de D precisam vir de '
                'outros leechers.')
-        self.p('Em cada execução o script inicia o seeder, espera ele ficar ativo, inicia os leechers e aguarda todos '
-               'terminarem. Para cada leecher são verificados: (i) tamanho do arquivo remontado igual ao original; '
-               '(ii) SHA-256 igual ao original; (iii) pelo log, todos os blocos vieram de vizinhos configurados para '
-               'aquele peer e nenhum faltou. Cada peer mede o próprio tempo, do seu início até a gravação do último '
-               'bloco, o que inclui a obtenção dos metadados; o tempo da execução é o do último leecher a terminar.')
+        self.p('Em cada execução o script inicia o seeder, espera ele ficar ativo e inicia os leechers um de cada vez, '
+               'esperando cada um abrir sua porta antes do próximo. Para cada leecher são verificados: (i) tamanho do '
+               'arquivo remontado igual ao original; (ii) SHA-256 igual ao original; (iii) arquivo de metadados '
+               'idêntico ao do seeder; (iv) pelo log, todos os blocos vieram de vizinhos configurados para aquele peer, '
+               f'nenhum faltou e cada bloco aparece no log do vizinho de origem como {codigo("ENVIADO")} para aquele '
+               'leecher. Cada peer mede o próprio tempo, do seu início até a gravação do último bloco, o que inclui a '
+               'obtenção dos metadados; o tempo da execução é o do último leecher a terminar.')
         self.p(f'No cenário de falha (4 peers, blocos de 1 KB, 20 MB), B é encerrado com {codigo("SIGKILL")} quando D '
-               'já tem 25% dos blocos. O teste exige que D registre B como inacessível e que C e D terminem com o '
-               'arquivo íntegro usando os vizinhos restantes. Tudo rodou em 127.0.0.1, em um notebook com AMD Ryzen '
-               f'7 5700U (16 threads), 12 GB de RAM e Pop!_OS 24.04, com g++ 13.3 e {codigo("-O2")}.')
+               'já tem 25% dos blocos. O teste exige que, depois da queda, D registre B como inacessível e continue '
+               'recebendo blocos de C, e que C e D terminem com o arquivo íntegro. Tudo rodou em 127.0.0.1, em um '
+               'notebook com AMD Ryzen 7 5700U (16 threads), 12 GB de RAM e Pop!_OS 24.04, funcionando na bateria, '
+               f'com g++ 13.3 e {codigo("-O2")}.')
 
     def resultados_testes(self):
         self.p('4. Resultados', 'secao')
-        ok = all(r['tamanho_ok'] == r['sha_ok'] == r['origens_ok'] == 'True' for r in self.resultados)
-        self.p(f'{"Todas as" if ok else "Nem todas as"} {len(self.execucoes)} execuções passaram nas três '
+        ok = all(r[c] == 'True' for r in self.resultados for c in ('tamanho_ok', 'sha_ok', 'meta_ok', 'origens_ok'))
+        self.p(f'{"Todas as" if ok else "Nem todas as"} {len(self.execucoes)} execuções passaram nas quatro '
                'verificações. A Tabela 2 traz o tempo médio e o desvio padrão de cada cenário, e a Figura 1 mostra '
                'os mesmos tempos em função do tamanho do arquivo.')
 
@@ -243,8 +251,9 @@ class Relatorio:
 
         c, d = self.falha['c'], self.falha['d']
         total = sum(int(d[f'blocos_de_{o}']) for o in 'abc')
-        self.p(f'No cenário de falha, B foi encerrado quando D tinha {d["blocos_de_d_na_falha"]} de {total} blocos. '
-               f'D {"registrou" if d["falha_detectada_por_d"] == "True" else "não registrou"} B como inacessível e '
+        self.p(f'No cenário de falha, B foi encerrado quando D tinha {d["progresso_de_d_na_falha"]} de {total} blocos. '
+               f'D {"registrou" if d["falha_detectada_por_d"] == "True" else "não registrou"} B como inacessível, '
+               f'recebeu {d["blocos_de_c_para_d_apos_falha"]} blocos de C depois da queda e '
                f'terminou em {ms(d["tempo_ms"])} ms, com {d["blocos_de_b"]} blocos vindos de B e {d["blocos_de_c"]} '
                f'de C; C terminou em {ms(c["tempo_ms"])} ms, com {c["blocos_de_a"]} blocos de A e {c["blocos_de_b"]} '
                'de B. Os dois arquivos ficaram íntegros.')
@@ -291,7 +300,8 @@ class Relatorio:
         self.p('<b>Tamanho do arquivo.</b> A partir de 1 MB, o tempo cresce quase linearmente com o número de '
                f'blocos: com 2 peers e blocos de 1 KB, foram {ms(t(2, 1024, MB))} ms para 1 MB e '
                f'{ms(t(2, 1024, 20 * MB))} ms para 20 MB. Os arquivos de 10 e 20 KB terminam em poucos milissegundos '
-               'com 2 peers, e o tempo é dominado pela troca inicial de metadados.')
+               f'(no máximo {ms(max(t(p, b, s) for p, b in CONFIGURACOES for s in (10 * KB, 20 * KB)))} ms), e o '
+               'tempo é dominado pela troca inicial de metadados.')
         self.p('<b>Tamanho do bloco.</b> Blocos de 4 KB foram de '
                f'{decimal(min(ganho_bloco))} a {decimal(max(ganho_bloco))} vezes mais rápidos nos arquivos de 5 MB '
                f'em diante (com 2 peers e 20 MB, de {ms(t(2, 1024, 20 * MB))} para {ms(t(2, 4096, 20 * MB))} ms). '
@@ -304,14 +314,14 @@ class Relatorio:
                'C e D. Já C e D, que baixam de dois vizinhos ao mesmo tempo, terminaram em '
                f'{ms(t(4, 1024, 20 * MB, "c"))} e {ms(t(4, 1024, 20 * MB, "d"))} ms, antes do leecher do cenário com '
                '2 peers. Isso mostra o ganho de ter mais fontes e confirma a redistribuição: D recebeu blocos de B e '
-               f'de C, e C recebeu de B entre {min(c_de_b):.0f}% e {max(c_de_b):.0f}% dos blocos. Nos arquivos '
-               'pequenos com 4 peers, D consulta o mapa de B e C antes de eles terem algum bloco e só descobre os '
-               'blocos novos na consulta seguinte, 100 ms depois. Como essa espera acontece só em parte das '
-               'execuções, alguns desses cenários têm desvio padrão alto.')
+               f'de C, e C recebeu de B entre {min(c_de_b):.0f}% e {max(c_de_b):.0f}% dos blocos.')
         self.p('<b>Limitações.</b> Os testes rodaram em uma única máquina, sem a latência, as perdas e o limite de '
-               'banda de uma rede real; nesse ambiente o custo é dominado por CPU e chamadas de sistema. Os peers '
-               'descobrem blocos novos por consulta periódica, e não por aviso dos vizinhos. A implementação aceita '
-               'só IPv4, um arquivo por processo e não retoma downloads interrompidos.')
+               'banda de uma rede real; nesse ambiente o custo é dominado por CPU e chamadas de sistema. Só o '
+               'servidor é não bloqueante: os downloads usam uma thread por vizinho com sockets bloqueantes e timeout '
+               'de 3 s, o que basta para a concorrência pedida. Os peers descobrem blocos novos por consulta '
+               'periódica, e não por aviso dos vizinhos, e o endereço de quem pede é declarado pelo próprio cliente, '
+               'sem autenticação. A implementação aceita só IPv4, um arquivo por processo e não retoma downloads '
+               'interrompidos.')
 
     def conclusao(self):
         self.p('6. Conclusão', 'secao')
