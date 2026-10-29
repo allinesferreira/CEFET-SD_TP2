@@ -4,6 +4,7 @@
 #include <unistd.h>
 
 #include <algorithm>
+#include <exception>
 #include <filesystem>
 #include <fstream>
 #include <numeric>
@@ -60,20 +61,21 @@ Peer::Peer(Address self, std::string file, std::string dir, uint32_t block_size,
 
 void Peer::run() {
     start = std::chrono::steady_clock::now();
-    std::thread server_thread([this] {
+    std::exception_ptr server_error;
+    std::thread server_thread([this, &server_error] {
         try {
             serve(self, running, [this](const Request& request) { return respond(request); });
-        } catch (const std::exception& e) {
-            log_line(e.what());
+        } catch (...) {
+            server_error = std::current_exception();
             running = false;
         }
     });
 
     try {
         init();
-        if (seed)
+        if (running && seed)
             seed_until_stopped();
-        else if (ready)
+        else if (running && ready)
             download();
         running = false;
     } catch (...) {
@@ -87,6 +89,8 @@ void Peer::run() {
     server_thread.join();
     if (local_fd >= 0)
         close(local_fd);
+    if (server_error)
+        std::rethrow_exception(server_error);
     if (ready)
         log_summary();
 }
