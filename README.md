@@ -20,6 +20,7 @@ src/
   hash.hpp/.cpp         SHA-256
   log.hpp/.cpp          log compartilhado entre threads
 scripts/testes.py       testes de integração com os estudos de caso
+scripts/demo.sh         demonstração com 4 peers (make demo)
 resultados/             tempos medidos e logs de cada peer por cenário
 docs/                   enunciado, relatório e gerador do relatório
 Makefile
@@ -40,6 +41,21 @@ make
 ```
 
 O executável `peer` é gerado na raiz do repositório e os objetos intermediários em `build/`. `make clean` remove os dois.
+
+## Execução completa
+
+```
+make run
+```
+
+Compila o projeto, roda a demonstração com 4 peers e depois os estudos de caso. As duas partes também podem ser rodadas separadamente:
+
+| Comando | O que faz |
+|---|---|
+| `make demo` | sobe 4 peers em 127.0.0.1:5000-5003 com um arquivo aleatório de 20 MB, confere SHA-256, tamanho e metadados de cada leecher e mostra de onde veio cada bloco; ao final encerra os peers e apaga os arquivos temporários |
+| `make test` | roda `scripts/testes.py` (seção Testes) |
+
+Os parâmetros podem ser trocados na linha de comando, por exemplo `make demo TAMANHO=1048576 BLOCO=4096` ou `make run REPETICOES=1` para uma rodada rápida. `make run` e `make test` reescrevem os arquivos de `resultados/`; para voltar à versão do repositório, use `git restore resultados/`.
 
 ## Uso
 
@@ -135,9 +151,10 @@ Cada peer escreve o log no stderr, uma mensagem por linha. Toda linha começa co
 ## Testes
 
 ```
-make
-python3 scripts/testes.py [--repeticoes N]
+make test [REPETICOES=N]
 ```
+
+ou, com o executável já compilado, `python3 scripts/testes.py [--repeticoes N]`.
 
 O script roda os estudos de caso em 127.0.0.1, combinando todos os parâmetros da Tabela 1 do enunciado: 2 e 4 peers, blocos de 1024 e 4096 bytes e arquivos de 10 KB, 20 KB, 1 MB, 5 MB, 10 MB e 20 MB, num total de 24 cenários. Cada cenário é executado `N` vezes (padrão: 5), sempre com um arquivo aleatório novo.
 
