@@ -1,0 +1,6 @@
+peer
+downloads/
+*.part
+__pycache__/
+.idea/
+.vscode/
