@@ -137,13 +137,25 @@ Cada peer escreve o log no stderr, uma mensagem por linha. Toda linha começa co
 
 ```
 make
-python3 scripts/testes.py
+python3 scripts/testes.py [--repeticoes N]
 ```
 
-O script executa os cenários com 2 e 4 peers, blocos de 1024 e 4096 bytes e arquivos de 10 KB a 20 MB, todos em 127.0.0.1. Em cada cenário ele gera um arquivo aleatório, inicia os peers e compara tamanho e SHA-256 dos arquivos recebidos com o original. Os resultados ficam em:
+O script roda os estudos de caso em 127.0.0.1, combinando todos os parâmetros da Tabela 1 do enunciado: 2 e 4 peers, blocos de 1024 e 4096 bytes e arquivos de 10 KB, 20 KB, 1 MB, 5 MB, 10 MB e 20 MB, num total de 24 cenários. Cada cenário é executado `N` vezes (padrão: 5), sempre com um arquivo aleatório novo.
 
-- `resultados/resultados.csv`: tempo e integridade por cenário
-- `resultados/logs/<peers>peers_<bloco>bytes_<tamanho>arquivo/<peer>.log`: log de cada peer, com a origem de cada bloco recebido
+Em cada execução, o script inicia o seeder, espera ele ficar ativo, inicia os leechers e aguarda todos concluírem. Depois confere, para cada leecher:
+
+- **tamanho:** o arquivo remontado tem o mesmo tamanho do original;
+- **integridade:** o SHA-256 é igual ao do original;
+- **origens:** pelo log, todos os blocos vieram de vizinhos configurados para aquele peer e nenhum bloco faltou.
+
+O tempo de uma execução é o maior `tempo_ms` entre os leechers. Os resultados ficam em `resultados/`:
+
+| Arquivo | Conteúdo |
+|---|---|
+| `resultados.csv` | por cenário: tempo médio, desvio padrão, mínimo, máximo e resultado das verificações |
+| `execucoes.csv` | cada execução separadamente |
+| `origens.csv` | quantos blocos cada leecher recebeu de cada vizinho, na primeira execução de cada cenário |
+| `logs/<peers>peers_<bloco>bytes_<tamanho>arquivo/<peer>.log` | logs completos da primeira execução de cada cenário |
 
 As portas são fixas (25000 a 25003), então não rode duas instâncias do script ao mesmo tempo.
 

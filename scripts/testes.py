@@ -1,251 +1,254 @@
 #!/usr/bin/env python3
-"""Testes de integração P2P; gera resultados.csv e preserva logs."""
-
+import argparse
 import csv
 import hashlib
+import math
 import os
 import pathlib
+import re
 import shutil
+import statistics
 import subprocess
 import tempfile
 import time
+from collections import Counter
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-EXE = ROOT / 'peer'
+PEER = ROOT / 'peer'
+RESULTADOS = ROOT / 'resultados'
+
+HOST = '127.0.0.1'
+PORTA_BASE = 25000
+
+KB = 1024
+MB = 1024 * KB
+PEERS = [2, 4]
+BLOCOS = [1024, 4096]
+ARQUIVOS = [10 * KB, 20 * KB, 1 * MB, 5 * MB, 10 * MB, 20 * MB]
+
+TOPOLOGIAS = {
+    2: {'a': [], 'b': ['a']},
+    4: {'a': [], 'b': ['a'], 'c': ['a', 'b'], 'd': ['b', 'c']},
+}
+
+RE_RECEBIDO = re.compile(r'RECEBIDO bloco=\d+ origem=(\S+) progresso=(\d+)/(\d+)')
+RE_SUCESSO = re.compile(r'SUCESSO .* tempo_ms=(\d+)')
 
 
-def sha(path):
+def porta(nome):
+    return PORTA_BASE + ord(nome) - ord('a')
+
+
+def endereco(nome):
+    return f'{HOST}:{porta(nome)}'
+
+
+def nome_do_endereco(texto):
+    return chr(ord('a') + int(texto.rsplit(':', 1)[1]) - PORTA_BASE)
+
+
+def legivel(tamanho):
+    return f'{tamanho // MB} MB' if tamanho >= MB else f'{tamanho // KB} KB'
+
+
+def sha256(caminho):
     h = hashlib.sha256()
-
-    with open(path, 'rb') as f:
-        for chunk in iter(lambda: f.read(65536), b''):
-            h.update(chunk)
-
+    with open(caminho, 'rb') as f:
+        for parte in iter(lambda: f.read(1 << 16), b''):
+            h.update(parte)
     return h.hexdigest()
 
 
-def test(peers, block, size):
+class Execucao:
+    def __init__(self, pasta, peers, bloco, tamanho):
+        self.pasta = pasta
+        self.topologia = TOPOLOGIAS[peers]
+        self.leechers = [nome for nome, vizinhos in self.topologia.items() if vizinhos]
+        self.bloco = bloco
+        self.tamanho = tamanho
+        self.original = pasta / 'arquivo.bin'
+        self.processos = {}
 
-    with tempfile.TemporaryDirectory(prefix='p2p_case_') as tmp:
+    def log(self, nome):
+        return self.pasta / f'{nome}.log'
 
-        d = pathlib.Path(tmp)
+    def baixado(self, nome):
+        return self.pasta / nome / 'arquivo.bin'
 
-        src = d / 'arquivo.bin'
-        src.write_bytes(os.urandom(size))
+    def iniciar(self):
+        self.original.write_bytes(os.urandom(self.tamanho))
+        self.sha_original = sha256(self.original)
+        for nome, vizinhos in self.topologia.items():
+            self.iniciar_peer(nome, vizinhos)
+            if not vizinhos:
+                self.esperar_texto(nome, 'Seeder ativo')
 
-        procs = []
-        logs = []
+    def iniciar_peer(self, nome, vizinhos):
+        args = [str(PEER), '--ip', HOST, '--port', str(porta(nome)), '--dir', str(self.pasta / nome)]
+        if not vizinhos:
+            args += ['--file', str(self.original), '--block', str(self.bloco)]
+        for vizinho in vizinhos:
+            args += ['--neighbor', endereco(vizinho)]
+        with open(self.log(nome), 'w') as log:
+            self.processos[nome] = subprocess.Popen(args, stderr=log)
 
-        def start(args, name):
+    def esperar_texto(self, nome, texto, limite=10):
+        fim = time.monotonic() + limite
+        while time.monotonic() < fim:
+            if texto in self.log(nome).read_text():
+                return
+            time.sleep(0.01)
+        raise RuntimeError(f'peer {nome} não registrou "{texto}"')
 
-            log = open(d / f'{name}.log', 'w+')
-            logs.append(log)
+    def esperar_downloads(self, nomes):
+        fim = time.monotonic() + max(30, self.tamanho / 100_000)
+        while time.monotonic() < fim:
+            if all(self.baixado(nome).exists() for nome in nomes):
+                return
+            if any(self.processos[nome].poll() is not None for nome in nomes):
+                return
+            time.sleep(0.02)
 
-            p = subprocess.Popen(
-                [str(EXE), *args],
-                stdout=log,
-                stderr=subprocess.STDOUT
-            )
+    def encerrar(self):
+        for p in self.processos.values():
+            if p.poll() is None:
+                p.terminate()
+        for p in self.processos.values():
+            try:
+                p.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                p.kill()
+                p.wait()
 
-            procs.append(p)
+    def verificar(self, nome):
+        origens = Counter()
+        tempo_ms = None
+        for linha in self.log(nome).read_text().splitlines():
+            if m := RE_RECEBIDO.search(linha):
+                origens[nome_do_endereco(m.group(1))] += 1
+            elif m := RE_SUCESSO.search(linha):
+                tempo_ms = int(m.group(1))
 
-            return p
+        arquivo = self.baixado(nome)
+        existe = arquivo.exists()
+        return {
+            'tamanho_ok': existe and arquivo.stat().st_size == self.tamanho,
+            'sha_ok': existe and sha256(arquivo) == self.sha_original,
+            'origens_ok': set(origens) <= set(self.topologia[nome]) and
+                          sum(origens.values()) == math.ceil(self.tamanho / self.bloco),
+            'tempo_ms': tempo_ms,
+            'origens': origens,
+        }
 
+    def guardar_logs(self, destino):
+        shutil.rmtree(destino, ignore_errors=True)
+        destino.mkdir(parents=True)
+        for nome in self.topologia:
+            shutil.copy2(self.log(nome), destino / f'{nome}.log')
+
+
+def executar_cenario(peers, bloco, tamanho, destino_logs=None):
+    with tempfile.TemporaryDirectory(prefix='p2p_') as tmp:
+        execucao = Execucao(pathlib.Path(tmp), peers, bloco, tamanho)
         try:
-
-            # Peer A: Seeder inicial
-            start(
-                [
-                    '--ip', '127.0.0.1',
-                    '--port', '25000',
-                    '--file', str(src),
-                    '--block', str(block),
-                    '--dir', str(d / 'a')
-                ],
-                'a'
-            )
-
-            time.sleep(0.3)
-
-            # Peer B
-            start(
-                [
-                    '--ip', '127.0.0.1',
-                    '--port', '25001',
-                    '--neighbor', '127.0.0.1:25000',
-                    '--dir', str(d / 'b')
-                ],
-                'b'
-            )
-
-            # Peers adicionais
-            if peers == 4:
-
-                # Peer C
-                start(
-                    [
-                        '--ip', '127.0.0.1',
-                        '--port', '25002',
-                        '--neighbor', '127.0.0.1:25000',
-                        '--neighbor', '127.0.0.1:25001',
-                        '--dir', str(d / 'c')
-                    ],
-                    'c'
-                )
-
-                # Peer D
-                start(
-                    [
-                        '--ip', '127.0.0.1',
-                        '--port', '25003',
-                        '--neighbor', '127.0.0.1:25001',
-                        '--neighbor', '127.0.0.1:25002',
-                        '--dir', str(d / 'd')
-                    ],
-                    'd'
-                )
-
-            # Início da medição
-            begin = time.monotonic()
-
-            deadline = begin + max(25, size / 200000)
-
-            if peers == 2:
-                nomes = ['b']
-            else:
-                nomes = ['b', 'c', 'd']
-
-            targets = [
-                d / nome / 'arquivo.bin'
-                for nome in nomes
-            ]
-
-            # Aguarda a conclusão das transferências
-            while time.monotonic() < deadline:
-
-                if all(x.is_file() for x in targets):
-                    break
-
-                if any(
-                        p.poll() not in (None, 0)
-                        for p in procs
-                ):
-                    break
-
-                time.sleep(0.05)
-
-            elapsed = time.monotonic() - begin
-
-            # Verificação de integridade
-            hash_original = sha(src)
-
-            success = all(
-                x.is_file()
-                and sha(x) == hash_original
-                and x.stat().st_size == size
-                for x in targets
-            )
-
-            return {
-                'peers': peers,
-                'bloco_bytes': block,
-                'arquivo_bytes': size,
-                'tempo_s': round(elapsed, 3),
-                'integridade': success
-            }
-
+            execucao.iniciar()
+            execucao.esperar_downloads(execucao.leechers)
         finally:
+            execucao.encerrar()
+        verificacoes = {nome: execucao.verificar(nome) for nome in execucao.leechers}
+        if destino_logs:
+            execucao.guardar_logs(destino_logs)
+    return verificacoes
 
-            # Encerra os processos
-            for p in procs:
-                if p.poll() is None:
-                    p.terminate()
 
-            for p in procs:
-                try:
-                    p.wait(timeout=3)
+def resumir(verificacoes):
+    tempos = [v['tempo_ms'] for v in verificacoes.values()]
+    return {
+        'tempo_ms': max(tempos) if None not in tempos else None,
+        'tamanho_ok': all(v['tamanho_ok'] for v in verificacoes.values()),
+        'sha_ok': all(v['sha_ok'] for v in verificacoes.values()),
+        'origens_ok': all(v['origens_ok'] for v in verificacoes.values()),
+    }
 
-                except subprocess.TimeoutExpired:
-                    p.kill()
-                    p.wait()
 
-            # Fecha os arquivos de log
-            for f in logs:
-                f.close()
+def agregar(execucoes):
+    grupos = {}
+    for e in execucoes:
+        grupos.setdefault((e['peers'], e['bloco_bytes'], e['arquivo_bytes']), []).append(e)
 
-            # Cria pasta permanente de logs
-            pasta_logs = ROOT / 'resultados' / 'logs'
-            pasta_logs.mkdir(parents=True, exist_ok=True)
+    linhas = []
+    for (peers, bloco, tamanho), grupo in grupos.items():
+        tempos = [e['tempo_ms'] for e in grupo if e['tempo_ms'] is not None]
+        linhas.append({
+            'peers': peers,
+            'bloco_bytes': bloco,
+            'arquivo_bytes': tamanho,
+            'blocos': math.ceil(tamanho / bloco),
+            'execucoes': len(grupo),
+            'tempo_medio_ms': round(float(statistics.mean(tempos)), 1) if tempos else '',
+            'desvio_ms': round(statistics.stdev(tempos), 1) if len(tempos) > 1 else 0.0,
+            'tempo_min_ms': min(tempos, default=''),
+            'tempo_max_ms': max(tempos, default=''),
+            'tamanho_ok': all(e['tamanho_ok'] for e in grupo),
+            'sha_ok': all(e['sha_ok'] for e in grupo),
+            'origens_ok': all(e['origens_ok'] for e in grupo),
+        })
+    return linhas
 
-            identificador = (
-                f'{peers}peers_'
-                f'{block}bytes_'
-                f'{size}arquivo'
-            )
 
-            destino = pasta_logs / identificador
-            destino.mkdir(exist_ok=True)
+def salvar_csv(caminho, linhas):
+    with open(caminho, 'w', newline='') as f:
+        escritor = csv.DictWriter(f, fieldnames=list(linhas[0]))
+        escritor.writeheader()
+        escritor.writerows(linhas)
 
-            # Copia os logs antes de excluir
-            # o diretório temporário
-            quantidade = 0
 
-            for arquivo_log in d.glob('*.log'):
+def main():
+    parser = argparse.ArgumentParser(description='Estudos de caso do TP2 em 127.0.0.1.')
+    parser.add_argument('--repeticoes', type=int, default=5, help='execuções por cenário (padrão: 5)')
+    args = parser.parse_args()
+    if not PEER.exists():
+        raise SystemExit('executável peer não encontrado; rode make antes')
 
-                shutil.copy2(
-                    arquivo_log,
-                    destino / arquivo_log.name
-                )
+    RESULTADOS.mkdir(exist_ok=True)
+    shutil.rmtree(RESULTADOS / 'logs', ignore_errors=True)
+    execucoes = []
+    origens = []
 
-                quantidade += 1
+    for peers in PEERS:
+        for bloco in BLOCOS:
+            for tamanho in ARQUIVOS:
+                cenario = f'{peers}peers_{bloco}bytes_{tamanho}arquivo'
+                for repeticao in range(1, args.repeticoes + 1):
+                    destino = RESULTADOS / 'logs' / cenario if repeticao == 1 else None
+                    verificacoes = executar_cenario(peers, bloco, tamanho, destino)
+                    resumo = resumir(verificacoes)
+                    execucoes.append({
+                        'peers': peers,
+                        'bloco_bytes': bloco,
+                        'arquivo_bytes': tamanho,
+                        'repeticao': repeticao,
+                        **resumo,
+                    })
+                    if repeticao == 1:
+                        for nome, v in verificacoes.items():
+                            for origem, blocos in sorted(v['origens'].items()):
+                                origens.append({'cenario': cenario, 'peer': nome, 'origem': origem, 'blocos': blocos})
 
-            print(
-                f'Logs preservados: {quantidade} '
-                f'na pasta {destino}',
-                flush=True
-            )
+                    estado = 'ok' if resumo['tamanho_ok'] and resumo['sha_ok'] and resumo['origens_ok'] else 'FALHA'
+                    print(f'{peers} peers, bloco {bloco}, {legivel(tamanho)}, '
+                          f'execução {repeticao}/{args.repeticoes}: {resumo["tempo_ms"]} ms, {estado}', flush=True)
+
+    resultados = agregar(execucoes)
+    salvar_csv(RESULTADOS / 'execucoes.csv', execucoes)
+    salvar_csv(RESULTADOS / 'resultados.csv', resultados)
+    salvar_csv(RESULTADOS / 'origens.csv', origens)
+
+    falhas = [r for r in resultados if not (r['tamanho_ok'] and r['sha_ok'] and r['origens_ok'])]
+    if falhas:
+        raise SystemExit(f'{len(falhas)} cenário(s) com falha')
+    print(f'\n{len(resultados)} cenários, {len(execucoes)} execuções, todas íntegras.')
 
 
 if __name__ == '__main__':
-
-    cases = [
-        (2, 1024, 10 * 1024),
-        (2, 4096, 20 * 1024),
-        (2, 1024, 1024 * 1024),
-        (2, 4096, 5 * 1024 * 1024),
-        (2, 1024, 10 * 1024 * 1024),
-        (2, 4096, 20 * 1024 * 1024),
-        (4, 1024, 1024 * 1024),
-        (4, 4096, 5 * 1024 * 1024)
-    ]
-
-    rows = []
-
-    for c in cases:
-
-        result = test(*c)
-
-        rows.append(result)
-
-        print(result, flush=True)
-
-    with open(
-            ROOT / 'resultados' / 'resultados.csv',
-            'w',
-            newline=''
-    ) as f:
-
-        w = csv.DictWriter(
-            f,
-            fieldnames=list(rows[0])
-        )
-
-        w.writeheader()
-        w.writerows(rows)
-
-    if not all(r['integridade'] for r in rows):
-        raise SystemExit(
-            'Falha em um ou mais testes'
-        )
-
-    print('\nTodos os testes foram concluídos com sucesso!')
+    main()
