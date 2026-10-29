@@ -1,3 +1,3 @@
-peer,tamanho_ok,sha_ok,origens_ok,tempo_ms,blocos_de_a,blocos_de_b,blocos_de_c,blocos_de_d_na_falha,falha_detectada_por_d
-c,True,True,True,1746,17768,2712,0,5232,True
-d,True,True,True,1906,0,2532,17948,5232,True
+peer,tamanho_ok,sha_ok,meta_ok,origens_ok,tempo_ms,blocos_de_a,blocos_de_b,blocos_de_c,progresso_de_d_na_falha,blocos_de_c_para_d_apos_falha,falha_detectada_por_d
+c,True,True,True,True,2545,17929,2551,0,5234,15241,True
+d,True,True,True,True,2555,0,2447,18033,5234,15241,True

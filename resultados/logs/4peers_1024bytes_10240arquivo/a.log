@@ -1,31 +1,26 @@
-[   0.001] SEED arquivo.bin blocos=10 endereco=127.0.0.1:25000
-[   0.001] STATUS blocos=10/10 (100%)
-[   0.001] Seeder ativo. Ctrl+C para encerrar.
-[   0.003] Servidor ouvindo 127.0.0.1:25000
+[   0.004] Servidor ouvindo 127.0.0.1:25000
+[   0.006] SEED arquivo.bin blocos=10 endereco=127.0.0.1:25000
+[   0.006] STATUS blocos=10/10 (100%)
+[   0.006] Seeder ativo. Ctrl+C para encerrar.
 [   0.011] ENVIADO metadados destino=127.0.0.1:25001
-[   0.011] ENVIADO metadados destino=127.0.0.1:25002
 [   0.012] ENVIADO mapa destino=127.0.0.1:25001
-[   0.012] ENVIADO bloco=0 destino=127.0.0.1:25001
-[   0.012] ENVIADO mapa destino=127.0.0.1:25002
-[   0.012] ENVIADO bloco=0 destino=127.0.0.1:25002
-[   0.013] ENVIADO bloco=5 destino=127.0.0.1:25001
-[   0.013] ENVIADO bloco=3 destino=127.0.0.1:25001
-[   0.013] ENVIADO bloco=6 destino=127.0.0.1:25002
-[   0.013] ENVIADO bloco=2 destino=127.0.0.1:25001
-[   0.013] ENVIADO bloco=8 destino=127.0.0.1:25002
-[   0.013] ENVIADO bloco=1 destino=127.0.0.1:25001
-[   0.013] ENVIADO bloco=7 destino=127.0.0.1:25002
-[   0.013] ENVIADO bloco=9 destino=127.0.0.1:25001
-[   0.013] ENVIADO bloco=1 destino=127.0.0.1:25002
-[   0.013] ENVIADO bloco=8 destino=127.0.0.1:25001
-[   0.014] ENVIADO bloco=4 destino=127.0.0.1:25002
-[   0.014] ENVIADO bloco=4 destino=127.0.0.1:25001
-[   0.014] ENVIADO bloco=2 destino=127.0.0.1:25002
-[   0.014] ENVIADO bloco=6 destino=127.0.0.1:25001
-[   0.014] ENVIADO bloco=9 destino=127.0.0.1:25002
+[   0.012] ENVIADO bloco=9 destino=127.0.0.1:25001
+[   0.014] ENVIADO bloco=8 destino=127.0.0.1:25001
+[   0.014] ENVIADO bloco=0 destino=127.0.0.1:25001
 [   0.014] ENVIADO bloco=7 destino=127.0.0.1:25001
-[   0.014] ENVIADO bloco=3 destino=127.0.0.1:25002
-[   0.014] ENVIADO bloco=5 destino=127.0.0.1:25002
-[   0.415] RESUMO destino=127.0.0.1:25001 blocos=10
-[   0.415] RESUMO destino=127.0.0.1:25002 blocos=10
-[   0.415] RESUMO recebidos=0 enviados=20
+[   0.014] ENVIADO bloco=1 destino=127.0.0.1:25001
+[   0.014] ENVIADO bloco=6 destino=127.0.0.1:25001
+[   0.014] ENVIADO bloco=4 destino=127.0.0.1:25001
+[   0.014] ENVIADO bloco=5 destino=127.0.0.1:25001
+[   0.015] ENVIADO bloco=3 destino=127.0.0.1:25001
+[   0.015] ENVIADO bloco=2 destino=127.0.0.1:25001
+[   0.023] ENVIADO metadados destino=127.0.0.1:25002
+[   0.024] ENVIADO mapa destino=127.0.0.1:25002
+[   0.024] ENVIADO bloco=2 destino=127.0.0.1:25002
+[   0.027] ENVIADO bloco=1 destino=127.0.0.1:25002
+[   0.028] ENVIADO bloco=3 destino=127.0.0.1:25002
+[   0.028] ENVIADO bloco=0 destino=127.0.0.1:25002
+[   0.028] ENVIADO bloco=4 destino=127.0.0.1:25002
+[   0.228] RESUMO destino=127.0.0.1:25001 blocos=10
+[   0.229] RESUMO destino=127.0.0.1:25002 blocos=5
+[   0.229] RESUMO recebidos=0 enviados=15

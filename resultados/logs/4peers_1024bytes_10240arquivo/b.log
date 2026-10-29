@@ -2,28 +2,34 @@
 [   0.001] META recebida de 127.0.0.1:25000 (10 blocos)
 [   0.001] LEECH arquivo.bin blocos=10 endereco=127.0.0.1:25001
 [   0.001] STATUS blocos=0/10 (0%)
-[   0.001] ENVIADO metadados destino=127.0.0.1:25003
-[   0.001] ENVIADO mapa destino=127.0.0.1:25002
-[   0.001] ENVIADO mapa destino=127.0.0.1:25003
-[   0.002] RECEBIDO bloco=0 origem=127.0.0.1:25000 progresso=1/10
-[   0.002] RECEBIDO bloco=5 origem=127.0.0.1:25000 progresso=2/10
-[   0.002] RECEBIDO bloco=3 origem=127.0.0.1:25000 progresso=3/10
-[   0.002] RECEBIDO bloco=2 origem=127.0.0.1:25000 progresso=4/10
-[   0.002] RECEBIDO bloco=1 origem=127.0.0.1:25000 progresso=5/10
-[   0.003] RECEBIDO bloco=9 origem=127.0.0.1:25000 progresso=6/10
-[   0.003] RECEBIDO bloco=8 origem=127.0.0.1:25000 progresso=7/10
-[   0.003] RECEBIDO bloco=4 origem=127.0.0.1:25000 progresso=8/10
-[   0.003] RECEBIDO bloco=6 origem=127.0.0.1:25000 progresso=9/10
-[   0.003] RECEBIDO bloco=7 origem=127.0.0.1:25000 progresso=10/10
+[   0.003] RECEBIDO bloco=9 origem=127.0.0.1:25000 progresso=1/10
+[   0.003] RECEBIDO bloco=8 origem=127.0.0.1:25000 progresso=2/10
+[   0.004] RECEBIDO bloco=0 origem=127.0.0.1:25000 progresso=3/10
+[   0.004] RECEBIDO bloco=7 origem=127.0.0.1:25000 progresso=4/10
+[   0.004] RECEBIDO bloco=1 origem=127.0.0.1:25000 progresso=5/10
+[   0.004] RECEBIDO bloco=6 origem=127.0.0.1:25000 progresso=6/10
+[   0.004] RECEBIDO bloco=4 origem=127.0.0.1:25000 progresso=7/10
+[   0.004] RECEBIDO bloco=5 origem=127.0.0.1:25000 progresso=8/10
+[   0.004] RECEBIDO bloco=3 origem=127.0.0.1:25000 progresso=9/10
+[   0.005] RECEBIDO bloco=2 origem=127.0.0.1:25000 progresso=10/10
+[   0.014] ENVIADO mapa destino=127.0.0.1:25002
+[   0.014] ENVIADO bloco=9 destino=127.0.0.1:25002
+[   0.017] ENVIADO bloco=7 destino=127.0.0.1:25002
+[   0.017] ENVIADO bloco=8 destino=127.0.0.1:25002
+[   0.018] ENVIADO bloco=5 destino=127.0.0.1:25002
+[   0.018] ENVIADO bloco=6 destino=127.0.0.1:25002
+[   0.018] ENVIADO mapa destino=127.0.0.1:25002
+[   0.023] ENVIADO metadados destino=127.0.0.1:25003
+[   0.024] ENVIADO mapa destino=127.0.0.1:25003
+[   0.024] ENVIADO bloco=7 destino=127.0.0.1:25003
+[   0.027] ENVIADO bloco=9 destino=127.0.0.1:25003
+[   0.028] ENVIADO bloco=5 destino=127.0.0.1:25003
+[   0.028] ENVIADO bloco=2 destino=127.0.0.1:25003
+[   0.028] ENVIADO bloco=4 destino=127.0.0.1:25003
 [   0.101] STATUS blocos=10/10 (100%)
-[   0.102] ENVIADO mapa destino=127.0.0.1:25003
-[   0.102] ENVIADO bloco=6 destino=127.0.0.1:25003
-[   0.104] ENVIADO bloco=8 destino=127.0.0.1:25003
-[   0.105] ENVIADO bloco=9 destino=127.0.0.1:25003
-[   0.105] ENVIADO bloco=1 destino=127.0.0.1:25003
-[   0.105] ENVIADO bloco=4 destino=127.0.0.1:25003
-[   0.107] SUCESSO SHA256=5234e02bedeba038dad81e7b3928ec58e43bd9d66e4ed79eb001cdd0fe3f47b1 bytes=10240 tempo_ms=3
-[   0.107] Compartilhando por mais 30 segundos
-[   0.307] RESUMO origem=127.0.0.1:25000 blocos=10
-[   0.307] RESUMO destino=127.0.0.1:25003 blocos=5
-[   0.307] RESUMO recebidos=10 enviados=5
+[   0.108] SUCESSO SHA256=93c92a8ebb68eeba74828fd0273fa06f23b8ff5bee4ad9cb3c483f9ee1489b93 bytes=10240 tempo_ms=4
+[   0.108] Compartilhando por mais 30 segundos
+[   0.228] RESUMO origem=127.0.0.1:25000 blocos=10
+[   0.228] RESUMO destino=127.0.0.1:25002 blocos=5
+[   0.228] RESUMO destino=127.0.0.1:25003 blocos=5
+[   0.228] RESUMO recebidos=10 enviados=10

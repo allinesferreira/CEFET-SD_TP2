@@ -1,20 +1,20 @@
-[   0.001] META recebida de 127.0.0.1:25000 (5 blocos)
-[   0.001] LEECH arquivo.bin blocos=5 endereco=127.0.0.1:25002
-[   0.001] STATUS blocos=0/5 (0%)
-[   0.001] VIZINHO inacessivel 127.0.0.1:25001
-[   0.002] RECEBIDO bloco=1 origem=127.0.0.1:25000 progresso=1/5
-[   0.002] RECEBIDO bloco=4 origem=127.0.0.1:25000 progresso=2/5
-[   0.002] RECEBIDO bloco=0 origem=127.0.0.1:25000 progresso=3/5
-[   0.003] RECEBIDO bloco=3 origem=127.0.0.1:25000 progresso=4/5
-[   0.003] RECEBIDO bloco=2 origem=127.0.0.1:25000 progresso=5/5
 [   0.003] Servidor ouvindo 127.0.0.1:25002
-[   0.004] ENVIADO mapa destino=127.0.0.1:25003
-[   0.004] ENVIADO bloco=0 destino=127.0.0.1:25003
-[   0.006] ENVIADO bloco=2 destino=127.0.0.1:25003
-[   0.006] ENVIADO bloco=1 destino=127.0.0.1:25003
-[   0.101] STATUS blocos=5/5 (100%)
-[   0.106] SUCESSO SHA256=399f6a13880de2660871014b34cdb067480c626e2fb7b65e947409a6d8921867 bytes=20480 tempo_ms=2
-[   0.106] Compartilhando por mais 30 segundos
-[   0.207] RESUMO origem=127.0.0.1:25000 blocos=5
-[   0.207] RESUMO destino=127.0.0.1:25003 blocos=3
-[   0.207] RESUMO recebidos=5 enviados=3
+[   0.003] META recebida de 127.0.0.1:25000 (5 blocos)
+[   0.003] LEECH arquivo.bin blocos=5 endereco=127.0.0.1:25002
+[   0.003] STATUS blocos=0/5 (0%)
+[   0.007] RECEBIDO bloco=1 origem=127.0.0.1:25000 progresso=1/5
+[   0.007] RECEBIDO bloco=2 origem=127.0.0.1:25001 progresso=2/5
+[   0.008] RECEBIDO bloco=3 origem=127.0.0.1:25000 progresso=3/5
+[   0.008] RECEBIDO bloco=0 origem=127.0.0.1:25001 progresso=4/5
+[   0.008] RECEBIDO bloco=4 origem=127.0.0.1:25000 progresso=5/5
+[   0.012] ENVIADO mapa destino=127.0.0.1:25003
+[   0.012] ENVIADO bloco=3 destino=127.0.0.1:25003
+[   0.014] ENVIADO bloco=4 destino=127.0.0.1:25003
+[   0.014] ENVIADO bloco=2 destino=127.0.0.1:25003
+[   0.108] STATUS blocos=5/5 (100%)
+[   0.111] SUCESSO SHA256=770454f327406e68da1d9661b747a205d110bc3f56751f27d8b0acc130a47c79 bytes=20480 tempo_ms=7
+[   0.111] Compartilhando por mais 30 segundos
+[   0.215] RESUMO origem=127.0.0.1:25000 blocos=3
+[   0.215] RESUMO origem=127.0.0.1:25001 blocos=2
+[   0.215] RESUMO destino=127.0.0.1:25003 blocos=3
+[   0.215] RESUMO recebidos=5 enviados=3
