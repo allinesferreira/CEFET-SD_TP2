@@ -218,27 +218,31 @@ std::vector<uint8_t> Peer::read_block(size_t index) {
     return block;
 }
 
-bool Peer::query(const Address& neighbor, const Request& request, std::vector<uint8_t>& body, uint32_t max_size) {
+Reply Peer::query(const Address& neighbor, const Request& request, std::vector<uint8_t>& body, uint32_t max_size) {
     int fd = connect_to(neighbor);
     if (fd < 0)
-        return false;
+        return Reply::Failed;
 
     std::vector<uint8_t> message = encode_request(request);
     uint32_t length = 0;
-    bool ok = send_all(fd, message.data(), message.size()) && recv_u32(fd, length) && length > 0 &&
-              length <= max_size;
-    if (ok) {
-        body.resize(length);
-        ok = recv_all(fd, body.data(), body.size());
+    Reply reply = Reply::Failed;
+    if (send_all(fd, message.data(), message.size()) && recv_u32(fd, length)) {
+        if (length == 0) {
+            reply = Reply::Refused;
+        } else if (length <= max_size) {
+            body.resize(length);
+            if (recv_all(fd, body.data(), body.size()))
+                reply = Reply::Ok;
+        }
     }
     close(fd);
-    return ok;
+    return reply;
 }
 
 bool Peer::fetch_metadata() {
     for (const auto& n : neighbors) {
         std::vector<uint8_t> body;
-        if (!query(n, {Command::Metadata, self}, body, MAX_METADATA_SIZE))
+        if (query(n, {Command::Metadata, self}, body, MAX_METADATA_SIZE) != Reply::Ok)
             continue;
 
         try {
@@ -253,59 +257,85 @@ bool Peer::fetch_metadata() {
 }
 
 void Peer::worker(Address n) {
-    const size_t total = meta.block_count();
-    const std::vector<size_t> order = shuffled_indices(total);
+    const std::vector<size_t> order = shuffled_indices(meta.block_count());
+    bool reachable = true;
 
     while (running && !finished) {
         std::vector<uint8_t> remote;
-        if (!fetch_block_map(n, remote)) {
+        Reply reply = fetch_block_map(n, remote);
+        if ((reply != Reply::Failed) != reachable) {
+            reachable = !reachable;
+            log_line(std::string(reachable ? "VIZINHO acessivel " : "VIZINHO inacessivel ") + n.str());
+        }
+        if (reply != Reply::Ok) {
             std::this_thread::sleep_for(300ms);
             continue;
         }
 
-        bool progress = false;
-        for (size_t i : order) {
-            if (!running || finished)
-                break;
-            if (!remote[i])
-                continue;
-            {
-                std::lock_guard<std::mutex> lock(blocks_mutex);
-                if (have[i] || claimed[i])
-                    continue;
-                claimed[i] = 1;
-            }
-
-            std::vector<uint8_t> data;
-            bool stored = fetch_block(n, i, data) && write_block(i, data);
-
-            std::lock_guard<std::mutex> lock(blocks_mutex);
-            if (stored && !have[i]) {
-                have[i] = 1;
-                received_from[n.str()]++;
-                size_t done = ++completed;
-                progress = true;
-                log_line("RECEBIDO bloco=" + std::to_string(i) + " origem=" + n.str() +
-                         " progresso=" + std::to_string(done) + "/" + std::to_string(total));
-                if (done == total)
-                    finished = true;
-            }
-            claimed[i] = 0;
-        }
-        if (!progress)
+        if (!download_available(n, remote, order))
             std::this_thread::sleep_for(200ms);
     }
 }
 
-bool Peer::fetch_block_map(const Address& n, std::vector<uint8_t>& remote) {
-    uint32_t total = static_cast<uint32_t>(meta.block_count());
-    return query(n, {Command::BlockMap, self}, remote, total) && remote.size() == total;
+bool Peer::download_available(const Address& n, const std::vector<uint8_t>& remote, const std::vector<size_t>& order) {
+    bool progress = false;
+    for (size_t i : order) {
+        if (!running || finished)
+            break;
+        if (!remote[i] || !claim(i))
+            continue;
+
+        std::vector<uint8_t> data;
+        Reply reply = fetch_block(n, i, data);
+        bool stored = reply == Reply::Ok && write_block(i, data);
+        release(i, stored, n);
+        progress = progress || stored;
+        if (reply == Reply::Failed)
+            break;
+    }
+    return progress;
 }
 
-bool Peer::fetch_block(const Address& n, size_t index, std::vector<uint8_t>& data) {
-    size_t length = meta.block_length(index);
-    return query(n, {Command::GetBlock, self, static_cast<uint32_t>(index)}, data, static_cast<uint32_t>(length)) &&
-           data.size() == length && sha256_hex(data.data(), data.size()) == meta.block_sha256[index];
+bool Peer::claim(size_t index) {
+    std::lock_guard<std::mutex> lock(blocks_mutex);
+    if (have[index] || claimed[index])
+        return false;
+    claimed[index] = 1;
+    return true;
+}
+
+void Peer::release(size_t index, bool stored, const Address& origin) {
+    std::lock_guard<std::mutex> lock(blocks_mutex);
+    claimed[index] = 0;
+    if (!stored)
+        return;
+
+    have[index] = 1;
+    received_from[origin.str()]++;
+    size_t done = ++completed;
+    size_t total = meta.block_count();
+    log_line("RECEBIDO bloco=" + std::to_string(index) + " origem=" + origin.str() +
+             " progresso=" + std::to_string(done) + "/" + std::to_string(total));
+    if (done == total)
+        finished = true;
+}
+
+Reply Peer::fetch_block_map(const Address& n, std::vector<uint8_t>& remote) {
+    uint32_t total = static_cast<uint32_t>(meta.block_count());
+    Reply reply = query(n, {Command::BlockMap, self}, remote, total);
+    if (reply == Reply::Ok && remote.size() != total)
+        return Reply::Refused;
+    return reply;
+}
+
+Reply Peer::fetch_block(const Address& n, size_t index, std::vector<uint8_t>& data) {
+    auto length = static_cast<uint32_t>(meta.block_length(index));
+    Reply reply = query(n, {Command::GetBlock, self, static_cast<uint32_t>(index)}, data, length);
+    if (reply == Reply::Ok && sha256_hex(data.data(), data.size()) != meta.block_sha256[index]) {
+        log_line("INVALIDO bloco=" + std::to_string(index) + " origem=" + n.str());
+        return Reply::Refused;
+    }
+    return reply;
 }
 
 bool Peer::write_block(size_t index, const std::vector<uint8_t>& data) {

@@ -127,6 +127,8 @@ Cada peer escreve o log no stderr, uma mensagem por linha. Toda linha começa co
 | `RECEBIDO bloco=i origem=X progresso=n/total` | bloco validado e gravado, com o vizinho de onde veio |
 | `ENVIADO metadados`, `ENVIADO mapa`, `ENVIADO bloco=i` | requisição atendida, com o `destino` |
 | `NEGADO ...` | requisição que o peer não pôde atender, por exemplo um bloco que ainda não tem |
+| `INVALIDO bloco=i origem=X` | bloco recebido com SHA-256 diferente do esperado; é descartado e pedido de novo |
+| `VIZINHO inacessivel X` / `VIZINHO acessivel X` | o vizinho deixou de responder ou voltou a responder |
 | `STATUS blocos=n/total` | blocos que o peer possui; aparece no início, a cada segundo durante o download e ao concluir |
 | `SUCESSO` / `FALHA` | resultado da verificação do SHA-256 do arquivo completo e tempo do download |
 | `RESUMO origem=X` / `RESUMO destino=X` | ao encerrar, quantos blocos o peer recebeu de cada vizinho e enviou para cada um |

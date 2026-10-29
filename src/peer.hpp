@@ -14,6 +14,8 @@
 
 extern std::atomic<bool> running;
 
+enum class Reply { Ok, Refused, Failed };
+
 class Peer {
 public:
     Peer(Address self, std::string file, std::string dir, uint32_t block_size,
@@ -31,11 +33,15 @@ private:
     std::vector<uint8_t> build_response(const Request& request);
     std::vector<uint8_t> read_block(size_t index);
 
-    bool query(const Address& neighbor, const Request& request, std::vector<uint8_t>& body, uint32_t max_size);
+    Reply query(const Address& neighbor, const Request& request, std::vector<uint8_t>& body, uint32_t max_size);
     bool fetch_metadata();
     void worker(Address neighbor);
-    bool fetch_block_map(const Address& neighbor, std::vector<uint8_t>& remote);
-    bool fetch_block(const Address& neighbor, size_t index, std::vector<uint8_t>& data);
+    bool download_available(const Address& neighbor, const std::vector<uint8_t>& remote,
+                            const std::vector<size_t>& order);
+    bool claim(size_t index);
+    void release(size_t index, bool stored, const Address& origin);
+    Reply fetch_block_map(const Address& neighbor, std::vector<uint8_t>& remote);
+    Reply fetch_block(const Address& neighbor, size_t index, std::vector<uint8_t>& data);
     bool write_block(size_t index, const std::vector<uint8_t>& data);
     void save_metadata();
     void finish_download();
