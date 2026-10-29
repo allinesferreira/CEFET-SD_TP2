@@ -1,5 +1,6 @@
 #include <csignal>
 #include <cstdint>
+#include <filesystem>
 #include <iostream>
 #include <stdexcept>
 #include <string>
@@ -95,6 +96,8 @@ int main(int argc, char** argv) {
             throw std::runtime_error("ip invalido: " + ip);
         if (linger < 0 || linger > 3600)
             throw std::runtime_error("linger invalido");
+        if (!file.empty() && !std::filesystem::is_regular_file(file))
+            throw std::runtime_error("arquivo nao encontrado: " + file);
 
         if (dir.empty())
             dir = "downloads/" + std::to_string(port);
