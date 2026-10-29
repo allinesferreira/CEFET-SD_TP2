@@ -24,6 +24,7 @@ namespace {
 
 constexpr uint32_t MAX_METADATA_SIZE = 70000000;
 constexpr auto STATUS_INTERVAL = 1s;
+constexpr auto RETRY_INTERVAL = 100ms;
 
 std::string describe(const Request& request) {
     switch (request.command) {
@@ -155,7 +156,7 @@ void Peer::init() {
         finished = true;
     } else {
         while (running && !fetch_metadata())
-            std::this_thread::sleep_for(500ms);
+            std::this_thread::sleep_for(RETRY_INTERVAL);
         if (!running)
             return;
 
@@ -268,12 +269,12 @@ void Peer::worker(Address n) {
             log_line(std::string(reachable ? "VIZINHO acessivel " : "VIZINHO inacessivel ") + n.str());
         }
         if (reply != Reply::Ok) {
-            std::this_thread::sleep_for(300ms);
+            std::this_thread::sleep_for(RETRY_INTERVAL);
             continue;
         }
 
         if (!download_available(n, remote, order))
-            std::this_thread::sleep_for(200ms);
+            std::this_thread::sleep_for(RETRY_INTERVAL);
     }
 }
 
