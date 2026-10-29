@@ -148,7 +148,9 @@ Em cada execução, o script inicia o seeder, espera ele ficar ativo, inicia os 
 - **integridade:** o SHA-256 é igual ao do original;
 - **origens:** pelo log, todos os blocos vieram de vizinhos configurados para aquele peer e nenhum bloco faltou.
 
-O tempo de uma execução é o maior `tempo_ms` entre os leechers. Os resultados ficam em `resultados/`:
+O tempo de uma execução é o maior `tempo_ms` entre os leechers.
+
+Ao final, o script roda um cenário de falha: 4 peers, blocos de 1024 bytes e arquivo de 20 MB, em que B é encerrado com `SIGKILL` quando D já tem 25% dos blocos. O teste passa se D registrar que B ficou inacessível e se C e D terminarem com o arquivo íntegro, usando os vizinhos que restaram. Os resultados ficam em `resultados/`:
 
 | Arquivo | Conteúdo |
 |---|---|
@@ -156,6 +158,7 @@ O tempo de uma execução é o maior `tempo_ms` entre os leechers. Os resultados
 | `execucoes.csv` | cada execução separadamente |
 | `origens.csv` | quantos blocos cada leecher recebeu de cada vizinho, na primeira execução de cada cenário |
 | `logs/<peers>peers_<bloco>bytes_<tamanho>arquivo/<peer>.log` | logs completos da primeira execução de cada cenário |
+| `falha.csv` e `logs/falha_4peers_1024bytes_20971520arquivo/` | resultado e logs do cenário de falha |
 
 As portas são fixas (25000 a 25003), então não rode duas instâncias do script ao mesmo tempo.
 

@@ -109,6 +109,17 @@ class Execucao:
                 return
             time.sleep(0.02)
 
+    def esperar_progresso(self, nome, fracao):
+        fim = time.monotonic() + max(30, self.tamanho / 100_000)
+        while time.monotonic() < fim:
+            progresso = RE_RECEBIDO.findall(self.log(nome).read_text())
+            if progresso:
+                _, recebidos, total = progresso[-1]
+                if int(recebidos) >= fracao * int(total):
+                    return int(recebidos)
+            time.sleep(0.01)
+        raise RuntimeError(f'peer {nome} não chegou a {fracao:.0%} do download')
+
     def encerrar(self):
         for p in self.processos.values():
             if p.poll() is None:
@@ -159,6 +170,36 @@ def executar_cenario(peers, bloco, tamanho, destino_logs=None):
         if destino_logs:
             execucao.guardar_logs(destino_logs)
     return verificacoes
+
+
+def executar_falha(destino_logs, bloco=1024, tamanho=20 * MB, fracao=0.25):
+    with tempfile.TemporaryDirectory(prefix='p2p_falha_') as tmp:
+        execucao = Execucao(pathlib.Path(tmp), 4, bloco, tamanho)
+        try:
+            execucao.iniciar()
+            progresso_na_falha = execucao.esperar_progresso('d', fracao)
+            execucao.processos['b'].kill()
+            execucao.processos['b'].wait()
+            execucao.esperar_downloads(['c', 'd'])
+        finally:
+            execucao.encerrar()
+        verificacoes = {nome: execucao.verificar(nome) for nome in ['c', 'd']}
+        detectada = f'VIZINHO inacessivel {endereco("b")}' in execucao.log('d').read_text()
+        execucao.guardar_logs(destino_logs)
+
+    linhas = []
+    for nome, v in verificacoes.items():
+        linhas.append({
+            'peer': nome,
+            'tamanho_ok': v['tamanho_ok'],
+            'sha_ok': v['sha_ok'],
+            'origens_ok': v['origens_ok'],
+            'tempo_ms': v['tempo_ms'],
+            **{f'blocos_de_{origem}': v['origens'][origem] for origem in 'abc'},
+            'blocos_de_d_na_falha': progresso_na_falha,
+            'falha_detectada_por_d': detectada,
+        })
+    return linhas
 
 
 def resumir(verificacoes):
@@ -244,10 +285,21 @@ def main():
     salvar_csv(RESULTADOS / 'resultados.csv', resultados)
     salvar_csv(RESULTADOS / 'origens.csv', origens)
 
+    print('\nFalha de vizinho: 4 peers, bloco 1024, 20 MB, B encerrado com SIGKILL quando D tem 25% dos blocos')
+    falha = executar_falha(RESULTADOS / 'logs' / 'falha_4peers_1024bytes_20971520arquivo')
+    salvar_csv(RESULTADOS / 'falha.csv', falha)
+    for linha in falha:
+        print(f'  {linha["peer"]}: {linha["tempo_ms"]} ms, blocos de a/b/c = '
+              f'{linha["blocos_de_a"]}/{linha["blocos_de_b"]}/{linha["blocos_de_c"]}, '
+              f'{"ok" if linha["sha_ok"] and linha["tamanho_ok"] else "FALHA"}')
+    print(f'  D tinha {falha[0]["blocos_de_d_na_falha"]} blocos na falha; '
+          f'falha detectada por D: {"sim" if falha[0]["falha_detectada_por_d"] else "não"}')
+
     falhas = [r for r in resultados if not (r['tamanho_ok'] and r['sha_ok'] and r['origens_ok'])]
+    falhas += [r for r in falha if not (r['tamanho_ok'] and r['sha_ok'] and r['falha_detectada_por_d'])]
     if falhas:
-        raise SystemExit(f'{len(falhas)} cenário(s) com falha')
-    print(f'\n{len(resultados)} cenários, {len(execucoes)} execuções, todas íntegras.')
+        raise SystemExit(f'{len(falhas)} verificação(ões) com falha')
+    print(f'\n{len(resultados)} cenários, {len(execucoes)} execuções e o cenário de falha, todos íntegros.')
 
 
 if __name__ == '__main__':
