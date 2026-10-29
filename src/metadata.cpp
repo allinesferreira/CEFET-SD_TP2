@@ -12,6 +12,15 @@ namespace fs = std::filesystem;
 
 namespace {
 
+uint64_t parse_unsigned(const std::string& text, uint64_t max, const std::string& field) {
+    if (text.empty() || text.size() > 19 || text.find_first_not_of("0123456789") != std::string::npos)
+        throw std::runtime_error(field + " invalido");
+    uint64_t value = std::stoull(text);
+    if (value > max)
+        throw std::runtime_error(field + " fora dos limites");
+    return value;
+}
+
 bool is_plain_filename(const std::string& name) {
     return !name.empty() && name != "." && name != ".." && name.find('/') == std::string::npos &&
            name.find('\\') == std::string::npos;
@@ -44,10 +53,10 @@ Metadata Metadata::parse(const std::string& text) {
         throw std::runtime_error("metadados invalidos");
     if (!std::getline(in, line))
         throw std::runtime_error("tamanho ausente");
-    m.size = std::stoull(line);
+    m.size = parse_unsigned(line, MAX_FILE_SIZE, "tamanho");
     if (!std::getline(in, line))
         throw std::runtime_error("bloco ausente");
-    m.block_size = static_cast<uint32_t>(std::stoul(line));
+    m.block_size = static_cast<uint32_t>(parse_unsigned(line, MAX_BLOCK_SIZE, "bloco"));
     if (!std::getline(in, m.sha256))
         throw std::runtime_error("hash ausente");
 

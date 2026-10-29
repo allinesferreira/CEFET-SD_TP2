@@ -8,6 +8,7 @@
 constexpr uint32_t MIN_BLOCK_SIZE = 256;
 constexpr uint32_t MAX_BLOCK_SIZE = 1048576;
 constexpr size_t MAX_BLOCKS = 1000000;
+constexpr uint64_t MAX_FILE_SIZE = uint64_t{MAX_BLOCKS} * MAX_BLOCK_SIZE;
 
 struct Metadata {
     std::string name;
