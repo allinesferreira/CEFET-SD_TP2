@@ -116,11 +116,12 @@ class Execucao:
     def esperar_progresso(self, nome, fracao):
         fim = time.monotonic() + max(30, self.tamanho / 100_000)
         while time.monotonic() < fim:
-            progresso = RE_RECEBIDO.findall(self.log(nome).read_text())
+            linhas = self.log(nome).read_text().splitlines()
+            progresso = RE_RECEBIDO.findall('\n'.join(linhas))
             if progresso:
                 _, _, recebidos, total = progresso[-1]
                 if int(recebidos) >= fracao * int(total):
-                    return int(recebidos)
+                    return int(recebidos), len(linhas)
             time.sleep(0.01)
         raise RuntimeError(f'peer {nome} não chegou a {fracao:.0%} do download')
 
@@ -192,14 +193,17 @@ def executar_falha(destino_logs, bloco=1024, tamanho=20 * MB, fracao=0.25):
         execucao = Execucao(pathlib.Path(tmp), 4, bloco, tamanho)
         try:
             execucao.iniciar()
-            progresso_na_falha = execucao.esperar_progresso('d', fracao)
+            progresso_na_falha, linhas_antes = execucao.esperar_progresso('d', fracao)
             execucao.processos['b'].kill()
             execucao.processos['b'].wait()
             execucao.esperar_downloads(['c', 'd'])
         finally:
             execucao.encerrar()
         verificacoes = {nome: execucao.verificar(nome) for nome in ['c', 'd']}
-        detectada = f'VIZINHO inacessivel {endereco("b")}' in execucao.log('d').read_text()
+        depois = execucao.log('d').read_text().splitlines()[linhas_antes:]
+        detectada = any(f'VIZINHO inacessivel {endereco("b")}' in linha for linha in depois)
+        de_c_depois = sum(1 for linha in depois
+                          if (m := RE_RECEBIDO.search(linha)) and nome_do_endereco(m.group(2)) == 'c')
         execucao.guardar_logs(destino_logs)
 
     linhas = []
@@ -211,7 +215,8 @@ def executar_falha(destino_logs, bloco=1024, tamanho=20 * MB, fracao=0.25):
             'origens_ok': v['origens_ok'],
             'tempo_ms': v['tempo_ms'],
             **{f'blocos_de_{origem}': v['origens'][origem] for origem in 'abc'},
-            'blocos_de_d_na_falha': progresso_na_falha,
+            'progresso_de_d_na_falha': progresso_na_falha,
+            'blocos_de_c_para_d_apos_falha': de_c_depois,
             'falha_detectada_por_d': detectada,
         })
     return linhas
@@ -314,11 +319,13 @@ def main():
         print(f'  {linha["peer"]}: {linha["tempo_ms"]} ms, blocos de a/b/c = '
               f'{linha["blocos_de_a"]}/{linha["blocos_de_b"]}/{linha["blocos_de_c"]}, '
               f'{"ok" if linha["sha_ok"] and linha["tamanho_ok"] else "FALHA"}')
-    print(f'  D tinha {falha[0]["blocos_de_d_na_falha"]} blocos na falha; '
+    print(f'  D tinha {falha[0]["progresso_de_d_na_falha"]} blocos na falha e recebeu '
+          f'{falha[0]["blocos_de_c_para_d_apos_falha"]} de C depois dela; '
           f'falha detectada por D: {"sim" if falha[0]["falha_detectada_por_d"] else "não"}')
 
     falhas = [r for r in resultados if not (r['tamanho_ok'] and r['sha_ok'] and r['origens_ok'])]
-    falhas += [r for r in falha if not (r['tamanho_ok'] and r['sha_ok'] and r['falha_detectada_por_d'])]
+    falhas += [r for r in falha if not (r['tamanho_ok'] and r['sha_ok'] and r['falha_detectada_por_d'] and
+                                        r['blocos_de_c_para_d_apos_falha'] > 0)]
     if falhas:
         raise SystemExit(f'{len(falhas)} verificação(ões) com falha')
     print(f'\n{len(resultados)} cenários, {len(execucoes)} execuções e o cenário de falha, todos íntegros.')

@@ -150,7 +150,7 @@ Em cada execução, o script inicia o seeder, espera ele ficar ativo e inicia os
 
 O tempo de uma execução é o maior `tempo_ms` entre os leechers; o tempo de cada leecher também fica registrado.
 
-Ao final, o script roda um cenário de falha: 4 peers, blocos de 1024 bytes e arquivo de 20 MB, em que B é encerrado com `SIGKILL` quando D já tem 25% dos blocos. O teste passa se D registrar que B ficou inacessível e se C e D terminarem com o arquivo íntegro, usando os vizinhos que restaram.
+Ao final, o script roda um cenário de falha: 4 peers, blocos de 1024 bytes e arquivo de 20 MB, em que B é encerrado com `SIGKILL` quando D já tem 25% dos blocos. O teste passa se, depois da queda, D registrar que B ficou inacessível e continuar recebendo blocos de C, e se C e D terminarem com o arquivo íntegro.
 
 Os resultados ficam em `resultados/`:
 
