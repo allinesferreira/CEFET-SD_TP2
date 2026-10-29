@@ -170,8 +170,8 @@ def test(peers, block, size):
                 f.close()
 
             # Cria pasta permanente de logs
-            pasta_logs = ROOT / 'logs'
-            pasta_logs.mkdir(exist_ok=True)
+            pasta_logs = ROOT / 'resultados' / 'logs'
+            pasta_logs.mkdir(parents=True, exist_ok=True)
 
             identificador = (
                 f'{peers}peers_'
@@ -226,7 +226,7 @@ if __name__ == '__main__':
         print(result, flush=True)
 
     with open(
-            ROOT / 'resultados.csv',
+            ROOT / 'resultados' / 'resultados.csv',
             'w',
             newline=''
     ) as f:
