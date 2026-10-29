@@ -324,23 +324,30 @@ def main():
     salvar_csv(RESULTADOS / 'resultados.csv', resultados)
     salvar_csv(RESULTADOS / 'origens.csv', origens)
 
-    print('\nFalha de vizinho: 4 peers, bloco 1024, 20 MB, B encerrado com SIGKILL quando D tem 25% dos blocos')
+    print('\nCenário de falha simulada (proposital): 4 peers, bloco 1024, 20 MB')
+    print('  O script encerra B com SIGKILL quando D tem 25% dos blocos e verifica se C e D se recuperam.')
     falha = executar_falha(RESULTADOS / 'logs' / 'falha_4peers_1024bytes_20971520arquivo')
     salvar_csv(RESULTADOS / 'falha.csv', falha)
     for linha in falha:
         print(f'  {linha["peer"]}: {linha["tempo_ms"]} ms, blocos de a/b/c = '
               f'{linha["blocos_de_a"]}/{linha["blocos_de_b"]}/{linha["blocos_de_c"]}, '
               f'{"ok" if aprovado(linha) else "FALHA"}')
-    print(f'  D tinha {falha[0]["progresso_de_d_na_falha"]} blocos na falha e recebeu '
-          f'{falha[0]["blocos_de_c_para_d_apos_falha"]} de C depois dela; '
-          f'falha detectada por D: {"sim" if falha[0]["falha_detectada_por_d"] else "não"}')
+    d = falha[0]
+    recuperou = d['falha_detectada_por_d'] and d['blocos_de_c_para_d_apos_falha'] > 0
+    if recuperou:
+        print(f'  recuperação: ok, D detectou a queda de B e recebeu {d["blocos_de_c_para_d_apos_falha"]} '
+              'blocos de C depois dela')
+    elif not d['falha_detectada_por_d']:
+        print('  recuperação: FALHA, D não registrou a queda de B')
+    else:
+        print('  recuperação: FALHA, D não recebeu blocos de C depois da queda de B')
 
     falhas = [r for r in resultados if not aprovado(r)]
-    falhas += [r for r in falha if not (aprovado(r) and r['falha_detectada_por_d'] and
-                                        r['blocos_de_c_para_d_apos_falha'] > 0)]
+    falhas += [r for r in falha if not (aprovado(r) and recuperou)]
     if falhas:
-        raise SystemExit(f'{len(falhas)} verificação(ões) com falha')
-    print(f'\n{len(resultados)} cenários, {len(execucoes)} execuções e o cenário de falha, todos íntegros.')
+        raise SystemExit(f'\nRESULTADO: {len(falhas)} verificação(ões) falharam')
+    print(f'\nRESULTADO: todos os testes passaram ({len(resultados)} cenários, {len(execucoes)} execuções '
+          'e o cenário de falha simulada)')
 
 
 if __name__ == '__main__':
