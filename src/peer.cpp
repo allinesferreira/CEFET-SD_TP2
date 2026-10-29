@@ -75,32 +75,32 @@ void Peer::run() {
         }
     });
 
+    std::exception_ptr error;
     try {
         init();
         if (running && seed)
             seed_until_stopped();
         else if (running && ready)
             download();
-        running = false;
     } catch (...) {
-        running = false;
-        server_thread.join();
-        if (local_fd >= 0)
-            close(local_fd);
-        if (dir_fd >= 0)
-            close(dir_fd);
-        throw;
+        error = std::current_exception();
     }
-
+    running = false;
     server_thread.join();
+
+    if (!error)
+        error = server_error;
+    if (error)
+        std::rethrow_exception(error);
+    if (ready)
+        log_summary();
+}
+
+Peer::~Peer() {
     if (local_fd >= 0)
         close(local_fd);
     if (dir_fd >= 0)
         close(dir_fd);
-    if (server_error)
-        std::rethrow_exception(server_error);
-    if (ready)
-        log_summary();
 }
 
 void Peer::seed_until_stopped() {

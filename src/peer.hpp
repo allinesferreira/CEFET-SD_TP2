@@ -20,6 +20,7 @@ class Peer {
 public:
     Peer(Address self, std::string file, std::string dir, uint32_t block_size,
          std::vector<Address> neighbors, int linger_seconds);
+    ~Peer();
 
     void run();
 
