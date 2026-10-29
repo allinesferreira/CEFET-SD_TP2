@@ -114,8 +114,8 @@ void Peer::download() {
     log_status();
 
     std::vector<std::thread> workers;
-    for (const auto& n : neighbors)
-        workers.emplace_back([this, n] { worker(n); });
+    for (const auto& neighbor : neighbors)
+        workers.emplace_back([this, neighbor] { worker(neighbor); });
 
     auto next_status = std::chrono::steady_clock::now() + STATUS_INTERVAL;
     while (running && !finished) {
@@ -256,14 +256,14 @@ Reply Peer::query(const Address& neighbor, const Request& request, std::vector<u
 }
 
 bool Peer::fetch_metadata() {
-    for (const auto& n : neighbors) {
+    for (const auto& neighbor : neighbors) {
         std::vector<uint8_t> body;
-        if (query(n, {Command::Metadata, self}, body, MAX_METADATA_SIZE) != Reply::Ok)
+        if (query(neighbor, {Command::Metadata, self}, body, MAX_METADATA_SIZE) != Reply::Ok)
             continue;
 
         try {
             meta = Metadata::parse(std::string(body.begin(), body.end()));
-            log_line("META recebida de " + n.str() + " (" + std::to_string(meta.block_count()) + " blocos)");
+            log_line("META recebida de " + neighbor.str() + " (" + std::to_string(meta.block_count()) + " blocos)");
             return true;
         } catch (const std::exception& e) {
             log_line(std::string("META invalida: ") + e.what());
@@ -272,28 +272,29 @@ bool Peer::fetch_metadata() {
     return false;
 }
 
-void Peer::worker(Address n) {
+void Peer::worker(const Address& neighbor) {
     const std::vector<size_t> order = shuffled_indices(meta.block_count());
     bool reachable = true;
 
     while (running && !finished) {
         std::vector<uint8_t> remote;
-        Reply reply = fetch_block_map(n, remote);
+        Reply reply = fetch_block_map(neighbor, remote);
         if ((reply != Reply::Failed) != reachable) {
             reachable = !reachable;
-            log_line(std::string(reachable ? "VIZINHO acessivel " : "VIZINHO inacessivel ") + n.str());
+            log_line(std::string(reachable ? "VIZINHO acessivel " : "VIZINHO inacessivel ") + neighbor.str());
         }
         if (reply != Reply::Ok) {
             std::this_thread::sleep_for(RETRY_INTERVAL);
             continue;
         }
 
-        if (!download_available(n, remote, order))
+        if (!download_available(neighbor, remote, order))
             std::this_thread::sleep_for(RETRY_INTERVAL);
     }
 }
 
-bool Peer::download_available(const Address& n, const std::vector<uint8_t>& remote, const std::vector<size_t>& order) {
+bool Peer::download_available(const Address& neighbor, const std::vector<uint8_t>& remote,
+                              const std::vector<size_t>& order) {
     bool progress = false;
     for (size_t i : order) {
         if (!running || finished)
@@ -302,9 +303,9 @@ bool Peer::download_available(const Address& n, const std::vector<uint8_t>& remo
             continue;
 
         std::vector<uint8_t> data;
-        Reply reply = fetch_block(n, i, data);
+        Reply reply = fetch_block(neighbor, i, data);
         bool stored = reply == Reply::Ok && write_block(i, data);
-        release(i, stored, n);
+        release(i, stored, neighbor);
         progress = progress || stored;
         if (reply == Reply::Failed)
             break;
@@ -338,19 +339,19 @@ void Peer::release(size_t index, bool stored, const Address& origin) {
     }
 }
 
-Reply Peer::fetch_block_map(const Address& n, std::vector<uint8_t>& remote) {
+Reply Peer::fetch_block_map(const Address& neighbor, std::vector<uint8_t>& remote) {
     uint32_t total = static_cast<uint32_t>(meta.block_count());
-    Reply reply = query(n, {Command::BlockMap, self}, remote, total);
+    Reply reply = query(neighbor, {Command::BlockMap, self}, remote, total);
     if (reply == Reply::Ok && remote.size() != total)
         return Reply::Refused;
     return reply;
 }
 
-Reply Peer::fetch_block(const Address& n, size_t index, std::vector<uint8_t>& data) {
+Reply Peer::fetch_block(const Address& neighbor, size_t index, std::vector<uint8_t>& data) {
     auto length = static_cast<uint32_t>(meta.block_length(index));
-    Reply reply = query(n, {Command::GetBlock, self, static_cast<uint32_t>(index)}, data, length);
+    Reply reply = query(neighbor, {Command::GetBlock, self, static_cast<uint32_t>(index)}, data, length);
     if (reply == Reply::Ok && sha256_hex(data.data(), data.size()) != meta.block_sha256[index]) {
-        log_line("INVALIDO bloco=" + std::to_string(index) + " origem=" + n.str());
+        log_line("INVALIDO bloco=" + std::to_string(index) + " origem=" + neighbor.str());
         return Reply::Refused;
     }
     return reply;

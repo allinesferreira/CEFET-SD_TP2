@@ -35,7 +35,7 @@ private:
 
     Reply query(const Address& neighbor, const Request& request, std::vector<uint8_t>& body, uint32_t max_size);
     bool fetch_metadata();
-    void worker(Address neighbor);
+    void worker(const Address& neighbor);
     bool download_available(const Address& neighbor, const std::vector<uint8_t>& remote,
                             const std::vector<size_t>& order);
     bool claim(size_t index);
