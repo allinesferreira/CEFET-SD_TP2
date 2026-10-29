@@ -150,7 +150,9 @@ Em cada execução, o script inicia o seeder, espera ele ficar ativo, inicia os 
 
 O tempo de uma execução é o maior `tempo_ms` entre os leechers; o tempo de cada leecher também fica registrado.
 
-Ao final, o script roda um cenário de falha: 4 peers, blocos de 1024 bytes e arquivo de 20 MB, em que B é encerrado com `SIGKILL` quando D já tem 25% dos blocos. O teste passa se D registrar que B ficou inacessível e se C e D terminarem com o arquivo íntegro, usando os vizinhos que restaram. Os resultados ficam em `resultados/`:
+Ao final, o script roda um cenário de falha: 4 peers, blocos de 1024 bytes e arquivo de 20 MB, em que B é encerrado com `SIGKILL` quando D já tem 25% dos blocos. O teste passa se D registrar que B ficou inacessível e se C e D terminarem com o arquivo íntegro, usando os vizinhos que restaram.
+
+Os resultados ficam em `resultados/`:
 
 | Arquivo | Conteúdo |
 |---|---|
@@ -161,6 +163,15 @@ Ao final, o script roda um cenário de falha: 4 peers, blocos de 1024 bytes e ar
 | `falha.csv` e `logs/falha_4peers_1024bytes_20971520arquivo/` | resultado e logs do cenário de falha |
 
 As portas são fixas (25000 a 25003), então não rode duas instâncias do script ao mesmo tempo.
+
+## Relatório
+
+O relatório em `docs/relatorio.pdf` é gerado a partir dos arquivos de `resultados/`. Depois de rodar os testes:
+
+```
+pip install reportlab
+python3 docs/gerar_relatorio.py
+```
 
 ## Limitações
 
