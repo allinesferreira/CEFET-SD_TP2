@@ -3,6 +3,7 @@
 #include <atomic>
 #include <chrono>
 #include <cstdint>
+#include <map>
 #include <mutex>
 #include <string>
 #include <vector>
@@ -22,6 +23,10 @@ public:
 
 private:
     void init();
+    void seed_until_stopped();
+    void download();
+    void log_status();
+    void log_summary();
     std::vector<uint8_t> respond(const Request& request);
     std::vector<uint8_t> build_response(const Request& request);
     std::vector<uint8_t> read_block(size_t index);
@@ -46,7 +51,10 @@ private:
 
     std::vector<uint8_t> have;
     std::vector<uint8_t> claimed;
+    std::map<std::string, size_t> received_from;
     std::mutex blocks_mutex;
+
+    std::map<std::string, size_t> sent_to;
 
     std::atomic<size_t> completed{0};
     std::atomic<bool> finished{false};

@@ -20,6 +20,7 @@ std::atomic<bool> running{true};
 namespace {
 
 constexpr uint32_t MAX_METADATA_SIZE = 70000000;
+constexpr auto STATUS_INTERVAL = 1s;
 
 std::string describe(const Request& request) {
     switch (request.command) {
@@ -58,23 +59,11 @@ void Peer::run() {
 
     try {
         init();
-        start = std::chrono::steady_clock::now();
-        std::vector<std::thread> workers;
-        if (!seed) {
-            for (const auto& n : neighbors)
-                workers.emplace_back([this, n] { worker(n); });
-            while (running && !finished)
-                std::this_thread::sleep_for(100ms);
-            if (finished)
-                finish_download();
-            running = false;
-        } else {
-            log_line("Seeder ativo. Ctrl+C para encerrar.");
-            while (running)
-                std::this_thread::sleep_for(200ms);
-        }
-        for (auto& t : workers)
-            t.join();
+        if (seed)
+            seed_until_stopped();
+        else if (ready)
+            download();
+        running = false;
     } catch (...) {
         running = false;
         server_thread.join();
@@ -86,6 +75,61 @@ void Peer::run() {
     server_thread.join();
     if (local_fd >= 0)
         close(local_fd);
+    if (ready)
+        log_summary();
+}
+
+void Peer::seed_until_stopped() {
+    log_status();
+    log_line("Seeder ativo. Ctrl+C para encerrar.");
+    while (running)
+        std::this_thread::sleep_for(200ms);
+}
+
+void Peer::download() {
+    start = std::chrono::steady_clock::now();
+    log_status();
+
+    std::vector<std::thread> workers;
+    for (const auto& n : neighbors)
+        workers.emplace_back([this, n] { worker(n); });
+
+    auto next_status = start + STATUS_INTERVAL;
+    while (running && !finished) {
+        std::this_thread::sleep_for(100ms);
+        if (std::chrono::steady_clock::now() >= next_status) {
+            log_status();
+            next_status += STATUS_INTERVAL;
+        }
+    }
+    for (auto& t : workers)
+        t.join();
+
+    if (finished) {
+        log_status();
+        finish_download();
+    }
+}
+
+void Peer::log_status() {
+    size_t done = completed;
+    size_t total = meta.block_count();
+    log_line("STATUS blocos=" + std::to_string(done) + "/" + std::to_string(total) + " (" +
+             std::to_string(done * 100 / total) + "%)");
+}
+
+void Peer::log_summary() {
+    size_t received = 0;
+    for (const auto& [origin, count] : received_from) {
+        log_line("RESUMO origem=" + origin + " blocos=" + std::to_string(count));
+        received += count;
+    }
+    size_t sent = 0;
+    for (const auto& [destination, count] : sent_to) {
+        log_line("RESUMO destino=" + destination + " blocos=" + std::to_string(count));
+        sent += count;
+    }
+    log_line("RESUMO recebidos=" + std::to_string(received) + " enviados=" + std::to_string(sent));
 }
 
 void Peer::init() {
@@ -123,6 +167,8 @@ void Peer::init() {
 
 std::vector<uint8_t> Peer::respond(const Request& request) {
     std::vector<uint8_t> body = build_response(request);
+    if (request.command == Command::GetBlock && !body.empty())
+        sent_to[request.sender.str()]++;
     log_line(std::string(body.empty() ? "NEGADO " : "ENVIADO ") + describe(request) +
              " destino=" + request.sender.str());
     return body;
@@ -224,6 +270,7 @@ void Peer::worker(Address n) {
             std::lock_guard<std::mutex> lock(blocks_mutex);
             if (stored && !have[i]) {
                 have[i] = 1;
+                received_from[n.str()]++;
                 size_t done = ++completed;
                 progress = true;
                 log_line("RECEBIDO bloco=" + std::to_string(i) + " origem=" + n.str() +
