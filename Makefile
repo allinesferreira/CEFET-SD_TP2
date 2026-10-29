@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -std=c++17 -O2 -Wall -Wextra -Wno-deprecated-declarations -pthread
+CXXFLAGS = -std=c++17 -O2 -Wall -Wextra -pthread
 LDLIBS = -lcrypto -pthread
 
 SRCS = $(wildcard src/*.cpp)
