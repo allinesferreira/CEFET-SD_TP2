@@ -118,7 +118,7 @@ O leecher confere o SHA-256 de cada bloco antes de marcá-lo como disponível. Q
 
 ## Logs
 
-Cada peer escreve o log no stderr, uma mensagem por linha:
+Cada peer escreve o log no stderr, uma mensagem por linha. Toda linha começa com o tempo em segundos desde o início do processo, por exemplo `[   0.152] RECEBIDO bloco=3 origem=127.0.0.1:5000 progresso=4/1024`.
 
 | Linha | Significado |
 |---|---|
