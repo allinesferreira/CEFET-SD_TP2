@@ -78,6 +78,9 @@ class Execucao:
     def baixado(self, nome):
         return self.pasta / nome / 'arquivo.bin'
 
+    def metadados(self, nome):
+        return self.pasta / nome / 'arquivo.bin.meta'
+
     def iniciar(self):
         self.original.write_bytes(os.urandom(self.tamanho))
         self.sha_original = sha256(self.original)
@@ -159,9 +162,11 @@ class Execucao:
 
         arquivo = self.baixado(nome)
         existe = arquivo.exists()
+        meta = self.metadados(nome)
         return {
             'tamanho_ok': existe and arquivo.stat().st_size == self.tamanho,
             'sha_ok': existe and sha256(arquivo) == self.sha_original,
+            'meta_ok': meta.exists() and meta.read_bytes() == self.metadados('a').read_bytes(),
             'origens_ok': confirmados and total == math.ceil(self.tamanho / self.bloco),
             'tempo_ms': tempo_ms,
             'origens': Counter({origem: len(blocos) for origem, blocos in recebidos.items()}),
@@ -212,6 +217,7 @@ def executar_falha(destino_logs, bloco=1024, tamanho=20 * MB, fracao=0.25):
             'peer': nome,
             'tamanho_ok': v['tamanho_ok'],
             'sha_ok': v['sha_ok'],
+            'meta_ok': v['meta_ok'],
             'origens_ok': v['origens_ok'],
             'tempo_ms': v['tempo_ms'],
             **{f'blocos_de_{origem}': v['origens'][origem] for origem in 'abc'},
@@ -222,6 +228,10 @@ def executar_falha(destino_logs, bloco=1024, tamanho=20 * MB, fracao=0.25):
     return linhas
 
 
+def aprovado(linha):
+    return all(linha[chave] for chave in ('tamanho_ok', 'sha_ok', 'meta_ok', 'origens_ok'))
+
+
 def resumir(verificacoes):
     tempos = [v['tempo_ms'] for v in verificacoes.values()]
     return {
@@ -229,6 +239,7 @@ def resumir(verificacoes):
         **{f'tempo_{nome}_ms': verificacoes[nome]['tempo_ms'] if nome in verificacoes else None for nome in LEECHERS},
         'tamanho_ok': all(v['tamanho_ok'] for v in verificacoes.values()),
         'sha_ok': all(v['sha_ok'] for v in verificacoes.values()),
+        'meta_ok': all(v['meta_ok'] for v in verificacoes.values()),
         'origens_ok': all(v['origens_ok'] for v in verificacoes.values()),
     }
 
@@ -259,6 +270,7 @@ def agregar(execucoes):
             **{f'tempo_medio_{nome}_ms': media(e[f'tempo_{nome}_ms'] for e in grupo) for nome in LEECHERS},
             'tamanho_ok': all(e['tamanho_ok'] for e in grupo),
             'sha_ok': all(e['sha_ok'] for e in grupo),
+            'meta_ok': all(e['meta_ok'] for e in grupo),
             'origens_ok': all(e['origens_ok'] for e in grupo),
         })
     return linhas
@@ -303,7 +315,7 @@ def main():
                             for origem, blocos in sorted(v['origens'].items()):
                                 origens.append({'cenario': cenario, 'peer': nome, 'origem': origem, 'blocos': blocos})
 
-                    estado = 'ok' if resumo['tamanho_ok'] and resumo['sha_ok'] and resumo['origens_ok'] else 'FALHA'
+                    estado = 'ok' if aprovado(resumo) else 'FALHA'
                     print(f'{peers} peers, bloco {bloco}, {legivel(tamanho)}, '
                           f'execução {repeticao}/{args.repeticoes}: {resumo["tempo_ms"]} ms, {estado}', flush=True)
 
@@ -318,13 +330,13 @@ def main():
     for linha in falha:
         print(f'  {linha["peer"]}: {linha["tempo_ms"]} ms, blocos de a/b/c = '
               f'{linha["blocos_de_a"]}/{linha["blocos_de_b"]}/{linha["blocos_de_c"]}, '
-              f'{"ok" if linha["sha_ok"] and linha["tamanho_ok"] else "FALHA"}')
+              f'{"ok" if aprovado(linha) else "FALHA"}')
     print(f'  D tinha {falha[0]["progresso_de_d_na_falha"]} blocos na falha e recebeu '
           f'{falha[0]["blocos_de_c_para_d_apos_falha"]} de C depois dela; '
           f'falha detectada por D: {"sim" if falha[0]["falha_detectada_por_d"] else "não"}')
 
-    falhas = [r for r in resultados if not (r['tamanho_ok'] and r['sha_ok'] and r['origens_ok'])]
-    falhas += [r for r in falha if not (r['tamanho_ok'] and r['sha_ok'] and r['falha_detectada_por_d'] and
+    falhas = [r for r in resultados if not aprovado(r)]
+    falhas += [r for r in falha if not (aprovado(r) and r['falha_detectada_por_d'] and
                                         r['blocos_de_c_para_d_apos_falha'] > 0)]
     if falhas:
         raise SystemExit(f'{len(falhas)} verificação(ões) com falha')
