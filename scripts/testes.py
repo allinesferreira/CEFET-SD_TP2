@@ -248,7 +248,7 @@ def agregar(execucoes):
 
 def salvar_csv(caminho, linhas):
     with open(caminho, 'w', newline='') as f:
-        escritor = csv.DictWriter(f, fieldnames=list(linhas[0]))
+        escritor = csv.DictWriter(f, fieldnames=list(linhas[0]), lineterminator='\n')
         escritor.writeheader()
         escritor.writerows(linhas)
 
