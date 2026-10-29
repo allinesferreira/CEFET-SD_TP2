@@ -42,15 +42,20 @@ void accept_pending(int listener, std::vector<Connection>& connections) {
 
 bool read_request(Connection& c, const RequestHandler& handler) {
     uint8_t buffer[4096];
+    bool client_closed = false;
     while (true) {
         ssize_t n = recv(c.fd, buffer, sizeof(buffer), 0);
         if (n > 0) {
             c.input.insert(c.input.end(), buffer, buffer + n);
             continue;
         }
-        if (n < 0 && errno == EINTR)
+        if (n == 0) {
+            client_closed = true;
+            break;
+        }
+        if (errno == EINTR)
             continue;
-        if (n < 0 && would_block())
+        if (would_block())
             break;
         return false;
     }
@@ -58,7 +63,7 @@ bool read_request(Connection& c, const RequestHandler& handler) {
     Request request;
     switch (parse_request(c.input, request)) {
     case ParseResult::Incomplete:
-        return true;
+        return !client_closed;
     case ParseResult::Invalid:
         return false;
     case ParseResult::Complete:
