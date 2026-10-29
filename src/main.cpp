@@ -19,11 +19,24 @@ void stop(int) {
     running = false;
 }
 
+int parse_int(const std::string& option, const std::string& value) {
+    size_t used = 0;
+    int result = 0;
+    try {
+        result = std::stoi(value, &used);
+    } catch (const std::exception&) {
+        used = 0;
+    }
+    if (used == 0 || used != value.size())
+        throw std::runtime_error("valor invalido para " + option + ": " + value);
+    return result;
+}
+
 Address parse_neighbor(const std::string& value) {
     size_t pos = value.rfind(':');
     if (pos == std::string::npos)
         throw std::runtime_error("vizinho deve ser IP:porta");
-    int port = std::stoi(value.substr(pos + 1));
+    int port = parse_int("--neighbor", value.substr(pos + 1));
     if (port < 1 || port > 65535)
         throw std::runtime_error("porta vizinho invalida");
     std::string host = value.substr(0, pos);
@@ -44,7 +57,7 @@ int main(int argc, char** argv) {
         int port = 0;
         std::string file;
         std::string dir = "downloads";
-        uint32_t block_size = 1024;
+        int block_size = 1024;
         int linger = 30;
         std::vector<Address> neighbors;
 
@@ -59,22 +72,23 @@ int main(int argc, char** argv) {
             if (arg == "--ip")
                 ip = value();
             else if (arg == "--port")
-                port = std::stoi(value());
+                port = parse_int(arg, value());
             else if (arg == "--file")
                 file = value();
             else if (arg == "--dir")
                 dir = value();
             else if (arg == "--block")
-                block_size = static_cast<uint32_t>(std::stoul(value()));
+                block_size = parse_int(arg, value());
             else if (arg == "--linger")
-                linger = std::stoi(value());
+                linger = parse_int(arg, value());
             else if (arg == "--neighbor")
                 neighbors.push_back(parse_neighbor(value()));
             else
                 throw std::runtime_error("argumento desconhecido: " + arg);
         }
 
-        if (ip.empty() || port < 1 || port > 65535 || block_size < MIN_BLOCK_SIZE || block_size > MAX_BLOCK_SIZE ||
+        if (ip.empty() || port < 1 || port > 65535 || block_size < static_cast<int>(MIN_BLOCK_SIZE) ||
+            block_size > static_cast<int>(MAX_BLOCK_SIZE) ||
             (file.empty() && neighbors.empty()))
             throw std::runtime_error(USAGE);
         if (!is_ipv4(ip))
@@ -82,7 +96,7 @@ int main(int argc, char** argv) {
         if (linger < 0 || linger > 3600)
             throw std::runtime_error("linger invalido");
 
-        Peer peer({ip, port}, file, dir, block_size, neighbors, linger);
+        Peer peer({ip, port}, file, dir, static_cast<uint32_t>(block_size), neighbors, linger);
         peer.run();
         return 0;
     } catch (const std::exception& e) {
