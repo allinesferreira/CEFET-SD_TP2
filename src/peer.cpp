@@ -369,14 +369,15 @@ void Peer::save_metadata() {
 void Peer::finish_download() {
     fsync(local_fd);
     std::string hash = sha256_file(local_path);
-    if (hash == meta.sha256) {
-        fs::rename(local_path, dir + "/" + meta.name);
-        save_metadata();
-        auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(last_block_time - start).count();
-        log_line("SUCESSO SHA256=" + hash + " bytes=" + std::to_string(meta.size) + " tempo_ms=" + std::to_string(ms));
-    } else {
+    if (hash != meta.sha256) {
         log_line("FALHA: SHA256 final diferente");
+        throw std::runtime_error("arquivo remontado nao confere com os metadados");
     }
+
+    fs::rename(local_path, dir + "/" + meta.name);
+    save_metadata();
+    auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(last_block_time - start).count();
+    log_line("SUCESSO SHA256=" + hash + " bytes=" + std::to_string(meta.size) + " tempo_ms=" + std::to_string(ms));
 
     log_line("Compartilhando por mais " + std::to_string(linger) + " segundos");
     for (int k = 0; k < linger * 10 && running; k++)
