@@ -43,12 +43,13 @@ std::string sha256_file(const std::string& path) {
     while (file) {
         file.read(buffer.data(), buffer.size());
         std::streamsize n = file.gcount();
-        if (n > 0)
-            EVP_DigestUpdate(ctx.get(), buffer.data(), n);
+        if (n > 0 && !EVP_DigestUpdate(ctx.get(), buffer.data(), n))
+            throw std::runtime_error("falha ao calcular SHA256");
     }
 
     unsigned char hash[EVP_MAX_MD_SIZE];
     unsigned int length = 0;
-    EVP_DigestFinal_ex(ctx.get(), hash, &length);
+    if (!EVP_DigestFinal_ex(ctx.get(), hash, &length))
+        throw std::runtime_error("falha ao calcular SHA256");
     return to_hex(hash, length);
 }
