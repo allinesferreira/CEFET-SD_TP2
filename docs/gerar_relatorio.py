@@ -1,87 +1,337 @@
-from reportlab.platypus import SimpleDocTemplate,Paragraph,Spacer,Table,TableStyle,PageBreak,KeepTogether
+#!/usr/bin/env python3
+import csv
+import math
+from pathlib import Path
+
+from reportlab.graphics.charts.legends import Legend
+from reportlab.graphics.charts.linecharts import HorizontalLineChart
+from reportlab.graphics.shapes import Drawing, String
+from reportlab.graphics.widgets.markers import makeMarker
 from reportlab.lib import colors
-from reportlab.lib.styles import getSampleStyleSheet,ParagraphStyle
-from reportlab.lib.enums import TA_CENTER,TA_JUSTIFY
+from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY
+from reportlab.lib.pagesizes import A4
+from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.units import cm
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-from pathlib import Path
-import csv
-base=Path(__file__).resolve().parents[1]
-pdfmetrics.registerFont(TTFont('DejaVu','/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'))
-pdfmetrics.registerFont(TTFont('DejaVuBold','/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'))
-S=getSampleStyleSheet();S.add(ParagraphStyle(name='T',fontName='DejaVuBold',fontSize=14,leading=19,alignment=TA_CENTER,spaceAfter=15));S.add(ParagraphStyle(name='H',fontName='DejaVuBold',fontSize=11,leading=16,spaceBefore=12,spaceAfter=7));S.add(ParagraphStyle(name='B',fontName='DejaVu',fontSize=9.2,leading=15,alignment=TA_JUSTIFY,spaceAfter=8));S.add(ParagraphStyle(name='Smallx',fontName='DejaVu',fontSize=8,leading=12,spaceAfter=5));S.add(ParagraphStyle(name='Captionx',fontName='DejaVu',fontSize=8,leading=12,alignment=TA_CENTER,spaceAfter=7))
-doc=SimpleDocTemplate(str(base/'docs'/'relatorio.pdf'),pagesize=(21*cm,29.7*cm),leftMargin=2.2*cm,rightMargin=2.2*cm,topMargin=2.1*cm,bottomMargin=2.1*cm)
-story=[]
-def p(x,style='B'):story.append(Paragraph(x,S[style]))
-def h(x):p(x,'H')
-def page():story.append(PageBreak())
-def tab(rows,widths=None):
- t=Table([[Paragraph(str(v),S['Smallx']) for v in row] for row in rows],colWidths=widths,repeatRows=1,hAlign='CENTER');t.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,0),colors.HexColor('#e4ebf3')),('GRID',(0,0),(-1,-1),.3,colors.HexColor('#b6bec8')),('VALIGN',(0,0),(-1,-1),'TOP'),('LEFTPADDING',(0,0),(-1,-1),7),('RIGHTPADDING',(0,0),(-1,-1),7),('TOPPADDING',(0,0),(-1,-1),6),('BOTTOMPADDING',(0,0),(-1,-1),4)]));story.append(t)
-p('SISTEMAS DISTRIBUÍDOS — TRABALHO PRÁTICO 2','T')
-p('Transferência de arquivos Peer-to-Peer em C++17','T')
-p('<b>Instituição:</b> CEFET-MG &nbsp;&nbsp; <b>Disciplina:</b> Sistemas Distribuídos &nbsp;&nbsp; <b>Período:</b> 2026/2','Smallx')
-p('<b>Docente:</b> Michelle Hanne &nbsp;&nbsp; <b>Discente(s):</b> [PREENCHER]','Smallx')
-h('Resumo')
-p('Este trabalho apresenta a implementação de um sistema elementar de transferência de arquivos no modelo Peer-to-Peer (P2P), utilizando C++17, sockets TCP e programação concorrente no Linux. Cada processo executa simultaneamente um servidor de blocos e clientes de download. O arquivo é fragmentado em blocos de tamanho configurável, identificados por índices e validados individualmente com SHA-256. Um Peer que recebe um bloco passa a disponibilizá-lo aos vizinhos antes da conclusão do arquivo. Foram executados oito cenários iniciais com dois e quatro Peers, arquivos entre 10 KB e 20 MB e blocos de 1024 e 4096 bytes; todos passaram na verificação de integridade.')
-h('1. Introdução e objetivos')
-p('Na arquitetura P2P, os participantes podem tanto consumir quanto fornecer recursos. Diferentemente de um modelo cliente-servidor centralizado, a transferência pode ocorrer entre vários pares, distribuindo a oferta de blocos. O objetivo deste projeto é demonstrar a simetria dos Peers, a fragmentação e remontagem de arquivos e a comunicação concorrente e bidirecional entre processos.')
-p('O escopo segue o enunciado do Trabalho Prático 2: no mínimo dois Peers, vizinhos definidos estaticamente, transferência de blocos, disponibilidade imediata dos blocos recebidos, registro local de posse, verificação da integridade e avaliação de diferentes tamanhos de arquivos e blocos. O uso de tracker é opcional e foi dispensado.')
-h('2. Ambiente e ferramentas')
-p('A solução foi desenvolvida para Linux com C++17, API POSIX de sockets, std::thread, std::mutex, std::vector, chamadas pread/pwrite e biblioteca OpenSSL para SHA-256. A compilação utiliza g++ e Makefile. O protocolo opera sobre TCP/IPv4, em conexões de curta duração para cada solicitação.')
-p('<b>Repositório do código-fonte:</b> [INSERIR URL DO GITHUB/GITLAB ANTES DA ENTREGA].','Smallx')
-page()
-p('3. Arquitetura e organização do sistema','T')
-h('3.1. Modelo simétrico')
-p('Cada Peer é um processo com porta própria, servidor TCP ativo e uma thread cliente para cada vizinho estático. O Seeder inicial possui o arquivo completo; os Leechers obtêm os metadados e solicitam blocos. Um bloco só é anunciado como disponível depois da escrita local e da validação de seu SHA-256. Assim, Leechers parcialmente abastecidos também atuam como fontes de blocos.')
-p('<b>Exemplo de topologia:</b> A (Seeder) → B e C (Leechers); D consulta B e C. As arestas representam vizinhança configurada por IP:porta, e não um tracker central.','Smallx')
-h('3.2. Concorrência e consistência')
-p('O servidor utiliza select() para verificar novas conexões e cria uma thread por conexão aceita. Em paralelo, threads de download consultam periodicamente a disponibilidade dos vizinhos. Um mutex protege os vetores have (blocos armazenados) e claimed (blocos reservados para download), evitando solicitações duplicadas no mesmo Peer. O acesso ao arquivo usa pread e pwrite com deslocamento explícito, permitindo operações em blocos diferentes.')
-h('3.3. Fragmentação e armazenamento')
-p('Para um arquivo de tamanho F e blocos de B bytes, a quantidade de blocos é N = teto(F/B). O último bloco pode ter tamanho inferior a B. O Seeder calcula o SHA-256 do arquivo e de cada bloco. O Leecher cria um arquivo temporário .part, grava os blocos nas posições correspondentes e mantém um mapa de disponibilidade. Ao concluir, compara o hash integral e renomeia o arquivo temporário.')
-h('3.4. Metadados e configuração')
-p('O formato textual P2PMETA1 contém: identificação de formato, nome do arquivo, tamanho total em bytes, tamanho do bloco, SHA-256 integral e uma linha de SHA-256 para cada bloco. O Seeder grava o metadado localmente; Leechers solicitam os metadados aos vizinhos por TCP. Os endereços de vizinhos são fornecidos pela linha de comando e não são descobertos automaticamente.')
-p('<b>Exemplo de execução:</b> <font face="DejaVu">./peer --port 5001 --neighbor 127.0.0.1:5000 --dir /tmp/p2p-b</font>','Smallx')
-page()
-p('4. Protocolo de comunicação e implementação','T')
-h('4.1. Mensagens de aplicação')
-p('O protocolo binário foi criado para este projeto. Cada conexão transmite um comando de um byte e recebe uma resposta cujo comprimento é explicitado em um inteiro unsigned de 32 bits na ordem de bytes da rede (network byte order). Isso evita assumir que uma chamada recv corresponde a uma mensagem completa.')
-tab([['Comando','Solicitação','Resposta'],['M — metadados','1 byte M','uint32 tamanho + texto P2PMETA1'],['H — disponibilidade','1 byte H','uint32 N + N bytes (0 ou 1)'],['G — obter bloco','1 byte G + uint32 índice','uint32 tamanho + bytes do bloco']], [3.3*cm,5.0*cm,8.2*cm])
-p('O tamanho zero indica conteúdo temporariamente indisponível ou erro na solicitação. As rotinas sendall/recvall repetem send/recv até concluir a quantidade de bytes esperada ou detectar falha. A transferência é realizada em conexões TCP independentes por comando.')
-h('4.2. Algoritmo de download')
-p('Cada thread cliente consulta o mapa de blocos de seu vizinho. Para cada bloco que o vizinho possui, o Peer reserva o índice se ainda não o possui nem o está baixando. Em seguida solicita os bytes, verifica o hash do bloco, grava os dados na posição correta e publica sua disponibilidade. Em caso de falha, libera a reserva para nova tentativa. Quando todos os blocos são recebidos, executa a validação final.')
-h('4.3. Disponibilidade após o download')
-p('Para evitar que os Peers intermediários encerrem imediatamente e impeçam outros de terminar o download, a implementação mantém o servidor do Leecher disponível por um período adicional configurável (parâmetro --linger; padrão: 30 segundos). O Seeder permanece disponível até receber SIGINT/SIGTERM.')
-h('4.4. Limitações e decisões')
-p('A implementação suporta um arquivo por processo, IPv4 numérico e vizinhança estática. Não implementa autenticação, TLS, tracker, recuperação de blocos entre reinícios nem gerenciamento de múltiplos arquivos. O servidor é concorrente por threads, mas não é inteiramente não bloqueante. Esses limites foram aceitos para priorizar os requisitos essenciais do exercício.')
-page()
-p('5. Planejamento e execução dos testes','T')
-h('5.1. Parâmetros definidos no enunciado')
-tab([['Fator','Configuração base','Variação'],['Peers','2','4'],['Bloco','1024 bytes','4096 bytes'],['Arquivo pequeno','10 KB','20 KB'],['Arquivo médio','1 MB','5 MB'],['Arquivo grande','10 MB','20 MB'],['Vizinhos','Estáticos','Sem tracker']],[5*cm,5.6*cm,5.9*cm])
-h('5.2. Procedimento')
-p('O script scripts/testes.py gera arquivos com conteúdo aleatório por os.urandom, inicia processos Peer em portas distintas na interface loopback (127.0.0.1), aguarda a criação dos arquivos recebidos e compara tamanho e SHA-256 com o arquivo original. O tempo é medido com relógio monotônico desde o início da espera até a detecção da conclusão de todos os destinos do cenário. O script produz resultados.csv.')
-p('Os testes com quatro Peers usam um Seeder A, Leechers B e C com acesso a A e D conectado a B e C. O servidor de B e C continua ativo após a conclusão para possibilitar a redistribuição. Logs de cada processo registram o índice de bloco, origem e progresso.')
-h('5.3. Critérios de aceitação')
-p('Uma execução é considerada aprovada se cada destino gerar um arquivo com tamanho exatamente igual ao original e SHA-256 idêntico. O script também verifica a conclusão dentro do prazo máximo definido para o teste. O sucesso em localhost não equivale à validação em computadores distintos: latência, congestionamento e perdas de rede podem alterar os resultados.')
-h('5.4. Reprodutibilidade')
-p('Para reproduzir: instalar g++, make e libssl-dev; executar make; em seguida python3 scripts/testes.py. As medições são sensíveis à carga do sistema, ao armazenamento e à concorrência. Para uma comparação de desempenho conclusiva, recomenda-se repetir cada cenário várias vezes e relatar média e dispersão.')
-page()
-p('6. Resultados iniciais e conclusão','T')
-h('6.1. Resultados de integração')
-rows=list(csv.DictReader(open(base/'resultados'/'resultados.csv')))
-table=[['Peers','Bloco (B)','Arquivo (bytes)','Tempo (s)','SHA-256']]
-for r in rows:table.append([r['peers'],r['bloco_bytes'],r['arquivo_bytes'],r['tempo_s'],'OK' if r['integridade']=='True' else 'FALHA'])
-tab(table,[2*cm,2.8*cm,4.4*cm,3.0*cm,4.3*cm])
-p('Fonte: execução inicial do script automatizado no ambiente de desenvolvimento, em 25/10/2026, usando 127.0.0.1. Os tempos representam uma execução por cenário, não médias estatísticas. A tabela não mede diretamente o tempo de cada conexão, apenas o intervalo de espera pelo resultado completo.')
-h('6.2. Discussão')
-p('Todos os oito cenários executados produziram arquivos com SHA-256 e tamanho corretos, confirmando a fragmentação, transmissão, validação por bloco e remontagem nos casos testados. Os cenários com quatro Peers também concluíram com sucesso, demonstrando o funcionamento da topologia configurada. Contudo, os resultados não permitem afirmar que o aumento de Peers melhora o desempenho: os arquivos, a carga e o número de blocos diferem entre algumas configurações. É necessário comparar cenários controlados e repetir as medições.')
-h('7. Conclusão')
-p('O sistema implementado atende às funções centrais de uma transferência P2P simétrica: um Peer pode servir blocos enquanto solicita outros, registrar a disponibilidade local e reconstruir o arquivo a partir de partes recebidas. A integridade foi confirmada em oito cenários iniciais. Como trabalhos futuros, destacam-se persistência de estado para retomada, distribuição inteligente de blocos, segurança das conexões, descoberta automática de vizinhos e testes em rede física com repetição estatística.')
-h('Referências e disponibilidade')
-p('CEFET-MG. Sistemas Distribuídos — Trabalho Prático 2: Transferência de Arquivos Peer-to-Peer. Michelle Hanne, 2026/2.','Smallx')
-p('IEEE/POSIX. Interfaces de sockets, threads e operações de arquivo. Documentação de referência do ambiente Linux.','Smallx')
-p('OpenSSL Project. Documentação da biblioteca criptográfica e da função SHA-256.','Smallx')
-p('<b>URL do repositório:</b> [PREENCHER ANTES DA ENTREGA].','Smallx')
-def footer(c,d):c.setFont('DejaVu',8);c.setFillColor(colors.grey);c.drawCentredString(10.5*cm,1.25*cm,f'CEFET-MG | Sistemas Distribuídos | Página {d.page} de 5')
-doc.build(story,onFirstPage=footer,onLaterPages=footer)
-print('gerado',base/'docs'/'relatorio.pdf')
+from reportlab.platypus import KeepTogether, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
+
+RAIZ = Path(__file__).resolve().parents[1]
+RESULTADOS = RAIZ / 'resultados'
+SAIDA = RAIZ / 'docs' / 'relatorio.pdf'
+
+URL = 'https://github.com/allinesferreira/CEFET-SD_TP2'
+AUTORES = 'Alline Santos Ferreira, Pedro Henrique Estevam Vaz de Melo e Rávilla Moreira'
+
+KB = 1024
+MB = 1024 * KB
+CONFIGURACOES = [(2, 1024), (2, 4096), (4, 1024), (4, 4096)]
+CORES = [colors.HexColor(c) for c in ('#1f4e79', '#5b9bd5', '#c55a11', '#f4b183')]
+
+
+def registrar_fontes():
+    pasta = Path('/usr/share/fonts/truetype/dejavu')
+    if not (pasta / 'DejaVuSans.ttf').exists():
+        return 'Helvetica', 'Helvetica-Bold', 'Courier'
+    pdfmetrics.registerFont(TTFont('Texto', str(pasta / 'DejaVuSans.ttf')))
+    pdfmetrics.registerFont(TTFont('TextoNegrito', str(pasta / 'DejaVuSans-Bold.ttf')))
+    pdfmetrics.registerFont(TTFont('Codigo', str(pasta / 'DejaVuSansMono.ttf')))
+    pdfmetrics.registerFontFamily('Texto', normal='Texto', bold='TextoNegrito')
+    return 'Texto', 'TextoNegrito', 'Codigo'
+
+
+FONTE, NEGRITO, CODIGO = registrar_fontes()
+ESTILOS = {
+    'titulo': ParagraphStyle('titulo', fontName=NEGRITO, fontSize=14, leading=19, alignment=TA_CENTER, spaceAfter=6),
+    'subtitulo': ParagraphStyle('subtitulo', fontName=FONTE, fontSize=9.5, leading=13, alignment=TA_CENTER),
+    'secao': ParagraphStyle('secao', fontName=NEGRITO, fontSize=11.5, leading=15, spaceBefore=10, spaceAfter=4),
+    'subsecao': ParagraphStyle('subsecao', fontName=NEGRITO, fontSize=10, leading=14, spaceBefore=4, spaceAfter=2),
+    'corpo': ParagraphStyle('corpo', fontName=FONTE, fontSize=9.8, leading=14, alignment=TA_JUSTIFY, spaceAfter=6),
+    'tabela': ParagraphStyle('tabela', fontName=FONTE, fontSize=8.2, leading=10.4),
+    'legenda': ParagraphStyle('legenda', fontName=FONTE, fontSize=8, leading=10.5, alignment=TA_CENTER,
+                              spaceBefore=3, spaceAfter=8),
+}
+
+
+def ler_csv(nome):
+    with open(RESULTADOS / nome, newline='') as f:
+        return list(csv.DictReader(f))
+
+
+def codigo(texto):
+    return f'<font face="{CODIGO}">{texto}</font>'
+
+
+def legivel(tamanho):
+    return f'{tamanho // MB} MB' if tamanho >= MB else f'{tamanho // KB} KB'
+
+
+def ms(valor):
+    return f'{float(valor):.0f}'
+
+
+def decimal(valor, casas=1):
+    return f'{valor:.{casas}f}'.replace('.', ',')
+
+
+def porcento(parte, total):
+    return f'{100 * parte / total:.0f}%'
+
+
+class Relatorio:
+    def __init__(self):
+        self.historia = []
+        self.resultados = ler_csv('resultados.csv')
+        self.execucoes = ler_csv('execucoes.csv')
+        self.origens = ler_csv('origens.csv')
+        self.falha = {linha['peer']: linha for linha in ler_csv('falha.csv')}
+        self.repeticoes = len(self.execucoes) // len(self.resultados)
+
+    def p(self, texto, estilo='corpo'):
+        self.historia.append(Paragraph(texto, ESTILOS[estilo]))
+
+    def tabela(self, linhas, larguras, legenda):
+        celulas = [[Paragraph(str(v), ESTILOS['tabela']) for v in linha] for linha in linhas]
+        t = Table(celulas, colWidths=larguras, repeatRows=1, hAlign='CENTER')
+        t.setStyle(TableStyle([
+            ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#e4ebf3')),
+            ('GRID', (0, 0), (-1, -1), 0.3, colors.HexColor('#b6bec8')),
+            ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+            ('TOPPADDING', (0, 0), (-1, -1), 2.5),
+            ('BOTTOMPADDING', (0, 0), (-1, -1), 2.5),
+        ]))
+        self.historia.append(KeepTogether([t, Paragraph(legenda, ESTILOS['legenda'])]))
+
+    def resultado(self, peers, bloco, tamanho):
+        for r in self.resultados:
+            if (int(r['peers']), int(r['bloco_bytes']), int(r['arquivo_bytes'])) == (peers, bloco, tamanho):
+                return r
+        raise KeyError((peers, bloco, tamanho))
+
+    def tempo(self, peers, bloco, tamanho, leecher=None):
+        coluna = f'tempo_medio_{leecher}_ms' if leecher else 'tempo_medio_ms'
+        return float(self.resultado(peers, bloco, tamanho)[coluna])
+
+    def blocos_recebidos(self, peer, bloco, tamanho):
+        cenario = f'4peers_{bloco}bytes_{tamanho}arquivo'
+        return {o['origem']: int(o['blocos']) for o in self.origens if o['cenario'] == cenario and o['peer'] == peer}
+
+    def gerar(self):
+        self.cabecalho()
+        self.introducao()
+        self.arquitetura()
+        self.metodologia()
+        self.resultados_testes()
+        self.discussao()
+        self.conclusao()
+        doc = SimpleDocTemplate(str(SAIDA), pagesize=A4, leftMargin=2 * cm, rightMargin=2 * cm,
+                                topMargin=1.7 * cm, bottomMargin=1.7 * cm,
+                                title='Transferência de Arquivos Peer-to-Peer', author=AUTORES)
+        doc.build(self.historia, onFirstPage=rodape, onLaterPages=rodape)
+
+    def cabecalho(self):
+        self.p('Sistemas Distribuídos — Trabalho Prático 2<br/>Transferência de Arquivos Peer-to-Peer', 'titulo')
+        self.p('CEFET-MG · 2026/2 · Profa. Michelle Hanne', 'subtitulo')
+        self.p(AUTORES, 'subtitulo')
+        self.p(f'Código-fonte: <link href="{URL}" color="blue">{URL}</link>', 'subtitulo')
+        self.historia.append(Spacer(1, 8))
+
+    def introducao(self):
+        self.p('1. Introdução', 'secao')
+        self.p('Este trabalho implementa um sistema elementar de transferência de arquivos no modelo P2P. Cada peer '
+               'é um processo que atua ao mesmo tempo como servidor, atendendo pedidos de blocos na sua porta, e '
+               'como cliente, pedindo os blocos que faltam aos vizinhos configurados. O seeder inicial divide o '
+               'arquivo em blocos de tamanho fixo; os leechers baixam esses blocos e, assim que um bloco é validado '
+               'e gravado, passam a oferecê-lo aos outros peers. A implementação foi feita em C++17 sobre a API de '
+               'sockets POSIX do Linux, com OpenSSL para o SHA-256. Não há tracker: os vizinhos de cada peer são '
+               'passados na linha de comando. Foram avaliados os 24 cenários da Tabela 1 do enunciado, com '
+               f'{self.repeticoes} repetições cada, além de um cenário com a queda de um vizinho.')
+
+    def arquitetura(self):
+        self.p('2. Arquitetura e decisões de projeto', 'secao')
+        self.p('2.1. Peer simétrico e concorrência', 'subsecao')
+        self.p(f'Cada processo recebe seu IP e porta ({codigo("--ip")}, {codigo("--port")}) e a lista de vizinhos '
+               f'({codigo("--neighbor")}). O servidor roda em uma única thread com sockets não bloqueantes e '
+               f'{codigo("poll()")}: aceita conexões, acumula os bytes de cada requisição até ela estar completa e '
+               'envia a resposta conforme o socket aceita escrita. Assim, um cliente lento ou parado não impede o '
+               'atendimento dos demais, e conexões ociosas por mais de 5 s são fechadas. Em teste, o servidor '
+               'atendeu 300 conexões simultâneas com apenas duas threads no processo.')
+        self.p('O lado cliente usa uma thread por vizinho. Cada uma consulta o mapa de blocos do vizinho e pede os '
+               f'blocos que ele tem e que o peer ainda não possui. Dois vetores guardam o estado local: {codigo("have")} '
+               f'marca os blocos gravados e validados e {codigo("claimed")} os que estão sendo baixados, para que '
+               'duas threads não peçam o mesmo bloco; ambos são protegidos por um mutex. Um bloco só entra em '
+               f'{codigo("have")} depois de gravado, e a partir daí o servidor já o entrega a quem pedir. As threads '
+               'de download percorrem os índices em uma ordem aleatória própria: com ordem sequencial, leechers que '
+               'baixam do mesmo vizinho ficavam com os mesmos blocos e quase não trocavam entre si (em uma medição '
+               'com 4 peers e 20 MB, C recebeu menos de 1% dos blocos de B; com ordem aleatória, cerca de 35%).')
+        self.p('2.2. Fragmentação, metadados e montagem', 'subsecao')
+        self.p('Para um arquivo de F bytes e blocos de B bytes há N = ⌈F/B⌉ blocos; o último pode ser menor. O seeder '
+               f'gera um arquivo de metadados textual ({codigo("P2PMETA1")}) com nome, tamanho, tamanho do bloco, '
+               'SHA-256 do arquivo e um SHA-256 por bloco, uma informação por linha. O leecher obtém os metadados de '
+               f'um vizinho, cria um arquivo {codigo(".part")} com o tamanho final e grava cada bloco direto na sua '
+               f'posição com {codigo("pwrite")}. O hash de cada bloco recebido é conferido antes de ele ser aceito; '
+               'um bloco corrompido é descartado e pedido de novo. Ao final, o SHA-256 do arquivo inteiro é comparado '
+               f'com o dos metadados, o {codigo(".part")} é renomeado e o leecher grava sua cópia dos metadados.')
+        self.p('2.3. Protocolo e monitoramento', 'subsecao')
+        self.p('Cada requisição usa uma conexão TCP e começa com um comando de 1 byte seguido do endereço de quem '
+               'pede (IPv4 em 4 bytes e porta em 2), usado nos logs do servidor. Toda resposta é um inteiro de 32 '
+               'bits com o tamanho do conteúdo, seguido do conteúdo; tamanho zero indica que o pedido não pode ser '
+               'atendido. Os inteiros estão em network byte order, e as rotinas de envio e recepção repetem '
+               f'{codigo("send")}/{codigo("recv")} até completar a quantidade esperada de bytes.')
+        self.tabela([
+            ['Comando', 'Requisição', 'Resposta'],
+            ['M (metadados)', 'M + endereço', 'texto P2PMETA1'],
+            ['H (mapa de blocos)', 'H + endereço', 'N bytes, 1 se o peer tem o bloco'],
+            ['G (bloco)', 'G + endereço + índice (uint32)', 'bytes do bloco'],
+        ], [3.6 * cm, 5.2 * cm, 6.2 * cm], 'Tabela 1. Mensagens do protocolo.')
+        self.p('Cada linha do log traz o tempo desde o início do processo. São registrados todos os blocos '
+               f'recebidos e a origem ({codigo("RECEBIDO")}), todas as requisições atendidas ou negadas e o destino '
+               f'({codigo("ENVIADO")}, {codigo("NEGADO")}), uma linha {codigo("STATUS")} por segundo com os blocos '
+               'que o peer possui, vizinhos que deixam de responder e, ao encerrar, um resumo com os blocos recebidos '
+               'de cada vizinho e enviados para cada um.')
+
+    def metodologia(self):
+        self.p('3. Metodologia dos testes', 'secao')
+        self.p(f'O script {codigo("scripts/testes.py")} combina todos os parâmetros da Tabela 1 do enunciado: 2 e 4 '
+               'peers, blocos de 1024 e 4096 bytes e arquivos de 10 KB, 20 KB, 1 MB, 5 MB, 10 MB e 20 MB, num total '
+               f'de 24 cenários, cada um repetido {self.repeticoes} vezes com um arquivo aleatório novo '
+               f'({len(self.execucoes)} execuções). Com 2 peers, A é o seeder e B o leecher. Com 4 peers, B conhece '
+               'apenas A, C conhece A e B, e D conhece apenas B e C, de modo que todos os blocos de D precisam vir de '
+               'outros leechers.')
+        self.p('Em cada execução o script inicia o seeder, espera ele ficar ativo, inicia os leechers e aguarda todos '
+               'terminarem. Para cada leecher são verificados: (i) tamanho do arquivo remontado igual ao original; '
+               '(ii) SHA-256 igual ao original; (iii) pelo log, todos os blocos vieram de vizinhos configurados para '
+               'aquele peer e nenhum faltou. Cada peer mede o próprio tempo, do seu início até a gravação do último '
+               'bloco, o que inclui a obtenção dos metadados; o tempo da execução é o do último leecher a terminar.')
+        self.p(f'No cenário de falha (4 peers, blocos de 1 KB, 20 MB), B é encerrado com {codigo("SIGKILL")} quando D '
+               'já tem 25% dos blocos. O teste exige que D registre B como inacessível e que C e D terminem com o '
+               'arquivo íntegro usando os vizinhos restantes. Tudo rodou em 127.0.0.1, em um notebook com AMD Ryzen '
+               f'7 5700U (16 threads), 12 GB de RAM e Pop!_OS 24.04, com g++ 13.3 e {codigo("-O2")}.')
+
+    def resultados_testes(self):
+        self.p('4. Resultados', 'secao')
+        ok = all(r['tamanho_ok'] == r['sha_ok'] == r['origens_ok'] == 'True' for r in self.resultados)
+        self.p(f'{"Todas as" if ok else "Nem todas as"} {len(self.execucoes)} execuções passaram nas três '
+               'verificações. A Tabela 2 traz o tempo médio e o desvio padrão de cada cenário, e a Figura 1 mostra '
+               'os mesmos tempos em função do tamanho do arquivo.')
+
+        linhas = [['Arquivo'] + [f'{peers} peers<br/>bloco {bloco} B' for peers, bloco in CONFIGURACOES]]
+        for tamanho in self.tamanhos():
+            linha = [legivel(tamanho)]
+            for peers, bloco in CONFIGURACOES:
+                r = self.resultado(peers, bloco, tamanho)
+                linha.append(f'{ms(r["tempo_medio_ms"])} ± {ms(r["desvio_ms"])}')
+            linhas.append(linha)
+        self.tabela(linhas, [2.2 * cm] + [3.4 * cm] * 4,
+                    f'Tabela 2. Tempo médio ± desvio padrão (ms), {self.repeticoes} execuções por cenário.')
+        self.historia.append(KeepTogether([self.grafico(), Paragraph(
+            'Figura 1. Tempo médio do último leecher por tamanho de arquivo.', ESTILOS['legenda'])]))
+
+        linhas = [['Cenário (4 peers)', 'B (ms)', 'C (ms)', 'D (ms)', 'C ← B', 'D ← B', 'D ← C']]
+        for bloco in (1024, 4096):
+            for tamanho in (5 * MB, 10 * MB, 20 * MB):
+                c = self.blocos_recebidos('c', bloco, tamanho)
+                d = self.blocos_recebidos('d', bloco, tamanho)
+                total = sum(c.values())
+                linhas.append([f'bloco {bloco} B, {legivel(tamanho)}',
+                               *(ms(self.tempo(4, bloco, tamanho, nome)) for nome in 'bcd'),
+                               porcento(c.get('b', 0), total), porcento(d.get('b', 0), total),
+                               porcento(d.get('c', 0), total)])
+        self.tabela(linhas, [3.8 * cm] + [1.7 * cm] * 6,
+                    f'Tabela 3. Tempo médio de cada leecher ({self.repeticoes} execuções) e origem dos blocos '
+                    'recebidos por C e D (primeira execução).')
+
+        c, d = self.falha['c'], self.falha['d']
+        total = sum(int(d[f'blocos_de_{o}']) for o in 'abc')
+        self.p(f'No cenário de falha, B foi encerrado quando D tinha {d["blocos_de_d_na_falha"]} de {total} blocos. '
+               f'D {"registrou" if d["falha_detectada_por_d"] == "True" else "não registrou"} B como inacessível e '
+               f'terminou em {ms(d["tempo_ms"])} ms, com {d["blocos_de_b"]} blocos vindos de B e {d["blocos_de_c"]} '
+               f'de C; C terminou em {ms(c["tempo_ms"])} ms, com {c["blocos_de_a"]} blocos de A e {c["blocos_de_b"]} '
+               'de B. Os dois arquivos ficaram íntegros.')
+
+    def tamanhos(self):
+        return sorted({int(r['arquivo_bytes']) for r in self.resultados})
+
+    def grafico(self):
+        tamanhos = self.tamanhos()
+        desenho = Drawing(16 * cm, 5.2 * cm)
+        grafico = HorizontalLineChart()
+        grafico.x, grafico.y = 1.4 * cm, 0.8 * cm
+        grafico.width, grafico.height = 10.2 * cm, 3.9 * cm
+        grafico.data = [[self.tempo(peers, bloco, t) for t in tamanhos] for peers, bloco in CONFIGURACOES]
+        grafico.categoryAxis.categoryNames = [legivel(t) for t in tamanhos]
+        grafico.valueAxis.valueMin = 0
+        for eixo in (grafico.categoryAxis, grafico.valueAxis):
+            eixo.labels.fontName = FONTE
+            eixo.labels.fontSize = 7
+        for i, cor in enumerate(CORES):
+            grafico.lines[i].strokeColor = cor
+            grafico.lines[i].strokeWidth = 1.4
+            grafico.lines[i].symbol = makeMarker('FilledCircle', size=3, fillColor=cor, strokeColor=cor)
+        desenho.add(grafico)
+        desenho.add(String(0.3 * cm, 4.95 * cm, 'tempo (ms)', fontName=FONTE, fontSize=7))
+
+        legenda = Legend()
+        legenda.x, legenda.y = 12.3 * cm, 4.2 * cm
+        legenda.fontName, legenda.fontSize = FONTE, 7
+        legenda.alignment = 'right'
+        legenda.columnMaximum = len(CONFIGURACOES)
+        legenda.colorNamePairs = [(cor, f'{p} peers, bloco {b} B') for cor, (p, b) in zip(CORES, CONFIGURACOES)]
+        desenho.add(legenda)
+        return desenho
+
+    def discussao(self):
+        t = self.tempo
+        grandes = [5 * MB, 10 * MB, 20 * MB]
+        c_de_b = [100 * self.blocos_recebidos('c', b, s).get('b', 0) / math.ceil(s / b)
+                  for b in (1024, 4096) for s in grandes]
+        ganho_bloco = [t(p, 1024, s) / t(p, 4096, s) for p in (2, 4) for s in grandes]
+
+        self.p('5. Discussão', 'secao')
+        self.p('<b>Tamanho do arquivo.</b> A partir de 1 MB, o tempo cresce quase linearmente com o número de '
+               f'blocos: com 2 peers e blocos de 1 KB, foram {ms(t(2, 1024, MB))} ms para 1 MB e '
+               f'{ms(t(2, 1024, 20 * MB))} ms para 20 MB. Os arquivos de 10 e 20 KB terminam em poucos milissegundos '
+               'com 2 peers, e o tempo é dominado pela troca inicial de metadados.')
+        self.p('<b>Tamanho do bloco.</b> Blocos de 4 KB foram de '
+               f'{decimal(min(ganho_bloco))} a {decimal(max(ganho_bloco))} vezes mais rápidos nos arquivos de 5 MB '
+               f'em diante (com 2 peers e 20 MB, de {ms(t(2, 1024, 20 * MB))} para {ms(t(2, 4096, 20 * MB))} ms). '
+               'Cada bloco custa uma conexão TCP, uma requisição e uma verificação de hash; em 127.0.0.1 esse custo '
+               'fixo pesa mais que o volume de dados, e blocos quatro vezes maiores significam quatro vezes menos '
+               'requisições.')
+        self.p('<b>Número de peers.</b> Com 4 peers, o tempo da execução foi um pouco maior que com 2 '
+               f'(20 MB, blocos de 1 KB: {ms(t(4, 1024, 20 * MB))} contra {ms(t(2, 1024, 20 * MB))} ms). A Tabela 3 '
+               'mostra que o mais lento é B: ele só tem A como vizinho, disputa o servidor de A com C e ainda atende '
+               'C e D. Já C e D, que baixam de dois vizinhos ao mesmo tempo, terminaram em '
+               f'{ms(t(4, 1024, 20 * MB, "c"))} e {ms(t(4, 1024, 20 * MB, "d"))} ms, antes do leecher do cenário com '
+               '2 peers. Isso mostra o ganho de ter mais fontes e confirma a redistribuição: D recebeu blocos de B e '
+               f'de C, e C recebeu de B entre {min(c_de_b):.0f}% e {max(c_de_b):.0f}% dos blocos. Nos arquivos '
+               'pequenos com 4 peers, D consulta o mapa de B e C antes de eles terem algum bloco e só descobre os '
+               'blocos novos na consulta seguinte, 100 ms depois. Como essa espera acontece só em parte das '
+               'execuções, alguns desses cenários têm desvio padrão alto.')
+        self.p('<b>Limitações.</b> Os testes rodaram em uma única máquina, sem a latência, as perdas e o limite de '
+               'banda de uma rede real; nesse ambiente o custo é dominado por CPU e chamadas de sistema. Os peers '
+               'descobrem blocos novos por consulta periódica, e não por aviso dos vizinhos. A implementação aceita '
+               'só IPv4, um arquivo por processo e não retoma downloads interrompidos.')
+
+    def conclusao(self):
+        self.p('6. Conclusão', 'secao')
+        self.p('O sistema atende aos requisitos do enunciado: peers simétricos com servidor não bloqueante e '
+               'downloads concorrentes, fragmentação em blocos de tamanho fixo, formato de metadados e protocolo '
+               'próprios, registro local dos blocos e remontagem verificada por SHA-256. Os leechers repassam blocos '
+               'durante o download, como mostram os logs e a Tabela 3, e o sistema se recuperou da queda de um '
+               'vizinho. Como próximos passos, ficam manter uma conexão por vizinho em vez de uma por requisição, '
+               'avisar os vizinhos quando um bloco novo chega, testar em máquinas diferentes e permitir retomar um '
+               f'download a partir do {codigo(".part")}.')
+
+
+def rodape(canvas, doc):
+    canvas.saveState()
+    canvas.setFont(FONTE, 7.5)
+    canvas.setFillColor(colors.grey)
+    canvas.drawCentredString(A4[0] / 2, 1.0 * cm, f'CEFET-MG · Sistemas Distribuídos · TP2 · página {doc.page}')
+    canvas.restoreState()
+
+
+if __name__ == '__main__':
+    Relatorio().gerar()
+    print('gerado', SAIDA)
