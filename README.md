@@ -56,7 +56,7 @@ O executável `peer` é gerado na raiz do repositório e os objetos intermediár
 | `--neighbor` | vizinho no formato IP:PORTA; pode ser repetido | |
 | `--dir` | pasta onde ficam o arquivo baixado e os metadados | `downloads/<porta>` |
 | `--block` | tamanho do bloco em bytes, entre 256 e 1048576 (só vale para o seeder) | `1024` |
-| `--linger` | segundos que um leecher continua servindo blocos depois de concluir | `30` |
+| `--linger` | segundos (0 a 3600) que um leecher continua servindo blocos depois de concluir | `30` |
 
 Um peer sem `--file` é leecher e precisa de pelo menos um vizinho. O seeder fica ativo até receber Ctrl+C. Cada peer precisa de uma pasta própria: se outro peer já estiver usando a mesma pasta, o segundo se recusa a iniciar.
 
@@ -118,7 +118,7 @@ O seeder grava os metadados em `<pasta>/<arquivo>.meta` ao iniciar. O leecher co
 
 ## Logs
 
-Cada peer escreve o log no stderr, uma mensagem por linha. Toda linha começa com o tempo em segundos desde o início do processo, por exemplo `[   0.152] RECEBIDO bloco=3 origem=127.0.0.1:5000 progresso=4/1024`.
+Cada peer escreve o log no stderr, uma mensagem por linha. Toda linha começa com o tempo em segundos desde o início do processo, por exemplo `[   0.152] RECEBIDO bloco=3 origem=127.0.0.1:5000 progresso=4/1024`. A exceção é a linha `ERRO: ...`, sem tempo, escrita quando um erro encerra o processo com código 1.
 
 | Linha | Significado |
 |---|---|
@@ -180,3 +180,5 @@ python3 docs/gerar_relatorio.py
 - Não há tracker: os vizinhos são definidos na linha de comando.
 - Não há retomada: se o leecher for reiniciado, o download começa do zero.
 - Uma conexão TCP é aberta para cada requisição.
+- Só o servidor é não bloqueante. Os downloads usam sockets bloqueantes com timeout de 3 s, um por thread de vizinho.
+- O endereço de quem pede é informado pelo próprio cliente na requisição e não é verificado.
