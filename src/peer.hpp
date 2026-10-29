@@ -23,6 +23,7 @@ public:
 private:
     void init();
     std::vector<uint8_t> respond(const Request& request);
+    std::vector<uint8_t> build_response(const Request& request);
     std::vector<uint8_t> read_block(size_t index);
 
     bool query(const Address& neighbor, const Request& request, std::vector<uint8_t>& body, uint32_t max_size);

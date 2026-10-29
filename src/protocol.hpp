@@ -3,6 +3,8 @@
 #include <cstdint>
 #include <vector>
 
+#include "net.hpp"
+
 enum class Command : uint8_t {
     Metadata = 'M',
     BlockMap = 'H',
@@ -11,6 +13,7 @@ enum class Command : uint8_t {
 
 struct Request {
     Command command;
+    Address sender;
     uint32_t block_index = 0;
 };
 

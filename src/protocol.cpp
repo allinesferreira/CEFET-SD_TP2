@@ -12,14 +12,43 @@ void append_u32(std::vector<uint8_t>& out, uint32_t value) {
     out.insert(out.end(), bytes, bytes + sizeof(value));
 }
 
+void append_u16(std::vector<uint8_t>& out, uint16_t value) {
+    value = htons(value);
+    auto* bytes = reinterpret_cast<const uint8_t*>(&value);
+    out.insert(out.end(), bytes, bytes + sizeof(value));
+}
+
 uint32_t read_u32(const uint8_t* data) {
     uint32_t value;
     std::memcpy(&value, data, sizeof(value));
     return ntohl(value);
 }
 
+uint16_t read_u16(const uint8_t* data) {
+    uint16_t value;
+    std::memcpy(&value, data, sizeof(value));
+    return ntohs(value);
+}
+
+constexpr size_t SENDER_SIZE = sizeof(in_addr) + sizeof(uint16_t);
+
+void append_sender(std::vector<uint8_t>& out, const Address& sender) {
+    sockaddr_in addr;
+    to_sockaddr(sender, addr);
+    auto* ip = reinterpret_cast<const uint8_t*>(&addr.sin_addr);
+    out.insert(out.end(), ip, ip + sizeof(in_addr));
+    append_u16(out, static_cast<uint16_t>(sender.port));
+}
+
+Address read_sender(const uint8_t* data) {
+    char host[INET_ADDRSTRLEN];
+    inet_ntop(AF_INET, data, host, sizeof(host));
+    return {host, read_u16(data + sizeof(in_addr))};
+}
+
 size_t request_size(Command command) {
-    return command == Command::GetBlock ? 1 + sizeof(uint32_t) : 1;
+    size_t size = 1 + SENDER_SIZE;
+    return command == Command::GetBlock ? size + sizeof(uint32_t) : size;
 }
 
 bool is_command(uint8_t byte) {
@@ -31,6 +60,7 @@ bool is_command(uint8_t byte) {
 
 std::vector<uint8_t> encode_request(const Request& request) {
     std::vector<uint8_t> out{static_cast<uint8_t>(request.command)};
+    append_sender(out, request.sender);
     if (request.command == Command::GetBlock)
         append_u32(out, request.block_index);
     return out;
@@ -50,7 +80,8 @@ ParseResult parse_request(const std::vector<uint8_t>& data, Request& request) {
         return ParseResult::Invalid;
 
     request.command = command;
-    request.block_index = command == Command::GetBlock ? read_u32(&data[1]) : 0;
+    request.sender = read_sender(&data[1]);
+    request.block_index = command == Command::GetBlock ? read_u32(&data[1 + SENDER_SIZE]) : 0;
     return ParseResult::Complete;
 }
 

@@ -93,13 +93,13 @@ Assim que um bloco entra em `have`, o servidor já o entrega para quem pedir, me
 
 ## Protocolo
 
-Cada requisição abre uma conexão TCP e envia um comando de 1 byte. A resposta é sempre um inteiro de 32 bits sem sinal, em network byte order, com o tamanho do conteúdo, seguido do conteúdo. Tamanho zero indica que o pedido não pode ser atendido.
+Cada requisição abre uma conexão TCP. Ela começa com um comando de 1 byte seguido do endereço de quem pede (IPv4 em 4 bytes e porta em 2 bytes), que o servidor usa nos logs. A resposta é sempre um inteiro de 32 bits sem sinal com o tamanho do conteúdo, seguido do conteúdo. Tamanho zero indica que o pedido não pode ser atendido. Todos os inteiros estão em network byte order.
 
 | Comando | Requisição | Resposta |
 |---|---|---|
-| `M` | `M` | metadados no formato `P2PMETA1` |
-| `H` | `H` | um byte por bloco: 1 se o peer tem o bloco, 0 se não tem |
-| `G` | `G` + índice do bloco (uint32) | bytes do bloco |
+| `M` | `M` + endereço | metadados no formato `P2PMETA1` |
+| `H` | `H` + endereço | um byte por bloco: 1 se o peer tem o bloco, 0 se não tem |
+| `G` | `G` + endereço + índice do bloco (uint32) | bytes do bloco |
 
 O arquivo de metadados é texto, uma informação por linha:
 
@@ -115,6 +115,19 @@ exemplo.bin
 ```
 
 O leecher confere o SHA-256 de cada bloco antes de marcá-lo como disponível. Quando todos os blocos chegam, confere o SHA-256 do arquivo inteiro e renomeia o `.part` para o nome original.
+
+## Logs
+
+Cada peer escreve o log no stderr, uma mensagem por linha:
+
+| Linha | Significado |
+|---|---|
+| `SEED` / `LEECH` | papel do peer, nome do arquivo, quantidade de blocos e endereço |
+| `META recebida de` | vizinho que forneceu os metadados |
+| `RECEBIDO bloco=i origem=X progresso=n/total` | bloco validado e gravado, com o vizinho de onde veio |
+| `ENVIADO metadados`, `ENVIADO mapa`, `ENVIADO bloco=i` | requisição atendida, com o `destino` |
+| `NEGADO ...` | requisição que o peer não pôde atender, por exemplo um bloco que ainda não tem |
+| `SUCESSO` / `FALHA` | resultado da verificação do SHA-256 do arquivo completo e tempo do download |
 
 ## Testes
 

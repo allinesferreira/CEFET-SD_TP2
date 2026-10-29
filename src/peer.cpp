@@ -21,6 +21,18 @@ namespace {
 
 constexpr uint32_t MAX_METADATA_SIZE = 70000000;
 
+std::string describe(const Request& request) {
+    switch (request.command) {
+    case Command::Metadata:
+        return "metadados";
+    case Command::BlockMap:
+        return "mapa";
+    case Command::GetBlock:
+        return "bloco=" + std::to_string(request.block_index);
+    }
+    return "?";
+}
+
 }
 
 Peer::Peer(Address self, std::string file, std::string dir, uint32_t block_size,
@@ -110,6 +122,13 @@ void Peer::init() {
 }
 
 std::vector<uint8_t> Peer::respond(const Request& request) {
+    std::vector<uint8_t> body = build_response(request);
+    log_line(std::string(body.empty() ? "NEGADO " : "ENVIADO ") + describe(request) +
+             " destino=" + request.sender.str());
+    return body;
+}
+
+std::vector<uint8_t> Peer::build_response(const Request& request) {
     if (!ready)
         return {};
 
@@ -164,7 +183,7 @@ bool Peer::query(const Address& neighbor, const Request& request, std::vector<ui
 bool Peer::fetch_metadata() {
     for (const auto& n : neighbors) {
         std::vector<uint8_t> body;
-        if (!query(n, {Command::Metadata}, body, MAX_METADATA_SIZE))
+        if (!query(n, {Command::Metadata, self}, body, MAX_METADATA_SIZE))
             continue;
 
         try {
@@ -221,12 +240,12 @@ void Peer::worker(Address n) {
 
 bool Peer::fetch_block_map(const Address& n, std::vector<uint8_t>& remote) {
     uint32_t total = static_cast<uint32_t>(meta.block_count());
-    return query(n, {Command::BlockMap}, remote, total) && remote.size() == total;
+    return query(n, {Command::BlockMap, self}, remote, total) && remote.size() == total;
 }
 
 bool Peer::fetch_block(const Address& n, size_t index, std::vector<uint8_t>& data) {
     size_t length = meta.block_length(index);
-    return query(n, {Command::GetBlock, static_cast<uint32_t>(index)}, data, static_cast<uint32_t>(length)) &&
+    return query(n, {Command::GetBlock, self, static_cast<uint32_t>(index)}, data, static_cast<uint32_t>(length)) &&
            data.size() == length && sha256_hex(data.data(), data.size()) == meta.block_sha256[index];
 }
 
