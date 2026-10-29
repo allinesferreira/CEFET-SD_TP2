@@ -31,6 +31,8 @@ TOPOLOGIAS = {
     4: {'a': [], 'b': ['a'], 'c': ['a', 'b'], 'd': ['b', 'c']},
 }
 
+LEECHERS = ['b', 'c', 'd']
+
 RE_RECEBIDO = re.compile(r'RECEBIDO bloco=\d+ origem=(\S+) progresso=(\d+)/(\d+)')
 RE_SUCESSO = re.compile(r'SUCESSO .* tempo_ms=(\d+)')
 
@@ -206,10 +208,16 @@ def resumir(verificacoes):
     tempos = [v['tempo_ms'] for v in verificacoes.values()]
     return {
         'tempo_ms': max(tempos) if None not in tempos else None,
+        **{f'tempo_{nome}_ms': verificacoes[nome]['tempo_ms'] if nome in verificacoes else None for nome in LEECHERS},
         'tamanho_ok': all(v['tamanho_ok'] for v in verificacoes.values()),
         'sha_ok': all(v['sha_ok'] for v in verificacoes.values()),
         'origens_ok': all(v['origens_ok'] for v in verificacoes.values()),
     }
+
+
+def media(valores):
+    valores = [v for v in valores if v is not None]
+    return round(float(statistics.mean(valores)), 1) if valores else ''
 
 
 def agregar(execucoes):
@@ -226,10 +234,11 @@ def agregar(execucoes):
             'arquivo_bytes': tamanho,
             'blocos': math.ceil(tamanho / bloco),
             'execucoes': len(grupo),
-            'tempo_medio_ms': round(float(statistics.mean(tempos)), 1) if tempos else '',
+            'tempo_medio_ms': media(tempos),
             'desvio_ms': round(statistics.stdev(tempos), 1) if len(tempos) > 1 else 0.0,
             'tempo_min_ms': min(tempos, default=''),
             'tempo_max_ms': max(tempos, default=''),
+            **{f'tempo_medio_{nome}_ms': media(e[f'tempo_{nome}_ms'] for e in grupo) for nome in LEECHERS},
             'tamanho_ok': all(e['tamanho_ok'] for e in grupo),
             'sha_ok': all(e['sha_ok'] for e in grupo),
             'origens_ok': all(e['origens_ok'] for e in grupo),
