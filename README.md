@@ -54,11 +54,11 @@ O executável `peer` é gerado na raiz do repositório e os objetos intermediár
 | `--port` | porta em que o peer escuta | obrigatória |
 | `--file` | arquivo completo; quando informado, o peer inicia como seeder | |
 | `--neighbor` | vizinho no formato IP:PORTA; pode ser repetido | |
-| `--dir` | pasta onde ficam o arquivo baixado e os metadados | `downloads` |
+| `--dir` | pasta onde ficam o arquivo baixado e os metadados | `downloads/<porta>` |
 | `--block` | tamanho do bloco em bytes, entre 256 e 1048576 (só vale para o seeder) | `1024` |
 | `--linger` | segundos que um leecher continua servindo blocos depois de concluir | `30` |
 
-Um peer sem `--file` é leecher e precisa de pelo menos um vizinho. O seeder fica ativo até receber Ctrl+C.
+Um peer sem `--file` é leecher e precisa de pelo menos um vizinho. O seeder fica ativo até receber Ctrl+C. Cada peer precisa de uma pasta própria: se outro peer já estiver usando a mesma pasta, o segundo se recusa a iniciar.
 
 ### Exemplo com 2 peers
 

@@ -1,6 +1,7 @@
 #include "peer.hpp"
 
 #include <fcntl.h>
+#include <sys/file.h>
 #include <unistd.h>
 
 #include <algorithm>
@@ -86,12 +87,16 @@ void Peer::run() {
         server_thread.join();
         if (local_fd >= 0)
             close(local_fd);
+        if (dir_fd >= 0)
+            close(dir_fd);
         throw;
     }
 
     server_thread.join();
     if (local_fd >= 0)
         close(local_fd);
+    if (dir_fd >= 0)
+        close(dir_fd);
     if (server_error)
         std::rethrow_exception(server_error);
     if (ready)
@@ -152,6 +157,9 @@ void Peer::log_summary() {
 
 void Peer::init() {
     fs::create_directories(dir);
+    dir_fd = open(dir.c_str(), O_RDONLY | O_DIRECTORY);
+    if (dir_fd < 0 || flock(dir_fd, LOCK_EX | LOCK_NB) < 0)
+        throw std::runtime_error("pasta " + dir + " ja esta em uso por outro peer");
 
     if (seed) {
         meta = Metadata::from_file(source_path, meta.block_size);

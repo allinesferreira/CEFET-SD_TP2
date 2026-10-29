@@ -56,7 +56,7 @@ int main(int argc, char** argv) {
         std::string ip;
         int port = 0;
         std::string file;
-        std::string dir = "downloads";
+        std::string dir;
         int block_size = 1024;
         int linger = 30;
         std::vector<Address> neighbors;
@@ -95,6 +95,9 @@ int main(int argc, char** argv) {
             throw std::runtime_error("ip invalido: " + ip);
         if (linger < 0 || linger > 3600)
             throw std::runtime_error("linger invalido");
+
+        if (dir.empty())
+            dir = "downloads/" + std::to_string(port);
 
         Peer peer({ip, port}, file, dir, static_cast<uint32_t>(block_size), neighbors, linger);
         peer.run();

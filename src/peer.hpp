@@ -51,6 +51,7 @@ private:
     std::string local_path;
     std::string dir;
     int local_fd = -1;
+    int dir_fd = -1;
     Address self;
     bool seed = false;
     int linger;
