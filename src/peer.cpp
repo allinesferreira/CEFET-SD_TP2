@@ -3,8 +3,11 @@
 #include <fcntl.h>
 #include <unistd.h>
 
+#include <algorithm>
 #include <filesystem>
 #include <fstream>
+#include <numeric>
+#include <random>
 #include <stdexcept>
 #include <thread>
 
@@ -32,6 +35,13 @@ std::string describe(const Request& request) {
         return "bloco=" + std::to_string(request.block_index);
     }
     return "?";
+}
+
+std::vector<size_t> shuffled_indices(size_t count) {
+    std::vector<size_t> indices(count);
+    std::iota(indices.begin(), indices.end(), 0);
+    std::shuffle(indices.begin(), indices.end(), std::mt19937(std::random_device{}()));
+    return indices;
 }
 
 }
@@ -244,6 +254,7 @@ bool Peer::fetch_metadata() {
 
 void Peer::worker(Address n) {
     const size_t total = meta.block_count();
+    const std::vector<size_t> order = shuffled_indices(total);
 
     while (running && !finished) {
         std::vector<uint8_t> remote;
@@ -253,7 +264,9 @@ void Peer::worker(Address n) {
         }
 
         bool progress = false;
-        for (size_t i = 0; i < remote.size() && running && !finished; i++) {
+        for (size_t i : order) {
+            if (!running || finished)
+                break;
             if (!remote[i])
                 continue;
             {

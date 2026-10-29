@@ -87,7 +87,7 @@ Cada comando roda em um terminal. Para D conseguir terminar, B e C precisam esta
 Cada processo tem duas partes que rodam ao mesmo tempo:
 
 - **Servidor:** uma única thread com sockets não bloqueantes e `poll()`. Ela aceita conexões, lê as requisições conforme os bytes chegam e envia as respostas sem esperar por nenhum cliente específico. Conexões paradas por mais de 5 s são fechadas.
-- **Downloads:** uma thread por vizinho. Cada uma consulta o mapa de blocos do vizinho e pede os blocos que ainda faltam. Um vetor `claimed` evita que duas threads baixem o mesmo bloco, e o vetor `have` registra os blocos já gravados e validados. Os dois são protegidos por um mutex.
+- **Downloads:** uma thread por vizinho. Cada uma consulta o mapa de blocos do vizinho e pede os blocos que ainda faltam, percorrendo os índices em ordem aleatória. Assim, leechers que baixam do mesmo vizinho ficam com partes diferentes do arquivo e conseguem trocar blocos entre si. Um vetor `claimed` evita que duas threads baixem o mesmo bloco, e o vetor `have` registra os blocos já gravados e validados. Os dois são protegidos por um mutex.
 
 Assim que um bloco entra em `have`, o servidor já o entrega para quem pedir, mesmo antes do arquivo estar completo.
 
