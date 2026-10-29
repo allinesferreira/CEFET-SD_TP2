@@ -1,4 +1,5 @@
 peer
+build/
 downloads/
 *.part
 __pycache__/

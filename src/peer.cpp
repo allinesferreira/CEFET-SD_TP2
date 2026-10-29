@@ -1,52 +1,329 @@
-#include <arpa/inet.h>
-#include <netinet/in.h>
-#include <sys/socket.h>
-#include <sys/stat.h>
+#include "peer.hpp"
+
 #include <fcntl.h>
+#include <netinet/in.h>
+#include <sys/select.h>
+#include <sys/socket.h>
 #include <unistd.h>
-#include <openssl/sha.h>
-#include <algorithm>
-#include <atomic>
-#include <chrono>
-#include <csignal>
-#include <cstdint>
-#include <cstring>
+
 #include <filesystem>
 #include <fstream>
-#include <iomanip>
-#include <iostream>
-#include <mutex>
-#include <sstream>
 #include <stdexcept>
-#include <string>
 #include <thread>
-#include <vector>
-using namespace std;
-namespace fs=std::filesystem;
-static atomic<bool> running{true};
-static void stop_signal(int){running=false;}
-static mutex log_m;
-static void logline(const string&s){lock_guard<mutex> l(log_m);cerr<<s<<'\n';}
-static bool sendall(int fd,const void*data,size_t n){auto*p=(const uint8_t*)data;while(n){ssize_t r=send(fd,p,n,MSG_NOSIGNAL);if(r<=0)return false;p+=r;n-=r;}return true;}
-static bool recvall(int fd,void*data,size_t n){auto*p=(uint8_t*)data;while(n){ssize_t r=recv(fd,p,n,0);if(r<=0)return false;p+=r;n-=r;}return true;}
-static bool send32(int fd,uint32_t n){n=htonl(n);return sendall(fd,&n,4);}
-static bool recv32(int fd,uint32_t&n){if(!recvall(fd,&n,4))return false;n=ntohl(n);return true;}
-static string hexsha(const uint8_t*data,size_t n){unsigned char hash[SHA256_DIGEST_LENGTH];SHA256(data,n,hash);ostringstream os;for(auto x:hash)os<<hex<<setfill('0')<<setw(2)<<(unsigned)x;return os.str();}
-static string filehash(const string&path){ifstream f(path,ios::binary);if(!f)throw runtime_error("nao abriu arquivo para SHA256");SHA256_CTX ctx;SHA256_Init(&ctx);vector<char>b(65536);while(f){f.read(b.data(),b.size());auto n=f.gcount();if(n>0)SHA256_Update(&ctx,b.data(),n);}unsigned char h[32];SHA256_Final(h,&ctx);ostringstream o;for(auto x:h)o<<hex<<setfill('0')<<setw(2)<<(unsigned)x;return o.str();}
-struct Meta{uint64_t size=0;uint32_t block=1024;string name,sha;vector<string> blocksha;size_t count()const{return (size+block-1)/block;}size_t len(size_t i)const{return (size_t)min<uint64_t>(block,size-(uint64_t)i*block);}string serialize()const{ostringstream o;o<<"P2PMETA1\n"<<name<<'\n'<<size<<'\n'<<block<<'\n'<<sha<<'\n';for(auto&s:blocksha)o<<s<<'\n';return o.str();}static Meta parse(const string&s){istringstream in(s);Meta m;string tag;if(!getline(in,tag)||tag!="P2PMETA1"||!getline(in,m.name))throw runtime_error("metadados invalidos");string z;if(!getline(in,z))throw runtime_error("tamanho ausente");m.size=stoull(z);if(!getline(in,z))throw runtime_error("bloco ausente");m.block=stoul(z);if(!getline(in,m.sha))throw runtime_error("hash ausente");if(m.name.empty()||m.name=="."||m.name==".."||m.name.find('/')!=string::npos||m.name.find('\\')!=string::npos||m.size==0||m.block<256||m.block>1048576||m.count()>1000000||m.sha.size()!=64)throw runtime_error("metadados fora dos limites");for(size_t i=0;i<m.count();i++){if(!getline(in,z)||z.size()!=64)throw runtime_error("hash de bloco ausente");m.blocksha.push_back(z);}return m;}};
-static Meta make_meta(const string&path,uint32_t block){Meta m;m.name=fs::path(path).filename().string();m.size=fs::file_size(path);m.block=block;if(m.size==0||m.count()>1000000)throw runtime_error("arquivo vazio ou grande demais");m.sha=filehash(path);ifstream f(path,ios::binary);vector<uint8_t>b(block);for(size_t i=0;i<m.count();i++){size_t n=m.len(i);f.read((char*)b.data(),n);if((size_t)f.gcount()!=n)throw runtime_error("erro ao ler bloco");m.blocksha.push_back(hexsha(b.data(),n));}return m;}
-static int connect_peer(const string&host,int port){int fd=socket(AF_INET,SOCK_STREAM,0);if(fd<0)return -1;timeval tv{3,0};setsockopt(fd,SOL_SOCKET,SO_RCVTIMEO,&tv,sizeof(tv));setsockopt(fd,SOL_SOCKET,SO_SNDTIMEO,&tv,sizeof(tv));sockaddr_in a{};a.sin_family=AF_INET;a.sin_port=htons(port);if(inet_pton(AF_INET,host.c_str(),&a.sin_addr)!=1||connect(fd,(sockaddr*)&a,sizeof(a))<0){close(fd);return -1;}return fd;}
-struct Neighbor{string host;int port;string str()const{return host+":"+to_string(port);}};
-class Peer{
-  Meta meta;string data_path,output_path,dir;int datafd=-1,port;bool seed=false;vector<uint8_t> have,claimed;mutex mu;vector<Neighbor> neighbors;atomic<size_t> completed{0};atomic<bool> finished{false};chrono::steady_clock::time_point start;
-  atomic<bool> ready{false};int linger=30;
-  bool fetch_meta(){for(auto&n:neighbors){int fd=connect_peer(n.host,n.port);if(fd<0)continue;char cmd='M';bool ok=sendall(fd,&cmd,1);uint32_t size=0;if(ok)ok=recv32(fd,size)&&size>0&&size<70000000;string text(size,'\0');if(ok)ok=recvall(fd,text.data(),size);close(fd);if(ok){try{meta=Meta::parse(text);logline("META recebida de "+n.str()+" ("+to_string(meta.count())+" blocos)");return true;}catch(const exception&e){logline(string("META invalida: ")+e.what());}}}return false;}
-  void init(){fs::create_directories(dir);if(seed){meta=make_meta(data_path,meta.block);ofstream out(dir+"/"+meta.name+".meta",ios::binary);out<<meta.serialize();output_path=data_path;datafd=open(data_path.c_str(),O_RDONLY);have.assign(meta.count(),1);completed=meta.count();finished=true;}else{while(running&&!fetch_meta())this_thread::sleep_for(chrono::milliseconds(500));if(!running)return;output_path=dir+"/"+meta.name+".part";datafd=open(output_path.c_str(),O_RDWR|O_CREAT|O_TRUNC,0644);if(datafd<0||ftruncate(datafd,meta.size)<0)throw runtime_error("nao criou arquivo parcial");have.assign(meta.count(),0);}if(datafd<0)throw runtime_error("nao abriu arquivo");claimed.assign(meta.count(),0);ready=true;logline(string(seed?"SEED ":"LEECH ")+meta.name+" blocos="+to_string(meta.count())+" porta="+to_string(port));}
-  void handle(int fd){timeval tv{5,0};setsockopt(fd,SOL_SOCKET,SO_RCVTIMEO,&tv,sizeof(tv));setsockopt(fd,SOL_SOCKET,SO_SNDTIMEO,&tv,sizeof(tv));char cmd;if(!recvall(fd,&cmd,1))return;if(cmd=='M'){if(!ready){send32(fd,0);return;}string s=meta.serialize();send32(fd,(uint32_t)s.size());sendall(fd,s.data(),s.size());}else if(cmd=='H'){if(!ready){send32(fd,0);return;}vector<uint8_t> h;{lock_guard<mutex>g(mu);h=have;}if(send32(fd,(uint32_t)h.size()))sendall(fd,h.data(),h.size());}else if(cmd=='G'){uint32_t idx;if(!recv32(fd,idx)||!ready||idx>=meta.count()){send32(fd,0);return;}bool yes;{lock_guard<mutex>g(mu);yes=have[idx]!=0;}if(!yes){send32(fd,0);return;}vector<uint8_t>b(meta.len(idx));ssize_t n=pread(datafd,b.data(),b.size(),(off_t)idx*meta.block);if(n!=(ssize_t)b.size()){send32(fd,0);return;}if(send32(fd,(uint32_t)b.size()))sendall(fd,b.data(),b.size());}}
-  void server(){int s=socket(AF_INET,SOCK_STREAM,0);if(s<0)throw runtime_error("socket servidor");int yes=1;setsockopt(s,SOL_SOCKET,SO_REUSEADDR,&yes,sizeof(yes));sockaddr_in a{};a.sin_family=AF_INET;a.sin_addr.s_addr=htonl(INADDR_ANY);a.sin_port=htons(port);if(bind(s,(sockaddr*)&a,sizeof(a))<0||listen(s,64)<0){close(s);throw runtime_error("bind/listen porta "+to_string(port));}logline("Servidor ouvindo porta "+to_string(port));while(running){fd_set set;FD_ZERO(&set);FD_SET(s,&set);timeval tv{0,200000};int r=select(s+1,&set,nullptr,nullptr,&tv);if(r<=0)continue;int c=accept(s,nullptr,nullptr);if(c<0)continue;thread([this,c](){handle(c);close(c);}).detach();}close(s);}
-  void worker(Neighbor n){while(running&&!finished){int fd=connect_peer(n.host,n.port);if(fd<0){this_thread::sleep_for(chrono::milliseconds(350));continue;}char cmd='H';uint32_t count=0;bool ok=sendall(fd,&cmd,1)&&recv32(fd,count)&&count==meta.count();vector<uint8_t>remote(ok?count:0);if(ok)ok=recvall(fd,remote.data(),remote.size());close(fd);if(!ok){this_thread::sleep_for(chrono::milliseconds(300));continue;}bool progress=false;for(size_t i=0;i<remote.size()&&running&&!finished;i++){if(!remote[i])continue;{lock_guard<mutex>g(mu);if(have[i]||claimed[i])continue;claimed[i]=1;}fd=connect_peer(n.host,n.port);uint32_t length=0;cmd='G';ok=fd>=0&&sendall(fd,&cmd,1)&&send32(fd,(uint32_t)i)&&recv32(fd,length)&&length==meta.len(i);vector<uint8_t>buf(ok?length:0);if(ok)ok=recvall(fd,buf.data(),buf.size())&&hexsha(buf.data(),buf.size())==meta.blocksha[i];if(fd>=0)close(fd);if(ok){ssize_t w=pwrite(datafd,buf.data(),buf.size(),(off_t)i*meta.block);ok=w==(ssize_t)buf.size();} {lock_guard<mutex>g(mu);if(ok&&!have[i]){have[i]=1;size_t c=++completed;progress=true;logline("RECEBIDO bloco="+to_string(i)+" origem="+n.str()+" progresso="+to_string(c)+"/"+to_string(meta.count()));if(c==meta.count())finished=true;}claimed[i]=0;} }if(!progress)this_thread::sleep_for(chrono::milliseconds(200));}}
-public:
-  Peer(int p,string file,string d,uint32_t block,vector<Neighbor> ns,int linger_seconds):data_path(move(file)),dir(move(d)),port(p),neighbors(move(ns)),linger(linger_seconds){seed=!data_path.empty();meta.block=block;}
-  void run(){thread srv([this]{try{server();}catch(const exception&e){logline(e.what());running=false;}});try{init();start=chrono::steady_clock::now();vector<thread>workers;if(!seed){for(auto&n:neighbors)workers.emplace_back([this,n]{worker(n);});while(running&&!finished)this_thread::sleep_for(chrono::milliseconds(100));if(finished){fsync(datafd);string h=filehash(output_path);if(h==meta.sha){string final=dir+"/"+meta.name;fs::rename(output_path,final);auto ms=chrono::duration_cast<chrono::milliseconds>(chrono::steady_clock::now()-start).count();logline("SUCESSO SHA256="+h+" bytes="+to_string(meta.size)+" tempo_ms="+to_string(ms));}else logline("FALHA: SHA256 final diferente");logline("Compartilhando por mais "+to_string(linger)+" segundos");for(int k=0;k<linger*10&&running;k++)this_thread::sleep_for(chrono::milliseconds(100));}running=false;}else{logline("Seeder ativo. Ctrl+C para encerrar.");while(running)this_thread::sleep_for(chrono::milliseconds(200));}for(auto&t:workers)t.join();}catch(...){running=false;srv.join();if(datafd>=0)close(datafd);throw;}srv.join();if(datafd>=0)close(datafd);}
-};
-int main(int argc,char**argv){signal(SIGINT,stop_signal);signal(SIGTERM,stop_signal);signal(SIGPIPE,SIG_IGN);try{int port=0;string file,dir="downloads";uint32_t block=1024;int linger=30;vector<Neighbor> ns;for(int i=1;i<argc;i++){string a=argv[i];auto value=[&](){if(i+1>=argc)throw runtime_error("falta valor para "+a);return string(argv[++i]);};if(a=="--port")port=stoi(value());else if(a=="--file")file=value();else if(a=="--dir")dir=value();else if(a=="--block")block=stoul(value());else if(a=="--linger")linger=stoi(value());else if(a=="--neighbor"){string v=value();size_t pos=v.rfind(':');if(pos==string::npos)throw runtime_error("vizinho deve ser IP:porta");int p=stoi(v.substr(pos+1));if(p<1||p>65535)throw runtime_error("porta vizinho invalida");ns.push_back({v.substr(0,pos),p});}else throw runtime_error("argumento desconhecido: "+a);}if(port<1||port>65535||block<256||block>1048576|| (file.empty()&&ns.empty()))throw runtime_error("uso: peer --port PORT [--file CAMINHO] [--neighbor IP:PORT ...] [--dir PASTA] [--block BYTES]");if(linger<0||linger>3600)throw runtime_error("linger invalido");Peer peer(port,file,dir,block,ns,linger);peer.run();return 0;}catch(const exception&e){cerr<<"ERRO: "<<e.what()<<'\n';return 1;}}
+
+#include "hash.hpp"
+#include "log.hpp"
+#include "net.hpp"
+
+namespace fs = std::filesystem;
+using namespace std::chrono_literals;
+
+std::atomic<bool> running{true};
+
+namespace {
+
+constexpr char CMD_METADATA = 'M';
+constexpr char CMD_HAVE = 'H';
+constexpr char CMD_GET = 'G';
+
+constexpr uint32_t MAX_METADATA_SIZE = 70000000;
+
+void send_unavailable(int fd) {
+    send_u32(fd, 0);
+}
+
+}
+
+Peer::Peer(int port, std::string file, std::string dir, uint32_t block_size,
+           std::vector<Neighbor> neighbors, int linger_seconds)
+    : source_path(std::move(file)),
+      dir(std::move(dir)),
+      port(port),
+      linger(linger_seconds),
+      neighbors(std::move(neighbors)) {
+    seed = !source_path.empty();
+    meta.block_size = block_size;
+}
+
+void Peer::run() {
+    std::thread server_thread([this] {
+        try {
+            server();
+        } catch (const std::exception& e) {
+            log_line(e.what());
+            running = false;
+        }
+    });
+
+    try {
+        init();
+        start = std::chrono::steady_clock::now();
+        std::vector<std::thread> workers;
+        if (!seed) {
+            for (const auto& n : neighbors)
+                workers.emplace_back([this, n] { worker(n); });
+            while (running && !finished)
+                std::this_thread::sleep_for(100ms);
+            if (finished)
+                finish_download();
+            running = false;
+        } else {
+            log_line("Seeder ativo. Ctrl+C para encerrar.");
+            while (running)
+                std::this_thread::sleep_for(200ms);
+        }
+        for (auto& t : workers)
+            t.join();
+    } catch (...) {
+        running = false;
+        server_thread.join();
+        if (local_fd >= 0)
+            close(local_fd);
+        throw;
+    }
+
+    server_thread.join();
+    if (local_fd >= 0)
+        close(local_fd);
+}
+
+void Peer::init() {
+    fs::create_directories(dir);
+
+    if (seed) {
+        meta = Metadata::from_file(source_path, meta.block_size);
+        std::ofstream out(dir + "/" + meta.name + ".meta", std::ios::binary);
+        out << meta.serialize();
+        local_path = source_path;
+        local_fd = open(source_path.c_str(), O_RDONLY);
+        have.assign(meta.block_count(), 1);
+        completed = meta.block_count();
+        finished = true;
+    } else {
+        while (running && !fetch_metadata())
+            std::this_thread::sleep_for(500ms);
+        if (!running)
+            return;
+
+        local_path = dir + "/" + meta.name + ".part";
+        local_fd = open(local_path.c_str(), O_RDWR | O_CREAT | O_TRUNC, 0644);
+        if (local_fd < 0 || ftruncate(local_fd, meta.size) < 0)
+            throw std::runtime_error("nao criou arquivo parcial");
+        have.assign(meta.block_count(), 0);
+    }
+
+    if (local_fd < 0)
+        throw std::runtime_error("nao abriu arquivo");
+    claimed.assign(meta.block_count(), 0);
+    ready = true;
+    log_line(std::string(seed ? "SEED " : "LEECH ") + meta.name +
+             " blocos=" + std::to_string(meta.block_count()) + " porta=" + std::to_string(port));
+}
+
+bool Peer::fetch_metadata() {
+    for (const auto& n : neighbors) {
+        int fd = connect_to(n.host, n.port);
+        if (fd < 0)
+            continue;
+
+        uint32_t size = 0;
+        bool ok = send_all(fd, &CMD_METADATA, 1) && recv_u32(fd, size) && size > 0 && size < MAX_METADATA_SIZE;
+        std::string text(ok ? size : 0, '\0');
+        if (ok)
+            ok = recv_all(fd, text.data(), size);
+        close(fd);
+        if (!ok)
+            continue;
+
+        try {
+            meta = Metadata::parse(text);
+            log_line("META recebida de " + n.str() + " (" + std::to_string(meta.block_count()) + " blocos)");
+            return true;
+        } catch (const std::exception& e) {
+            log_line(std::string("META invalida: ") + e.what());
+        }
+    }
+    return false;
+}
+
+void Peer::server() {
+    int listener = socket(AF_INET, SOCK_STREAM, 0);
+    if (listener < 0)
+        throw std::runtime_error("socket servidor");
+    int yes = 1;
+    setsockopt(listener, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes));
+
+    sockaddr_in addr{};
+    addr.sin_family = AF_INET;
+    addr.sin_addr.s_addr = htonl(INADDR_ANY);
+    addr.sin_port = htons(port);
+    if (bind(listener, reinterpret_cast<sockaddr*>(&addr), sizeof(addr)) < 0 || listen(listener, 64) < 0) {
+        close(listener);
+        throw std::runtime_error("bind/listen porta " + std::to_string(port));
+    }
+    log_line("Servidor ouvindo porta " + std::to_string(port));
+
+    while (running) {
+        fd_set set;
+        FD_ZERO(&set);
+        FD_SET(listener, &set);
+        timeval timeout{0, 200000};
+        if (select(listener + 1, &set, nullptr, nullptr, &timeout) <= 0)
+            continue;
+
+        int client = accept(listener, nullptr, nullptr);
+        if (client < 0)
+            continue;
+        std::thread([this, client] {
+            handle(client);
+            close(client);
+        }).detach();
+    }
+    close(listener);
+}
+
+void Peer::handle(int fd) {
+    set_timeouts(fd, 5);
+    char cmd;
+    if (!recv_all(fd, &cmd, 1))
+        return;
+
+    if (cmd == CMD_METADATA) {
+        if (!ready) {
+            send_unavailable(fd);
+            return;
+        }
+        std::string text = meta.serialize();
+        send_u32(fd, static_cast<uint32_t>(text.size()));
+        send_all(fd, text.data(), text.size());
+    } else if (cmd == CMD_HAVE) {
+        if (!ready) {
+            send_unavailable(fd);
+            return;
+        }
+        std::vector<uint8_t> snapshot;
+        {
+            std::lock_guard<std::mutex> lock(blocks_mutex);
+            snapshot = have;
+        }
+        if (send_u32(fd, static_cast<uint32_t>(snapshot.size())))
+            send_all(fd, snapshot.data(), snapshot.size());
+    } else if (cmd == CMD_GET) {
+        uint32_t index;
+        if (!recv_u32(fd, index) || !ready || index >= meta.block_count()) {
+            send_unavailable(fd);
+            return;
+        }
+        bool available;
+        {
+            std::lock_guard<std::mutex> lock(blocks_mutex);
+            available = have[index] != 0;
+        }
+        if (!available) {
+            send_unavailable(fd);
+            return;
+        }
+        std::vector<uint8_t> block(meta.block_length(index));
+        ssize_t n = pread(local_fd, block.data(), block.size(), static_cast<off_t>(index) * meta.block_size);
+        if (n != static_cast<ssize_t>(block.size())) {
+            send_unavailable(fd);
+            return;
+        }
+        if (send_u32(fd, static_cast<uint32_t>(block.size())))
+            send_all(fd, block.data(), block.size());
+    }
+}
+
+void Peer::worker(Neighbor n) {
+    const size_t total = meta.block_count();
+
+    while (running && !finished) {
+        std::vector<uint8_t> remote;
+        if (!fetch_block_map(n, remote)) {
+            std::this_thread::sleep_for(300ms);
+            continue;
+        }
+
+        bool progress = false;
+        for (size_t i = 0; i < remote.size() && running && !finished; i++) {
+            if (!remote[i])
+                continue;
+            {
+                std::lock_guard<std::mutex> lock(blocks_mutex);
+                if (have[i] || claimed[i])
+                    continue;
+                claimed[i] = 1;
+            }
+
+            std::vector<uint8_t> data;
+            bool stored = fetch_block(n, i, data) && write_block(i, data);
+
+            std::lock_guard<std::mutex> lock(blocks_mutex);
+            if (stored && !have[i]) {
+                have[i] = 1;
+                size_t done = ++completed;
+                progress = true;
+                log_line("RECEBIDO bloco=" + std::to_string(i) + " origem=" + n.str() +
+                         " progresso=" + std::to_string(done) + "/" + std::to_string(total));
+                if (done == total)
+                    finished = true;
+            }
+            claimed[i] = 0;
+        }
+        if (!progress)
+            std::this_thread::sleep_for(200ms);
+    }
+}
+
+bool Peer::fetch_block_map(const Neighbor& n, std::vector<uint8_t>& remote) {
+    int fd = connect_to(n.host, n.port);
+    if (fd < 0)
+        return false;
+
+    uint32_t count = 0;
+    bool ok = send_all(fd, &CMD_HAVE, 1) && recv_u32(fd, count) && count == meta.block_count();
+    if (ok) {
+        remote.resize(count);
+        ok = recv_all(fd, remote.data(), remote.size());
+    }
+    close(fd);
+    return ok;
+}
+
+bool Peer::fetch_block(const Neighbor& n, size_t index, std::vector<uint8_t>& data) {
+    int fd = connect_to(n.host, n.port);
+    if (fd < 0)
+        return false;
+
+    uint32_t length = 0;
+    bool ok = send_all(fd, &CMD_GET, 1) && send_u32(fd, static_cast<uint32_t>(index)) &&
+              recv_u32(fd, length) && length == meta.block_length(index);
+    if (ok) {
+        data.resize(length);
+        ok = recv_all(fd, data.data(), data.size()) &&
+             sha256_hex(data.data(), data.size()) == meta.block_sha256[index];
+    }
+    close(fd);
+    return ok;
+}
+
+bool Peer::write_block(size_t index, const std::vector<uint8_t>& data) {
+    off_t offset = static_cast<off_t>(index) * meta.block_size;
+    return pwrite(local_fd, data.data(), data.size(), offset) == static_cast<ssize_t>(data.size());
+}
+
+void Peer::finish_download() {
+    fsync(local_fd);
+    std::string hash = sha256_file(local_path);
+    if (hash == meta.sha256) {
+        fs::rename(local_path, dir + "/" + meta.name);
+        auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - start).count();
+        log_line("SUCESSO SHA256=" + hash + " bytes=" + std::to_string(meta.size) + " tempo_ms=" + std::to_string(ms));
+    } else {
+        log_line("FALHA: SHA256 final diferente");
+    }
+
+    log_line("Compartilhando por mais " + std::to_string(linger) + " segundos");
+    for (int k = 0; k < linger * 10 && running; k++)
+        std::this_thread::sleep_for(100ms);
+}

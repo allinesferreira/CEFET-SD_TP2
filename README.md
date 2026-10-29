@@ -11,7 +11,13 @@ Cada peer é um processo que funciona ao mesmo tempo como servidor e cliente. O 
 ## Estrutura
 
 ```
-src/peer.cpp            implementação do peer
+src/
+  main.cpp              leitura dos argumentos e sinais
+  peer.hpp, peer.cpp    servidor, downloads dos vizinhos e montagem do arquivo
+  metadata.hpp/.cpp     formato P2PMETA1
+  net.hpp/.cpp          envio e recepção sobre TCP
+  hash.hpp/.cpp         SHA-256
+  log.hpp/.cpp          log compartilhado entre threads
 scripts/testes.py       testes de integração com os estudos de caso
 resultados/             tempos medidos e logs de cada peer por cenário
 docs/                   enunciado, relatório, gerador do relatório e apresentação
@@ -32,7 +38,7 @@ sudo apt install build-essential libssl-dev python3
 make
 ```
 
-O executável `peer` é gerado na raiz do repositório.
+O executável `peer` é gerado na raiz do repositório e os objetos intermediários em `build/`. `make clean` remove os dois.
 
 ## Uso
 
