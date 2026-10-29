@@ -43,11 +43,12 @@ O executável `peer` é gerado na raiz do repositório e os objetos intermediár
 ## Uso
 
 ```
-./peer --port PORTA [--file ARQUIVO] [--neighbor IP:PORTA ...] [--dir PASTA] [--block BYTES] [--linger SEGUNDOS]
+./peer --ip IP --port PORTA [--file ARQUIVO] [--neighbor IP:PORTA ...] [--dir PASTA] [--block BYTES] [--linger SEGUNDOS]
 ```
 
 | Opção | Descrição | Padrão |
 |---|---|---|
+| `--ip` | endereço IPv4 do próprio peer, onde o servidor escuta | obrigatória |
 | `--port` | porta em que o peer escuta | obrigatória |
 | `--file` | arquivo completo; quando informado, o peer inicia como seeder | |
 | `--neighbor` | vizinho no formato IP:PORTA; pode ser repetido | |
@@ -61,8 +62,8 @@ Um peer sem `--file` é leecher e precisa de pelo menos um vizinho. O seeder fic
 
 ```
 head -c 1048576 /dev/urandom > exemplo.bin
-./peer --port 5000 --file exemplo.bin --block 1024 --dir /tmp/p2p-a
-./peer --port 5001 --neighbor 127.0.0.1:5000 --dir /tmp/p2p-b
+./peer --ip 127.0.0.1 --port 5000 --file exemplo.bin --block 1024 --dir /tmp/p2p-a
+./peer --ip 127.0.0.1 --port 5001 --neighbor 127.0.0.1:5000 --dir /tmp/p2p-b
 sha256sum exemplo.bin /tmp/p2p-b/exemplo.bin
 ```
 
@@ -71,10 +72,10 @@ sha256sum exemplo.bin /tmp/p2p-b/exemplo.bin
 Mesma topologia usada nos testes: A é o seeder, B conhece A, C conhece A e B, e D conhece apenas B e C. Assim, todos os blocos que D recebe vêm de outros leechers.
 
 ```
-./peer --port 5000 --file exemplo.bin --dir /tmp/p2p-a
-./peer --port 5001 --neighbor 127.0.0.1:5000 --dir /tmp/p2p-b
-./peer --port 5002 --neighbor 127.0.0.1:5000 --neighbor 127.0.0.1:5001 --dir /tmp/p2p-c
-./peer --port 5003 --neighbor 127.0.0.1:5001 --neighbor 127.0.0.1:5002 --dir /tmp/p2p-d
+./peer --ip 127.0.0.1 --port 5000 --file exemplo.bin --dir /tmp/p2p-a
+./peer --ip 127.0.0.1 --port 5001 --neighbor 127.0.0.1:5000 --dir /tmp/p2p-b
+./peer --ip 127.0.0.1 --port 5002 --neighbor 127.0.0.1:5000 --neighbor 127.0.0.1:5001 --dir /tmp/p2p-c
+./peer --ip 127.0.0.1 --port 5003 --neighbor 127.0.0.1:5001 --neighbor 127.0.0.1:5002 --dir /tmp/p2p-d
 ```
 
 Cada comando roda em um terminal. Para D conseguir terminar, B e C precisam estar no ar, baixando ou dentro do tempo de `--linger`.

@@ -6,6 +6,18 @@
 #include <sys/time.h>
 #include <unistd.h>
 
+bool to_sockaddr(const Address& address, sockaddr_in& result) {
+    result = {};
+    result.sin_family = AF_INET;
+    result.sin_port = htons(address.port);
+    return inet_pton(AF_INET, address.host.c_str(), &result.sin_addr) == 1;
+}
+
+bool is_ipv4(const std::string& host) {
+    sockaddr_in addr;
+    return to_sockaddr({host, 0}, addr);
+}
+
 bool send_all(int fd, const void* data, size_t n) {
     auto* p = static_cast<const uint8_t*>(data);
     while (n > 0) {
@@ -48,17 +60,15 @@ void set_timeouts(int fd, int seconds) {
     setsockopt(fd, SOL_SOCKET, SO_SNDTIMEO, &tv, sizeof(tv));
 }
 
-int connect_to(const std::string& host, int port) {
+int connect_to(const Address& address) {
+    sockaddr_in addr;
+    if (!to_sockaddr(address, addr))
+        return -1;
     int fd = socket(AF_INET, SOCK_STREAM, 0);
     if (fd < 0)
         return -1;
     set_timeouts(fd, 3);
-
-    sockaddr_in addr{};
-    addr.sin_family = AF_INET;
-    addr.sin_port = htons(port);
-    if (inet_pton(AF_INET, host.c_str(), &addr.sin_addr) != 1 ||
-        connect(fd, reinterpret_cast<sockaddr*>(&addr), sizeof(addr)) < 0) {
+    if (connect(fd, reinterpret_cast<sockaddr*>(&addr), sizeof(addr)) < 0) {
         close(fd);
         return -1;
     }

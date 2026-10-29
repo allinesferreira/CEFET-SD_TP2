@@ -6,26 +6,30 @@
 #include <vector>
 
 #include "metadata.hpp"
+#include "net.hpp"
 #include "peer.hpp"
 
 namespace {
 
 const char* USAGE =
-    "uso: peer --port PORT [--file CAMINHO] [--neighbor IP:PORT ...] [--dir PASTA] [--block BYTES] "
+    "uso: peer --ip IP --port PORT [--file CAMINHO] [--neighbor IP:PORT ...] [--dir PASTA] [--block BYTES] "
     "[--linger SEGUNDOS]";
 
 void stop(int) {
     running = false;
 }
 
-Neighbor parse_neighbor(const std::string& value) {
+Address parse_neighbor(const std::string& value) {
     size_t pos = value.rfind(':');
     if (pos == std::string::npos)
         throw std::runtime_error("vizinho deve ser IP:porta");
     int port = std::stoi(value.substr(pos + 1));
     if (port < 1 || port > 65535)
         throw std::runtime_error("porta vizinho invalida");
-    return {value.substr(0, pos), port};
+    std::string host = value.substr(0, pos);
+    if (!is_ipv4(host))
+        throw std::runtime_error("ip vizinho invalido: " + host);
+    return {host, port};
 }
 
 }
@@ -36,12 +40,13 @@ int main(int argc, char** argv) {
     std::signal(SIGPIPE, SIG_IGN);
 
     try {
+        std::string ip;
         int port = 0;
         std::string file;
         std::string dir = "downloads";
         uint32_t block_size = 1024;
         int linger = 30;
-        std::vector<Neighbor> neighbors;
+        std::vector<Address> neighbors;
 
         for (int i = 1; i < argc; i++) {
             std::string arg = argv[i];
@@ -51,7 +56,9 @@ int main(int argc, char** argv) {
                 return std::string(argv[++i]);
             };
 
-            if (arg == "--port")
+            if (arg == "--ip")
+                ip = value();
+            else if (arg == "--port")
                 port = std::stoi(value());
             else if (arg == "--file")
                 file = value();
@@ -67,13 +74,15 @@ int main(int argc, char** argv) {
                 throw std::runtime_error("argumento desconhecido: " + arg);
         }
 
-        if (port < 1 || port > 65535 || block_size < MIN_BLOCK_SIZE || block_size > MAX_BLOCK_SIZE ||
+        if (ip.empty() || port < 1 || port > 65535 || block_size < MIN_BLOCK_SIZE || block_size > MAX_BLOCK_SIZE ||
             (file.empty() && neighbors.empty()))
             throw std::runtime_error(USAGE);
+        if (!is_ipv4(ip))
+            throw std::runtime_error("ip invalido: " + ip);
         if (linger < 0 || linger > 3600)
             throw std::runtime_error("linger invalido");
 
-        Peer peer(port, file, dir, block_size, neighbors, linger);
+        Peer peer({ip, port}, file, dir, block_size, neighbors, linger);
         peer.run();
         return 0;
     } catch (const std::exception& e) {

@@ -34,11 +34,11 @@ void send_unavailable(int fd) {
 
 }
 
-Peer::Peer(int port, std::string file, std::string dir, uint32_t block_size,
-           std::vector<Neighbor> neighbors, int linger_seconds)
+Peer::Peer(Address self, std::string file, std::string dir, uint32_t block_size,
+           std::vector<Address> neighbors, int linger_seconds)
     : source_path(std::move(file)),
       dir(std::move(dir)),
-      port(port),
+      self(std::move(self)),
       linger(linger_seconds),
       neighbors(std::move(neighbors)) {
     seed = !source_path.empty();
@@ -117,12 +117,12 @@ void Peer::init() {
     claimed.assign(meta.block_count(), 0);
     ready = true;
     log_line(std::string(seed ? "SEED " : "LEECH ") + meta.name +
-             " blocos=" + std::to_string(meta.block_count()) + " porta=" + std::to_string(port));
+             " blocos=" + std::to_string(meta.block_count()) + " endereco=" + self.str());
 }
 
 bool Peer::fetch_metadata() {
     for (const auto& n : neighbors) {
-        int fd = connect_to(n.host, n.port);
+        int fd = connect_to(n);
         if (fd < 0)
             continue;
 
@@ -153,15 +153,13 @@ void Peer::server() {
     int yes = 1;
     setsockopt(listener, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes));
 
-    sockaddr_in addr{};
-    addr.sin_family = AF_INET;
-    addr.sin_addr.s_addr = htonl(INADDR_ANY);
-    addr.sin_port = htons(port);
+    sockaddr_in addr;
+    to_sockaddr(self, addr);
     if (bind(listener, reinterpret_cast<sockaddr*>(&addr), sizeof(addr)) < 0 || listen(listener, 64) < 0) {
         close(listener);
-        throw std::runtime_error("bind/listen porta " + std::to_string(port));
+        throw std::runtime_error("bind/listen " + self.str());
     }
-    log_line("Servidor ouvindo porta " + std::to_string(port));
+    log_line("Servidor ouvindo " + self.str());
 
     while (running) {
         fd_set set;
@@ -234,7 +232,7 @@ void Peer::handle(int fd) {
     }
 }
 
-void Peer::worker(Neighbor n) {
+void Peer::worker(Address n) {
     const size_t total = meta.block_count();
 
     while (running && !finished) {
@@ -275,8 +273,8 @@ void Peer::worker(Neighbor n) {
     }
 }
 
-bool Peer::fetch_block_map(const Neighbor& n, std::vector<uint8_t>& remote) {
-    int fd = connect_to(n.host, n.port);
+bool Peer::fetch_block_map(const Address& n, std::vector<uint8_t>& remote) {
+    int fd = connect_to(n);
     if (fd < 0)
         return false;
 
@@ -290,8 +288,8 @@ bool Peer::fetch_block_map(const Neighbor& n, std::vector<uint8_t>& remote) {
     return ok;
 }
 
-bool Peer::fetch_block(const Neighbor& n, size_t index, std::vector<uint8_t>& data) {
-    int fd = connect_to(n.host, n.port);
+bool Peer::fetch_block(const Address& n, size_t index, std::vector<uint8_t>& data) {
+    int fd = connect_to(n);
     if (fd < 0)
         return false;
 

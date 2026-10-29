@@ -56,6 +56,7 @@ def test(peers, block, size):
             # Peer A: Seeder inicial
             start(
                 [
+                    '--ip', '127.0.0.1',
                     '--port', '25000',
                     '--file', str(src),
                     '--block', str(block),
@@ -69,6 +70,7 @@ def test(peers, block, size):
             # Peer B
             start(
                 [
+                    '--ip', '127.0.0.1',
                     '--port', '25001',
                     '--neighbor', '127.0.0.1:25000',
                     '--dir', str(d / 'b')
@@ -82,6 +84,7 @@ def test(peers, block, size):
                 # Peer C
                 start(
                     [
+                        '--ip', '127.0.0.1',
                         '--port', '25002',
                         '--neighbor', '127.0.0.1:25000',
                         '--neighbor', '127.0.0.1:25001',
@@ -93,6 +96,7 @@ def test(peers, block, size):
                 # Peer D
                 start(
                     [
+                        '--ip', '127.0.0.1',
                         '--port', '25003',
                         '--neighbor', '127.0.0.1:25001',
                         '--neighbor', '127.0.0.1:25002',
