@@ -146,7 +146,7 @@ Em cada execução, o script inicia o seeder, espera ele ficar ativo e inicia os
 
 - **tamanho:** o arquivo remontado tem o mesmo tamanho do original;
 - **integridade:** o SHA-256 é igual ao do original;
-- **origens:** pelo log, todos os blocos vieram de vizinhos configurados para aquele peer e nenhum bloco faltou.
+- **origens:** pelo log do leecher, todos os blocos vieram de vizinhos configurados para aquele peer e nenhum bloco faltou; e cada bloco recebido de um vizinho aparece no log desse vizinho como `ENVIADO` para o leecher.
 
 O tempo de uma execução é o maior `tempo_ms` entre os leechers; o tempo de cada leecher também fica registrado.
 

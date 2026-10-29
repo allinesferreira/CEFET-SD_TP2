@@ -11,7 +11,7 @@ import statistics
 import subprocess
 import tempfile
 import time
-from collections import Counter
+from collections import Counter, defaultdict
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 PEER = ROOT / 'peer'
@@ -33,7 +33,8 @@ TOPOLOGIAS = {
 
 LEECHERS = ['b', 'c', 'd']
 
-RE_RECEBIDO = re.compile(r'RECEBIDO bloco=\d+ origem=(\S+) progresso=(\d+)/(\d+)')
+RE_RECEBIDO = re.compile(r'RECEBIDO bloco=(\d+) origem=(\S+) progresso=(\d+)/(\d+)')
+RE_ENVIADO = re.compile(r'ENVIADO bloco=(\d+) destino=(\S+)')
 RE_SUCESSO = re.compile(r'SUCESSO .* tempo_ms=(\d+)')
 
 
@@ -117,7 +118,7 @@ class Execucao:
         while time.monotonic() < fim:
             progresso = RE_RECEBIDO.findall(self.log(nome).read_text())
             if progresso:
-                _, recebidos, total = progresso[-1]
+                _, _, recebidos, total = progresso[-1]
                 if int(recebidos) >= fracao * int(total):
                     return int(recebidos)
             time.sleep(0.01)
@@ -134,24 +135,35 @@ class Execucao:
                 p.kill()
                 p.wait()
 
+    def blocos_enviados(self, origem, destino):
+        enviados = set()
+        for bloco, para in RE_ENVIADO.findall(self.log(origem).read_text()):
+            if para == endereco(destino):
+                enviados.add(int(bloco))
+        return enviados
+
     def verificar(self, nome):
-        origens = Counter()
+        recebidos = defaultdict(set)
         tempo_ms = None
         for linha in self.log(nome).read_text().splitlines():
             if m := RE_RECEBIDO.search(linha):
-                origens[nome_do_endereco(m.group(1))] += 1
+                recebidos[nome_do_endereco(m.group(2))].add(int(m.group(1)))
             elif m := RE_SUCESSO.search(linha):
                 tempo_ms = int(m.group(1))
+
+        vizinhos = set(self.topologia[nome])
+        confirmados = all(origem in vizinhos and blocos <= self.blocos_enviados(origem, nome)
+                          for origem, blocos in recebidos.items())
+        total = sum(len(blocos) for blocos in recebidos.values())
 
         arquivo = self.baixado(nome)
         existe = arquivo.exists()
         return {
             'tamanho_ok': existe and arquivo.stat().st_size == self.tamanho,
             'sha_ok': existe and sha256(arquivo) == self.sha_original,
-            'origens_ok': set(origens) <= set(self.topologia[nome]) and
-                          sum(origens.values()) == math.ceil(self.tamanho / self.bloco),
+            'origens_ok': confirmados and total == math.ceil(self.tamanho / self.bloco),
             'tempo_ms': tempo_ms,
-            'origens': origens,
+            'origens': Counter({origem: len(blocos) for origem, blocos in recebidos.items()}),
         }
 
     def guardar_logs(self, destino):
