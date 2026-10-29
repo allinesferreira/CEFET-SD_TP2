@@ -117,7 +117,7 @@ void Peer::download() {
     for (const auto& n : neighbors)
         workers.emplace_back([this, n] { worker(n); });
 
-    auto next_status = start + STATUS_INTERVAL;
+    auto next_status = std::chrono::steady_clock::now() + STATUS_INTERVAL;
     while (running && !finished) {
         std::this_thread::sleep_for(100ms);
         if (std::chrono::steady_clock::now() >= next_status) {
