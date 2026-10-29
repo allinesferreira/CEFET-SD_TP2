@@ -114,7 +114,7 @@ exemplo.bin
 ...
 ```
 
-O leecher confere o SHA-256 de cada bloco antes de marcá-lo como disponível. Quando todos os blocos chegam, confere o SHA-256 do arquivo inteiro e renomeia o `.part` para o nome original.
+O seeder grava os metadados em `<pasta>/<arquivo>.meta` ao iniciar. O leecher confere o SHA-256 de cada bloco antes de marcá-lo como disponível. Quando todos os blocos chegam, confere o SHA-256 do arquivo inteiro, renomeia o `.part` para o nome original e também grava o `.meta`, ficando com o mesmo conteúdo que o seeder inicial.
 
 ## Logs
 

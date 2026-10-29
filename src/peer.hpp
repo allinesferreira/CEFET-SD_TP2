@@ -37,6 +37,7 @@ private:
     bool fetch_block_map(const Address& neighbor, std::vector<uint8_t>& remote);
     bool fetch_block(const Address& neighbor, size_t index, std::vector<uint8_t>& data);
     bool write_block(size_t index, const std::vector<uint8_t>& data);
+    void save_metadata();
     void finish_download();
 
     Metadata meta;

@@ -137,8 +137,7 @@ void Peer::init() {
 
     if (seed) {
         meta = Metadata::from_file(source_path, meta.block_size);
-        std::ofstream out(dir + "/" + meta.name + ".meta", std::ios::binary);
-        out << meta.serialize();
+        save_metadata();
         local_path = source_path;
         local_fd = open(source_path.c_str(), O_RDONLY);
         have.assign(meta.block_count(), 1);
@@ -301,11 +300,17 @@ bool Peer::write_block(size_t index, const std::vector<uint8_t>& data) {
     return pwrite(local_fd, data.data(), data.size(), offset) == static_cast<ssize_t>(data.size());
 }
 
+void Peer::save_metadata() {
+    std::ofstream out(dir + "/" + meta.name + ".meta", std::ios::binary);
+    out << meta.serialize();
+}
+
 void Peer::finish_download() {
     fsync(local_fd);
     std::string hash = sha256_file(local_path);
     if (hash == meta.sha256) {
         fs::rename(local_path, dir + "/" + meta.name);
+        save_metadata();
         auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - start).count();
         log_line("SUCESSO SHA256=" + hash + " bytes=" + std::to_string(meta.size) + " tempo_ms=" + std::to_string(ms));
     } else {
