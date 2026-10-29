@@ -82,6 +82,7 @@ class Execucao:
         self.sha_original = sha256(self.original)
         for nome, vizinhos in self.topologia.items():
             self.iniciar_peer(nome, vizinhos)
+            self.esperar_texto(nome, 'Servidor ouvindo')
             if not vizinhos:
                 self.esperar_texto(nome, 'Seeder ativo')
 

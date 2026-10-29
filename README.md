@@ -142,7 +142,7 @@ python3 scripts/testes.py [--repeticoes N]
 
 O script roda os estudos de caso em 127.0.0.1, combinando todos os parâmetros da Tabela 1 do enunciado: 2 e 4 peers, blocos de 1024 e 4096 bytes e arquivos de 10 KB, 20 KB, 1 MB, 5 MB, 10 MB e 20 MB, num total de 24 cenários. Cada cenário é executado `N` vezes (padrão: 5), sempre com um arquivo aleatório novo.
 
-Em cada execução, o script inicia o seeder, espera ele ficar ativo, inicia os leechers e aguarda todos concluírem. Depois confere, para cada leecher:
+Em cada execução, o script inicia o seeder, espera ele ficar ativo e inicia os leechers, um de cada vez, esperando cada um abrir sua porta antes de iniciar o próximo. Depois aguarda todos concluírem. Depois confere, para cada leecher:
 
 - **tamanho:** o arquivo remontado tem o mesmo tamanho do original;
 - **integridade:** o SHA-256 é igual ao do original;
