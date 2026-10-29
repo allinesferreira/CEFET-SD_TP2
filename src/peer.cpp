@@ -58,6 +58,7 @@ Peer::Peer(Address self, std::string file, std::string dir, uint32_t block_size,
 }
 
 void Peer::run() {
+    start = std::chrono::steady_clock::now();
     std::thread server_thread([this] {
         try {
             serve(self, running, [this](const Request& request) { return respond(request); });
@@ -97,7 +98,6 @@ void Peer::seed_until_stopped() {
 }
 
 void Peer::download() {
-    start = std::chrono::steady_clock::now();
     log_status();
 
     std::vector<std::thread> workers;
@@ -316,8 +316,10 @@ void Peer::release(size_t index, bool stored, const Address& origin) {
     size_t total = meta.block_count();
     log_line("RECEBIDO bloco=" + std::to_string(index) + " origem=" + origin.str() +
              " progresso=" + std::to_string(done) + "/" + std::to_string(total));
-    if (done == total)
+    if (done == total) {
+        last_block_time = std::chrono::steady_clock::now();
         finished = true;
+    }
 }
 
 Reply Peer::fetch_block_map(const Address& n, std::vector<uint8_t>& remote) {
@@ -354,7 +356,7 @@ void Peer::finish_download() {
     if (hash == meta.sha256) {
         fs::rename(local_path, dir + "/" + meta.name);
         save_metadata();
-        auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - start).count();
+        auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(last_block_time - start).count();
         log_line("SUCESSO SHA256=" + hash + " bytes=" + std::to_string(meta.size) + " tempo_ms=" + std::to_string(ms));
     } else {
         log_line("FALHA: SHA256 final diferente");

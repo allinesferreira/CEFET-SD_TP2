@@ -67,4 +67,5 @@ private:
     std::atomic<bool> finished{false};
     std::atomic<bool> ready{false};
     std::chrono::steady_clock::time_point start;
+    std::chrono::steady_clock::time_point last_block_time;
 };
