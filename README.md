@@ -6,7 +6,6 @@ Cada peer é um processo que funciona ao mesmo tempo como servidor e cliente. O 
 
 - Enunciado: [docs/enunciado.md](docs/enunciado.md)
 - Relatório: [docs/relatorio.pdf](docs/relatorio.pdf)
-- Apresentação: [docs/apresentacao.pptx](docs/apresentacao.pptx)
 
 ## Estrutura
 
@@ -22,7 +21,7 @@ src/
   log.hpp/.cpp          log compartilhado entre threads
 scripts/testes.py       testes de integração com os estudos de caso
 resultados/             tempos medidos e logs de cada peer por cenário
-docs/                   enunciado, relatório, gerador do relatório e apresentação
+docs/                   enunciado, relatório e gerador do relatório
 Makefile
 ```
 
