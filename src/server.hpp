@@ -10,4 +10,5 @@
 
 using RequestHandler = std::function<std::vector<uint8_t>(const Request&)>;
 
-void serve(const Address& address, const std::atomic<bool>& running, const RequestHandler& handler);
+int listen_on(const Address& address);
+void serve(int listener, const std::atomic<bool>& running, const RequestHandler& handler);

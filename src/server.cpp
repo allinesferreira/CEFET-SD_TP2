@@ -9,8 +9,6 @@
 #include <chrono>
 #include <stdexcept>
 
-#include "log.hpp"
-
 namespace {
 
 using Clock = std::chrono::steady_clock;
@@ -31,23 +29,6 @@ struct Connection {
 
 bool would_block() {
     return errno == EAGAIN || errno == EWOULDBLOCK;
-}
-
-int open_listener(const Address& address) {
-    sockaddr_in addr;
-    if (!to_sockaddr(address, addr))
-        throw std::runtime_error("endereco invalido " + address.str());
-
-    int fd = socket(AF_INET, SOCK_STREAM | SOCK_NONBLOCK, 0);
-    if (fd < 0)
-        throw std::runtime_error("socket servidor");
-    int yes = 1;
-    setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes));
-    if (bind(fd, reinterpret_cast<sockaddr*>(&addr), sizeof(addr)) < 0 || listen(fd, 128) < 0) {
-        close(fd);
-        throw std::runtime_error("bind/listen " + address.str());
-    }
-    return fd;
 }
 
 void accept_pending(int listener, std::vector<Connection>& connections) {
@@ -117,10 +98,24 @@ bool keep_open(Connection& c, short events, const RequestHandler& handler) {
 
 }
 
-void serve(const Address& address, const std::atomic<bool>& running, const RequestHandler& handler) {
-    int listener = open_listener(address);
-    log_line("Servidor ouvindo " + address.str());
+int listen_on(const Address& address) {
+    sockaddr_in addr;
+    if (!to_sockaddr(address, addr))
+        throw std::runtime_error("endereco invalido " + address.str());
 
+    int fd = socket(AF_INET, SOCK_STREAM | SOCK_NONBLOCK, 0);
+    if (fd < 0)
+        throw std::runtime_error("socket servidor");
+    int yes = 1;
+    setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes));
+    if (bind(fd, reinterpret_cast<sockaddr*>(&addr), sizeof(addr)) < 0 || listen(fd, 128) < 0) {
+        close(fd);
+        throw std::runtime_error("bind/listen " + address.str());
+    }
+    return fd;
+}
+
+void serve(int listener, const std::atomic<bool>& running, const RequestHandler& handler) {
     std::vector<Connection> connections;
     std::vector<pollfd> fds;
     while (running) {
