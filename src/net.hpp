@@ -19,9 +19,6 @@ bool is_ipv4(const std::string& host);
 bool send_all(int fd, const void* data, size_t n);
 bool recv_all(int fd, void* data, size_t n);
 
-bool send_u32(int fd, uint32_t value);
 bool recv_u32(int fd, uint32_t& value);
-
-void set_timeouts(int fd, int seconds);
 
 int connect_to(const Address& address);

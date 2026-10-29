@@ -6,6 +6,16 @@
 #include <sys/time.h>
 #include <unistd.h>
 
+namespace {
+
+void set_timeouts(int fd, int seconds) {
+    timeval tv{seconds, 0};
+    setsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv));
+    setsockopt(fd, SOL_SOCKET, SO_SNDTIMEO, &tv, sizeof(tv));
+}
+
+}
+
 bool to_sockaddr(const Address& address, sockaddr_in& result) {
     result = {};
     result.sin_family = AF_INET;
@@ -42,22 +52,11 @@ bool recv_all(int fd, void* data, size_t n) {
     return true;
 }
 
-bool send_u32(int fd, uint32_t value) {
-    value = htonl(value);
-    return send_all(fd, &value, sizeof(value));
-}
-
 bool recv_u32(int fd, uint32_t& value) {
     if (!recv_all(fd, &value, sizeof(value)))
         return false;
     value = ntohl(value);
     return true;
-}
-
-void set_timeouts(int fd, int seconds) {
-    timeval tv{seconds, 0};
-    setsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv));
-    setsockopt(fd, SOL_SOCKET, SO_SNDTIMEO, &tv, sizeof(tv));
 }
 
 int connect_to(const Address& address) {

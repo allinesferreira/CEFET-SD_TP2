@@ -2,7 +2,7 @@
 
 Trabalho Prático 2 de Sistemas Distribuídos, CEFET-MG, 2026/2. Professora Michelle Hanne.
 
-Cada peer é um processo que funciona ao mesmo tempo como servidor e cliente. O seeder divide o arquivo em blocos de tamanho fixo; os demais peers baixam os blocos dos vizinhos configurados e passam a servir cada bloco assim que ele é validado. A implementação usa C++17, sockets POSIX e threads.
+Cada peer é um processo que funciona ao mesmo tempo como servidor e cliente. O seeder divide o arquivo em blocos de tamanho fixo; os demais peers baixam os blocos dos vizinhos configurados e passam a servir cada bloco assim que ele é validado. A implementação usa C++17 e sockets POSIX.
 
 - Enunciado: [docs/enunciado.md](docs/enunciado.md)
 - Relatório: [docs/relatorio.pdf](docs/relatorio.pdf)
@@ -13,9 +13,11 @@ Cada peer é um processo que funciona ao mesmo tempo como servidor e cliente. O 
 ```
 src/
   main.cpp              leitura dos argumentos e sinais
-  peer.hpp, peer.cpp    servidor, downloads dos vizinhos e montagem do arquivo
+  peer.hpp, peer.cpp    respostas aos vizinhos, downloads e montagem do arquivo
+  server.hpp/.cpp       servidor não bloqueante com poll()
+  protocol.hpp/.cpp     codificação das requisições e respostas
   metadata.hpp/.cpp     formato P2PMETA1
-  net.hpp/.cpp          envio e recepção sobre TCP
+  net.hpp/.cpp          endereços e envio/recepção sobre TCP
   hash.hpp/.cpp         SHA-256
   log.hpp/.cpp          log compartilhado entre threads
 scripts/testes.py       testes de integração com os estudos de caso
@@ -80,6 +82,15 @@ Mesma topologia usada nos testes: A é o seeder, B conhece A, C conhece A e B, e
 
 Cada comando roda em um terminal. Para D conseguir terminar, B e C precisam estar no ar, baixando ou dentro do tempo de `--linger`.
 
+## Funcionamento
+
+Cada processo tem duas partes que rodam ao mesmo tempo:
+
+- **Servidor:** uma única thread com sockets não bloqueantes e `poll()`. Ela aceita conexões, lê as requisições conforme os bytes chegam e envia as respostas sem esperar por nenhum cliente específico. Conexões paradas por mais de 5 s são fechadas.
+- **Downloads:** uma thread por vizinho. Cada uma consulta o mapa de blocos do vizinho e pede os blocos que ainda faltam. Um vetor `claimed` evita que duas threads baixem o mesmo bloco, e o vetor `have` registra os blocos já gravados e validados. Os dois são protegidos por um mutex.
+
+Assim que um bloco entra em `have`, o servidor já o entrega para quem pedir, mesmo antes do arquivo estar completo.
+
 ## Protocolo
 
 Cada requisição abre uma conexão TCP e envia um comando de 1 byte. A resposta é sempre um inteiro de 32 bits sem sinal, em network byte order, com o tamanho do conteúdo, seguido do conteúdo. Tamanho zero indica que o pedido não pode ser atendido.
@@ -124,4 +135,4 @@ As portas são fixas (25000 a 25003), então não rode duas instâncias do scrip
 - Apenas IPv4 numérico e um arquivo por processo, sem autenticação nem TLS.
 - Não há tracker: os vizinhos são definidos na linha de comando.
 - Não há retomada: se o leecher for reiniciado, o download começa do zero.
-- O servidor usa `select` no socket de escuta e uma thread por conexão aceita; não é um event loop totalmente não bloqueante.
+- Uma conexão TCP é aberta para cada requisição.

@@ -1,9 +1,6 @@
 #include "peer.hpp"
 
 #include <fcntl.h>
-#include <netinet/in.h>
-#include <sys/select.h>
-#include <sys/socket.h>
 #include <unistd.h>
 
 #include <filesystem>
@@ -13,7 +10,7 @@
 
 #include "hash.hpp"
 #include "log.hpp"
-#include "net.hpp"
+#include "server.hpp"
 
 namespace fs = std::filesystem;
 using namespace std::chrono_literals;
@@ -22,15 +19,7 @@ std::atomic<bool> running{true};
 
 namespace {
 
-constexpr char CMD_METADATA = 'M';
-constexpr char CMD_HAVE = 'H';
-constexpr char CMD_GET = 'G';
-
 constexpr uint32_t MAX_METADATA_SIZE = 70000000;
-
-void send_unavailable(int fd) {
-    send_u32(fd, 0);
-}
 
 }
 
@@ -48,7 +37,7 @@ Peer::Peer(Address self, std::string file, std::string dir, uint32_t block_size,
 void Peer::run() {
     std::thread server_thread([this] {
         try {
-            server();
+            serve(self, running, [this](const Request& request) { return respond(request); });
         } catch (const std::exception& e) {
             log_line(e.what());
             running = false;
@@ -120,23 +109,66 @@ void Peer::init() {
              " blocos=" + std::to_string(meta.block_count()) + " endereco=" + self.str());
 }
 
+std::vector<uint8_t> Peer::respond(const Request& request) {
+    if (!ready)
+        return {};
+
+    switch (request.command) {
+    case Command::Metadata: {
+        std::string text = meta.serialize();
+        return {text.begin(), text.end()};
+    }
+    case Command::BlockMap: {
+        std::lock_guard<std::mutex> lock(blocks_mutex);
+        return have;
+    }
+    case Command::GetBlock:
+        return read_block(request.block_index);
+    }
+    return {};
+}
+
+std::vector<uint8_t> Peer::read_block(size_t index) {
+    if (index >= meta.block_count())
+        return {};
+    {
+        std::lock_guard<std::mutex> lock(blocks_mutex);
+        if (!have[index])
+            return {};
+    }
+
+    std::vector<uint8_t> block(meta.block_length(index));
+    off_t offset = static_cast<off_t>(index) * meta.block_size;
+    if (pread(local_fd, block.data(), block.size(), offset) != static_cast<ssize_t>(block.size()))
+        return {};
+    return block;
+}
+
+bool Peer::query(const Address& neighbor, const Request& request, std::vector<uint8_t>& body, uint32_t max_size) {
+    int fd = connect_to(neighbor);
+    if (fd < 0)
+        return false;
+
+    std::vector<uint8_t> message = encode_request(request);
+    uint32_t length = 0;
+    bool ok = send_all(fd, message.data(), message.size()) && recv_u32(fd, length) && length > 0 &&
+              length <= max_size;
+    if (ok) {
+        body.resize(length);
+        ok = recv_all(fd, body.data(), body.size());
+    }
+    close(fd);
+    return ok;
+}
+
 bool Peer::fetch_metadata() {
     for (const auto& n : neighbors) {
-        int fd = connect_to(n);
-        if (fd < 0)
-            continue;
-
-        uint32_t size = 0;
-        bool ok = send_all(fd, &CMD_METADATA, 1) && recv_u32(fd, size) && size > 0 && size < MAX_METADATA_SIZE;
-        std::string text(ok ? size : 0, '\0');
-        if (ok)
-            ok = recv_all(fd, text.data(), size);
-        close(fd);
-        if (!ok)
+        std::vector<uint8_t> body;
+        if (!query(n, {Command::Metadata}, body, MAX_METADATA_SIZE))
             continue;
 
         try {
-            meta = Metadata::parse(text);
+            meta = Metadata::parse(std::string(body.begin(), body.end()));
             log_line("META recebida de " + n.str() + " (" + std::to_string(meta.block_count()) + " blocos)");
             return true;
         } catch (const std::exception& e) {
@@ -144,92 +176,6 @@ bool Peer::fetch_metadata() {
         }
     }
     return false;
-}
-
-void Peer::server() {
-    int listener = socket(AF_INET, SOCK_STREAM, 0);
-    if (listener < 0)
-        throw std::runtime_error("socket servidor");
-    int yes = 1;
-    setsockopt(listener, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes));
-
-    sockaddr_in addr;
-    to_sockaddr(self, addr);
-    if (bind(listener, reinterpret_cast<sockaddr*>(&addr), sizeof(addr)) < 0 || listen(listener, 64) < 0) {
-        close(listener);
-        throw std::runtime_error("bind/listen " + self.str());
-    }
-    log_line("Servidor ouvindo " + self.str());
-
-    while (running) {
-        fd_set set;
-        FD_ZERO(&set);
-        FD_SET(listener, &set);
-        timeval timeout{0, 200000};
-        if (select(listener + 1, &set, nullptr, nullptr, &timeout) <= 0)
-            continue;
-
-        int client = accept(listener, nullptr, nullptr);
-        if (client < 0)
-            continue;
-        std::thread([this, client] {
-            handle(client);
-            close(client);
-        }).detach();
-    }
-    close(listener);
-}
-
-void Peer::handle(int fd) {
-    set_timeouts(fd, 5);
-    char cmd;
-    if (!recv_all(fd, &cmd, 1))
-        return;
-
-    if (cmd == CMD_METADATA) {
-        if (!ready) {
-            send_unavailable(fd);
-            return;
-        }
-        std::string text = meta.serialize();
-        send_u32(fd, static_cast<uint32_t>(text.size()));
-        send_all(fd, text.data(), text.size());
-    } else if (cmd == CMD_HAVE) {
-        if (!ready) {
-            send_unavailable(fd);
-            return;
-        }
-        std::vector<uint8_t> snapshot;
-        {
-            std::lock_guard<std::mutex> lock(blocks_mutex);
-            snapshot = have;
-        }
-        if (send_u32(fd, static_cast<uint32_t>(snapshot.size())))
-            send_all(fd, snapshot.data(), snapshot.size());
-    } else if (cmd == CMD_GET) {
-        uint32_t index;
-        if (!recv_u32(fd, index) || !ready || index >= meta.block_count()) {
-            send_unavailable(fd);
-            return;
-        }
-        bool available;
-        {
-            std::lock_guard<std::mutex> lock(blocks_mutex);
-            available = have[index] != 0;
-        }
-        if (!available) {
-            send_unavailable(fd);
-            return;
-        }
-        std::vector<uint8_t> block(meta.block_length(index));
-        ssize_t n = pread(local_fd, block.data(), block.size(), static_cast<off_t>(index) * meta.block_size);
-        if (n != static_cast<ssize_t>(block.size())) {
-            send_unavailable(fd);
-            return;
-        }
-        if (send_u32(fd, static_cast<uint32_t>(block.size())))
-            send_all(fd, block.data(), block.size());
-    }
 }
 
 void Peer::worker(Address n) {
@@ -274,35 +220,14 @@ void Peer::worker(Address n) {
 }
 
 bool Peer::fetch_block_map(const Address& n, std::vector<uint8_t>& remote) {
-    int fd = connect_to(n);
-    if (fd < 0)
-        return false;
-
-    uint32_t count = 0;
-    bool ok = send_all(fd, &CMD_HAVE, 1) && recv_u32(fd, count) && count == meta.block_count();
-    if (ok) {
-        remote.resize(count);
-        ok = recv_all(fd, remote.data(), remote.size());
-    }
-    close(fd);
-    return ok;
+    uint32_t total = static_cast<uint32_t>(meta.block_count());
+    return query(n, {Command::BlockMap}, remote, total) && remote.size() == total;
 }
 
 bool Peer::fetch_block(const Address& n, size_t index, std::vector<uint8_t>& data) {
-    int fd = connect_to(n);
-    if (fd < 0)
-        return false;
-
-    uint32_t length = 0;
-    bool ok = send_all(fd, &CMD_GET, 1) && send_u32(fd, static_cast<uint32_t>(index)) &&
-              recv_u32(fd, length) && length == meta.block_length(index);
-    if (ok) {
-        data.resize(length);
-        ok = recv_all(fd, data.data(), data.size()) &&
-             sha256_hex(data.data(), data.size()) == meta.block_sha256[index];
-    }
-    close(fd);
-    return ok;
+    size_t length = meta.block_length(index);
+    return query(n, {Command::GetBlock, static_cast<uint32_t>(index)}, data, static_cast<uint32_t>(length)) &&
+           data.size() == length && sha256_hex(data.data(), data.size()) == meta.block_sha256[index];
 }
 
 bool Peer::write_block(size_t index, const std::vector<uint8_t>& data) {
